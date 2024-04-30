@@ -2,15 +2,13 @@
 ---
 layout: page
 title: About Me
-background: '/img/bg-about.jpg'
+background: '/img/bg-about.png'
 ---
 
 
-Welcome! I'm Danial Syed, an experienced quantitative researcher and data strategist with a robust background in machine learning, statistics, and economics I graduated from the University of Bonn in Germany with an M.Sc. in economics and from Emory University in the United States with a B.A. in economics. During my studies, I have specialized in applying advanced statistical methods to solve complex economic and policy-related problems.
+Welcome to my personal website! I'm Danial Syed, an experienced quantitative researcher and data strategist with a background in machine learning, environment, and energy economics. I graduated from Emory University, USA, with a B.A. in economics and later obtained my M.Sc. in economics from Universität Bonn in Germany, where I specialized heavily in the applications of machine learning to very large and complex datasets under the mentorship of Prof. Philipp Eisenhauer and Prof. Christoph Breunig.
 
-Throughout my studies and career, I have been fascinated by the potential for leveraging very large datasets to drive decision-making and policy development. My work at Wharton, where I developed a comprehensive EU remote-sensing replication package, and my collaborative project with the United Nations University, showcase my skill in utilizing cutting-edge computational techniques and my dedication to sustainability and impactful economic research.
+I'm passionate about leveraging existing state-of-the-art machine learning methods to study the impact of environmental policy and to spur the clean energy transition in emerging economies. At Wharton School, I was in-charge of developing a data package for evaluating the impact of land protection policies in the EU. Before that, I also worked at the United Nations University - Institute of Environment & Human Security, where I led the successful development of a sophisticated ML model to better understand the different mindsets regarding urban sustainability transformation in Latin America. Through these experiences, I have gained a multi-level skillset in utilizing cutting-edge computational techniques and a dedication to advancing sustainability and impactful economic research.
 
-I am passionate about using data to uncover insights that lead to actionable strategies and improved outcomes in energy & environment. With a strong foundation in statistical theory and practical application, I thrive in environments that challenge my analytical skills and push me to innovate.
-
-On this website, you will find details about my projects, publications, and the various ways data science can be used to to foster innovation and strategic solutions at the frontier. Thank you for visiting, and I look forward to collaborating with you to turn data into insights and strategies into reality.
+On this website, you will find details about my projects, publications, and experiences in using data to innovate and strategize for the betterment of humankind. I'm always open to working with other leaders in industry, goverment, and academia that share with my vision - so if you're onboard please feel free to contact me and we can discuss potential collaborations.
 

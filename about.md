@@ -2,7 +2,7 @@
 ---
 layout: page
 title: About Me
-background: '/img/bg-about.png'
+background: ''
 ---
 
 

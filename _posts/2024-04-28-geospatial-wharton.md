@@ -8,7 +8,7 @@ background: '/img/posts/geospatial-wharton/cover4.jpg'
 
 Without a doubt the best part about joining Wharton was the exposure to some of the most innovative methods being deployed at the current frontiers of economic analysis in energy and environment. That applied also to my first week in the Business Economics and Public Policy department. Because, for my very first project, I had the opportunity to dive head-first into a challenging geospatial economics project. For this project, my principal investigator, Arthur van Benthem, was seeking to answer the question: to what extent have EU land protection policies actually contributed to the continent's greening and biodiversity?
 
-Although I had previously worked with geospatial data, namely through my application of Convolutional Neural Networks to satellite images for poverty prediction in Malawi, I ran into several fun challenges in this project simply because of the scale and richness of data involved. And when I say scale, I mean constructing datasets to the tune of ~100 million data points in total. This required building up my technical skills in big data analytics and setting up effective workflows for handling large datasets through automation, lots of it. Because of the highly granular of geospatial data, I think this post will provide an inside scoop to anyone looking to get started with geospatial analysis and help save time by avoiding some of the pitfalls I ran into.
+Although I had previously worked with geospatial data, namely through my application of Convolutional Neural Networks to satellite images for poverty prediction in Malawi, I ran into several fun challenges in this project simply because of the scale and richness of data involved. And when I say scale, I mean constructing datasets to the tune of ~100 million data points in total. This required building up my technical skills in big data analytics and setting up effective workflows for handling large datasets through automation. Lots of it. Because of the highly granular of geospatial data, I think this post will provide an inside scoop to anyone looking to get started with geospatial analysis and help save time by avoiding some of the pitfalls I ran into.
 
 ## Project Overview 
 
@@ -16,9 +16,9 @@ The issue of land protection in the face of rapid deforestation and urban sprawl
 
 To quantitatively assess the effectiveness of Europe's circa 26% protected land in bolstering the region's nature reserves, we needed highly granular datasets for analysis that would:
 
-1) Tell us the land protection status of a given chunk of land.
-1) Measure the green-ing of that land overtime.
-2) Provide other geo-physical land characteristics about the land.
+1. Tell us the land protection status of a given chunk of land.
+2. Measure the green-ing of that land overtime.
+3. Provide other geo-physical land characteristics about the land.
 
 ## Data Collection
 
@@ -32,7 +32,7 @@ As a simple example, at the very basic level I started with a block of Eurostat 
 
 The only way to pre-emptively mitigate against this is to establish an organized workflow from the beginning. Along with this, establishing a file naming convention such as _raw, _clean, _final denoting the various stages of processing of geospatial data. And finally, maintaining thorough documentation at each step, detailing what was done. As an example, I established the following folder structure for this project (feel free to re-purpose for your own needs):
 
-<img src="/assets/images/workspace_structure.png" alt="Book logo" width="300" height="auto">
+![Book logo](/img/posts/geospatial-wharton/workspace_structure.png)
 
 # Data Challenges
 

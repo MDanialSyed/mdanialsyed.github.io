@@ -49,5 +49,11 @@
 }
 
 img {
+    width: 70%;
+}
+
+// Add a more specific rule for the logo images
+.navbar .logo-dark,
+.navbar .logo-light {
     width: 40%;
 }

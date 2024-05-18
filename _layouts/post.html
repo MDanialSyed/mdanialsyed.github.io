@@ -2,6 +2,31 @@
 layout: default
 ---
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Your other head elements -->
+
+  <!-- MathJax Configuration -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+
+  <!-- MathJax Script -->
+  <script type="text/javascript" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+
 <!-- Page Header -->
 {% if page.background %}
 <header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
@@ -17,8 +42,7 @@ layout: default
             {% if page.subtitle %}
             <h2 class="subheading">{{ page.subtitle }}</h2>
             {% endif %}
-            <span class="meta"> {{ page.date | date: '%B %d, %Y' }} &middot; {% include read_time.html
-              content=page.content %}
+            <span class="meta"> {{ page.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=page.content %}
             </span>
           </div>
         </div>
@@ -50,3 +74,5 @@ layout: default
       </div>
     </div>
   </div>
+</body>
+</html>

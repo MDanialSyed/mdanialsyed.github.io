@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Clean-car Policies and the US Energy Transition"
-subtitle: "A handful of potential clean-car policies could have a transformative effect on the energy transition"
+title: "Clean-Car Policies and the US Energy Transition"
+subtitle: "A handful of potential clean-car policies could have a transformative effect on the energy transition."
 background: '/img/posts/clean-cars/ev-charging.jpg'
 ---
 
 In our [recent article](https://kleinmanenergy.upenn.edu/news-insights/will-americas-clean-car-policies-persist/), "Will America’s Clean Car Policies Persist?" for the Kleinman Center for Energy Policy, my co-author and I looked at the ambitious path the United States is taking towards a zero-emission automotive future. We highlighted how the nation’s four cornerstone clean car policies – EPA regulations, California's Advanced Clean Cars II, and federal tax credits – are accelarating the shift towards electric vehicles (EVs). However, during my research, it became clear that such policies will likley face a range of challenges, from legal, to political and economic.
 
-While the article mainly focuses on U.S. policies under the Biden Administration, it’s essential to consider the global context. Many countries are also aggressively pursuing clean car policies. The European Union, for instance, has set targets for reducing CO2 emissions from new cars and vans, effectively pushing automakers towards electrification. China, the world's largest auto market, is heavily investing in EV technology and infrastructure, with its government offering substantial subsidies and incentives.
+While the article primarily focuses on U.S. policies under the Biden Administration, it's essential to consider the global context. Many countries are also aggressively pursuing clean car policies. The European Union, for instance, has set a target of reducing CO2 emissions from new cars and vans by 55% by 2030 compared to 2021 levels. China, the world’s largest auto market, has invested heavily in EV technology and infrastructure, with over 13 million electric vehicles on the road in 2022. This represents approximately 15% of the global EV market.
 
 A comparative analysis reveals both commonalities and divergences in these global efforts. Most countries recognize the need of transitioning to cleaner transportation to mitigate climate change and improve air quality. However, the pace and intensity of these policies vary widely. Factors like economic conditions, energy resources, and political landscape influence the approach taken by different nations.
 
@@ -27,5 +27,3 @@ To accelerate the adoption of EVs, several key areas demand attention:
 - Grid integration: Ensuring the power grid can accommodate the increased demand from EV charging is vital to avoid strain and blackouts.
 
 The future of clean car policies is uncertain, but the potential benefits are immense. By overcoming the challenges and seizing the opportunities, the United States and other countries can pave the way for a cleaner, healthier, and more sustainable transportation sector.
-
-What are your thoughts on the global race to electrify transportation? Which countries do you believe are leading the way? Share your insights in the comments below.

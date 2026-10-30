@@ -152,6 +152,8 @@ def context_text(reg, key: str, items: list[tuple[str, Result]], latest_period: 
         shown = format_display(r.value, ind.display or {})
         if kind == "year_ago":
             parts.append(f"{shown} a year earlier")
+        elif ind.period_format == "fy_end_year" and len(r.period) == 4:
+            parts.append(f"{shown} in {period_label(r.period, 'fy_end_year')}")
         elif len(r.period) == 10:
             parts.append(f"{shown} on {period_label(r.period).rsplit(' ', 1)[0]}")
         elif len(r.period) == 7:
@@ -237,7 +239,7 @@ def lineage_record(reg: Registry, key: str, res: Result, context: list | None = 
         "display": format_display(res.value, ind.display or {}), "period": res.period,
         "period_label": period_label(res.period, ind.period_format or
                                      ("fytd" if ind.transform.startswith("fytd") else ""), reg.fy_start_month),
-        "status": "official", "publisher": src0.publisher, "dataset": src0.dataset,
+        "status": "official", "frequency": s0.frequency, "publisher": src0.publisher, "dataset": src0.dataset,
         "series_code": s0.code, "source_url": src0.homepage, "calc": ind.transform,
         "calc_note": res.note, "retrieved_at": max(r.retrieved_at for _, r in res.inputs),
         "context": context_text(reg, key, context, res.period),

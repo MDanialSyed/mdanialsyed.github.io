@@ -101,6 +101,17 @@ def calendar_year(key: str, series: dict[str, Row], offset: int = 0, today: date
     return Result(series[year].value, year, [(key, series[year])])
 
 
+def prev_year_end(key: str, series: dict[str, Row], **_) -> Result:
+    """The last value published for the previous calendar year (a base for year-to-date changes)."""
+    period, _row = _latest(series)
+    year = str(int(period[:4]) - 1)
+    earlier = [p for p in series if p[:4] == year]
+    if not earlier:
+        raise NotComputable(f"no value in {year}")
+    p = earlier[-1]
+    return Result(series[p].value, p, [(key, series[p])])
+
+
 TRANSFORMS = {
     "as_published@1": as_published,
     "yoy_pct@1": yoy_pct,
@@ -109,6 +120,7 @@ TRANSFORMS = {
     "fytd_mean_yoy_pct@1": fytd_mean_yoy_pct,
     "calendar_year@1": calendar_year,
     "next_calendar_year@1": lambda k, s, **kw: calendar_year(k, s, offset=1, **kw),
+    "prev_year_end@1": prev_year_end,
 }
 
 

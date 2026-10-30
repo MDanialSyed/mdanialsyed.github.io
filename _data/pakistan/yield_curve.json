@@ -4,55 +4,71 @@
     "latest": 12.1055,
     "previous": null,
     "latest_display": "12.11%",
-    "previous_display": "n/a"
+    "previous_display": "n/a",
+    "latest_date": "2026-10-28",
+    "previous_date": null
   },
   {
     "tenor": "3M",
     "latest": 12.4261,
-    "previous": 11.38,
+    "previous": 12.0,
     "latest_display": "12.43%",
-    "previous_display": "11.38%"
+    "previous_display": "12.00%",
+    "latest_date": "2026-10-28",
+    "previous_date": "2026-10-14"
   },
   {
     "tenor": "6M",
     "latest": 12.65,
-    "previous": 11.7,
+    "previous": 12.4,
     "latest_display": "12.65%",
-    "previous_display": "11.70%"
+    "previous_display": "12.40%",
+    "latest_date": "2026-10-28",
+    "previous_date": "2026-10-14"
   },
   {
     "tenor": "12M",
     "latest": 12.89,
-    "previous": 12.0,
+    "previous": 12.5,
     "latest_display": "12.89%",
-    "previous_display": "12.00%"
+    "previous_display": "12.50%",
+    "latest_date": "2026-10-28",
+    "previous_date": "2026-10-14"
   },
   {
     "tenor": "2Y",
-    "latest": 12.399,
+    "latest": null,
     "previous": 12.399,
-    "latest_display": "12.40%",
-    "previous_display": "12.40%"
+    "latest_display": "n/a",
+    "previous_display": "12.40%",
+    "latest_date": null,
+    "previous_date": "2026-09-18"
   },
   {
     "tenor": "3Y",
-    "latest": 12.49,
+    "latest": 12.75,
     "previous": 12.49,
-    "latest_display": "12.49%",
-    "previous_display": "12.49%"
+    "latest_display": "12.75%",
+    "previous_display": "12.49%",
+    "latest_date": "2026-10-07",
+    "previous_date": "2026-09-18"
   },
   {
     "tenor": "5Y",
-    "latest": 12.49,
+    "latest": 12.9,
     "previous": 12.49,
-    "latest_display": "12.49%",
-    "previous_display": "12.49%"
+    "latest_display": "12.90%",
+    "previous_display": "12.49%",
+    "latest_date": "2026-10-07",
+    "previous_date": "2026-09-18"
   },
   {
     "tenor": "10Y",
-    "latest": 12.5,
+    "latest": 12.85,
     "previous": 12.5,
-    "latest_display": "12.50%",
-    "previous_display": "12.50%"
+    "latest_display": "12.85%",
+    "previous_display": "12.50%",
+    "latest_date": "2026-10-07",
+    "previous_date": "2026-09-18"
   }
 ]

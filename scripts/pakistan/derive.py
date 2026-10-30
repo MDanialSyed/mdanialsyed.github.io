@@ -54,7 +54,7 @@ MOVES = {
     "tbill_12m": {"better": None, "unit": "bp"},
     "sbp_res": {"better": "up", "unit": "usd_bn"},
     "ca_fytd": {"better": "up", "unit": "usd_m"},
-    "rem_m": {"better": "up", "unit": "pct"},
+    "rem_m": {"better": "up", "unit": "pct", "relative": True},
 }
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -79,20 +79,31 @@ def magnitude(change, unit):
     raise ValueError(unit)
 
 
-def official_comparison(rec):
-    """Change and basis for an official figure, from the comparisons the pipeline computed."""
+def official_comparison(rec, relative=False):
+    """Change and basis for an official figure, from the comparisons the pipeline computed. The
+    basis follows the series' frequency: w/w for weekly, d/d for daily, the date of the previous
+    decision or auction for series dated by event, the month for monthly."""
     items = {c["kind"]: c for c in rec.get("context_items", [])}
     c = items.get("previous") or items.get("year_ago")
     if not c:
         return None
+    freq = rec.get("frequency", "")
     if c["kind"] == "year_ago":
         basis = "y/y"
     elif len(c["period"]) == 7:
         basis = "vs " + MONTHS[int(c["period"][5:]) - 1]
-    elif len(c["period"]) == 10:
+    elif freq == "weekly":
+        basis = "w/w"
+    elif freq == "daily":
         basis = "d/d"
+    elif len(c["period"]) == 10:
+        basis = f"vs {int(c['period'][8:])} {MONTHS[int(c['period'][5:7]) - 1]}"
     else:
         basis = "vs " + c["period"]
+    if relative:
+        if not c["value"]:
+            return None
+        return (rec["value"] / c["value"] - 1) * 100, basis
     return rec["value"] - c["value"], basis
 
 
@@ -103,7 +114,7 @@ def moves():
     out = []
     for key, rule in MOVES.items():
         if key in official:
-            comp = official_comparison(official[key])
+            comp = official_comparison(official[key], rule.get("relative", False))
         elif rows.get(key, {}).get("change") is not None:
             comp = (float(rows[key]["change"]), rows[key]["change_basis"])
         else:

@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-30T15:38:41Z",
-  "run_id": "20261030T153841Z",
+  "generated_at": "2026-10-30T18:56:49Z",
+  "run_id": "20261030T185649Z",
   "pipeline_version": "0.1.0",
-  "code_version": "4664b9a",
+  "code_version": "42219b5",
   "indicators": {
     "cpi_yoy": {
       "key": "cpi_yoy",
@@ -13,6 +13,7 @@
       "period": "2026-09",
       "period_label": "Sep 2026",
       "status": "official",
+      "frequency": "monthly",
       "publisher": "State Bank of Pakistan",
       "dataset": "EasyData",
       "series_code": "TS_GP_PT_CPI_M.P00011516",
@@ -84,6 +85,7 @@
       "period": "2026-09",
       "period_label": "Sep 2026",
       "status": "official",
+      "frequency": "monthly",
       "publisher": "State Bank of Pakistan",
       "dataset": "EasyData",
       "series_code": "TS_GP_BOP_BPM6SUM_M.P00010",
@@ -136,6 +138,7 @@
       "period": "2026-09",
       "period_label": "Jul–Sep FY27",
       "status": "official",
+      "frequency": "monthly",
       "publisher": "State Bank of Pakistan",
       "dataset": "EasyData",
       "series_code": "TS_GP_BOP_BPM6SUM_M.P00010",
@@ -232,6 +235,7 @@
       "period": "2026-10-29",
       "period_label": "29 Oct 2026",
       "status": "official",
+      "frequency": "daily",
       "publisher": "State Bank of Pakistan",
       "dataset": "EasyData",
       "series_code": "TS_GP_IR_REPOMR_D.ORR",
@@ -270,6 +274,1163 @@
               "retrieved_at": "2026-10-30T14:44:10Z",
               "file": "raw/sbp_easydata/2026-10-30/TS_GP_IR_REPOMR_D.ORR.csv",
               "sha256": "212ee5915b37800423d2db2396a6ba7e73852ed30496e7c327d1ff292c098d22"
+            }
+          ]
+        }
+      ]
+    },
+    "cpi_mom": {
+      "key": "cpi_mom",
+      "label": "CPI, month on month",
+      "unit": "percent",
+      "value": 1.3,
+      "display": "+1.3%",
+      "period": "2026-09",
+      "period_label": "Sep 2026",
+      "status": "official",
+      "frequency": "monthly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_PT_CPI_M.P00461516",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:48:54Z",
+      "context": "+1.2% in Aug",
+      "inputs": [
+        {
+          "series": "sbp_cpi_mom_national",
+          "code": "TS_GP_PT_CPI_M.P00461516",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-09",
+          "value": 1.3,
+          "retrieved_at": "2026-10-30T18:48:54Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00461516.csv",
+          "sha256": "19fe00aa73fbaa89d2116c42bc6ce054b9017c64dcb835b6d04123233a6a98b4"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 1.2,
+          "display": "+1.2%",
+          "period": "2026-08",
+          "inputs": [
+            {
+              "series": "sbp_cpi_mom_national",
+              "code": "TS_GP_PT_CPI_M.P00461516",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-08",
+              "value": 1.2,
+              "retrieved_at": "2026-10-30T18:48:54Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00461516.csv",
+              "sha256": "19fe00aa73fbaa89d2116c42bc6ce054b9017c64dcb835b6d04123233a6a98b4"
+            }
+          ]
+        }
+      ]
+    },
+    "cpi_fytd": {
+      "key": "cpi_fytd",
+      "label": "CPI average, fiscal year to date (y/y)",
+      "unit": "percent",
+      "value": 10.2,
+      "display": "10.2%",
+      "period": "2026-09",
+      "period_label": "Jul–Sep FY27",
+      "status": "official",
+      "frequency": "monthly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_PT_CPI_M.P00311516",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:48:56Z",
+      "context": "4.3% a year earlier",
+      "inputs": [
+        {
+          "series": "sbp_cpi_pa_national",
+          "code": "TS_GP_PT_CPI_M.P00311516",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-09",
+          "value": 10.2,
+          "retrieved_at": "2026-10-30T18:48:56Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00311516.csv",
+          "sha256": "cf4baf49f9bd43e016102a05a7c8c997d91721c47f1caa1b5037f9952abd125c"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "year_ago",
+          "value": 4.3,
+          "display": "4.3%",
+          "period": "2025-09",
+          "inputs": [
+            {
+              "series": "sbp_cpi_pa_national",
+              "code": "TS_GP_PT_CPI_M.P00311516",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2025-09",
+              "value": 4.3,
+              "retrieved_at": "2026-10-30T18:48:56Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00311516.csv",
+              "sha256": "cf4baf49f9bd43e016102a05a7c8c997d91721c47f1caa1b5037f9952abd125c"
+            }
+          ]
+        }
+      ]
+    },
+    "cpi_urban": {
+      "key": "cpi_urban",
+      "label": "Urban CPI (y/y)",
+      "unit": "percent",
+      "value": 10.1,
+      "display": "10.1%",
+      "period": "2026-09",
+      "period_label": "Sep 2026",
+      "status": "official",
+      "frequency": "monthly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_PT_CPI_M.P00021516",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:48:57Z",
+      "context": "10.4% in Aug",
+      "inputs": [
+        {
+          "series": "sbp_cpi_yoy_urban",
+          "code": "TS_GP_PT_CPI_M.P00021516",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-09",
+          "value": 10.1,
+          "retrieved_at": "2026-10-30T18:48:57Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00021516.csv",
+          "sha256": "5b838d1aa5a612695c9f17bea57ba00f1ca407e7a0155564c7f0f0aaa8786f56"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 10.4,
+          "display": "10.4%",
+          "period": "2026-08",
+          "inputs": [
+            {
+              "series": "sbp_cpi_yoy_urban",
+              "code": "TS_GP_PT_CPI_M.P00021516",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-08",
+              "value": 10.4,
+              "retrieved_at": "2026-10-30T18:48:57Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00021516.csv",
+              "sha256": "5b838d1aa5a612695c9f17bea57ba00f1ca407e7a0155564c7f0f0aaa8786f56"
+            }
+          ]
+        }
+      ]
+    },
+    "cpi_rural": {
+      "key": "cpi_rural",
+      "label": "Rural CPI (y/y)",
+      "unit": "percent",
+      "value": 10.5,
+      "display": "10.5%",
+      "period": "2026-09",
+      "period_label": "Sep 2026",
+      "status": "official",
+      "frequency": "monthly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_PT_CPI_M.P00031516",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:48:58Z",
+      "context": "12.2% in Aug",
+      "inputs": [
+        {
+          "series": "sbp_cpi_yoy_rural",
+          "code": "TS_GP_PT_CPI_M.P00031516",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-09",
+          "value": 10.5,
+          "retrieved_at": "2026-10-30T18:48:58Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00031516.csv",
+          "sha256": "bb961c101f08dce7296f2d7116b34fdc9109deb218da5b00b43fa566e9cb81f4"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 12.2,
+          "display": "12.2%",
+          "period": "2026-08",
+          "inputs": [
+            {
+              "series": "sbp_cpi_yoy_rural",
+              "code": "TS_GP_PT_CPI_M.P00031516",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-08",
+              "value": 12.2,
+              "retrieved_at": "2026-10-30T18:48:58Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00031516.csv",
+              "sha256": "bb961c101f08dce7296f2d7116b34fdc9109deb218da5b00b43fa566e9cb81f4"
+            }
+          ]
+        }
+      ]
+    },
+    "core_urban": {
+      "key": "core_urban",
+      "label": "Core, urban non-food non-energy (y/y)",
+      "unit": "percent",
+      "value": 8.6,
+      "display": "8.6%",
+      "period": "2026-09",
+      "period_label": "Sep 2026",
+      "status": "official",
+      "frequency": "monthly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_PT_CPI_M.P00121516",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:49:02Z",
+      "context": "8.8% in Aug",
+      "inputs": [
+        {
+          "series": "sbp_core_urban",
+          "code": "TS_GP_PT_CPI_M.P00121516",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-09",
+          "value": 8.6,
+          "retrieved_at": "2026-10-30T18:49:02Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00121516.csv",
+          "sha256": "27d4db4ed2a1f0df9002d2acaad50f80b5d5a496534e77984452fbcb8430acf0"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 8.8,
+          "display": "8.8%",
+          "period": "2026-08",
+          "inputs": [
+            {
+              "series": "sbp_core_urban",
+              "code": "TS_GP_PT_CPI_M.P00121516",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-08",
+              "value": 8.8,
+              "retrieved_at": "2026-10-30T18:49:02Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00121516.csv",
+              "sha256": "27d4db4ed2a1f0df9002d2acaad50f80b5d5a496534e77984452fbcb8430acf0"
+            }
+          ]
+        }
+      ]
+    },
+    "core_rural": {
+      "key": "core_rural",
+      "label": "Core, rural non-food non-energy (y/y)",
+      "unit": "percent",
+      "value": 8.1,
+      "display": "8.1%",
+      "period": "2026-09",
+      "period_label": "Sep 2026",
+      "status": "official",
+      "frequency": "monthly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_PT_CPI_M.P00131516",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:49:04Z",
+      "context": "8.5% in Aug",
+      "inputs": [
+        {
+          "series": "sbp_core_rural",
+          "code": "TS_GP_PT_CPI_M.P00131516",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-09",
+          "value": 8.1,
+          "retrieved_at": "2026-10-30T18:49:04Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00131516.csv",
+          "sha256": "3954f06c90cf401ebdba7bbb7ece48e09c7fee108e03c02fb563312921eb418e"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 8.5,
+          "display": "8.5%",
+          "period": "2026-08",
+          "inputs": [
+            {
+              "series": "sbp_core_rural",
+              "code": "TS_GP_PT_CPI_M.P00131516",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-08",
+              "value": 8.5,
+              "retrieved_at": "2026-10-30T18:49:04Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00131516.csv",
+              "sha256": "3954f06c90cf401ebdba7bbb7ece48e09c7fee108e03c02fb563312921eb418e"
+            }
+          ]
+        }
+      ]
+    },
+    "trim_urban": {
+      "key": "trim_urban",
+      "label": "Core, urban 20% trimmed mean (y/y)",
+      "unit": "percent",
+      "value": 9.4,
+      "display": "9.4%",
+      "period": "2026-09",
+      "period_label": "Sep 2026",
+      "status": "official",
+      "frequency": "monthly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_PT_CPI_M.P00141516",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:49:05Z",
+      "context": "8.9% in Aug",
+      "inputs": [
+        {
+          "series": "sbp_trim_urban",
+          "code": "TS_GP_PT_CPI_M.P00141516",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-09",
+          "value": 9.4,
+          "retrieved_at": "2026-10-30T18:49:05Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00141516.csv",
+          "sha256": "cb9d046b31ec69936ffd06f698ac64dacc4664eec6963004b4fedadf46f6f537"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 8.9,
+          "display": "8.9%",
+          "period": "2026-08",
+          "inputs": [
+            {
+              "series": "sbp_trim_urban",
+              "code": "TS_GP_PT_CPI_M.P00141516",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-08",
+              "value": 8.9,
+              "retrieved_at": "2026-10-30T18:49:05Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00141516.csv",
+              "sha256": "cb9d046b31ec69936ffd06f698ac64dacc4664eec6963004b4fedadf46f6f537"
+            }
+          ]
+        }
+      ]
+    },
+    "food_urban": {
+      "key": "food_urban",
+      "label": "Food inflation, urban (y/y)",
+      "unit": "percent",
+      "value": 8.1,
+      "display": "8.1%",
+      "period": "2026-09",
+      "period_label": "Sep 2026",
+      "status": "official",
+      "frequency": "monthly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_PT_CPI_M.P00041516",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:48:59Z",
+      "context": "12.1% in Aug",
+      "inputs": [
+        {
+          "series": "sbp_food_yoy_urban",
+          "code": "TS_GP_PT_CPI_M.P00041516",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-09",
+          "value": 8.1,
+          "retrieved_at": "2026-10-30T18:48:59Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00041516.csv",
+          "sha256": "97a56d12ae9f9904c476a9ffb2719216ce2ebb03710d22b5e3cdd48165c919d2"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 12.1,
+          "display": "12.1%",
+          "period": "2026-08",
+          "inputs": [
+            {
+              "series": "sbp_food_yoy_urban",
+              "code": "TS_GP_PT_CPI_M.P00041516",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-08",
+              "value": 12.1,
+              "retrieved_at": "2026-10-30T18:48:59Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00041516.csv",
+              "sha256": "97a56d12ae9f9904c476a9ffb2719216ce2ebb03710d22b5e3cdd48165c919d2"
+            }
+          ]
+        }
+      ]
+    },
+    "wpi": {
+      "key": "wpi",
+      "label": "Wholesale prices, WPI (y/y)",
+      "unit": "percent",
+      "value": 13.3,
+      "display": "13.3%",
+      "period": "2026-09",
+      "period_label": "Sep 2026",
+      "status": "official",
+      "frequency": "monthly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_PT_CPI_M.P00081516",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:49:01Z",
+      "context": "11.8% in Aug",
+      "inputs": [
+        {
+          "series": "sbp_wpi_yoy",
+          "code": "TS_GP_PT_CPI_M.P00081516",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-09",
+          "value": 13.3,
+          "retrieved_at": "2026-10-30T18:49:01Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00081516.csv",
+          "sha256": "db5365d1c95bae53d2697b040a3bac46ff0489ca65238f4696f415bc1cce2abd"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 11.8,
+          "display": "11.8%",
+          "period": "2026-08",
+          "inputs": [
+            {
+              "series": "sbp_wpi_yoy",
+              "code": "TS_GP_PT_CPI_M.P00081516",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-08",
+              "value": 11.8,
+              "retrieved_at": "2026-10-30T18:49:01Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_PT_CPI_M.P00081516.csv",
+              "sha256": "db5365d1c95bae53d2697b040a3bac46ff0489ca65238f4696f415bc1cce2abd"
+            }
+          ]
+        }
+      ]
+    },
+    "policy_rate": {
+      "key": "policy_rate",
+      "label": "SBP policy rate",
+      "unit": "percent",
+      "value": 12.0,
+      "display": "12.00%",
+      "period": "2026-10-26",
+      "period_label": "26 Oct 2026",
+      "status": "official",
+      "frequency": "as-needed",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_IR_SIRPR_AH.SBPOL0030",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:49:06Z",
+      "context": "11.50% on 28 Apr",
+      "inputs": [
+        {
+          "series": "sbp_policy_rate",
+          "code": "TS_GP_IR_SIRPR_AH.SBPOL0030",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-10-26",
+          "value": 12.0,
+          "retrieved_at": "2026-10-30T18:49:06Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_IR_SIRPR_AH.SBPOL0030.csv",
+          "sha256": "26a7959e3a92b54e02b59bfbf39e4c83d04f108685f8346a2468d4741610859d"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 11.5,
+          "display": "11.50%",
+          "period": "2026-04-28",
+          "inputs": [
+            {
+              "series": "sbp_policy_rate",
+              "code": "TS_GP_IR_SIRPR_AH.SBPOL0030",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-04-28",
+              "value": 11.5,
+              "retrieved_at": "2026-10-30T18:49:06Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_IR_SIRPR_AH.SBPOL0030.csv",
+              "sha256": "26a7959e3a92b54e02b59bfbf39e4c83d04f108685f8346a2468d4741610859d"
+            }
+          ]
+        }
+      ]
+    },
+    "pib_10y": {
+      "key": "pib_10y",
+      "label": "10-year PIB, auction cut-off",
+      "unit": "percent",
+      "value": 12.85,
+      "display": "12.85%",
+      "period": "2026-10-07",
+      "period_label": "7 Oct 2026",
+      "status": "official",
+      "frequency": "as-needed",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_BAM_SIRPIBS_AH.PIB0040",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:49:09Z",
+      "context": "12.50% on 18 Sep",
+      "inputs": [
+        {
+          "series": "sbp_pib_10y",
+          "code": "TS_GP_BAM_SIRPIBS_AH.PIB0040",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-10-07",
+          "value": 12.85,
+          "retrieved_at": "2026-10-30T18:49:09Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRPIBS_AH.PIB0040.csv",
+          "sha256": "15155f837a5adbb4af8f8a09861faff5fe5dea96c93bec8a1d8ebf29c4bda153"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 12.5,
+          "display": "12.50%",
+          "period": "2026-09-18",
+          "inputs": [
+            {
+              "series": "sbp_pib_10y",
+              "code": "TS_GP_BAM_SIRPIBS_AH.PIB0040",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-09-18",
+              "value": 12.5,
+              "retrieved_at": "2026-10-30T18:49:09Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRPIBS_AH.PIB0040.csv",
+              "sha256": "15155f837a5adbb4af8f8a09861faff5fe5dea96c93bec8a1d8ebf29c4bda153"
+            }
+          ]
+        }
+      ]
+    },
+    "usdpkr": {
+      "key": "usdpkr",
+      "label": "Rupees per US dollar (SBP reference rate)",
+      "unit": "rupees",
+      "value": 276.7522,
+      "display": "276.75",
+      "period": "2026-10-30",
+      "period_label": "30 Oct 2026",
+      "status": "official",
+      "frequency": "daily",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_ES_M2M_D.M2MUSD00DY",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:49:10Z",
+      "context": "276.76 on 29 Oct",
+      "inputs": [
+        {
+          "series": "sbp_usdpkr",
+          "code": "TS_GP_ES_M2M_D.M2MUSD00DY",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-10-30",
+          "value": 276.7522,
+          "retrieved_at": "2026-10-30T18:49:10Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_ES_M2M_D.M2MUSD00DY.csv",
+          "sha256": "918dc163c4f8e0b0f80e72963e10118789b6d67df23fed43ecd6ba3642689518"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 276.7618,
+          "display": "276.76",
+          "period": "2026-10-29",
+          "inputs": [
+            {
+              "series": "sbp_usdpkr",
+              "code": "TS_GP_ES_M2M_D.M2MUSD00DY",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-10-29",
+              "value": 276.7618,
+              "retrieved_at": "2026-10-30T18:49:10Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_ES_M2M_D.M2MUSD00DY.csv",
+              "sha256": "918dc163c4f8e0b0f80e72963e10118789b6d67df23fed43ecd6ba3642689518"
+            }
+          ]
+        }
+      ]
+    },
+    "rem_m": {
+      "key": "rem_m",
+      "label": "Workers' remittances",
+      "unit": "US$ billion",
+      "value": 3.587765,
+      "display": "$3.59bn",
+      "period": "2026-09",
+      "period_label": "Sep 2026",
+      "status": "official",
+      "frequency": "monthly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_BOP_WR_M.WR0340",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "x 0.001 for the page's unit",
+      "retrieved_at": "2026-10-30T18:49:11Z",
+      "context": "$3.18bn a year earlier",
+      "inputs": [
+        {
+          "series": "sbp_remittances",
+          "code": "TS_GP_BOP_WR_M.WR0340",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-09",
+          "value": 3587.764715,
+          "retrieved_at": "2026-10-30T18:49:11Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
+          "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "year_ago",
+          "value": 3.184124,
+          "display": "$3.18bn",
+          "period": "2025-09",
+          "inputs": [
+            {
+              "series": "sbp_remittances",
+              "code": "TS_GP_BOP_WR_M.WR0340",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2025-09",
+              "value": 3184.123961,
+              "retrieved_at": "2026-10-30T18:49:11Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
+              "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
+            }
+          ]
+        }
+      ]
+    },
+    "rem_fytd": {
+      "key": "rem_fytd",
+      "label": "Workers' remittances, fiscal year to date",
+      "unit": "US$ billion",
+      "value": 10.875059,
+      "display": "$10.88bn",
+      "period": "2026-09",
+      "period_label": "Jul–Sep FY27",
+      "status": "official",
+      "frequency": "monthly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_BOP_WR_M.WR0340",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "fytd_sum@1",
+      "calc_note": "2026-07 to 2026-09; x 0.001 for the page's unit",
+      "retrieved_at": "2026-10-30T18:49:11Z",
+      "context": "$9.54bn a year earlier",
+      "inputs": [
+        {
+          "series": "sbp_remittances",
+          "code": "TS_GP_BOP_WR_M.WR0340",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-07",
+          "value": 3630.476883,
+          "retrieved_at": "2026-10-30T18:49:11Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
+          "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
+        },
+        {
+          "series": "sbp_remittances",
+          "code": "TS_GP_BOP_WR_M.WR0340",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-08",
+          "value": 3656.816978,
+          "retrieved_at": "2026-10-30T18:49:11Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
+          "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
+        },
+        {
+          "series": "sbp_remittances",
+          "code": "TS_GP_BOP_WR_M.WR0340",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-09",
+          "value": 3587.764715,
+          "retrieved_at": "2026-10-30T18:49:11Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
+          "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "year_ago",
+          "value": 9.536813,
+          "display": "$9.54bn",
+          "period": "2025-09",
+          "inputs": [
+            {
+              "series": "sbp_remittances",
+              "code": "TS_GP_BOP_WR_M.WR0340",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2025-07",
+              "value": 3214.514462,
+              "retrieved_at": "2026-10-30T18:49:11Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
+              "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
+            },
+            {
+              "series": "sbp_remittances",
+              "code": "TS_GP_BOP_WR_M.WR0340",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2025-08",
+              "value": 3138.174787,
+              "retrieved_at": "2026-10-30T18:49:11Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
+              "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
+            },
+            {
+              "series": "sbp_remittances",
+              "code": "TS_GP_BOP_WR_M.WR0340",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2025-09",
+              "value": 3184.123961,
+              "retrieved_at": "2026-10-30T18:49:11Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
+              "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
+            }
+          ]
+        }
+      ]
+    },
+    "pvt_credit": {
+      "key": "pvt_credit",
+      "label": "Private-sector credit (y/y)",
+      "unit": "percent",
+      "value": 15.009713,
+      "display": "+15.0%",
+      "period": "2026-10-16",
+      "period_label": "16 Oct 2026",
+      "status": "official",
+      "frequency": "weekly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_BAM_M2_W.M000480",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:49:13Z",
+      "context": "+14.1% on 9 Oct",
+      "inputs": [
+        {
+          "series": "sbp_pvt_credit_yoy",
+          "code": "TS_GP_BAM_M2_W.M000480",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-10-16",
+          "value": 15.00971289,
+          "retrieved_at": "2026-10-30T18:49:13Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_M2_W.M000480.csv",
+          "sha256": "4e5699fec3784432d5153ef81cc1b4019d440bdb7c3a4cb5a776cdd0b5856814"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 14.149948,
+          "display": "+14.1%",
+          "period": "2026-10-09",
+          "inputs": [
+            {
+              "series": "sbp_pvt_credit_yoy",
+              "code": "TS_GP_BAM_M2_W.M000480",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-10-09",
+              "value": 14.14994767,
+              "retrieved_at": "2026-10-30T18:49:13Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_M2_W.M000480.csv",
+              "sha256": "4e5699fec3784432d5153ef81cc1b4019d440bdb7c3a4cb5a776cdd0b5856814"
+            }
+          ]
+        }
+      ]
+    },
+    "m2": {
+      "key": "m2",
+      "label": "Broad money, M2 (y/y)",
+      "unit": "percent",
+      "value": 13.063372,
+      "display": "13.1%",
+      "period": "2026-10-16",
+      "period_label": "16 Oct 2026",
+      "status": "official",
+      "frequency": "weekly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_BAM_M2_W.M000500",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:49:14Z",
+      "context": "12.7% on 9 Oct",
+      "inputs": [
+        {
+          "series": "sbp_m2_yoy",
+          "code": "TS_GP_BAM_M2_W.M000500",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-10-16",
+          "value": 13.06337156,
+          "retrieved_at": "2026-10-30T18:49:14Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_M2_W.M000500.csv",
+          "sha256": "43ab176d37496c316678e4a0bdd780549450c912add1693216375bebfa98083e"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 12.725905,
+          "display": "12.7%",
+          "period": "2026-10-09",
+          "inputs": [
+            {
+              "series": "sbp_m2_yoy",
+              "code": "TS_GP_BAM_M2_W.M000500",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-10-09",
+              "value": 12.72590539,
+              "retrieved_at": "2026-10-30T18:49:14Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_M2_W.M000500.csv",
+              "sha256": "43ab176d37496c316678e4a0bdd780549450c912add1693216375bebfa98083e"
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_fy": {
+      "key": "gdp_fy",
+      "label": "Real GDP growth",
+      "unit": "percent",
+      "value": 3.65,
+      "display": "3.65%",
+      "period": "2026",
+      "period_label": "FY26",
+      "status": "official",
+      "frequency": "annual",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_RLS_PAKGDP15_Y.GDP00160000",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:49:15Z",
+      "context": "3.11% in FY25",
+      "inputs": [
+        {
+          "series": "sbp_gdp_growth",
+          "code": "TS_GP_RLS_PAKGDP15_Y.GDP00160000",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026",
+          "value": 3.65,
+          "retrieved_at": "2026-10-30T18:49:15Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_RLS_PAKGDP15_Y.GDP00160000.csv",
+          "sha256": "a877c7281d475b743762a4d59e0f60a40b1ded959706ff29dcb51616eb94ff33"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 3.11,
+          "display": "3.11%",
+          "period": "2025",
+          "inputs": [
+            {
+              "series": "sbp_gdp_growth",
+              "code": "TS_GP_RLS_PAKGDP15_Y.GDP00160000",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2025",
+              "value": 3.11,
+              "retrieved_at": "2026-10-30T18:49:15Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_RLS_PAKGDP15_Y.GDP00160000.csv",
+              "sha256": "a877c7281d475b743762a4d59e0f60a40b1ded959706ff29dcb51616eb94ff33"
+            }
+          ]
+        }
+      ]
+    },
+    "pib_3y": {
+      "key": "pib_3y",
+      "label": "3-year PIB, auction cut-off",
+      "unit": "percent",
+      "value": 12.75,
+      "display": "12.75%",
+      "period": "2026-10-07",
+      "period_label": "7 Oct 2026",
+      "status": "official",
+      "frequency": "as-needed",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_BAM_SIRPIBS_AH.PIB0010",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:52:26Z",
+      "context": "12.49% on 18 Sep",
+      "inputs": [
+        {
+          "series": "sbp_pib_3y",
+          "code": "TS_GP_BAM_SIRPIBS_AH.PIB0010",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-10-07",
+          "value": 12.75,
+          "retrieved_at": "2026-10-30T18:52:26Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRPIBS_AH.PIB0010.csv",
+          "sha256": "162bf4e0a5c67d09d5c03d2e37692d64a1c7e3bf31284ad6efb58b1d26362a1c"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 12.49,
+          "display": "12.49%",
+          "period": "2026-09-18",
+          "inputs": [
+            {
+              "series": "sbp_pib_3y",
+              "code": "TS_GP_BAM_SIRPIBS_AH.PIB0010",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-09-18",
+              "value": 12.49,
+              "retrieved_at": "2026-10-30T18:52:26Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRPIBS_AH.PIB0010.csv",
+              "sha256": "162bf4e0a5c67d09d5c03d2e37692d64a1c7e3bf31284ad6efb58b1d26362a1c"
+            }
+          ]
+        }
+      ]
+    },
+    "pib_5y": {
+      "key": "pib_5y",
+      "label": "5-year PIB, auction cut-off",
+      "unit": "percent",
+      "value": 12.9,
+      "display": "12.90%",
+      "period": "2026-10-07",
+      "period_label": "7 Oct 2026",
+      "status": "official",
+      "frequency": "as-needed",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_BAM_SIRPIBS_AH.PIB0020",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:52:28Z",
+      "context": "12.49% on 18 Sep",
+      "inputs": [
+        {
+          "series": "sbp_pib_5y",
+          "code": "TS_GP_BAM_SIRPIBS_AH.PIB0020",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-10-07",
+          "value": 12.9,
+          "retrieved_at": "2026-10-30T18:52:28Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRPIBS_AH.PIB0020.csv",
+          "sha256": "149de5dd3d3d496e9ed8411da5951d89526fea5de171202300f140e149ec1fea"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 12.49,
+          "display": "12.49%",
+          "period": "2026-09-18",
+          "inputs": [
+            {
+              "series": "sbp_pib_5y",
+              "code": "TS_GP_BAM_SIRPIBS_AH.PIB0020",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-09-18",
+              "value": 12.49,
+              "retrieved_at": "2026-10-30T18:52:28Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRPIBS_AH.PIB0020.csv",
+              "sha256": "149de5dd3d3d496e9ed8411da5951d89526fea5de171202300f140e149ec1fea"
+            }
+          ]
+        }
+      ]
+    },
+    "tbill_3m": {
+      "key": "tbill_3m",
+      "label": "3-month T-bill, auction cut-off",
+      "unit": "percent",
+      "value": 12.0,
+      "display": "12.00%",
+      "period": "2026-10-14",
+      "period_label": "14 Oct 2026",
+      "status": "official",
+      "frequency": "as-needed",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_BAM_SIRTBIL_AH.TB0010",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:56:45Z",
+      "context": "11.99% on 30 Sep",
+      "inputs": [
+        {
+          "series": "sbp_tbill_3m",
+          "code": "TS_GP_BAM_SIRTBIL_AH.TB0010",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-10-14",
+          "value": 12.0,
+          "retrieved_at": "2026-10-30T18:56:45Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRTBIL_AH.TB0010.0bd6f18ef539.csv",
+          "sha256": "0bd6f18ef5399968d4b3f1567f91b2db9ba5d1b0001c0afd38c942a94924e652"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 11.99,
+          "display": "11.99%",
+          "period": "2026-09-30",
+          "inputs": [
+            {
+              "series": "sbp_tbill_3m",
+              "code": "TS_GP_BAM_SIRTBIL_AH.TB0010",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-09-30",
+              "value": 11.99,
+              "retrieved_at": "2026-10-30T18:56:45Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRTBIL_AH.TB0010.0bd6f18ef539.csv",
+              "sha256": "0bd6f18ef5399968d4b3f1567f91b2db9ba5d1b0001c0afd38c942a94924e652"
+            }
+          ]
+        }
+      ]
+    },
+    "tbill_6m": {
+      "key": "tbill_6m",
+      "label": "6-month T-bill, auction cut-off",
+      "unit": "percent",
+      "value": 12.4,
+      "display": "12.40%",
+      "period": "2026-10-14",
+      "period_label": "14 Oct 2026",
+      "status": "official",
+      "frequency": "as-needed",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "series_code": "TS_GP_BAM_SIRTBIL_AH.TB0020",
+      "source_url": "https://easydata.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T18:56:46Z",
+      "context": "12.45% on 30 Sep",
+      "inputs": [
+        {
+          "series": "sbp_tbill_6m",
+          "code": "TS_GP_BAM_SIRTBIL_AH.TB0020",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-10-14",
+          "value": 12.4,
+          "retrieved_at": "2026-10-30T18:56:46Z",
+          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRTBIL_AH.TB0020.e63badd66ac3.csv",
+          "sha256": "e63badd66ac3ec6aefbac03d441c849925ab664a5d80600721f5fe193a7fe4f8"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 12.45,
+          "display": "12.45%",
+          "period": "2026-09-30",
+          "inputs": [
+            {
+              "series": "sbp_tbill_6m",
+              "code": "TS_GP_BAM_SIRTBIL_AH.TB0020",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-09-30",
+              "value": 12.45,
+              "retrieved_at": "2026-10-30T18:56:46Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRTBIL_AH.TB0020.e63badd66ac3.csv",
+              "sha256": "e63badd66ac3ec6aefbac03d441c849925ab664a5d80600721f5fe193a7fe4f8"
             }
           ]
         }

@@ -11,10 +11,10 @@
   },
   "curve": {
     "latest": "Latest auctions",
-    "previous": "Mid-September",
+    "previous": "Previous auctions",
     "latest_short": "Latest",
-    "previous_short": "Sep",
-    "note": "Cut-off yields from the 28 Oct T-bill auction, after the October rate hike, compared with the 16 Sep auction. Bond yields are from the 18 Sep PIB auction, the latest the State Bank has published results for."
+    "previous_short": "Previous",
+    "note": "T-bill cut-off yields from the 28 Oct auction, after the October rate hike, against 14 Oct; bond yields from the 7 Oct PIB auction against 18 Sep. Figures from the State Bank's auction results and EasyData; no 2-year bond result has been published for 7 Oct."
   },
   "external": {
     "title": "This fiscal year so far",

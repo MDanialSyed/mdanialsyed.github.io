@@ -1,6 +1,7 @@
 {%- comment -%}
   Table of indicators for one section of the dashboard.
   section: the rows' "section" value. label_col: heading for the first column.
+  Official figures from the data pipeline take the place of interim ones.
 {%- endcomment -%}
 {%- assign _pv_rows = site.data.pakistan.indicators | where: "section", include.section -%}
 <div class="pv-tablewrap">
@@ -14,11 +15,20 @@
     </thead>
     <tbody>
       {%- for r in _pv_rows %}
+      {%- assign o = site.data.pakistan.pipeline.indicators[r.key] %}
+      {%- if o %}
+      <tr class="pv-row-off">
+        <td>{{ r.label }}{% if o.context != "" %}<span class="pv-sub">{{ o.context }}</span>{% endif %}</td>
+        <td class="pv-num pv-strong">{% include pakistan/status.html key=r.key %}{{ o.display }}</td>
+        <td class="pv-muted">{{ o.period_label }}<div class="pv-sub pv-src">{% include pakistan/lineage.html key=r.key %}</div></td>
+      </tr>
+      {%- else %}
       <tr>
         <td>{{ r.label }}{% if r.context != "" %}<span class="pv-sub">{{ r.context }}</span>{% endif %}</td>
-        <td class="pv-num pv-strong">{{ r.display }}</td>
+        <td class="pv-num pv-strong">{% include pakistan/status.html key=r.key %}{{ r.display }}</td>
         <td class="pv-muted">{{ r.period }}{% if r.url != "" %}<span class="pv-sub pv-src"><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.source }}</a></span>{% endif %}</td>
       </tr>
+      {%- endif %}
       {%- endfor %}
     </tbody>
   </table>

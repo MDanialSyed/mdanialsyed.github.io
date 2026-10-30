@@ -1,0 +1,615 @@
+{
+  "country": "Pakistan",
+  "sources": [
+    {
+      "key": "sbp_easydata",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "EasyData",
+      "access": "Data service (API)",
+      "homepage": "https://easydata.sbp.org.pk/",
+      "licence": "",
+      "status": "Live"
+    },
+    {
+      "key": "world_bank_wdi",
+      "publisher": "World Bank",
+      "dataset": "World Development Indicators",
+      "access": "Data service (API)",
+      "homepage": "https://data.worldbank.org/country/pakistan",
+      "licence": "CC BY 4.0",
+      "status": "Live"
+    },
+    {
+      "key": "imf_weo",
+      "publisher": "International Monetary Fund",
+      "dataset": "World Economic Outlook (DataMapper)",
+      "access": "Data service (API)",
+      "homepage": "https://www.imf.org/external/datamapper/profile/PAK",
+      "licence": "",
+      "status": "Live"
+    },
+    {
+      "key": "pbs",
+      "publisher": "Pakistan Bureau of Statistics",
+      "dataset": "Releases: national accounts, CPI, SPI, external trade",
+      "access": "Published files",
+      "homepage": "https://www.pbs.gov.pk/",
+      "licence": "",
+      "status": "Planned"
+    },
+    {
+      "key": "finance_division",
+      "publisher": "Finance Division",
+      "dataset": "Fiscal operations",
+      "access": "Published files",
+      "homepage": "https://www.finance.gov.pk/fiscal.html",
+      "licence": "",
+      "status": "Planned"
+    },
+    {
+      "key": "fbr",
+      "publisher": "Federal Board of Revenue",
+      "dataset": "Revenue collection",
+      "access": "Published files",
+      "homepage": "https://www.fbr.gov.pk/",
+      "licence": "",
+      "status": "Planned"
+    },
+    {
+      "key": "sbp_web",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "Auction results and policy announcements",
+      "access": "Published files",
+      "homepage": "https://www.sbp.org.pk/",
+      "licence": "",
+      "status": "Planned"
+    },
+    {
+      "key": "psx",
+      "publisher": "Pakistan Stock Exchange",
+      "dataset": "Index closes",
+      "access": "Published files",
+      "homepage": "https://dps.psx.com.pk/",
+      "licence": "",
+      "status": "Planned"
+    },
+    {
+      "key": "wb_pink",
+      "publisher": "World Bank",
+      "dataset": "Commodity price data (Pink Sheet)",
+      "access": "Published files",
+      "homepage": "https://www.worldbank.org/en/research/commodity-markets",
+      "licence": "CC BY 4.0",
+      "status": "Planned"
+    }
+  ],
+  "indicators": [
+    {
+      "key": "cpi_yoy",
+      "label": "CPI inflation, national (y/y)",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "inflation",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_cpi_yoy_national",
+          "code": "TS_GP_PT_CPI_M.P00011516",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "cpi_mom",
+      "label": "CPI, month on month",
+      "unit": "percent",
+      "status": "unmapped",
+      "section": "inflation",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_cpi_mom_national",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "cpi_fytd",
+      "label": "CPI average, fiscal year to date (y/y)",
+      "unit": "percent",
+      "status": "unmapped",
+      "section": "inflation",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_cpi_fytd_national",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "lsm_m",
+      "label": "Large-scale manufacturing (y/y)",
+      "unit": "percent",
+      "status": "needs-confirmation",
+      "section": "growth",
+      "calc": "yoy_pct@1",
+      "series": [
+        {
+          "key": "sbp_lsm_index",
+          "code": "TS_GP_RL_LSM1516_M.LSM000160000",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "lsm_fytd",
+      "label": "Large-scale manufacturing, fiscal year to date (y/y)",
+      "unit": "percent",
+      "status": "needs-confirmation",
+      "section": "growth",
+      "calc": "fytd_mean_yoy_pct@1",
+      "series": [
+        {
+          "key": "sbp_lsm_index",
+          "code": "TS_GP_RL_LSM1516_M.LSM000160000",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "ca_m",
+      "label": "Current account balance",
+      "unit": "US$ million",
+      "status": "confirmed",
+      "section": "external",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_bop_current_account",
+          "code": "TS_GP_BOP_BPM6SUM_M.P00010",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "ca_fytd",
+      "label": "Current account balance, fiscal year to date",
+      "unit": "US$ million",
+      "status": "confirmed",
+      "section": "external",
+      "calc": "fytd_sum@1",
+      "series": [
+        {
+          "key": "sbp_bop_current_account",
+          "code": "TS_GP_BOP_BPM6SUM_M.P00010",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "repo_on",
+      "label": "Overnight repo, weighted average",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "markets",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_repo_rate",
+          "code": "TS_GP_IR_REPOMR_D.ORR",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "daily"
+        }
+      ]
+    },
+    {
+      "key": "wb_gdp_usd",
+      "label": "GDP, current US$ (World Bank)",
+      "unit": "US$",
+      "status": "needs-confirmation",
+      "section": "reference",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "wb_gdp_usd",
+          "code": "NY.GDP.MKTP.CD",
+          "source": "World Bank",
+          "dataset": "World Development Indicators",
+          "frequency": "annual"
+        }
+      ]
+    },
+    {
+      "key": "imf_gdp_proj",
+      "label": "IMF real GDP growth projection, this fiscal year",
+      "unit": "percent",
+      "status": "needs-confirmation",
+      "section": "reference",
+      "calc": "next_calendar_year@1",
+      "series": [
+        {
+          "key": "imf_real_gdp_growth",
+          "code": "NGDP_RPCH",
+          "source": "International Monetary Fund",
+          "dataset": "World Economic Outlook (DataMapper)",
+          "frequency": "annual"
+        }
+      ]
+    },
+    {
+      "key": "imf_cpi_proj",
+      "label": "IMF inflation projection, this fiscal year (average)",
+      "unit": "percent",
+      "status": "needs-confirmation",
+      "section": "reference",
+      "calc": "next_calendar_year@1",
+      "series": [
+        {
+          "key": "imf_cpi_inflation",
+          "code": "PCPIPCH",
+          "source": "International Monetary Fund",
+          "dataset": "World Economic Outlook (DataMapper)",
+          "frequency": "annual"
+        }
+      ]
+    },
+    {
+      "key": "gdp_fy",
+      "label": "Real GDP growth",
+      "unit": "percent",
+      "status": "unmapped",
+      "section": "growth",
+      "calc": "",
+      "series": [
+        {
+          "key": "pbs_gdp",
+          "code": "",
+          "source": "Pakistan Bureau of Statistics",
+          "dataset": "Releases: national accounts, CPI, SPI, external trade",
+          "frequency": "annual"
+        }
+      ]
+    },
+    {
+      "key": "gdp_q",
+      "label": "Real GDP growth, latest quarter (y/y)",
+      "unit": "percent",
+      "status": "unmapped",
+      "section": "growth",
+      "calc": "",
+      "series": [
+        {
+          "key": "pbs_gdp_quarterly",
+          "code": "",
+          "source": "Pakistan Bureau of Statistics",
+          "dataset": "Releases: national accounts, CPI, SPI, external trade",
+          "frequency": "quarterly"
+        }
+      ]
+    },
+    {
+      "key": "pvt_credit",
+      "label": "Private-sector credit (y/y)",
+      "unit": "percent",
+      "status": "unmapped",
+      "section": "growth",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_private_credit",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "m2",
+      "label": "Broad money, M2 (y/y)",
+      "unit": "percent",
+      "status": "unmapped",
+      "section": "growth",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_m2",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "weekly"
+        }
+      ]
+    },
+    {
+      "key": "core_urban",
+      "label": "Core, urban non-food non-energy (y/y)",
+      "unit": "percent",
+      "status": "unmapped",
+      "section": "inflation",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_core_urban",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "spi",
+      "label": "Weekly essentials basket, SPI (y/y)",
+      "unit": "percent",
+      "status": "unmapped",
+      "section": "inflation",
+      "calc": "",
+      "series": [
+        {
+          "key": "pbs_spi",
+          "code": "",
+          "source": "Pakistan Bureau of Statistics",
+          "dataset": "Releases: national accounts, CPI, SPI, external trade",
+          "frequency": "weekly"
+        }
+      ]
+    },
+    {
+      "key": "policy_rate",
+      "label": "SBP policy rate",
+      "unit": "percent",
+      "status": "unmapped",
+      "section": "markets",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_policy_rate",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "daily"
+        }
+      ]
+    },
+    {
+      "key": "tbill_12m",
+      "label": "12-month T-bill, auction cut-off",
+      "unit": "percent",
+      "status": "unmapped",
+      "section": "markets",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_tbill_12m",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "Auction results and policy announcements",
+          "frequency": "daily"
+        }
+      ]
+    },
+    {
+      "key": "pib_10y",
+      "label": "10-year PIB, auction cut-off",
+      "unit": "percent",
+      "status": "unmapped",
+      "section": "markets",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_pib_10y",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "Auction results and policy announcements",
+          "frequency": "daily"
+        }
+      ]
+    },
+    {
+      "key": "kse100",
+      "label": "KSE-100 index",
+      "unit": "index",
+      "status": "unmapped",
+      "section": "markets",
+      "calc": "",
+      "series": [
+        {
+          "key": "psx_kse100",
+          "code": "",
+          "source": "Pakistan Stock Exchange",
+          "dataset": "Index closes",
+          "frequency": "daily"
+        }
+      ]
+    },
+    {
+      "key": "usdpkr",
+      "label": "Rupees per US dollar (interbank)",
+      "unit": "rupees",
+      "status": "unmapped",
+      "section": "markets",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_usdpkr",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "daily"
+        }
+      ]
+    },
+    {
+      "key": "brent",
+      "label": "Brent crude, $ per barrel",
+      "unit": "US$ per barrel",
+      "status": "unmapped",
+      "section": "markets",
+      "calc": "",
+      "series": [
+        {
+          "key": "wb_brent",
+          "code": "",
+          "source": "World Bank",
+          "dataset": "Commodity price data (Pink Sheet)",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "sbp_res",
+      "label": "SBP foreign-exchange reserves",
+      "unit": "US$ million",
+      "status": "unmapped",
+      "section": "external",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_reserves_sbp",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "weekly"
+        }
+      ]
+    },
+    {
+      "key": "total_res",
+      "label": "Total liquid reserves (SBP + banks)",
+      "unit": "US$ million",
+      "status": "unmapped",
+      "section": "external",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_reserves_total",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "weekly"
+        }
+      ]
+    },
+    {
+      "key": "rem_m",
+      "label": "Workers' remittances",
+      "unit": "US$ million",
+      "status": "unmapped",
+      "section": "external",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_remittances",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "rem_fytd",
+      "label": "Workers' remittances, fiscal year to date",
+      "unit": "US$ million",
+      "status": "unmapped",
+      "section": "external",
+      "calc": "",
+      "series": [
+        {
+          "key": "sbp_remittances",
+          "code": "",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "trade_fytd",
+      "label": "Goods trade deficit, fiscal year to date",
+      "unit": "US$ million",
+      "status": "unmapped",
+      "section": "external",
+      "calc": "",
+      "series": [
+        {
+          "key": "pbs_trade_balance",
+          "code": "",
+          "source": "Pakistan Bureau of Statistics",
+          "dataset": "Releases: national accounts, CPI, SPI, external trade",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "fbr_fytd",
+      "label": "FBR tax collection, fiscal year to date",
+      "unit": "Rs billion",
+      "status": "unmapped",
+      "section": "fiscal",
+      "calc": "",
+      "series": [
+        {
+          "key": "fbr_collection",
+          "code": "",
+          "source": "Federal Board of Revenue",
+          "dataset": "Revenue collection",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "deficit_fy",
+      "label": "Overall fiscal deficit",
+      "unit": "percent of GDP",
+      "status": "unmapped",
+      "section": "fiscal",
+      "calc": "",
+      "series": [
+        {
+          "key": "fd_overall_balance",
+          "code": "",
+          "source": "Finance Division",
+          "dataset": "Fiscal operations",
+          "frequency": "annual"
+        }
+      ]
+    },
+    {
+      "key": "primary_fy",
+      "label": "Primary surplus",
+      "unit": "percent of GDP",
+      "status": "unmapped",
+      "section": "fiscal",
+      "calc": "",
+      "series": [
+        {
+          "key": "fd_primary_balance",
+          "code": "",
+          "source": "Finance Division",
+          "dataset": "Fiscal operations",
+          "frequency": "annual"
+        }
+      ]
+    }
+  ]
+}

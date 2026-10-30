@@ -1,0 +1,17 @@
+{%- comment -%}
+  How an official figure was made: publisher, series code, calculation, download time and the
+  fingerprint of every archived file it was computed from.
+{%- endcomment -%}
+{%- assign _pv_l = site.data.pakistan.pipeline.indicators[include.key] -%}
+{%- if _pv_l -%}
+<details class="pv-lin">
+  <summary>{{ _pv_l.publisher }}, {{ _pv_l.dataset }}</summary>
+  <dl>
+    <dt>Series</dt><dd><code>{{ _pv_l.series_code }}</code></dd>
+    <dt>Calculation</dt><dd><a href="{{ '/pakistan/methodology/' | relative_url }}#calc-{{ _pv_l.calc | split: '@' | first }}"><code>{{ _pv_l.calc }}</code></a>{% if _pv_l.calc_note != "" %} ({{ _pv_l.calc_note }}){% endif %}</dd>
+    <dt>Downloaded</dt><dd>{{ _pv_l.retrieved_at | date: "%-d %b %Y, %H:%M UTC" }}</dd>
+    <dt>Files</dt><dd>{%- assign _pv_files = _pv_l.inputs | map: "sha256" | uniq -%}{% for f in _pv_files %}<code title="SHA-256 fingerprint of the archived file">{{ f | slice: 0, 12 }}</code>{% unless forloop.last %} {% endunless %}{% endfor %}</dd>
+  </dl>
+  {%- if _pv_l.carried_forward %}<p>Not refreshed in the latest run; this is the last checked value.</p>{% endif %}
+</details>
+{%- endif -%}

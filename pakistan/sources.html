@@ -1,0 +1,76 @@
+---
+layout: pakistan
+title: "Sources"
+description: "Where every figure on Source: Pakistan comes from"
+permalink: /pakistan/sources/
+noindex: true
+sitemap: false
+extra_css: ["/assets/pakistan/pakistan.css"]
+---
+{%- assign pv = site.data.pakistan -%}
+{%- assign reg = pv.registry.indicators -%}
+
+<p class="pv-take">Every figure on the dashboard, where it comes from, and whether it already arrives through an official data feed.</p>
+
+<nav class="pv-nav" aria-label="Source: Pakistan">
+  <a href="{{ '/pakistan/' | relative_url }}">Dashboard</a>
+  <a href="{{ '/pakistan/methodology/' | relative_url }}">How the figures are made</a>
+  <a href="{{ '/pakistan/corrections/' | relative_url }}">Corrections</a>
+  <a href="#publishers">Data sources</a>
+</nav>
+
+<section class="pv-sec">
+  <h2 class="pv-h2">Every figure</h2>
+  <p class="pv-legend-st"><span class="pv-st pv-st-off"></span>Official data feed: downloaded from the publisher's own data service, archived and checked automatically. <span class="pv-st pv-st-int"></span>Interim: read from the release, or a news report of it, and linked.</p>
+  {%- assign sections = "growth|Growth,inflation|Inflation,markets|Rates and markets,external|External,fiscal|Budget and IMF" | split: "," %}
+  {%- for sec in sections %}
+  {%- assign parts = sec | split: "|" %}
+  {%- assign rows = pv.indicators | where: "section", parts[0] %}
+  <h3 class="pv-h3">{{ parts[1] }}</h3>
+  <div class="pv-tablewrap">
+    <table class="pv-table pv-srct">
+      <thead><tr><th>Figure</th><th>Status</th><th>Source</th></tr></thead>
+      <tbody>
+        {%- for r in rows %}
+        {%- assign o = pv.pipeline.indicators[r.key] %}
+        {%- assign g = reg | where: "key", r.key | first %}
+        <tr id="ind-{{ r.key }}">
+          <td>{{ r.label }}</td>
+          {%- if o %}
+          <td class="pv-nowrap"><span class="pv-st pv-st-off"></span>Official feed</td>
+          <td>{{ o.publisher }}, {{ o.dataset }}<span class="pv-sub">Series <code>{{ o.series_code }}</code> · calculation <a href="{{ '/pakistan/methodology/' | relative_url }}#calc-{{ o.calc | split: '@' | first }}"><code>{{ o.calc }}</code></a> · downloaded {{ o.retrieved_at | date: "%-d %b %Y" }}</span></td>
+          {%- else %}
+          <td class="pv-nowrap"><span class="pv-st pv-st-int"></span>Interim</td>
+          <td>{% if r.url != "" %}<a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.source }}</a>{% else %}{{ r.source }}{% endif %}
+            {%- if g and g.status == "needs-confirmation" %}<span class="pv-sub">Official feed being checked: {{ g.series[0].source }} <code>{{ g.series[0].code }}</code></span>
+            {%- elsif g %}<span class="pv-sub">Official feed planned: {{ g.series[0].source }}</span>
+            {%- else %}<span class="pv-sub">Read from the release</span>{% endif %}</td>
+          {%- endif %}
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
+  {%- endfor %}
+  <p class="pv-note">Charts and the tables below the headline figures (inflation history, the yield curve, reserves, the external accounts, neighbours and forecasters) are interim, with a source on every row. They move to official feeds after the headline figures.</p>
+</section>
+
+<section class="pv-sec" id="publishers">
+  <h2 class="pv-h2">Data sources</h2>
+  <div class="pv-tablewrap">
+    <table class="pv-table">
+      <thead><tr><th>Publisher</th><th>Dataset</th><th class="pv-hide-sm">Access</th><th>Status</th></tr></thead>
+      <tbody>
+        {%- for s in pv.registry.sources %}
+        <tr>
+          <td class="pv-strong">{{ s.publisher }}</td>
+          <td><a href="{{ s.homepage }}" target="_blank" rel="noopener">{{ s.dataset }}</a>{% if s.licence != "" %}<span class="pv-sub">Licence: {{ s.licence }}</span>{% endif %}</td>
+          <td class="pv-muted pv-hide-sm">{{ s.access }}</td>
+          <td class="pv-muted">{{ s.status }}</td>
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="pv-note">Data from the World Bank is used under its CC BY 4.0 licence. Each publisher's figures remain theirs; this site reports them and shows how any calculation was done.</p>
+</section>

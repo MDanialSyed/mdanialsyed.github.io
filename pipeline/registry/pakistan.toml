@@ -1,0 +1,634 @@
+# Source registry for Pakistan.
+#
+# Every published number is defined here: which publisher it comes from, which series code,
+# and which named calculation turns the series into the figure on the page.
+#
+# Status of each series and indicator:
+#   unmapped            the official series code is not yet identified
+#   needs-confirmation  mapped, but not published until a run's values have been checked
+#                       against the publisher's own release
+#   confirmed           checked; published automatically from then on
+#   retired             no longer used (kept so old lineage records stay readable)
+
+[country]
+code = "PAK"
+name = "Pakistan"
+fy_start_month = 7   # the fiscal year runs July to June; July 2026 to June 2027 is FY27
+
+# ---------------------------------------------------------------- sources
+
+[sources.sbp_easydata]
+publisher = "State Bank of Pakistan"
+dataset = "EasyData"
+adapter = "easydata"
+homepage = "https://easydata.sbp.org.pk/"
+secret = "easydata"
+
+[sources.world_bank_wdi]
+publisher = "World Bank"
+dataset = "World Development Indicators"
+adapter = "worldbank"
+homepage = "https://data.worldbank.org/country/pakistan"
+terms = "CC BY 4.0"
+
+[sources.imf_weo]
+publisher = "International Monetary Fund"
+dataset = "World Economic Outlook (DataMapper)"
+adapter = "imf_datamapper"
+homepage = "https://www.imf.org/external/datamapper/profile/PAK"
+
+# Official releases published as files. Parsers are built and tested one release at a time.
+[sources.pbs]
+publisher = "Pakistan Bureau of Statistics"
+dataset = "Releases: national accounts, CPI, SPI, external trade"
+adapter = "files"
+homepage = "https://www.pbs.gov.pk/"
+status = "planned"
+
+[sources.finance_division]
+publisher = "Finance Division"
+dataset = "Fiscal operations"
+adapter = "files"
+homepage = "https://www.finance.gov.pk/fiscal.html"
+status = "planned"
+
+[sources.fbr]
+publisher = "Federal Board of Revenue"
+dataset = "Revenue collection"
+adapter = "files"
+homepage = "https://www.fbr.gov.pk/"
+status = "planned"
+
+[sources.sbp_web]
+publisher = "State Bank of Pakistan"
+dataset = "Auction results and policy announcements"
+adapter = "files"
+homepage = "https://www.sbp.org.pk/"
+status = "planned"
+
+[sources.psx]
+publisher = "Pakistan Stock Exchange"
+dataset = "Index closes"
+adapter = "files"
+homepage = "https://dps.psx.com.pk/"
+status = "planned"
+
+[sources.wb_pink]
+publisher = "World Bank"
+dataset = "Commodity price data (Pink Sheet)"
+adapter = "files"
+homepage = "https://www.worldbank.org/en/research/commodity-markets"
+terms = "CC BY 4.0"
+status = "planned"
+
+# ---------------------------------------------------------------- series
+
+[[series]]
+key = "sbp_cpi_yoy_national"
+source = "sbp_easydata"
+code = "TS_GP_PT_CPI_M.P00011516"
+frequency = "monthly"
+description = "National CPI inflation, year on year, percent (Inflation Snapshot, base 2015-16)"
+published_name = "National CPI; an Inflation Measure (Year-on-Year basis)"
+unit = "Percent"
+start = "2015-07-01"
+status = "confirmed"
+
+[[series]]
+key = "sbp_lsm_index"
+source = "sbp_easydata"
+code = "TS_GP_RL_LSM1516_M.LSM000160000"
+frequency = "monthly"
+description = "Large-scale manufacturing quantum index, overall (base 2015-16)"
+published_name = "Quantum Index - Overall"
+unit = "Index"
+start = "2015-07-01"
+
+[[series]]
+key = "sbp_bop_current_account"
+source = "sbp_easydata"
+code = "TS_GP_BOP_BPM6SUM_M.P00010"
+frequency = "monthly"
+description = "Balance of payments summary (BPM6): current account balance, US$ million"
+published_name = "BOP-BPM6-Current account balance"
+unit = "Million USD"
+start = "2015-07-01"
+status = "confirmed"
+
+[[series]]
+key = "sbp_repo_rate"
+source = "sbp_easydata"
+code = "TS_GP_IR_REPOMR_D.ORR"
+frequency = "daily"
+description = "Money market: weighted-average overnight repo rate, percent"
+published_name = "Weighted-average Overnight Repo Rate"
+unit = "Percent"
+start = "2024-07-01"
+status = "confirmed"
+
+[[series]]
+key = "sbp_cpi_mom_national"
+source = "sbp_easydata"
+code = ""
+frequency = "monthly"
+description = "National CPI, month on month, percent"
+status = "unmapped"
+
+[[series]]
+key = "sbp_cpi_fytd_national"
+source = "sbp_easydata"
+code = ""
+frequency = "monthly"
+description = "National CPI, average of the fiscal year to date, year on year, percent"
+status = "unmapped"
+
+[[series]]
+key = "wb_gdp_usd"
+source = "world_bank_wdi"
+code = "NY.GDP.MKTP.CD"
+frequency = "annual"
+description = "GDP, current US$"
+
+[[series]]
+key = "imf_real_gdp_growth"
+source = "imf_weo"
+code = "NGDP_RPCH"
+frequency = "annual"
+description = "Real GDP growth, percent; later years are IMF projections"
+
+[[series]]
+key = "imf_cpi_inflation"
+source = "imf_weo"
+code = "PCPIPCH"
+frequency = "annual"
+description = "Inflation, average consumer prices, percent; later years are IMF projections"
+
+# Not yet mapped: the official code is identified from the publisher's catalogue first.
+[[series]]
+key = "pbs_gdp"
+source = "pbs"
+code = ""
+frequency = "annual"
+description = "Real GDP growth, provisional and revised estimates (National Accounts Committee)"
+status = "unmapped"
+
+[[series]]
+key = "pbs_gdp_quarterly"
+source = "pbs"
+code = ""
+frequency = "quarterly"
+description = "Quarterly real GDP growth"
+status = "unmapped"
+
+[[series]]
+key = "sbp_core_urban"
+source = "sbp_easydata"
+code = ""
+frequency = "monthly"
+description = "Core inflation, urban, non-food non-energy"
+status = "unmapped"
+
+[[series]]
+key = "pbs_spi"
+source = "pbs"
+code = ""
+frequency = "weekly"
+description = "Sensitive price indicator, combined, year on year"
+status = "unmapped"
+
+[[series]]
+key = "sbp_policy_rate"
+source = "sbp_easydata"
+code = ""
+frequency = "daily"
+description = "SBP policy rate"
+status = "unmapped"
+
+[[series]]
+key = "sbp_tbill_12m"
+source = "sbp_web"
+code = ""
+frequency = "daily"
+description = "12-month market treasury bill, auction cut-off yield"
+status = "unmapped"
+
+[[series]]
+key = "sbp_pib_10y"
+source = "sbp_web"
+code = ""
+frequency = "daily"
+description = "10-year Pakistan Investment Bond, auction cut-off yield"
+status = "unmapped"
+
+[[series]]
+key = "sbp_usdpkr"
+source = "sbp_easydata"
+code = ""
+frequency = "daily"
+description = "Interbank exchange rate, rupees per US dollar"
+status = "unmapped"
+
+[[series]]
+key = "sbp_reserves_sbp"
+source = "sbp_easydata"
+code = ""
+frequency = "weekly"
+description = "Liquid foreign exchange reserves held by SBP, US$ million"
+status = "unmapped"
+
+[[series]]
+key = "sbp_reserves_total"
+source = "sbp_easydata"
+code = ""
+frequency = "weekly"
+description = "Total liquid foreign exchange reserves, US$ million"
+status = "unmapped"
+
+[[series]]
+key = "sbp_remittances"
+source = "sbp_easydata"
+code = ""
+frequency = "monthly"
+description = "Workers' remittances, US$ million"
+status = "unmapped"
+
+[[series]]
+key = "pbs_trade_balance"
+source = "pbs"
+code = ""
+frequency = "monthly"
+description = "Goods trade balance, US$ million"
+status = "unmapped"
+
+[[series]]
+key = "sbp_private_credit"
+source = "sbp_easydata"
+code = ""
+frequency = "monthly"
+description = "Credit to the private sector, stock"
+status = "unmapped"
+
+[[series]]
+key = "sbp_m2"
+source = "sbp_easydata"
+code = ""
+frequency = "weekly"
+description = "Broad money (M2), stock"
+status = "unmapped"
+
+[[series]]
+key = "fbr_collection"
+source = "fbr"
+code = ""
+frequency = "monthly"
+description = "Net tax collection, Rs billion"
+status = "unmapped"
+
+[[series]]
+key = "fd_overall_balance"
+source = "finance_division"
+code = ""
+frequency = "annual"
+description = "Overall fiscal balance, percent of GDP"
+status = "unmapped"
+
+[[series]]
+key = "fd_primary_balance"
+source = "finance_division"
+code = ""
+frequency = "annual"
+description = "Primary balance, percent of GDP"
+status = "unmapped"
+
+[[series]]
+key = "psx_kse100"
+source = "psx"
+code = ""
+frequency = "daily"
+description = "KSE-100 index, close"
+status = "unmapped"
+
+[[series]]
+key = "wb_brent"
+source = "wb_pink"
+code = ""
+frequency = "monthly"
+description = "Brent crude, US$ per barrel"
+status = "unmapped"
+
+# ---------------------------------------------------------------- indicators
+# Keys match the dashboard. "display" sets how the value is written on the page; "value_scale"
+# converts the publisher's unit to the page's; "context" adds the same calculation for the
+# previous period and/or a year earlier beside the figure. "range", "jump_abs"/"jump_rel" and
+# "max_age_days" are the check limits, in the page's unit.
+
+[[indicators]]
+key = "cpi_yoy"
+label = "CPI inflation, national (y/y)"
+section = "inflation"
+unit = "percent"
+series = ["sbp_cpi_yoy_national"]
+transform = "as_published@1"
+context = ["previous", "year_ago"]
+display = { decimals = 1, suffix = "%" }
+range = [-5.0, 60.0]
+jump_abs = 5.0
+max_age_days = 70
+confirm = "Must match the national y/y in the PBS CPI release for the same month, to one decimal."
+status = "confirmed"
+confirmed = "30 Oct 2026: Sep 2026 = 10.3%, as in the PBS CPI release"
+
+[[indicators]]
+key = "cpi_mom"
+label = "CPI, month on month"
+section = "inflation"
+unit = "percent"
+series = ["sbp_cpi_mom_national"]
+status = "unmapped"
+
+[[indicators]]
+key = "cpi_fytd"
+label = "CPI average, fiscal year to date (y/y)"
+section = "inflation"
+unit = "percent"
+series = ["sbp_cpi_fytd_national"]
+status = "unmapped"
+
+[[indicators]]
+key = "lsm_m"
+label = "Large-scale manufacturing (y/y)"
+section = "growth"
+unit = "percent"
+series = ["sbp_lsm_index"]
+transform = "yoy_pct@1"
+context = ["previous"]
+display = { decimals = 2, suffix = "%", plus = true }
+range = [-50.0, 50.0]
+jump_abs = 20.0
+max_age_days = 100
+confirm = "Must match the month's y/y in the PBS LSM release, to two decimals. 30 Oct 2026: +0.66% from the index vs +0.67% published for Aug 2026; the index is rounded to two decimals, so map the published growth series instead."
+
+[[indicators]]
+key = "lsm_fytd"
+label = "Large-scale manufacturing, fiscal year to date (y/y)"
+section = "growth"
+unit = "percent"
+series = ["sbp_lsm_index"]
+transform = "fytd_mean_yoy_pct@1"
+context = ["year_ago"]
+display = { decimals = 2, suffix = "%", plus = true }
+range = [-50.0, 50.0]
+jump_abs = 20.0
+max_age_days = 100
+confirm = "Must match the fiscal-year-to-date y/y in the PBS LSM release, to two decimals. 30 Oct 2026: +1.85% matches Jul-Aug FY27, but it is worked out from the same rounded index as lsm_m, so it waits for the published growth series."
+
+[[indicators]]
+key = "ca_m"
+label = "Current account balance"
+section = "external"
+unit = "US$ million"
+series = ["sbp_bop_current_account"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 0, prefix = "$", suffix = "m" }
+range = [-5000.0, 5000.0]
+jump_abs = 2500.0
+max_age_days = 60
+confirm = "Must match the month's current account balance in SBP's balance of payments summary."
+status = "confirmed"
+confirmed = "30 Oct 2026: Sep 2026 = -356 and Aug 2026 = -73, as in SBP's balance of payments summary"
+
+[[indicators]]
+key = "ca_fytd"
+label = "Current account balance, fiscal year to date"
+section = "external"
+unit = "US$ million"
+series = ["sbp_bop_current_account"]
+transform = "fytd_sum@1"
+context = ["year_ago"]
+display = { decimals = 0, prefix = "$", suffix = "m" }
+range = [-25000.0, 15000.0]
+max_age_days = 60
+confirm = "Must match the fiscal-year-to-date balance in SBP's summary; SBP revises earlier months, so a small gap points to a revision."
+status = "confirmed"
+confirmed = "30 Oct 2026: Jul-Sep FY27 = -874, as in SBP's balance of payments summary"
+
+[[indicators]]
+key = "repo_on"
+label = "Overnight repo, weighted average"
+section = "markets"
+unit = "percent"
+series = ["sbp_repo_rate"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 2, suffix = "%" }
+range = [0.0, 30.0]
+jump_abs = 3.0
+max_age_days = 7
+confirm = "Check that this series is the weighted-average overnight repo rate SBP shows on its home page."
+status = "confirmed"
+confirmed = "30 Oct 2026: 28 Oct = 11.49%, as shown on SBP's home page; series name confirms it is the weighted-average overnight repo rate"
+
+[[indicators]]
+key = "wb_gdp_usd"
+label = "GDP, current US$ (World Bank)"
+section = "reference"
+unit = "US$"
+series = ["wb_gdp_usd"]
+transform = "as_published@1"
+display = { decimals = 1, prefix = "$", suffix = "bn", scale = 1e-9 }
+range = [1e11, 2e12]
+max_age_days = 900
+confirm = "Check which fiscal year the World Bank's latest year refers to for Pakistan."
+
+[[indicators]]
+key = "imf_gdp_proj"
+label = "IMF real GDP growth projection, this fiscal year"
+section = "reference"
+unit = "percent"
+series = ["imf_real_gdp_growth"]
+transform = "next_calendar_year@1"
+period_format = "fy_end_year"
+display = { decimals = 1, suffix = "%" }
+range = [-15.0, 20.0]
+confirm = "Check that the IMF labels Pakistan's fiscal years by the year they end (2027 = FY27)."
+
+[[indicators]]
+key = "imf_cpi_proj"
+label = "IMF inflation projection, this fiscal year (average)"
+section = "reference"
+unit = "percent"
+series = ["imf_cpi_inflation"]
+transform = "next_calendar_year@1"
+period_format = "fy_end_year"
+display = { decimals = 1, suffix = "%" }
+range = [-5.0, 60.0]
+confirm = "Check that the IMF labels Pakistan's fiscal years by the year they end (2027 = FY27)."
+
+# Core indicators still to be mapped to an official series.
+[[indicators]]
+key = "gdp_fy"
+label = "Real GDP growth"
+section = "growth"
+unit = "percent"
+series = ["pbs_gdp"]
+status = "unmapped"
+
+[[indicators]]
+key = "gdp_q"
+label = "Real GDP growth, latest quarter (y/y)"
+section = "growth"
+unit = "percent"
+series = ["pbs_gdp_quarterly"]
+status = "unmapped"
+
+[[indicators]]
+key = "pvt_credit"
+label = "Private-sector credit (y/y)"
+section = "growth"
+unit = "percent"
+series = ["sbp_private_credit"]
+status = "unmapped"
+
+[[indicators]]
+key = "m2"
+label = "Broad money, M2 (y/y)"
+section = "growth"
+unit = "percent"
+series = ["sbp_m2"]
+status = "unmapped"
+
+[[indicators]]
+key = "core_urban"
+label = "Core, urban non-food non-energy (y/y)"
+section = "inflation"
+unit = "percent"
+series = ["sbp_core_urban"]
+status = "unmapped"
+
+[[indicators]]
+key = "spi"
+label = "Weekly essentials basket, SPI (y/y)"
+section = "inflation"
+unit = "percent"
+series = ["pbs_spi"]
+status = "unmapped"
+
+[[indicators]]
+key = "policy_rate"
+label = "SBP policy rate"
+section = "markets"
+unit = "percent"
+series = ["sbp_policy_rate"]
+status = "unmapped"
+
+[[indicators]]
+key = "tbill_12m"
+label = "12-month T-bill, auction cut-off"
+section = "markets"
+unit = "percent"
+series = ["sbp_tbill_12m"]
+status = "unmapped"
+
+[[indicators]]
+key = "pib_10y"
+label = "10-year PIB, auction cut-off"
+section = "markets"
+unit = "percent"
+series = ["sbp_pib_10y"]
+status = "unmapped"
+
+[[indicators]]
+key = "kse100"
+label = "KSE-100 index"
+section = "markets"
+unit = "index"
+series = ["psx_kse100"]
+status = "unmapped"
+
+[[indicators]]
+key = "usdpkr"
+label = "Rupees per US dollar (interbank)"
+section = "markets"
+unit = "rupees"
+series = ["sbp_usdpkr"]
+status = "unmapped"
+
+[[indicators]]
+key = "brent"
+label = "Brent crude, $ per barrel"
+section = "markets"
+unit = "US$ per barrel"
+series = ["wb_brent"]
+status = "unmapped"
+
+[[indicators]]
+key = "sbp_res"
+label = "SBP foreign-exchange reserves"
+section = "external"
+unit = "US$ million"
+series = ["sbp_reserves_sbp"]
+status = "unmapped"
+
+[[indicators]]
+key = "total_res"
+label = "Total liquid reserves (SBP + banks)"
+section = "external"
+unit = "US$ million"
+series = ["sbp_reserves_total"]
+status = "unmapped"
+
+[[indicators]]
+key = "rem_m"
+label = "Workers' remittances"
+section = "external"
+unit = "US$ million"
+series = ["sbp_remittances"]
+status = "unmapped"
+
+[[indicators]]
+key = "rem_fytd"
+label = "Workers' remittances, fiscal year to date"
+section = "external"
+unit = "US$ million"
+series = ["sbp_remittances"]
+status = "unmapped"
+
+[[indicators]]
+key = "trade_fytd"
+label = "Goods trade deficit, fiscal year to date"
+section = "external"
+unit = "US$ million"
+series = ["pbs_trade_balance"]
+status = "unmapped"
+
+[[indicators]]
+key = "fbr_fytd"
+label = "FBR tax collection, fiscal year to date"
+section = "fiscal"
+unit = "Rs billion"
+series = ["fbr_collection"]
+status = "unmapped"
+
+[[indicators]]
+key = "deficit_fy"
+label = "Overall fiscal deficit"
+section = "fiscal"
+unit = "percent of GDP"
+series = ["fd_overall_balance"]
+status = "unmapped"
+
+[[indicators]]
+key = "primary_fy"
+label = "Primary surplus"
+section = "fiscal"
+unit = "percent of GDP"
+series = ["fd_primary_balance"]
+status = "unmapped"
+
+# Totals that must add up, checked every run once all parts are mapped. Example:
+# [[identities]]
+# name = "trade balance = exports - imports"
+# lhs = "trade_fytd"
+# rhs = ["exports_fytd", "-imports_fytd"]
+# tolerance = 1.0

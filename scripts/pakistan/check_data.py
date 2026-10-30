@@ -180,6 +180,30 @@ def main():
     except ValueError:
         errors.append("meta.json needs asof_iso as YYYY-MM-DD")
 
+    # 2b. Official figures from the data pipeline: complete lineage, confirmed in the registry
+    pipeline, registry = {}, {}
+    if (DATA / "pipeline.json").exists():
+        pipeline = load(DATA / "pipeline.json").get("indicators", {})
+    if (DATA / "registry.json").exists():
+        registry = {i["key"]: i for i in load(DATA / "registry.json").get("indicators", [])}
+    else:
+        errors.append("registry.json is missing; run python -m sourcepk export-registry in pipeline/")
+    for k, r in pipeline.items():
+        if registry.get(k, {}).get("status") != "confirmed":
+            errors.append(f"pipeline figure '{k}' is not a confirmed indicator in registry.json")
+        for f in ("value", "display", "period", "period_label", "publisher", "series_code", "calc", "retrieved_at"):
+            if r.get(f) in (None, ""):
+                errors.append(f"pipeline figure '{k}' has no {f}")
+        inputs = r.get("inputs") or []
+        if not inputs:
+            errors.append(f"pipeline figure '{k}' has no lineage")
+        for x in inputs:
+            if not re.fullmatch(r"[0-9a-f]{64}", str(x.get("sha256", ""))) or not x.get("file"):
+                errors.append(f"pipeline figure '{k}' has an input without a file fingerprint")
+        if r.get("carried_forward"):
+            warnings.append(f"pipeline figure '{k}' was not refreshed in the last run")
+    data["pipeline"] = [{"value": r.get("value"), "display": r.get("display")} for r in pipeline.values()]
+
     # 3. Derived figures
     res = subprocess.run([sys.executable, str(ROOT / "scripts/pakistan/derive.py"), "--check"],
                          capture_output=True, text=True)

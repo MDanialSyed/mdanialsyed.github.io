@@ -1,0 +1,88 @@
+---
+layout: pakistan
+title: "How the figures are made"
+description: "Methodology for Source: Pakistan"
+permalink: /pakistan/methodology/
+noindex: true
+sitemap: false
+extra_css: ["/assets/pakistan/pakistan.css"]
+---
+<p class="pv-take">Every figure should be traceable to the publisher's own data, and every step from that data to the page should be repeatable by anyone with the same files.</p>
+
+<nav class="pv-nav" aria-label="Source: Pakistan">
+  <a href="{{ '/pakistan/' | relative_url }}">Dashboard</a>
+  <a href="{{ '/pakistan/sources/' | relative_url }}">Sources</a>
+  <a href="{{ '/pakistan/corrections/' | relative_url }}">Corrections</a>
+  <a href="#steps">Steps</a>
+  <a href="#checks">Checks</a>
+  <a href="#calculations">Calculations</a>
+  <a href="#conventions">Conventions</a>
+</nav>
+
+<section class="pv-sec">
+  <h2 class="pv-h2">Two kinds of figure</h2>
+  <div class="pv-doc">
+    <p><span class="pv-st pv-st-off"></span><strong>Official data feed.</strong> Downloaded directly from the publisher's own data service, such as the State Bank of Pakistan's EasyData, the World Bank or the IMF, and turned into the figure on the page by code. Each one shows the publisher, the series code, the calculation used, when the data was downloaded, and the fingerprint of the file it came from.</p>
+    <p><span class="pv-st pv-st-int"></span><strong>Interim.</strong> Read from the publisher's release, or a news report of it, with a link to that source. Figures move from interim to an official feed one at a time, once the feed's values have been checked against the publisher's own release.</p>
+    <p>News reports are used to describe what happened in a week, never as the source of a figure that an official feed provides.</p>
+  </div>
+</section>
+
+<section class="pv-sec" id="steps">
+  <h2 class="pv-h2">From the publisher to the page</h2>
+  <ol class="pv-steps">
+    <li><strong>Download.</strong> Each series is requested from the publisher's data service using the series code listed on the <a href="{{ '/pakistan/sources/' | relative_url }}">Sources</a> page.</li>
+    <li><strong>Archive.</strong> The file is kept exactly as received, with the address it came from, the time it was downloaded and its SHA-256 fingerprint. Archived files are never edited or overwritten.</li>
+    <li><strong>Store.</strong> Values are added to a series history. When a publisher revises a past value, the new value is added and the old one kept, so every earlier version stays available.</li>
+    <li><strong>Calculate.</strong> A named calculation turns the series into the figure, for example the change on a year earlier. Calculations are listed below and are never changed in place.</li>
+    <li><strong>Check.</strong> Every figure passes the checks below before it can be published.</li>
+    <li><strong>Review.</strong> Each weekly update is read and approved before it goes live, starting from a report of what was downloaded, what changed and what every check found.</li>
+    <li><strong>Publish.</strong> The figure appears on the dashboard with its lineage: publisher, series, calculation, download time and file fingerprint.</li>
+  </ol>
+</section>
+
+<section class="pv-sec" id="checks">
+  <h2 class="pv-h2">Checks</h2>
+  <div class="pv-tablewrap">
+    <table class="pv-table">
+      <thead><tr><th>Check</th><th>What it tests</th><th>If it fails</th></tr></thead>
+      <tbody>
+        <tr><td class="pv-strong">Format</td><td>The file has exactly the shape expected, and contains the series that was asked for.</td><td>Nothing from the file is used</td></tr>
+        <tr><td class="pv-strong">Lineage</td><td>Every value used points to an archived file whose fingerprint still matches.</td><td>Not published</td></tr>
+        <tr><td class="pv-strong">Range</td><td>The figure lies within plausible bounds for that indicator.</td><td>Not published</td></tr>
+        <tr><td class="pv-strong">Totals</td><td>Figures that must add up do, such as a balance equal to its parts. Applies once the parts of a total come from official feeds.</td><td>Not published</td></tr>
+        <tr><td class="pv-strong">Size of move</td><td>The change since the last update is within normal limits.</td><td>Reviewed against the release before publishing</td></tr>
+        <tr><td class="pv-strong">Cross-source</td><td>Two publishers' figures for the same thing and period agree. Applies once two official feeds cover the same figure.</td><td>Reviewed against the releases before publishing</td></tr>
+        <tr><td class="pv-strong">Freshness</td><td>The latest period is as recent as the release calendar implies.</td><td>Reviewed before publishing</td></tr>
+        <tr><td class="pv-strong">Confirmation</td><td>A new feed's values have been compared with the publisher's own release.</td><td>Stays interim</td></tr>
+        <tr><td class="pv-strong">Weekly note</td><td>The note quotes no number that is not in the dashboard's data.</td><td>The update does not go live</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="pv-note">If an official figure cannot be refreshed, or a new value fails a check, the last checked value stays on the page with its own date until the problem is resolved.</p>
+</section>
+
+<section class="pv-sec" id="calculations">
+  <h2 class="pv-h2">Calculations</h2>
+  <p class="pv-lede">Each figure records the calculation that produced it. The number after @ is its version: a change in method gets a new version rather than altering an old one.</p>
+  <dl class="pv-calcs">
+    <div id="calc-as_published"><dt><code>as_published@1</code></dt><dd>The latest value exactly as the publisher released it.</dd></div>
+    <div id="calc-yoy_pct"><dt><code>yoy_pct@1</code></dt><dd>Percentage change on the same period a year earlier: latest value divided by the value twelve months (or four quarters) before, minus one.</dd></div>
+    <div id="calc-mom_pct"><dt><code>mom_pct@1</code></dt><dd>Percentage change on the previous month.</dd></div>
+    <div id="calc-fytd_sum"><dt><code>fytd_sum@1</code></dt><dd>Sum of monthly values from July, the start of the fiscal year, to the latest month. Every month must be present.</dd></div>
+    <div id="calc-fytd_mean_yoy_pct"><dt><code>fytd_mean_yoy_pct@1</code></dt><dd>Average of an index from July to the latest month, compared with the average for the same months a year earlier. This is how average inflation and manufacturing growth so far this fiscal year are reported.</dd></div>
+    <div id="calc-calendar_year"><dt><code>calendar_year@1</code></dt><dd>The value for the current year in an annual series.</dd></div>
+    <div id="calc-next_calendar_year"><dt><code>next_calendar_year@1</code></dt><dd>The value for the following year in an annual series, such as an IMF projection.</dd></div>
+  </dl>
+  <p class="pv-note">Comparisons shown beside a figure, such as last month's reading or the same period a year earlier, use the same calculation on the same stored series.</p>
+</section>
+
+<section class="pv-sec" id="conventions">
+  <h2 class="pv-h2">Conventions</h2>
+  <div class="pv-doc">
+    <p>Pakistan's fiscal year runs from July to June, so FY27 is the year that began in July 2026. Annual figures from international sources are matched to Pakistan's fiscal years, and how each source labels its years is confirmed before its figures are published.</p>
+    <p>Figures are rounded to the precision the publisher uses. A change worked out from a published index can occasionally differ from the publisher's own rounded figure by one in the last digit; that is one of the things checked before a feed is confirmed.</p>
+    <p>Derived figures, such as real interest rates, changes since the end of last year and gaps to targets, are worked out from the figures shown on the dashboard, so they move whenever those figures do. The scorecard's statuses and the summaries of forecasters' views are this site's own reading. Nothing here is investment advice.</p>
+    <p>The archived files behind any official figure can be provided for audit on request through the <a href="{{ '/contact' | relative_url }}">contact page</a>.</p>
+  </div>
+</section>

@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Work out the derived figures for Source: Pakistan from the headline indicators.
 
+Official figures from the data pipeline (_data/pakistan/pipeline.json) take the
+place of interim ones wherever both exist.
+
 Writes _data/pakistan/derived.json (year-to-date changes, real interest
 rates, gaps to targets, peers' real rates). The page shows these figures but
 never computes them, so every number on the site traces to a data file.
@@ -39,8 +42,18 @@ def tone(good):
     return "good" if good else "bad"
 
 
-def derive():
+def indicators():
+    """Interim figures, with any official pipeline figure taking their place."""
     ind = {r["key"]: r for r in load("indicators")}
+    path = DATA / "pipeline.json"
+    if path.exists():
+        for key, r in json.loads(path.read_text(encoding="utf-8")).get("indicators", {}).items():
+            ind[key] = {**ind.get(key, {}), "value": r["value"], "display": r["display"]}
+    return ind
+
+
+def derive():
+    ind = indicators()
 
     def v(key):
         r = ind.get(key)

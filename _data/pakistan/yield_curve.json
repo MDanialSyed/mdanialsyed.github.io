@@ -29,30 +29,30 @@
   },
   {
     "tenor": "2Y",
-    "latest": 12.795,
+    "latest": 12.399,
     "previous": 12.399,
-    "latest_display": "12.79%",
+    "latest_display": "12.40%",
     "previous_display": "12.40%"
   },
   {
     "tenor": "3Y",
-    "latest": 12.746,
+    "latest": 12.49,
     "previous": 12.49,
-    "latest_display": "12.75%",
+    "latest_display": "12.49%",
     "previous_display": "12.49%"
   },
   {
     "tenor": "5Y",
-    "latest": 12.8998,
+    "latest": 12.49,
     "previous": 12.49,
-    "latest_display": "12.90%",
+    "latest_display": "12.49%",
     "previous_display": "12.49%"
   },
   {
     "tenor": "10Y",
-    "latest": 12.85,
+    "latest": 12.5,
     "previous": 12.5,
-    "latest_display": "12.85%",
+    "latest_display": "12.50%",
     "previous_display": "12.50%"
   }
 ]

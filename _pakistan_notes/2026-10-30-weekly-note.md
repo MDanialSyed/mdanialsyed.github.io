@@ -27,7 +27,7 @@ date: 2026-10-30
 
 **Inflation is easing only slowly.** Headline CPI inflation fell to 10.3% in September from 11.1% in August, but the weekly basket of essentials was still 11.85% dearer than a year earlier in the week to 22 Oct. Core inflation of 8.6% in cities says the oil shock has spread beyond fuel and food. After this week's hike, the policy rate sits 1.7 points above headline inflation and 3.4 points above urban core: positive, but thin.
 
-**The external account is the thing to watch.** The current account ran a deficit of $874m in July–September, against $755m a year earlier, as the goods trade deficit widened 15% to $10.79bn. Remittances from workers abroad, up 14% to $10.88bn, are paying for most of that gap. The State Bank still expects the full-year deficit to stay within 0–1% of GDP.
+**The external account is the thing to watch.** The current account ran a deficit of $874m in July–September, against $755m a year earlier, as the goods trade deficit widened to $10.77bn. Remittances from workers abroad, up 14% to $10.88bn, are paying for most of that gap. The State Bank still expects the full-year deficit to stay within 0–1% of GDP.
 
 **Growth has slowed.** The economy grew 3.65% in FY26, but only 2.0% in April–June as the oil shock hit, and large-scale manufacturing grew just 1.85% in July–August. The State Bank still expects 3.5–4.5% growth this fiscal year.
 
@@ -36,7 +36,7 @@ date: 2026-10-30
 ## Coming up
 
 - **Early November:** October CPI from the Pakistan Bureau of Statistics.
-- **4 Nov:** PIB auction, with a Rs350bn target.
+- **11 Nov:** the next T-bill auction.
 - **November, date not yet set:** IMF Executive Board on the fourth review.
 - **14 Dec:** the State Bank's next rate decision.
 

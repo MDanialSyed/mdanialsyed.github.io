@@ -91,12 +91,12 @@
     "key": "pvt_credit",
     "section": "growth",
     "label": "Private-sector credit (y/y)",
-    "value": 16.6,
-    "display": "+16.6%",
-    "period": "End-Sep 2026",
-    "context": "Stock: Rs11.28tr",
-    "source": "Finance Ministry Q1 report via Daily Pakistan",
-    "url": "https://en.dailypakistan.com.pk/26-Oct-2026/pakistan-forex-reserves-reach-record-21-5-billion-in-q1-fy2026-27"
+    "value": 14.8,
+    "display": "+14.8%",
+    "period": "End-June 2026",
+    "context": "Stock: Rs11.38tr",
+    "source": "Profit: private sector credit, FY26",
+    "url": "https://profit.pakistantoday.com.pk/2026/07/17/private-sector-credit-rises-148percent-to-rs1138-trillion-as-bank-lending-recovers"
   },
   {
     "key": "m2",
@@ -358,9 +358,9 @@
     "value": 174054.32,
     "display": "174,054",
     "period": "31 Dec 2025",
-    "context": "+51% in calendar 2025",
-    "source": "Mettis Global: PSX close, 31 Dec 2025",
-    "url": "https://mettisglobal.news/PSX-Closing-Bell-A-Soft-Landing-57568"
+    "context": "Last close of 2025",
+    "source": "APP: PSX close, 31 Dec 2025",
+    "url": "https://www.app.com.pk/?p=1138891"
   },
   {
     "key": "usdpkr",
@@ -394,17 +394,6 @@
     "context": "−$0.44 on the day",
     "source": "CNBC: oil prices, 29 Oct",
     "url": "https://www.cnbc.com/2026/10/29/oil-price-today-wti-brent.html"
-  },
-  {
-    "key": "petrol",
-    "section": "markets",
-    "label": "Petrol, Rs per litre",
-    "value": 376,
-    "display": "Rs376",
-    "period": "28 Oct 2026",
-    "context": "Prices revised almost daily in October",
-    "source": "Pakistan Observer: fuel prices, 28 Oct",
-    "url": "https://pakobserver.net/?p=784381"
   },
   {
     "key": "euro_10",
@@ -469,8 +458,8 @@
     "display": "$23bn",
     "period": "End-Dec 2026",
     "context": "$25bn by end-June 2027",
-    "source": "ProPakistani: SBP reserves goals",
-    "url": "https://propakistani.pk/2026/10/29/sbp-reserves-rise-above-21-5-billion/"
+    "source": "Mettis Global: SBP Governor's press conference, 26 Oct",
+    "url": "https://mettisglobal.news/SBP-sees-forex-reserves-at-25bn-by-June-2027-64519"
   },
   {
     "key": "ca_fytd",
@@ -520,12 +509,12 @@
     "key": "trade_fytd",
     "section": "external",
     "label": "Goods trade deficit, fiscal year to date",
-    "value": 10.79,
-    "display": "$10.79bn",
+    "value": 10.77,
+    "display": "$10.77bn",
     "period": "Jul–Sep FY27",
-    "context": "+15% y/y",
-    "source": "The Nation: trade, Jul–Sep 2026",
-    "url": "https://www.nation.com.pk/03-Oct-2026/pakistan-s-trade-deficit-widens-15pc-dollar-10-79b-q1-fy27"
+    "context": "Exports $8.45bn, imports $19.21bn",
+    "source": "PBS: external trade release, Sep 2026",
+    "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Release_Statement_September-2026.pdf"
   },
   {
     "key": "ca_proj",
@@ -589,9 +578,9 @@
     "value": 2.9,
     "display": "2.9% of GDP",
     "period": "FY26",
-    "context": "IMF target was 2.5%",
-    "source": "BOL News: fiscal FY26",
-    "url": "https://www.bolnews.com/business/pakistan-posts-strongest-fiscal-performance-in-22-years/"
+    "context": "Third primary surplus in a row",
+    "source": "The News: fiscal operations FY26",
+    "url": "https://www.thenews.pk/print/1431955-fiscal-deficit-drops-to-2-6pc-in-fy26-lowest-in-22-years"
   },
   {
     "key": "imf_status",
@@ -631,7 +620,7 @@
     "section": "fiscal",
     "label": "S&P sovereign rating",
     "value": null,
-    "display": "B",
+    "display": "B (stable)",
     "period": "Raised Jul 2026",
     "context": "From B−",
     "source": "The Nation: S&P upgrade, Jul 2026",

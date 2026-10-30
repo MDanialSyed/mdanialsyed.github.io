@@ -46,10 +46,10 @@
     "policy_rate": 8.75,
     "policy_display": "8.75%",
     "last_move": "Held, 30 Sep",
-    "source": "Trading Economics",
-    "url": "https://tradingeconomics.com/sri-lanka/inflation-cpi/news/588206",
-    "rate_source": "Trading Economics",
-    "rate_url": "https://tradingeconomics.com/sri-lanka/interest-rate/news/587938"
+    "source": "Newswire: Sri Lanka inflation, Sep 2026",
+    "url": "https://www.newswire.lk/v160",
+    "rate_source": "EconomyNext: CBSL decision, 30 Sep",
+    "rate_url": "https://economynext.com/sri-lanka-central-bank-keeps-policy-rate-steady-expects-inflation-high-until-q1-2027-285027/"
   },
   {
     "country": "Egypt",
@@ -58,10 +58,10 @@
     "measure": "Urban CPI, Sep",
     "policy_rate": 19.0,
     "policy_display": "19.00%",
-    "last_move": "Held, 24 Sep",
+    "last_move": "Held, 5th meeting in a row",
     "source": "Zawya",
     "url": "https://zawya.com/en/economy/egypts-annual-urban-inflation-eases-to-13.9-in-september-1587961",
-    "rate_source": "Trading Economics",
-    "rate_url": "https://tradingeconomics.com/egypt/interest-rate/news/586652"
+    "rate_source": "Arab Finance: CBE holds rates",
+    "rate_url": "https://arabfinance.com/en/news/newdetails/cbe-holds-key-interest-rates-steady-for-fifth-consecutive-mpc-meeting"
   }
 ]

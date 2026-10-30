@@ -7,11 +7,11 @@
     "url": "https://www.pbs.gov.pk/price-statistics/"
   },
   {
-    "when": "4 Nov",
-    "event": "PIB auction",
-    "note": "Rs350bn target",
-    "source": "Pakistan Era: PIB auction, 7 Oct",
-    "url": "https://pakera.pk/pib-auction-7-october-2026-yields-pakistan/"
+    "when": "11 Nov",
+    "event": "T-bill auction",
+    "note": "Next scheduled auction of market treasury bills",
+    "source": "SBP: auction calendar",
+    "url": "https://www.sbp.org.pk/ecodata/auction-bond.pdf"
   },
   {
     "when": "Nov (date TBC)",
@@ -31,7 +31,7 @@
     "when": "14 Dec",
     "event": "Next SBP Monetary Policy Committee",
     "note": "Rate decision",
-    "source": "Trading Economics: SBP calendar",
-    "url": "https://tradingeconomics.com/pakistan/interest-rate"
+    "source": "Mettis Global: SBP FY27 MPC calendar",
+    "url": "https://mettisglobal.news/SBP-releases-FY27-MPC-meeting-calendar-expands-monetary-policy-communication-61352"
   }
 ]

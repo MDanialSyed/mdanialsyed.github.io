@@ -16,8 +16,8 @@
     "status": "Short of goal",
     "tone": "warn",
     "note": "Up $33m in the latest week",
-    "source": "ProPakistani: SBP reserves goals",
-    "url": "https://propakistani.pk/2026/10/29/sbp-reserves-rise-above-21-5-billion/"
+    "source": "Mettis Global: SBP Governor's press conference, 26 Oct",
+    "url": "https://mettisglobal.news/SBP-sees-forex-reserves-at-25bn-by-June-2027-64519"
   },
   {
     "item": "Current account, FY27",
@@ -41,13 +41,13 @@
   },
   {
     "item": "Primary balance, FY26",
-    "latest": "2.9% of GDP surplus",
-    "target": "2.5% of GDP (IMF)",
+    "latest": "Rs3.63tr surplus",
+    "target": "Rs3.16tr (IMF)",
     "status": "Beat",
     "tone": "ok",
-    "note": "Third primary surplus in a row",
-    "source": "BOL News: fiscal FY26",
-    "url": "https://www.bolnews.com/business/pakistan-posts-strongest-fiscal-performance-in-22-years/"
+    "note": "Above the IMF target by Rs464bn",
+    "source": "Express Tribune: Govt exceeds IMF surplus target",
+    "url": "https://tribune.com.pk/story/2623772/govt-exceeds-imf-surplus-target"
   },
   {
     "item": "Real GDP growth",

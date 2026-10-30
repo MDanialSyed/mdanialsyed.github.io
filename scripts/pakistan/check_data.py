@@ -218,6 +218,26 @@ def main():
     if official_cpi:
         notes.append("### Cross-source\n- The inflation chart's monthly CPI matches the State Bank's series.")
 
+    # 2c-ii. Cross-source: the yield curve must match the official auction series for the same date
+    curve_keys = {"3M": "tbill_3m", "6M": "tbill_6m", "12M": "tbill_12m", "3Y": "pib_3y", "5Y": "pib_5y", "10Y": "pib_10y"}
+    checked = 0
+    for r in data.get("yield_curve", []):
+        rec = pipeline.get(curve_keys.get(r.get("tenor"), ""))
+        if not rec:
+            continue
+        for side in ("latest", "previous"):
+            if r.get(f"{side}_date") == rec.get("period") and r.get(side) is not None:
+                checked += 1
+                if abs(float(r[side]) - float(rec["value"])) > 0.005:
+                    errors.append(f"yield_curve.json {r['tenor']} {side} ({r[side]}) differs from the State Bank's {rec['value']} for {rec['period']}")
+            for c in rec.get("context_items", []):
+                if r.get(f"{side}_date") == c.get("period") and r.get(side) is not None:
+                    checked += 1
+                    if abs(float(r[side]) - float(c["value"])) > 0.005:
+                        errors.append(f"yield_curve.json {r['tenor']} {side} ({r[side]}) differs from the State Bank's {c['value']} for {c['period']}")
+    if checked:
+        notes.append(f"- The yield curve matches the State Bank's auction series at {checked} points.")
+
     # 2d. Moves beside the headline tiles: interim rows that carry a change need a basis
     for r in ind:
         if r.get("change") is not None and not str(r.get("change_basis", "")).strip():

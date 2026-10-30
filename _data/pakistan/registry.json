@@ -102,40 +102,6 @@
       ]
     },
     {
-      "key": "cpi_mom",
-      "label": "CPI, month on month",
-      "unit": "percent",
-      "status": "unmapped",
-      "section": "inflation",
-      "calc": "",
-      "series": [
-        {
-          "key": "sbp_cpi_mom_national",
-          "code": "",
-          "source": "State Bank of Pakistan",
-          "dataset": "EasyData",
-          "frequency": "monthly"
-        }
-      ]
-    },
-    {
-      "key": "cpi_fytd",
-      "label": "CPI average, fiscal year to date (y/y)",
-      "unit": "percent",
-      "status": "unmapped",
-      "section": "inflation",
-      "calc": "",
-      "series": [
-        {
-          "key": "sbp_cpi_fytd_national",
-          "code": "",
-          "source": "State Bank of Pakistan",
-          "dataset": "EasyData",
-          "frequency": "monthly"
-        }
-      ]
-    },
-    {
       "key": "lsm_m",
       "label": "Large-scale manufacturing (y/y)",
       "unit": "percent",
@@ -272,18 +238,324 @@
       ]
     },
     {
+      "key": "cpi_mom",
+      "label": "CPI, month on month",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "inflation",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_cpi_mom_national",
+          "code": "TS_GP_PT_CPI_M.P00461516",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "cpi_fytd",
+      "label": "CPI average, fiscal year to date (y/y)",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "inflation",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_cpi_pa_national",
+          "code": "TS_GP_PT_CPI_M.P00311516",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "cpi_urban",
+      "label": "Urban CPI (y/y)",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "inflation",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_cpi_yoy_urban",
+          "code": "TS_GP_PT_CPI_M.P00021516",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "cpi_rural",
+      "label": "Rural CPI (y/y)",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "inflation",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_cpi_yoy_rural",
+          "code": "TS_GP_PT_CPI_M.P00031516",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "core_urban",
+      "label": "Core, urban non-food non-energy (y/y)",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "inflation",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_core_urban",
+          "code": "TS_GP_PT_CPI_M.P00121516",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "core_rural",
+      "label": "Core, rural non-food non-energy (y/y)",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "inflation",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_core_rural",
+          "code": "TS_GP_PT_CPI_M.P00131516",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "trim_urban",
+      "label": "Core, urban 20% trimmed mean (y/y)",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "inflation",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_trim_urban",
+          "code": "TS_GP_PT_CPI_M.P00141516",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "food_urban",
+      "label": "Food inflation, urban (y/y)",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "inflation",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_food_yoy_urban",
+          "code": "TS_GP_PT_CPI_M.P00041516",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "wpi",
+      "label": "Wholesale prices, WPI (y/y)",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "inflation",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_wpi_yoy",
+          "code": "TS_GP_PT_CPI_M.P00081516",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "policy_rate",
+      "label": "SBP policy rate",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "markets",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_policy_rate",
+          "code": "TS_GP_IR_SIRPR_AH.SBPOL0030",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "as-needed"
+        }
+      ]
+    },
+    {
+      "key": "tbill_12m",
+      "label": "12-month T-bill, auction cut-off",
+      "unit": "percent",
+      "status": "needs-confirmation",
+      "section": "markets",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_tbill_12m",
+          "code": "TS_GP_BAM_SIRTBIL_AH.TB0030",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "as-needed"
+        }
+      ]
+    },
+    {
+      "key": "pib_10y",
+      "label": "10-year PIB, auction cut-off",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "markets",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_pib_10y",
+          "code": "TS_GP_BAM_SIRPIBS_AH.PIB0040",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "as-needed"
+        }
+      ]
+    },
+    {
+      "key": "usdpkr",
+      "label": "Rupees per US dollar (SBP reference rate)",
+      "unit": "rupees",
+      "status": "confirmed",
+      "section": "markets",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_usdpkr",
+          "code": "TS_GP_ES_M2M_D.M2MUSD00DY",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "daily"
+        }
+      ]
+    },
+    {
+      "key": "usdpkr_base",
+      "label": "Rupees per US dollar at the end of last year",
+      "unit": "rupees",
+      "status": "needs-confirmation",
+      "section": "ref",
+      "calc": "prev_year_end@1",
+      "series": [
+        {
+          "key": "sbp_usdpkr",
+          "code": "TS_GP_ES_M2M_D.M2MUSD00DY",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "daily"
+        }
+      ]
+    },
+    {
+      "key": "rem_m",
+      "label": "Workers' remittances",
+      "unit": "US$ billion",
+      "status": "confirmed",
+      "section": "external",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_remittances",
+          "code": "TS_GP_BOP_WR_M.WR0340",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "rem_fytd",
+      "label": "Workers' remittances, fiscal year to date",
+      "unit": "US$ billion",
+      "status": "confirmed",
+      "section": "external",
+      "calc": "fytd_sum@1",
+      "series": [
+        {
+          "key": "sbp_remittances",
+          "code": "TS_GP_BOP_WR_M.WR0340",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "monthly"
+        }
+      ]
+    },
+    {
+      "key": "pvt_credit",
+      "label": "Private-sector credit (y/y)",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "growth",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_pvt_credit_yoy",
+          "code": "TS_GP_BAM_M2_W.M000480",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "weekly"
+        }
+      ]
+    },
+    {
+      "key": "m2",
+      "label": "Broad money, M2 (y/y)",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "growth",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_m2_yoy",
+          "code": "TS_GP_BAM_M2_W.M000500",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "weekly"
+        }
+      ]
+    },
+    {
       "key": "gdp_fy",
       "label": "Real GDP growth",
       "unit": "percent",
-      "status": "unmapped",
+      "status": "confirmed",
       "section": "growth",
-      "calc": "",
+      "calc": "as_published@1",
       "series": [
         {
-          "key": "pbs_gdp",
-          "code": "",
-          "source": "Pakistan Bureau of Statistics",
-          "dataset": "Releases: national accounts, CPI, SPI, external trade",
+          "key": "sbp_gdp_growth",
+          "code": "TS_GP_RLS_PAKGDP15_Y.GDP00160000",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
           "frequency": "annual"
         }
       ]
@@ -306,57 +578,6 @@
       ]
     },
     {
-      "key": "pvt_credit",
-      "label": "Private-sector credit (y/y)",
-      "unit": "percent",
-      "status": "unmapped",
-      "section": "growth",
-      "calc": "",
-      "series": [
-        {
-          "key": "sbp_private_credit",
-          "code": "",
-          "source": "State Bank of Pakistan",
-          "dataset": "EasyData",
-          "frequency": "monthly"
-        }
-      ]
-    },
-    {
-      "key": "m2",
-      "label": "Broad money, M2 (y/y)",
-      "unit": "percent",
-      "status": "unmapped",
-      "section": "growth",
-      "calc": "",
-      "series": [
-        {
-          "key": "sbp_m2",
-          "code": "",
-          "source": "State Bank of Pakistan",
-          "dataset": "EasyData",
-          "frequency": "weekly"
-        }
-      ]
-    },
-    {
-      "key": "core_urban",
-      "label": "Core, urban non-food non-energy (y/y)",
-      "unit": "percent",
-      "status": "unmapped",
-      "section": "inflation",
-      "calc": "",
-      "series": [
-        {
-          "key": "sbp_core_urban",
-          "code": "",
-          "source": "State Bank of Pakistan",
-          "dataset": "EasyData",
-          "frequency": "monthly"
-        }
-      ]
-    },
-    {
       "key": "spi",
       "label": "Weekly essentials basket, SPI (y/y)",
       "unit": "percent",
@@ -374,57 +595,6 @@
       ]
     },
     {
-      "key": "policy_rate",
-      "label": "SBP policy rate",
-      "unit": "percent",
-      "status": "unmapped",
-      "section": "markets",
-      "calc": "",
-      "series": [
-        {
-          "key": "sbp_policy_rate",
-          "code": "",
-          "source": "State Bank of Pakistan",
-          "dataset": "EasyData",
-          "frequency": "daily"
-        }
-      ]
-    },
-    {
-      "key": "tbill_12m",
-      "label": "12-month T-bill, auction cut-off",
-      "unit": "percent",
-      "status": "unmapped",
-      "section": "markets",
-      "calc": "",
-      "series": [
-        {
-          "key": "sbp_tbill_12m",
-          "code": "",
-          "source": "State Bank of Pakistan",
-          "dataset": "Auction results and policy announcements",
-          "frequency": "daily"
-        }
-      ]
-    },
-    {
-      "key": "pib_10y",
-      "label": "10-year PIB, auction cut-off",
-      "unit": "percent",
-      "status": "unmapped",
-      "section": "markets",
-      "calc": "",
-      "series": [
-        {
-          "key": "sbp_pib_10y",
-          "code": "",
-          "source": "State Bank of Pakistan",
-          "dataset": "Auction results and policy announcements",
-          "frequency": "daily"
-        }
-      ]
-    },
-    {
       "key": "kse100",
       "label": "KSE-100 index",
       "unit": "index",
@@ -437,23 +607,6 @@
           "code": "",
           "source": "Pakistan Stock Exchange",
           "dataset": "Index closes",
-          "frequency": "daily"
-        }
-      ]
-    },
-    {
-      "key": "usdpkr",
-      "label": "Rupees per US dollar (interbank)",
-      "unit": "rupees",
-      "status": "unmapped",
-      "section": "markets",
-      "calc": "",
-      "series": [
-        {
-          "key": "sbp_usdpkr",
-          "code": "",
-          "source": "State Bank of Pakistan",
-          "dataset": "EasyData",
           "frequency": "daily"
         }
       ]
@@ -506,40 +659,6 @@
           "source": "State Bank of Pakistan",
           "dataset": "EasyData",
           "frequency": "weekly"
-        }
-      ]
-    },
-    {
-      "key": "rem_m",
-      "label": "Workers' remittances",
-      "unit": "US$ million",
-      "status": "unmapped",
-      "section": "external",
-      "calc": "",
-      "series": [
-        {
-          "key": "sbp_remittances",
-          "code": "",
-          "source": "State Bank of Pakistan",
-          "dataset": "EasyData",
-          "frequency": "monthly"
-        }
-      ]
-    },
-    {
-      "key": "rem_fytd",
-      "label": "Workers' remittances, fiscal year to date",
-      "unit": "US$ million",
-      "status": "unmapped",
-      "section": "external",
-      "calc": "",
-      "series": [
-        {
-          "key": "sbp_remittances",
-          "code": "",
-          "source": "State Bank of Pakistan",
-          "dataset": "EasyData",
-          "frequency": "monthly"
         }
       ]
     },
@@ -608,6 +727,74 @@
           "source": "Finance Division",
           "dataset": "Fiscal operations",
           "frequency": "annual"
+        }
+      ]
+    },
+    {
+      "key": "pib_3y",
+      "label": "3-year PIB, auction cut-off",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "reference",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_pib_3y",
+          "code": "TS_GP_BAM_SIRPIBS_AH.PIB0010",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "as-needed"
+        }
+      ]
+    },
+    {
+      "key": "pib_5y",
+      "label": "5-year PIB, auction cut-off",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "reference",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_pib_5y",
+          "code": "TS_GP_BAM_SIRPIBS_AH.PIB0020",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "as-needed"
+        }
+      ]
+    },
+    {
+      "key": "tbill_3m",
+      "label": "3-month T-bill, auction cut-off",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "reference",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_tbill_3m",
+          "code": "TS_GP_BAM_SIRTBIL_AH.TB0010",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "as-needed"
+        }
+      ]
+    },
+    {
+      "key": "tbill_6m",
+      "label": "6-month T-bill, auction cut-off",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "reference",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_tbill_6m",
+          "code": "TS_GP_BAM_SIRTBIL_AH.TB0020",
+          "source": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "frequency": "as-needed"
         }
       ]
     }

@@ -320,11 +320,11 @@
     "value": 12.89,
     "display": "12.89%",
     "period": "28 Oct auction",
-    "context": "After the October rate hike",
+    "context": "12.50% at the 14 Oct auction",
     "source": "SBP: T-bill auction results, 28 Oct",
     "url": "https://www.sbp.org.pk/ecodata/Auction-Investment.pdf",
-    "change": 0.89,
-    "change_basis": "vs 16 Sep"
+    "change": 0.39,
+    "change_basis": "vs 14 Oct"
   },
   {
     "key": "tbill_auction",
@@ -341,12 +341,12 @@
     "key": "pib_10y",
     "section": "markets",
     "label": "10-year PIB, auction cut-off",
-    "value": 12.5,
-    "display": "12.50%",
-    "period": "18 Sep auction",
-    "context": "7 Oct results not yet published by SBP",
-    "source": "SBP: PIB auction results",
-    "url": "https://www.sbp.org.pk/ecodata/Auction-Investment.pdf"
+    "value": 12.85,
+    "display": "12.85%",
+    "period": "7 Oct auction",
+    "context": "12.50% on 18 Sep",
+    "source": "SBP EasyData: PIB cut-off yields",
+    "url": "https://easydata.sbp.org.pk/"
   },
   {
     "key": "kse100",

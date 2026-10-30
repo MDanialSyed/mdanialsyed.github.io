@@ -285,38 +285,74 @@ frequency = "annual"
 description = "Real GDP growth rate (constant 2015-16 prices), percent, by fiscal year"
 start = "2010-01-01"
 
-# Candidate codes for the other bond tenors; the State Bank's series name in each file decides what they are.
 [[series]]
-key = "sbp_pib_pib0010"
+key = "sbp_pib_3y"
 source = "sbp_easydata"
 code = "TS_GP_BAM_SIRPIBS_AH.PIB0010"
 frequency = "as-needed"
-description = "Pakistan Investment Bond cut-off yield, tenor to be confirmed from the series name"
+description = "3-year Pakistan Investment Bond, auction cut-off yield, percent, dated by auction"
+published_name = "Pakistan Investment Bonds Cut-off Yield 3-Years"
+unit = "Percent"
 start = "2023-07-01"
 
 [[series]]
-key = "sbp_pib_pib0020"
+key = "sbp_pib_5y"
 source = "sbp_easydata"
 code = "TS_GP_BAM_SIRPIBS_AH.PIB0020"
 frequency = "as-needed"
-description = "Pakistan Investment Bond cut-off yield, tenor to be confirmed from the series name"
+description = "5-year Pakistan Investment Bond, auction cut-off yield, percent, dated by auction"
+published_name = "Pakistan Investment Bonds Cut-off Yield 5-Years"
+unit = "Percent"
 start = "2023-07-01"
 
+# Candidate codes; the State Bank's series name in each file decides what they are.
 [[series]]
-key = "sbp_pib_pib0030"
+key = "sbp_probe_tb0005"
 source = "sbp_easydata"
-code = "TS_GP_BAM_SIRPIBS_AH.PIB0030"
+code = "TS_GP_BAM_SIRTBIL_AH.TB0005"
 frequency = "as-needed"
-description = "Pakistan Investment Bond cut-off yield, tenor to be confirmed from the series name"
-start = "2023-07-01"
+description = "Candidate code, tenor to be confirmed from the series name"
+start = "2026-01-01"
 
 [[series]]
-key = "sbp_pib_pib0050"
+key = "sbp_probe_tb0010"
 source = "sbp_easydata"
-code = "TS_GP_BAM_SIRPIBS_AH.PIB0050"
+code = "TS_GP_BAM_SIRTBIL_AH.TB0010"
 frequency = "as-needed"
-description = "Pakistan Investment Bond cut-off yield, tenor to be confirmed from the series name"
-start = "2023-07-01"
+description = "Candidate code, tenor to be confirmed from the series name"
+start = "2026-01-01"
+
+[[series]]
+key = "sbp_probe_tb0015"
+source = "sbp_easydata"
+code = "TS_GP_BAM_SIRTBIL_AH.TB0015"
+frequency = "as-needed"
+description = "Candidate code, tenor to be confirmed from the series name"
+start = "2026-01-01"
+
+[[series]]
+key = "sbp_probe_tb0020"
+source = "sbp_easydata"
+code = "TS_GP_BAM_SIRTBIL_AH.TB0020"
+frequency = "as-needed"
+description = "Candidate code, tenor to be confirmed from the series name"
+start = "2026-01-01"
+
+[[series]]
+key = "sbp_probe_pib0005"
+source = "sbp_easydata"
+code = "TS_GP_BAM_SIRPIBS_AH.PIB0005"
+frequency = "as-needed"
+description = "Candidate code, tenor to be confirmed from the series name"
+start = "2026-01-01"
+
+[[series]]
+key = "sbp_probe_pib0015"
+source = "sbp_easydata"
+code = "TS_GP_BAM_SIRPIBS_AH.PIB0015"
+frequency = "as-needed"
+description = "Candidate code, tenor to be confirmed from the series name"
+start = "2026-01-01"
 
 # Not yet mapped: the official code is identified from the publisher's catalogue first.
 [[series]]

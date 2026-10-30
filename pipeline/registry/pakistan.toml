@@ -103,6 +103,7 @@ description = "Large-scale manufacturing quantum index, overall (base 2015-16)"
 published_name = "Quantum Index - Overall"
 unit = "Index"
 start = "2015-07-01"
+status = "confirmed"
 
 [[series]]
 key = "sbp_bop_current_account"
@@ -155,6 +156,7 @@ source = "imf_weo"
 code = "NGDP_RPCH"
 frequency = "annual"
 description = "Real GDP growth, percent; later years are IMF projections"
+status = "confirmed"
 
 [[series]]
 key = "imf_cpi_inflation"
@@ -625,6 +627,35 @@ section = "fiscal"
 unit = "percent of GDP"
 series = ["fd_primary_balance"]
 status = "unmapped"
+
+# ---------------------------------------------------------------- charts
+# Histories drawn on the page, exactly as published.
+
+[[charts]]
+key = "lsm_fy_months"
+label = "Large-scale manufacturing index by month, this fiscal year and last"
+series = "sbp_lsm_index"
+transform = "fy_months@1"
+status = "confirmed"
+confirmed = "30 Oct 2026: series name 'Quantum Index - Overall' and unit 'Index' as published by SBP; values drawn as published, no calculation"
+
+[[charts]]
+key = "imf_growth_path"
+label = "Real GDP growth by fiscal year, IMF World Economic Outlook"
+series = "imf_real_gdp_growth"
+transform = "fy_years@1"
+years_back = 9
+status = "confirmed"
+confirmed = "30 Oct 2026: years are fiscal years by their end year; IMF values match PBS for FY21 (5.8), FY22 (6.2) and FY23 (-0.2), and FY26 is 3.6 against PBS 3.65"
+
+[[charts]]
+key = "cpi_yoy_recent"
+label = "National CPI inflation, year on year, last 24 months"
+series = "sbp_cpi_yoy_national"
+transform = "recent@1"
+n = 24
+status = "confirmed"
+confirmed = "30 Oct 2026: same confirmed series as cpi_yoy; used to check the inflation chart"
 
 # Totals that must add up, checked every run once all parts are mapped. Example:
 # [[identities]]

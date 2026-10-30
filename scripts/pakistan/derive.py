@@ -5,7 +5,9 @@ Official figures from the data pipeline (_data/pakistan/pipeline.json) take the
 place of interim ones wherever both exist.
 
 Writes _data/pakistan/derived.json (year-to-date changes, real interest
-rates, gaps to targets, peers' real rates). The page shows these figures but
+rates, gaps to targets, peers' real rates, and the moves shown beside the
+headline tiles: green when better for the economy, red when worse, grey when
+the direction alone is shown). The page shows these figures but
 never computes them, so every number on the site traces to a data file.
 
 Usage:
@@ -40,6 +42,88 @@ def pp(x):
 
 def tone(good):
     return "good" if good else "bad"
+
+
+# Moves shown beside the headline tiles. "better" is the direction that is good for Pakistan's
+# economy; None means the arrow shows direction only (grey). Official figures take their
+# comparison from the pipeline; interim ones from the row's "change" and "change_basis".
+MOVES = {
+    "cpi_yoy": {"better": "down", "unit": "pp"},
+    "core_urban": {"better": "down", "unit": "pp"},
+    "policy_rate": {"better": None, "unit": "bp"},
+    "tbill_12m": {"better": None, "unit": "bp"},
+    "sbp_res": {"better": "up", "unit": "usd_bn"},
+    "ca_fytd": {"better": "up", "unit": "usd_m"},
+    "rem_m": {"better": "up", "unit": "pct"},
+}
+MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def half_up(x, decimals):
+    from decimal import ROUND_HALF_UP, Decimal
+    return float(Decimal(repr(x)).quantize(Decimal(1).scaleb(-decimals), rounding=ROUND_HALF_UP))
+
+
+def magnitude(change, unit):
+    a = abs(change)
+    if unit == "pp":
+        return f"{half_up(a, 1):.1f} pp"
+    if unit == "bp":
+        return f"{half_up(a * 100, 0):.0f} bp"
+    if unit == "pct":
+        return f"{half_up(a, 1):.1f}%"
+    if unit == "usd_m":
+        return f"${half_up(a, 0):,.0f}m"
+    if unit == "usd_bn":
+        return f"${half_up(a, 2):.2f}bn" if a >= 1 else f"${half_up(a * 1000, 0):,.0f}m"
+    raise ValueError(unit)
+
+
+def official_comparison(rec):
+    """Change and basis for an official figure, from the comparisons the pipeline computed."""
+    items = {c["kind"]: c for c in rec.get("context_items", [])}
+    c = items.get("previous") or items.get("year_ago")
+    if not c:
+        return None
+    if c["kind"] == "year_ago":
+        basis = "y/y"
+    elif len(c["period"]) == 7:
+        basis = "vs " + MONTHS[int(c["period"][5:]) - 1]
+    elif len(c["period"]) == 10:
+        basis = "d/d"
+    else:
+        basis = "vs " + c["period"]
+    return rec["value"] - c["value"], basis
+
+
+def moves():
+    rows = {r["key"]: r for r in load("indicators")}
+    path = DATA / "pipeline.json"
+    official = json.loads(path.read_text(encoding="utf-8")).get("indicators", {}) if path.exists() else {}
+    out = []
+    for key, rule in MOVES.items():
+        if key in official:
+            comp = official_comparison(official[key])
+        elif rows.get(key, {}).get("change") is not None:
+            comp = (float(rows[key]["change"]), rows[key]["change_basis"])
+        else:
+            comp = None
+        if comp is None:
+            continue
+        change, basis = comp
+        shown = magnitude(change, rule["unit"])
+        flat = magnitude(0, rule["unit"]) == shown  # rounds to nothing at the precision shown
+        direction = "flat" if flat else ("up" if change > 0 else "down")
+        if direction == "flat" or rule["better"] is None:
+            tone = "neutral"
+        else:
+            tone = "good" if direction == rule["better"] else "bad"
+        meaning = {"good": "better for the economy", "bad": "worse for the economy", "neutral": "direction only"}[tone]
+        word = {"up": "Up", "down": "Down", "flat": "Unchanged"}[direction]
+        out.append({"key": key, "change": round(change, 6), "direction": direction, "tone": tone,
+                    "display": f"{shown} {basis}" if direction != "flat" else f"unchanged {basis}",
+                    "title": f"{word} {shown} {basis}: {meaning}" if direction != "flat" else f"Unchanged {basis}"})
+    return out
 
 
 def indicators():
@@ -92,7 +176,7 @@ def derive():
         r1 = round(r, 1)
         peers.append({"country": p["country"], "value": round(r, 4), "display": pp(r),
                       "tone": "good" if r1 > 0 else ("bad" if r1 < 0 else "neutral")})
-    return {"figures": rows, "peer_real_rates": peers}
+    return {"figures": rows, "peer_real_rates": peers, "moves": moves()}
 
 
 def main():

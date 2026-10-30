@@ -61,6 +61,13 @@ def render_markdown(reg: Registry, log: RunLog, interim: dict, published: bool) 
             "| Indicator | Value | Period | Calculation | Interim on the page | State |",
             "|---|---:|---|---|---|---|"]
     out += ["| " + " | ".join(r) + " |" for r in _value_rows(reg, log, interim)]
+    if log.charts:
+        out += ["", "## Charts", "", "| Chart | Points | Span | State |", "|---|---:|---|---|"]
+        for key, res in log.charts.items():
+            state = "published" if f"chart {key}" in log.published else (
+                "held" if reg.charts[key].status != "confirmed" else "not published")
+            span = f"{res.points[0]['period']} to {res.points[-1]['period']}" if res.points else ""
+            out.append(f"| {key} | {len(res.points)} | {span} | {state} |")
     if log.not_computed:
         out += ["", "Not computed:", ""] + [f"- {k}: {v}" for k, v in log.not_computed.items()]
     if log.carried:

@@ -1,10 +1,22 @@
+{%- comment -%}
+  A headline tile. The move beside the value (derived.json "moves") is coloured green when it is
+  better for the economy, red when worse, grey when only the direction is shown.
+{%- endcomment -%}
+{%- assign _pv_mv = site.data.pakistan.derived.moves | where: "key", include.key | first -%}
+{%- assign _pv_note = "" -%}
+{%- unless site.data.pakistan.pipeline.indicators[include.key] -%}
+  {%- assign _pv_tr = site.data.pakistan.indicators | where: "key", include.key | first -%}
+  {%- if _pv_tr.tile_note -%}{%- assign _pv_note = _pv_tr.tile_note -%}{%- endif -%}
+{%- endunless -%}
 <div class="pv-tile">
   <div class="pv-tile-label">{{ include.label }}{% include pakistan/status.html key=include.key %}</div>
-  <div class="pv-tile-value">{% include pakistan/value.html key=include.key %}</div>
+  <div class="pv-tile-value">{% include pakistan/value.html key=include.key %}{% if _pv_mv %}<span class="pv-mv pv-mv-{{ _pv_mv.tone }} pv-mv-{{ _pv_mv.direction }}" title="{{ _pv_mv.title }}">{{ _pv_mv.display }}<span class="pv-vh"> ({{ _pv_mv.title | split: ": " | last }})</span></span>{% endif %}</div>
   <div class="pv-tile-foot">
     <span>{% include pakistan/value.html key=include.key field="period" %}</span>
     {%- if include.change %}
     <span class="{% include pakistan/tone.html key=include.change %}">{% include pakistan/value.html key=include.change derived=true %}</span>
+    {%- elsif _pv_note != "" %}
+    <span>{{ _pv_note }}</span>
     {%- else %}
     <span>{% include pakistan/value.html key=include.key field="context" %}</span>
     {%- endif %}

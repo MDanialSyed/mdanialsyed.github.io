@@ -47,6 +47,9 @@ def unconfirmed(reg):
     for k, s in reg.series.items():
         if s.status == "confirmed":
             reg.series[k] = dataclasses.replace(s, status="needs-confirmation")
+    for k, c in reg.charts.items():
+        if c.status == "confirmed":
+            reg.charts[k] = dataclasses.replace(c, status="needs-confirmation")
     return reg
 
 
@@ -64,6 +67,7 @@ def run(reg, data, site, fetcher):
     log = build.RunLog(build.new_run_id())
     build.fetch(reg, data, log, fetcher=fetcher)
     build.compute_all(reg, data, log, today=TODAY)
+    build.compute_charts(reg, data, log, today=TODAY)
     build.run_checks(reg, data, log, build.load_previous(site), TODAY)
     log.archive_problems = Archive(data).verify()
     build.publish(reg, log, site_data=site)
@@ -124,6 +128,8 @@ def test_end_to_end(tmp_path, key):
     assert {"lsm_m", "repo_on", "imf_gdp_proj"} <= held
     assert "lsm_m" in log.results and "lsm_m" not in doc["indicators"]
     assert "cpi_mom" not in log.results  # unmapped: no series code yet
+    assert doc["charts"] == {}  # charts unconfirmed in this test
+
     reg_doc = json.loads((site / "registry.json").read_text())
     assert any(s["publisher"] == "State Bank of Pakistan" for s in reg_doc["sources"])
     md = (folder / "report.md").read_text()
@@ -199,3 +205,16 @@ def test_download_then_build_split(tmp_path, key):
     assert later.fetched.keys() == log.fetched.keys()
     assert later.changes["sbp_cpi_yoy_national"].new == log.changes["sbp_cpi_yoy_national"].new
     assert TEST_KEY not in all_text(data)
+
+
+def test_charts_published_with_lineage(tmp_path, key):
+    data, site = tmp_path / "data", tmp_path / "site"
+    reg = load_registry()  # the real registry: its confirmed charts are published
+    log, _ = run(reg, data, site, FakeFetcher(routes()))
+    charts = json.loads((site / "pipeline.json").read_text())["charts"]
+    assert set(charts) == {"lsm_fy_months", "cpi_yoy_recent"}  # synthetic IMF data stops at 2027 but starts 2025
+    lsm = charts["lsm_fy_months"]
+    assert lsm["series_code"] == "TS_GP_RL_LSM1516_M.LSM000160000" and lsm["files"][0]["sha256"]
+    assert {p["fy"] for p in lsm["points"]} == {"FY26", "FY27"}
+    assert len(charts["cpi_yoy_recent"]["points"]) == 24
+    assert "chart imf_growth_path" in log.not_computed

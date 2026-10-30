@@ -203,6 +203,25 @@ def main():
         if r.get("carried_forward"):
             warnings.append(f"pipeline figure '{k}' was not refreshed in the last run")
     data["pipeline"] = [{"value": r.get("value"), "display": r.get("display")} for r in pipeline.values()]
+    charts = load(DATA / "pipeline.json").get("charts", {}) if (DATA / "pipeline.json").exists() else {}
+    for k, c in charts.items():
+        if not c.get("points") or not c.get("files") or not all(re.fullmatch(r"[0-9a-f]{64}", f.get("sha256", "")) for f in c["files"]):
+            errors.append(f"pipeline chart '{k}' has no points or incomplete lineage")
+    data["pipeline_charts"] = [[p.get("value") for p in c.get("points", [])] for c in charts.values()]
+
+    # 2c. Cross-source: the hand-entered inflation history must match the State Bank's series
+    official_cpi = {p["period"]: p["value"] for p in charts.get("cpi_yoy_recent", {}).get("points", [])}
+    for r in data.get("cpi_policy", []):
+        m, v = str(r.get("month"))[:7], r.get("cpi_yoy")
+        if v is not None and m in official_cpi and abs(float(v) - float(official_cpi[m])) > 1e-9:
+            errors.append(f"cpi_policy.json {m}: CPI {v} differs from the State Bank's {official_cpi[m]}")
+    if official_cpi:
+        notes.append("### Cross-source\n- The inflation chart's monthly CPI matches the State Bank's series.")
+
+    # 2d. Moves beside the headline tiles: interim rows that carry a change need a basis
+    for r in ind:
+        if r.get("change") is not None and not str(r.get("change_basis", "")).strip():
+            errors.append(f"indicator '{r.get('key')}' has a change but no change_basis")
 
     # 3. Derived figures
     res = subprocess.run([sys.executable, str(ROOT / "scripts/pakistan/derive.py"), "--check"],
@@ -238,18 +257,24 @@ def main():
             warnings.append(f"no baseline found at {bpath}")
 
     # 5. The headline takeaway and the newest note may only quote numbers that are in the data
+    # The page's written analysis (takeaway, "what it means", chart commentary) may only quote
+    # numbers that are in the data; so it is left out of the numbers it is checked against.
+    written = {"takeaway": str(meta.get("takeaway", "")), "so_what": str(meta.get("so_what", ""))}
+    for k, v in (meta.get("commentary") or {}).items():
+        written[f"commentary.{k}"] = str(v)
     known = set()
     for name, rows in data.items():
         if name == "meta":
-            rows = {k: v for k, v in rows.items() if k != "takeaway"}
+            rows = {k: v for k, v in rows.items() if k not in ("takeaway", "so_what", "commentary")}
         collect_numbers(rows, known)
-    takeaway = str(meta.get("takeaway", ""))
-    if not takeaway.strip():
+    if not written["takeaway"].strip():
         errors.append("meta.json needs a one-sentence takeaway")
-    else:
-        unknown = sorted(n for n in numbers_in(takeaway) if n not in known)
+    if not written["so_what"].strip():
+        errors.append("meta.json needs a one- or two-sentence so_what")
+    for field, text in written.items():
+        unknown = sorted(n for n in numbers_in(text) if n not in known)
         if unknown:
-            errors.append("meta.json takeaway quotes numbers that are not in the data: " + ", ".join(f"{n:g}" for n in unknown))
+            errors.append(f"meta.json {field} quotes numbers that are not in the data: " + ", ".join(f"{n:g}" for n in unknown))
     if NOTES.exists():
         latest = sorted(NOTES.glob("*.md"))
         if latest:

@@ -16,6 +16,7 @@ extra_css: ["/assets/pakistan/pakistan.css"]
   <a href="{{ '/pakistan/' | relative_url }}">Dashboard</a>
   <a href="{{ '/pakistan/methodology/' | relative_url }}">How the figures are made</a>
   <a href="{{ '/pakistan/corrections/' | relative_url }}">Corrections</a>
+  <a href="#charts">Charts</a>
   <a href="#publishers">Data sources</a>
 </nav>
 
@@ -54,6 +55,27 @@ extra_css: ["/assets/pakistan/pakistan.css"]
   {%- endfor %}
   <p class="pv-note">Charts and the tables below the headline figures (inflation history, the yield curve, reserves, the external accounts, neighbours and forecasters) are interim, with a source on every row. They move to official feeds after the headline figures.</p>
 </section>
+
+{%- if pv.pipeline.charts.size > 0 %}
+<section class="pv-sec" id="charts">
+  <h2 class="pv-h2">Charts from official data feeds</h2>
+  <div class="pv-tablewrap">
+    <table class="pv-table pv-srct">
+      <thead><tr><th>Chart</th><th>Status</th><th>Source</th></tr></thead>
+      <tbody>
+        {%- for pair in pv.pipeline.charts %}
+        {%- assign c = pair[1] %}
+        <tr id="chart-{{ c.key }}">
+          <td>{{ c.label }}</td>
+          <td class="pv-nowrap"><span class="pv-st pv-st-off"></span>Official feed</td>
+          <td>{{ c.publisher }}, {{ c.dataset }}<span class="pv-sub">Series <code>{{ c.series_code }}</code> · calculation <a href="{{ '/pakistan/methodology/' | relative_url }}#calc-{{ c.calc | split: '@' | first }}"><code>{{ c.calc }}</code></a> · downloaded {{ c.retrieved_at | date: "%-d %b %Y" }} · file {% for f in c.files %}<code title="SHA-256 fingerprint of the archived file">{{ f.sha256 | slice: 0, 12 }}</code>{% endfor %}</span></td>
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{%- endif %}
 
 <section class="pv-sec" id="publishers">
   <h2 class="pv-h2">Data sources</h2>

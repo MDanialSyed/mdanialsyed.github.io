@@ -81,5 +81,63 @@
       "display": "+5.1 pp",
       "tone": "good"
     }
+  ],
+  "moves": [
+    {
+      "key": "cpi_yoy",
+      "change": -0.8,
+      "direction": "down",
+      "tone": "good",
+      "display": "0.8 pp vs Aug",
+      "title": "Down 0.8 pp vs Aug: better for the economy"
+    },
+    {
+      "key": "core_urban",
+      "change": -0.2,
+      "direction": "down",
+      "tone": "good",
+      "display": "0.2 pp vs Aug",
+      "title": "Down 0.2 pp vs Aug: better for the economy"
+    },
+    {
+      "key": "policy_rate",
+      "change": 0.5,
+      "direction": "up",
+      "tone": "neutral",
+      "display": "50 bp on 26 Oct",
+      "title": "Up 50 bp on 26 Oct: direction only"
+    },
+    {
+      "key": "tbill_12m",
+      "change": 0.89,
+      "direction": "up",
+      "tone": "neutral",
+      "display": "89 bp vs 16 Sep",
+      "title": "Up 89 bp vs 16 Sep: direction only"
+    },
+    {
+      "key": "sbp_res",
+      "change": 0.033,
+      "direction": "up",
+      "tone": "good",
+      "display": "$33m w/w",
+      "title": "Up $33m w/w: better for the economy"
+    },
+    {
+      "key": "ca_fytd",
+      "change": -119.0,
+      "direction": "down",
+      "tone": "bad",
+      "display": "$119m y/y",
+      "title": "Down $119m y/y: worse for the economy"
+    },
+    {
+      "key": "rem_m",
+      "change": 12.7,
+      "direction": "up",
+      "tone": "good",
+      "display": "12.7% y/y",
+      "title": "Up 12.7% y/y: better for the economy"
+    }
   ]
 }

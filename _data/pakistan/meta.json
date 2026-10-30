@@ -4,6 +4,11 @@
   "asof_iso": "2026-10-30",
   "notes": "Official figures are downloaded from the publishers' own data services and calculated by code; interim figures are read from SBP, PBS, Finance Ministry and FBR releases, market closes, and news reports of them. Every figure shows its source.",
   "takeaway": "Inflation of 10.3% is well above the State Bank's 5–7% target, so the policy rate is back up at 12.00%. Buffers are thicker, with SBP reserves at $21.52bn, but the current account has slipped back into deficit: −$874m in July–September.",
+  "so_what": "Expensive oil is squeezing Pakistan from both sides, keeping prices high at home and widening the trade gap, and the State Bank has chosen to fight inflation even at some cost to growth. Expect borrowing to stay costly for a while; the external account is the risk to watch, with thicker reserves as the cushion.",
+  "commentary": {
+    "inflation": "Inflation was below the 5–7% target band in mid-2025 and inside it through the winter, then jumped from 7.3% in March to 10.9% in April 2026 and has stayed between 9.2% and 11.7% since. The State Bank cut its rate to 10.5% in December, raised it to 11.5% in April and to 12.00% this week, leaving it 1.7 points above inflation: positive, but a thin cushion if oil keeps pushing prices up.",
+    "growth": "Factory output in July and August ran slightly above last year's level, so manufacturing is growing, but slowly. The IMF expects growth of 3.5% this fiscal year, about the same as last year and well below the 6.2% of FY22: a recovery, but a modest one, and higher interest rates make a faster one less likely."
+  },
   "curve": {
     "latest": "Latest auctions",
     "previous": "Mid-September",

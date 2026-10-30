@@ -88,7 +88,7 @@
       "key": "cpi_yoy",
       "label": "CPI inflation, national (y/y)",
       "unit": "percent",
-      "status": "needs-confirmation",
+      "status": "confirmed",
       "section": "inflation",
       "calc": "as_published@1",
       "series": [
@@ -173,7 +173,7 @@
       "key": "ca_m",
       "label": "Current account balance",
       "unit": "US$ million",
-      "status": "needs-confirmation",
+      "status": "confirmed",
       "section": "external",
       "calc": "as_published@1",
       "series": [
@@ -190,7 +190,7 @@
       "key": "ca_fytd",
       "label": "Current account balance, fiscal year to date",
       "unit": "US$ million",
-      "status": "needs-confirmation",
+      "status": "confirmed",
       "section": "external",
       "calc": "fytd_sum@1",
       "series": [
@@ -207,7 +207,7 @@
       "key": "repo_on",
       "label": "Overnight repo, weighted average",
       "unit": "percent",
-      "status": "needs-confirmation",
+      "status": "confirmed",
       "section": "markets",
       "calc": "as_published@1",
       "series": [

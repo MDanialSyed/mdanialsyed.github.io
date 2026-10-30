@@ -92,6 +92,7 @@ description = "National CPI inflation, year on year, percent (Inflation Snapshot
 published_name = "National CPI; an Inflation Measure (Year-on-Year basis)"
 unit = "Percent"
 start = "2015-07-01"
+status = "confirmed"
 
 [[series]]
 key = "sbp_lsm_index"
@@ -112,6 +113,7 @@ description = "Balance of payments summary (BPM6): current account balance, US$ 
 published_name = "BOP-BPM6-Current account balance"
 unit = "Million USD"
 start = "2015-07-01"
+status = "confirmed"
 
 [[series]]
 key = "sbp_repo_rate"
@@ -122,6 +124,7 @@ description = "Money market: weighted-average overnight repo rate, percent"
 published_name = "Weighted-average Overnight Repo Rate"
 unit = "Percent"
 start = "2024-07-01"
+status = "confirmed"
 
 [[series]]
 key = "sbp_cpi_mom_national"
@@ -332,6 +335,8 @@ range = [-5.0, 60.0]
 jump_abs = 5.0
 max_age_days = 70
 confirm = "Must match the national y/y in the PBS CPI release for the same month, to one decimal."
+status = "confirmed"
+confirmed = "30 Oct 2026: Sep 2026 = 10.3%, as in the PBS CPI release"
 
 [[indicators]]
 key = "cpi_mom"
@@ -361,7 +366,7 @@ display = { decimals = 2, suffix = "%", plus = true }
 range = [-50.0, 50.0]
 jump_abs = 20.0
 max_age_days = 100
-confirm = "Must match the month's y/y in the PBS LSM release, to two decimals."
+confirm = "Must match the month's y/y in the PBS LSM release, to two decimals. 30 Oct 2026: +0.66% from the index vs +0.67% published for Aug 2026; the index is rounded to two decimals, so map the published growth series instead."
 
 [[indicators]]
 key = "lsm_fytd"
@@ -375,7 +380,7 @@ display = { decimals = 2, suffix = "%", plus = true }
 range = [-50.0, 50.0]
 jump_abs = 20.0
 max_age_days = 100
-confirm = "Must match the fiscal-year-to-date y/y in the PBS LSM release, to two decimals."
+confirm = "Must match the fiscal-year-to-date y/y in the PBS LSM release, to two decimals. 30 Oct 2026: +1.85% matches Jul-Aug FY27, but it is worked out from the same rounded index as lsm_m, so it waits for the published growth series."
 
 [[indicators]]
 key = "ca_m"
@@ -390,6 +395,8 @@ range = [-5000.0, 5000.0]
 jump_abs = 2500.0
 max_age_days = 60
 confirm = "Must match the month's current account balance in SBP's balance of payments summary."
+status = "confirmed"
+confirmed = "30 Oct 2026: Sep 2026 = -356 and Aug 2026 = -73, as in SBP's balance of payments summary"
 
 [[indicators]]
 key = "ca_fytd"
@@ -403,6 +410,8 @@ display = { decimals = 0, prefix = "$", suffix = "m" }
 range = [-25000.0, 15000.0]
 max_age_days = 60
 confirm = "Must match the fiscal-year-to-date balance in SBP's summary; SBP revises earlier months, so a small gap points to a revision."
+status = "confirmed"
+confirmed = "30 Oct 2026: Jul-Sep FY27 = -874, as in SBP's balance of payments summary"
 
 [[indicators]]
 key = "repo_on"
@@ -417,6 +426,8 @@ range = [0.0, 30.0]
 jump_abs = 3.0
 max_age_days = 7
 confirm = "Check that this series is the weighted-average overnight repo rate SBP shows on its home page."
+status = "confirmed"
+confirmed = "30 Oct 2026: 28 Oct = 11.49%, as shown on SBP's home page; series name confirms it is the weighted-average overnight repo rate"
 
 [[indicators]]
 key = "wb_gdp_usd"

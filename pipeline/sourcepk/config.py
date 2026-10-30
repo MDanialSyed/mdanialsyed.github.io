@@ -66,6 +66,7 @@ class Indicator:
     jump_rel: float | None = None
     max_age_days: int | None = None
     confirm: str = ""
+    confirmed: str = ""       # when and against what the values were checked
     section: str = ""
     period_format: str = ""   # "" (from the period), "fytd" or "fy_end_year"
     value_scale: float = 1.0  # converts the publisher's unit to the page's (0.001: US$ million to billion)

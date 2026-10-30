@@ -39,7 +39,19 @@ def routes(cpi=None, ca_last=-356.0):
     }
 
 
+def unconfirmed(reg):
+    """The real registry with every confirmation undone, so tests choose what is confirmed."""
+    for k, ind in reg.indicators.items():
+        if ind.status == "confirmed":
+            reg.indicators[k] = dataclasses.replace(ind, status="needs-confirmation")
+    for k, s in reg.series.items():
+        if s.status == "confirmed":
+            reg.series[k] = dataclasses.replace(s, status="needs-confirmation")
+    return reg
+
+
 def confirmed(reg, *keys):
+    reg = unconfirmed(reg)
     for k in keys:
         ind = reg.indicators[k]
         reg.indicators[k] = dataclasses.replace(ind, status="confirmed")

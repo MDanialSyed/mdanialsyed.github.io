@@ -1,0 +1,12 @@
+<div class="pv-tile">
+  <div class="pv-tile-label">{{ include.label }}</div>
+  <div class="pv-tile-value">{% include pakistan/value.html key=include.key %}</div>
+  <div class="pv-tile-foot">
+    <span>{% include pakistan/value.html key=include.key field="period" %}</span>
+    {%- if include.change %}
+    <span class="{% include pakistan/tone.html key=include.change %}">{% include pakistan/value.html key=include.change derived=true %}</span>
+    {%- else %}
+    <span>{% include pakistan/value.html key=include.key field="context" %}</span>
+    {%- endif %}
+  </div>
+</div>

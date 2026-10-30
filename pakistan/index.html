@@ -1,0 +1,312 @@
+---
+layout: pakistan
+title: "Source: Pakistan"
+description: Pakistan's key economic figures, each linked to its official source
+noindex: true
+sitemap: false
+extra_css: ["/assets/pakistan/pakistan.css"]
+feed_url: "/pakistan/feed.xml"
+feed_title: "Source: Pakistan notes"
+---
+{%- assign pv = site.data.pakistan -%}
+{%- assign latest_note = site.pakistan_notes | sort: "date" | last -%}
+
+<p class="pv-take">{{ pv.meta.takeaway }}</p>
+
+<nav class="pv-nav" aria-label="Sections">
+  <a href="#key">Key indicators</a>
+  <a href="#questions">Four questions</a>
+  <a href="#scorecard">Scorecard</a>
+  <a href="#growth">Growth</a>
+  <a href="#inflation">Inflation</a>
+  <a href="#markets">Rates &amp; markets</a>
+  <a href="#external">External</a>
+  <a href="#fiscal">Budget &amp; IMF</a>
+  <a href="#peers">Neighbours</a>
+  <a href="#views">Forecasters</a>
+  <a href="{{ '/pakistan/notes/' | relative_url }}">Weekly notes</a>
+</nav>
+
+<section class="pv-sec" id="key">
+  <h2 class="pv-h2">Key indicators</h2>
+  <div class="pv-tiles">
+    {% include pakistan/tile.html label="Real GDP growth" key="gdp_fy" %}
+    {% include pakistan/tile.html label="CPI inflation" key="cpi_yoy" %}
+    {% include pakistan/tile.html label="Core inflation, urban" key="core_urban" %}
+    {% include pakistan/tile.html label="SBP policy rate" key="policy_rate" %}
+    {% include pakistan/tile.html label="12-month T-bill" key="tbill_12m" %}
+    {% include pakistan/tile.html label="10-year PIB" key="pib_10y" %}
+    {% include pakistan/tile.html label="Rupees per dollar" key="usdpkr" change="pkr_ytd" %}
+    {% include pakistan/tile.html label="SBP reserves" key="sbp_res" %}
+    {% include pakistan/tile.html label="Current account, year to date" key="ca_fytd" %}
+    {% include pakistan/tile.html label="Remittances" key="rem_m" %}
+    {% include pakistan/tile.html label="KSE-100" key="kse100" change="kse_ytd" %}
+    {% include pakistan/tile.html label="Brent crude" key="brent" %}
+  </div>
+
+  <div class="pv-grid pv-grid-tight">
+    {%- if latest_note %}
+    <a class="pv-card pv-notecard" href="{{ latest_note.url | relative_url }}">
+      <span class="pv-kicker-dark">This week's note · {{ latest_note.date | date: '%-d %b %Y' }}</span>
+      <h3>{{ latest_note.title }}</h3>
+      {%- if latest_note.subtitle %}<p>{{ latest_note.subtitle }}</p>{% endif %}
+      <span class="pv-go">Read the note →</span>
+    </a>
+    {%- endif %}
+    <div class="pv-card">
+      <h3>Coming up</h3>
+      <div class="pv-tablewrap">
+        <table class="pv-table pv-table-compact">
+          <tbody>
+            {%- for c in pv.calendar %}
+            <tr>
+              <td class="pv-muted pv-nowrap">{{ c.when }}</td>
+              <td><span class="pv-strong">{{ c.event }}</span><span class="pv-muted pv-hide-sm"> · {{ c.note }}</span></td>
+            </tr>
+            {%- endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pv-sec" id="questions">
+  <h2 class="pv-h2">The economy in four questions</h2>
+  <div class="pv-grid">
+    <div class="pv-card pv-q">
+      <h3>Is inflation coming back to the {% include pakistan/value.html key="cpi_target" %} target?</h3>
+      <dl>
+        <div class="pv-row"><dt>Headline CPI, past 12 months</dt><dd>{% include pakistan/value.html key="cpi_yoy" %}</dd></div>
+        <div class="pv-row"><dt>Core, urban (no food or energy)</dt><dd>{% include pakistan/value.html key="core_urban" %}</dd></div>
+        <div class="pv-row"><dt>Weekly essentials basket (SPI)</dt><dd>{% include pakistan/value.html key="spi" %}</dd></div>
+        <div class="pv-row"><dt>Real policy rate, vs headline</dt><dd class="{% include pakistan/tone.html key="real_headline" %}">{% include pakistan/value.html key="real_headline" derived=true %}</dd></div>
+        <div class="pv-row"><dt>Real policy rate, vs core</dt><dd class="{% include pakistan/tone.html key="real_core" %}">{% include pakistan/value.html key="real_core" derived=true %}</dd></div>
+      </dl>
+      <p>The SBP targets headline CPI; core strips out food and energy to show the underlying trend. The real rate is the policy rate minus inflation: positive means policy is actually tight.</p>
+      <a class="pv-go" href="#inflation">Inflation →</a>
+    </div>
+    <div class="pv-card pv-q">
+      <h3>Are the external buffers holding?</h3>
+      <dl>
+        <div class="pv-row"><dt>SBP reserves</dt><dd>{% include pakistan/value.html key="sbp_res" %}</dd></div>
+        <div class="pv-row"><dt>Gap to the end-December goal</dt><dd>{% include pakistan/value.html key="res_gap" derived=true %}</dd></div>
+        <div class="pv-row"><dt>Current account, fiscal year to date</dt><dd>{% include pakistan/value.html key="ca_fytd" %}</dd></div>
+        <div class="pv-row"><dt>Remittances, fiscal year to date</dt><dd>{% include pakistan/value.html key="rem_fytd" %}</dd></div>
+        <div class="pv-row"><dt>Goods trade deficit, year to date</dt><dd>{% include pakistan/value.html key="trade_fytd" %}</dd></div>
+      </dl>
+      <p>Reserves are what stand between an oil shock and a run on the rupee. Remittances from workers abroad pay for most of the goods trade gap.</p>
+      <a class="pv-go" href="#external">External →</a>
+    </div>
+    <div class="pv-card pv-q">
+      <h3>Is growth picking up?</h3>
+      <dl>
+        <div class="pv-row"><dt>Real GDP, last fiscal year</dt><dd>{% include pakistan/value.html key="gdp_fy" %}</dd></div>
+        <div class="pv-row"><dt>Latest quarter</dt><dd>{% include pakistan/value.html key="gdp_q" %}</dd></div>
+        <div class="pv-row"><dt>Large-scale manufacturing, year to date</dt><dd>{% include pakistan/value.html key="lsm_fytd" %}</dd></div>
+        <div class="pv-row"><dt>Private-sector credit, y/y</dt><dd>{% include pakistan/value.html key="pvt_credit" %}</dd></div>
+        <div class="pv-row"><dt>SBP projection, this fiscal year</dt><dd>{% include pakistan/value.html key="gdp_proj" %}</dd></div>
+      </dl>
+      <p>Pakistan's fiscal year runs July to June. Quarterly GDP shows the economy's pace; large-scale manufacturing and credit are the faster monthly reads.</p>
+      <a class="pv-go" href="#growth">Growth →</a>
+    </div>
+    <div class="pv-card pv-q">
+      <h3>Is the budget squeeze holding?</h3>
+      <dl>
+        <div class="pv-row"><dt>Primary surplus, last fiscal year</dt><dd>{% include pakistan/value.html key="primary_fy" %}</dd></div>
+        <div class="pv-row"><dt>Overall deficit, last fiscal year</dt><dd>{% include pakistan/value.html key="deficit_fy" %}</dd></div>
+        <div class="pv-row"><dt>FBR tax vs target, year to date</dt><dd class="{% include pakistan/tone.html key="fbr_gap" %}">{% include pakistan/value.html key="fbr_gap" derived=true %}</dd></div>
+        <div class="pv-row"><dt>Share of this year's tax target collected</dt><dd>{% include pakistan/value.html key="fbr_share" derived=true %}</dd></div>
+        <div class="pv-row"><dt>IMF fourth review</dt><dd>{% include pakistan/value.html key="imf_status" %}</dd></div>
+      </dl>
+      <p>The primary balance leaves out interest payments, so it shows what the government controls. It is the main fiscal test in the IMF programme.</p>
+      <a class="pv-go" href="#fiscal">Budget &amp; IMF →</a>
+    </div>
+  </div>
+</section>
+
+<section class="pv-sec" id="scorecard">
+  <h2 class="pv-h2">How Pakistan is doing against its own targets <span class="pv-badge">Our read</span></h2>
+  <p class="pv-lede">Each line sets the latest reading beside the target the State Bank, the government or the IMF has set for it. The status is this site's own call.</p>
+  <div class="pv-card">
+    <div class="pv-tablewrap">
+      <table class="pv-table">
+        <thead><tr><th>Measure</th><th>Latest</th><th>Target</th><th>Status</th><th class="pv-hide-sm">Why</th><th class="pv-hide-sm">Source</th></tr></thead>
+        <tbody>
+          {%- for s in pv.scorecard %}
+          <tr>
+            <td class="pv-strong">{{ s.item }}</td>
+            <td>{{ s.latest }}</td>
+            <td>{{ s.target }}</td>
+            <td class="pv-tone-{{ s.tone }}">{{ s.status }}</td>
+            <td class="pv-muted pv-hide-sm">{{ s.note }}</td>
+            <td class="pv-src pv-hide-sm"><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.source }}</a></td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="pv-sec" id="growth">
+  <h2 class="pv-h2">Growth &amp; activity</h2>
+  <div class="pv-grid">
+    <div class="pv-card">
+      <h3>Real GDP growth by quarter</h3>
+      <p class="pv-note">Year on year, from the National Accounts Committee's October revision. The dashed line is the full year.</p>
+      <div class="pv-chart" id="chart-gdp" role="img" aria-label="Bar chart of real GDP growth by quarter of FY26"></div>
+    </div>
+    <div class="pv-card">
+      <h3>Activity indicators</h3>
+      <p class="pv-note">Latest monthly reads on output, demand and credit.</p>
+      {% include pakistan/indicator-table.html section="growth" %}
+    </div>
+  </div>
+</section>
+
+<section class="pv-sec" id="inflation">
+  <h2 class="pv-h2">Inflation</h2>
+  <div class="pv-card">
+    <h3>Inflation and the policy rate</h3>
+    <p class="pv-note">CPI inflation, year on year, and the SBP policy rate at each month-end. The shaded band is the SBP's medium-term target.</p>
+    <div class="pv-chart pv-chart-wide" id="chart-cpi" role="img" aria-label="Line chart of CPI inflation and the SBP policy rate by month"></div>
+  </div>
+  <div class="pv-card pv-mt">
+    <h3>Inflation measures</h3>
+    <p class="pv-note">Headline, urban and rural, the SBP's core measures, and the weekly and wholesale price indices.</p>
+    {% include pakistan/indicator-table.html section="inflation" label_col="Measure" %}
+  </div>
+</section>
+
+<section class="pv-sec" id="markets">
+  <h2 class="pv-h2">Interest rates &amp; markets</h2>
+  <div class="pv-grid">
+    <div class="pv-card">
+      <h3>Government yield curve</h3>
+      <p class="pv-note">{{ pv.meta.curve.note }}</p>
+      <div class="pv-chart" id="chart-curve" role="img" aria-label="Line chart of government auction yields by tenor"></div>
+      <div class="pv-tablewrap">
+        <table class="pv-table pv-table-compact">
+          <thead><tr><th>Tenor</th><th class="pv-num">{{ pv.meta.curve.latest }}</th><th class="pv-num">{{ pv.meta.curve.previous }}</th></tr></thead>
+          <tbody>
+            {%- for y in pv.yield_curve %}
+            <tr><td>{{ y.tenor }}</td><td class="pv-num">{{ y.latest_display }}</td><td class="pv-num">{{ y.previous_display }}</td></tr>
+            {%- endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="pv-card">
+      <h3>Rates, currency, stocks and oil</h3>
+      <p class="pv-note">Policy settings, money-market and bond yields, and market closes.</p>
+      {% include pakistan/indicator-table.html section="markets" label_col="Market" %}
+    </div>
+  </div>
+</section>
+
+<section class="pv-sec" id="external">
+  <h2 class="pv-h2">External account &amp; reserves</h2>
+  <div class="pv-grid">
+    <div class="pv-card">
+      <h3>SBP reserves and the Governor's goals</h3>
+      <p class="pv-note">The State Bank's own liquid foreign-exchange reserves, $ billion. Faded bars are goals, not data.</p>
+      <div class="pv-chart" id="chart-res" role="img" aria-label="Bar chart of SBP reserves with the Governor's goals"></div>
+    </div>
+    <div class="pv-card">
+      <h3>Buffers and projections</h3>
+      <p class="pv-note">Reserves, the current account and remittances, with the State Bank's projection.</p>
+      {% include pakistan/indicator-table.html section="external" %}
+    </div>
+  </div>
+  <div class="pv-card pv-mt">
+    <h3>{{ pv.meta.external.title }}</h3>
+    <p class="pv-note">{{ pv.meta.external.note }}</p>
+    <div class="pv-tablewrap">
+      <table class="pv-table">
+        <thead><tr><th>Item</th><th class="pv-num">{{ pv.meta.external.total }}</th><th class="pv-num">{{ pv.meta.external.m1 }}</th><th class="pv-num">{{ pv.meta.external.m2 }}</th><th class="pv-hide-sm">{{ pv.meta.external.change }}</th><th class="pv-hide-sm">Source</th></tr></thead>
+        <tbody>
+          {%- for e in pv.external %}
+          <tr>
+            <td>{{ e.item }}</td><td class="pv-num pv-strong">{{ e.total }}</td><td class="pv-num">{{ e.m1 }}</td><td class="pv-num">{{ e.m2 }}</td>
+            <td class="pv-muted pv-hide-sm">{{ e.change }}</td>
+            <td class="pv-src pv-hide-sm"><a href="{{ e.url }}" target="_blank" rel="noopener">{{ e.source }}</a></td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="pv-sec" id="fiscal">
+  <h2 class="pv-h2">Budget, the IMF &amp; ratings</h2>
+  <div class="pv-grid">
+    <div class="pv-card">
+      <h3>Fiscal balance, % of GDP</h3>
+      <p class="pv-note">Consolidated federal and provincial. The primary balance excludes interest payments.</p>
+      <div class="pv-chart" id="chart-fiscal" role="img" aria-label="Grouped bar chart of overall and primary fiscal balance"></div>
+    </div>
+    <div class="pv-card">
+      <h3>Revenue, programme and credit ratings</h3>
+      <p class="pv-note">Tax collection against target, the IMF programme and the three agencies' ratings.</p>
+      {% include pakistan/indicator-table.html section="fiscal" label_col="Item" %}
+    </div>
+  </div>
+</section>
+
+<section class="pv-sec" id="peers">
+  <h2 class="pv-h2">Pakistan and its neighbours</h2>
+  <p class="pv-lede">The same oil shock hit every oil importer in the region. The real rate is the policy rate minus the latest inflation reading; each country measures inflation its own way.</p>
+  <div class="pv-card">
+    <div class="pv-tablewrap">
+      <table class="pv-table">
+        <thead><tr><th>Country</th><th class="pv-num">Inflation</th><th class="pv-hide-sm">Measure</th><th class="pv-num">Policy rate</th><th>Last move</th><th class="pv-num">Real rate</th><th class="pv-hide-sm">Sources</th></tr></thead>
+        <tbody>
+          {%- for p in pv.peers %}
+          {%- assign rr = pv.derived.peer_real_rates | where: "country", p.country | first %}
+          <tr>
+            <td class="pv-strong">{{ p.country }}</td>
+            <td class="pv-num">{{ p.cpi_display }}</td>
+            <td class="pv-muted pv-hide-sm">{{ p.measure }}</td>
+            <td class="pv-num">{{ p.policy_display }}</td>
+            <td class="pv-muted">{{ p.last_move }}</td>
+            <td class="pv-num {% if rr.tone == 'bad' %}pv-bad{% endif %}">{{ rr.display }}</td>
+            <td class="pv-src pv-hide-sm"><a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.source }}</a>, <a href="{{ p.rate_url }}" target="_blank" rel="noopener">{{ p.rate_source }}</a></td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="pv-sec" id="views">
+  <h2 class="pv-h2">What forecasters expect</h2>
+  <p class="pv-lede">The State Bank, the IMF and local brokerages, summarised from what they have said recently.</p>
+  <div class="pv-card">
+    <div class="pv-tablewrap">
+      <table class="pv-table">
+        <thead><tr><th>Who</th><th>View</th><th class="pv-hide-sm">Source</th></tr></thead>
+        <tbody>
+          {%- for v in pv.views %}
+          <tr><td class="pv-strong">{{ v.who }}</td><td>{{ v.view }}</td><td class="pv-src pv-hide-sm"><a href="{{ v.url }}" target="_blank" rel="noopener">{{ v.source }}</a></td></tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="pv-sec" id="about">
+  <h2 class="pv-h2">About these numbers</h2>
+  <div class="pv-about">
+    <p>Source: Pakistan pulls together the latest releases from the State Bank of Pakistan, the Pakistan Bureau of Statistics, the Finance Ministry and the Federal Board of Revenue, plus market closes for stocks, the rupee and oil. Most figures are read from those institutions' own releases or from news reports of them, and every row links to where it came from. Figures are updated as new releases come out and checked before they go live.</p>
+    <p>Pakistan's fiscal year runs from July to June, so FY27 is the year that began in July 2026. Year-to-date changes, real interest rates and gaps to targets are worked out from the figures shown. The scorecard's statuses and the summaries of forecasters' views are this site's own reading. Nothing here is investment advice.</p>
+    <p><a href="{{ '/pakistan/data.json' | relative_url }}">Download all the data (JSON)</a> &middot; <a href="{{ '/pakistan/feed.xml' | relative_url }}">Notes by RSS</a></p>
+  </div>
+</section>
+
+<script type="application/json" id="pv-data">{{ pv | jsonify }}</script>
+<script src="{{ '/assets/vendor/d3/d3-7.9.0.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/pakistan/pakistan.js' | relative_url }}"></script>

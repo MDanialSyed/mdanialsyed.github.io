@@ -43,8 +43,18 @@
   <meta name="twitter:description" content="{{ description | escape }}">
   <meta name="twitter:image" content="{{ share_image }}">
 
+  {%- if page.noindex %}
+  <meta name="robots" content="noindex">
+  {%- endif %}
+
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  {%- for css in page.extra_css %}
+  <link rel="stylesheet" href="{{ css | relative_url }}">
+  {%- endfor %}
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+  {%- if page.feed_url %}
+  <link rel="alternate" type="application/atom+xml" title="{{ page.feed_title | default: page.title | escape }}" href="{{ page.feed_url | relative_url }}">
+  {%- endif %}
 
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">

@@ -1,0 +1,37 @@
+[
+  {
+    "when": "Early Nov",
+    "event": "October CPI (PBS)",
+    "note": "September's figure came out on 1 Oct",
+    "source": "PBS: price statistics",
+    "url": "https://www.pbs.gov.pk/price-statistics/"
+  },
+  {
+    "when": "11 Nov",
+    "event": "T-bill auction",
+    "note": "Next scheduled auction of market treasury bills",
+    "source": "SBP: auction calendar",
+    "url": "https://www.sbp.org.pk/ecodata/auction-bond.pdf"
+  },
+  {
+    "when": "Nov (date TBC)",
+    "event": "IMF Executive Board: fourth EFF review",
+    "note": "Releases about $1.2bn if approved",
+    "source": "APP: IMF staff-level agreement",
+    "url": "https://www.app.com.pk/business/imf-pakistan-reach-staff-level-agreement-on-1-2bn-disbursement/"
+  },
+  {
+    "when": "Thursdays",
+    "event": "SBP weekly reserves",
+    "note": "Week to the previous Friday",
+    "source": "Business Recorder: SBP reserves, 29 Oct",
+    "url": "https://www.brecorder.com/news/40446522/sbp-held-foreign-exchange-reserves-rise-33mn-to-2152bn"
+  },
+  {
+    "when": "14 Dec",
+    "event": "Next SBP Monetary Policy Committee",
+    "note": "Rate decision",
+    "source": "Mettis Global: SBP FY27 MPC calendar",
+    "url": "https://mettisglobal.news/SBP-releases-FY27-MPC-meeting-calendar-expands-monetary-policy-communication-61352"
+  }
+]

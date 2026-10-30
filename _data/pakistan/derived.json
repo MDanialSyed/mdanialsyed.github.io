@@ -1,0 +1,85 @@
+{
+  "figures": [
+    {
+      "key": "kse_ytd",
+      "label": "KSE-100, change since the end of last year",
+      "value": -0.039418,
+      "display": "−3.9% YTD",
+      "tone": "bad"
+    },
+    {
+      "key": "pkr_ytd",
+      "label": "Rupee against the dollar since the end of last year",
+      "value": 0.01214,
+      "display": "Rupee +1.2% YTD",
+      "tone": "good"
+    },
+    {
+      "key": "real_headline",
+      "label": "Real policy rate vs headline CPI",
+      "value": 1.74,
+      "display": "+1.7 pp",
+      "tone": "good"
+    },
+    {
+      "key": "real_core",
+      "label": "Real policy rate vs urban core CPI",
+      "value": 3.4,
+      "display": "+3.4 pp",
+      "tone": "good"
+    },
+    {
+      "key": "fbr_gap",
+      "label": "FBR collection vs target, fiscal year to date",
+      "value": 30.5,
+      "display": "+Rs30.5bn",
+      "tone": "good"
+    },
+    {
+      "key": "res_gap",
+      "label": "SBP reserves, gap to end-December goal",
+      "value": 1.48,
+      "display": "$1.48bn to go",
+      "tone": "neutral"
+    },
+    {
+      "key": "fbr_share",
+      "label": "Share of this fiscal year's FBR target collected",
+      "value": 0.202011,
+      "display": "20.2%",
+      "tone": "neutral"
+    }
+  ],
+  "peer_real_rates": [
+    {
+      "country": "Pakistan",
+      "value": 1.74,
+      "display": "+1.7 pp",
+      "tone": "good"
+    },
+    {
+      "country": "India",
+      "value": -0.04,
+      "display": "0.0 pp",
+      "tone": "neutral"
+    },
+    {
+      "country": "Bangladesh",
+      "value": 1.16,
+      "display": "+1.2 pp",
+      "tone": "good"
+    },
+    {
+      "country": "Sri Lanka",
+      "value": 0.75,
+      "display": "+0.8 pp",
+      "tone": "good"
+    },
+    {
+      "country": "Egypt",
+      "value": 5.1,
+      "display": "+5.1 pp",
+      "tone": "good"
+    }
+  ]
+}

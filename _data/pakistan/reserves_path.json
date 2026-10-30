@@ -1,0 +1,66 @@
+[
+  {
+    "label": "11 Jul 2025",
+    "sbp_bn": 14.53,
+    "kind": "Actual",
+    "note": "Weekly reading",
+    "source": "Profit: SBP reserves, Jul 2025",
+    "url": "https://profit.pakistantoday.com.pk/?p=205559"
+  },
+  {
+    "label": "24 Jun 2026",
+    "sbp_bn": 16.53,
+    "kind": "Actual",
+    "note": "Weekly reading",
+    "source": "APP: SBP reserves, week to 24 Jun 2026",
+    "url": "https://www.app.com.pk/?p=1238008"
+  },
+  {
+    "label": "17 Jul 2026",
+    "sbp_bn": 17.3,
+    "kind": "Actual",
+    "note": "After debt repayments",
+    "source": "The News: SBP statement, Jul 2026",
+    "url": "https://www.thenews.pk/print/1428820-rupee-stays-flat-in-interbank"
+  },
+  {
+    "label": "21 Aug 2026",
+    "sbp_bn": 17.1,
+    "kind": "Actual",
+    "note": "Weekly reading",
+    "source": "Express Tribune: SBP reserves, 28 Aug",
+    "url": "https://tribune.com.pk/story/2626127/sbp-reserves-edge-up-17m-to-171b"
+  },
+  {
+    "label": "11 Sep 2026",
+    "sbp_bn": 21.39,
+    "kind": "Actual",
+    "note": "After Eurobond proceeds",
+    "source": "Mettis Global: SBP reserves, 17 Sep",
+    "url": "https://mettisglobal.news/SBP-reserves-surge-306bn-to-2139bn-63541"
+  },
+  {
+    "label": "23 Oct 2026",
+    "sbp_bn": 21.52,
+    "kind": "Actual",
+    "note": "Latest week",
+    "source": "Business Recorder: SBP reserves, 29 Oct",
+    "url": "https://www.brecorder.com/news/40446522/sbp-held-foreign-exchange-reserves-rise-33mn-to-2152bn"
+  },
+  {
+    "label": "Dec 2026",
+    "sbp_bn": 23.0,
+    "kind": "Goal",
+    "note": "SBP Governor's goal",
+    "source": "Mettis Global: SBP Governor's press conference, 26 Oct",
+    "url": "https://mettisglobal.news/SBP-sees-forex-reserves-at-25bn-by-June-2027-64519"
+  },
+  {
+    "label": "Jun 2027",
+    "sbp_bn": 25.0,
+    "kind": "Goal",
+    "note": "SBP Governor's goal",
+    "source": "Mettis Global: SBP Governor's press conference, 26 Oct",
+    "url": "https://mettisglobal.news/SBP-sees-forex-reserves-at-25bn-by-June-2027-64519"
+  }
+]

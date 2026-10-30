@@ -33,8 +33,29 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
 
+# Source: Pakistan notes live in their own collection, separate from the blog.
+# The section is unlisted for now: noindex and sitemap: false keep it out of
+# search engines. Remove both (here and in pakistan/*.html) to launch it.
+collections:
+  pakistan_notes:
+    output: true
+    permalink: /pakistan/notes/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: pakistan_notes
+    values:
+      layout: pakistan_note
+      extra_css: ["/assets/pakistan/pakistan.css"]
+      feed_url: "/pakistan/feed.xml"
+      feed_title: "Source: Pakistan notes"
+      noindex: true
+      sitemap: false
+
 # Files in the repository that should not be published on the website
 exclude:
+  - scripts
   - README.md
   - LICENSE
   - THEME-LICENSE

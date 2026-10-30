@@ -373,7 +373,7 @@
   {
     "key": "usdpkr",
     "section": "markets",
-    "label": "Rupees per US dollar (interbank)",
+    "label": "Rupees per US dollar (SBP mark-to-market rate)",
     "value": 276.76,
     "display": "276.76",
     "period": "29 Oct close",

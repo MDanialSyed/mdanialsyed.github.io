@@ -10,7 +10,7 @@
     {
       "key": "pkr_ytd",
       "label": "Rupee against the dollar since the end of last year",
-      "value": 0.01214,
+      "value": 0.012169,
       "display": "Rupee +1.2% YTD",
       "tone": "good"
     },
@@ -104,16 +104,16 @@
       "change": 0.5,
       "direction": "up",
       "tone": "neutral",
-      "display": "50 bp on 26 Oct",
-      "title": "Up 50 bp on 26 Oct: direction only"
+      "display": "50 bp vs 28 Apr",
+      "title": "Up 50 bp vs 28 Apr: direction only"
     },
     {
       "key": "tbill_12m",
-      "change": 0.89,
+      "change": 0.39,
       "direction": "up",
       "tone": "neutral",
-      "display": "89 bp vs 16 Sep",
-      "title": "Up 89 bp vs 16 Sep: direction only"
+      "display": "39 bp vs 14 Oct",
+      "title": "Up 39 bp vs 14 Oct: direction only"
     },
     {
       "key": "sbp_res",
@@ -133,7 +133,7 @@
     },
     {
       "key": "rem_m",
-      "change": 12.7,
+      "change": 12.676673,
       "direction": "up",
       "tone": "good",
       "display": "12.7% y/y",

@@ -48,6 +48,8 @@ class Series:
     start: str = "2015-07-01"
     status: str = "needs-confirmation"
     note: str = ""
+    unit: str = ""            # the unit the publisher states; a different one stops the download
+    published_name: str = ""  # the publisher's own series name; a different one stops the download
 
 
 @dataclass(frozen=True)

@@ -13,6 +13,15 @@ def test_easydata_parse():
     assert meta["Series Name"] == "Synthetic series"
 
 
+def test_easydata_checks_unit_and_name():
+    body = easydata_csv("A.B", {"2026-09": 1.0}, name="Quantum Index - Overall", unit="Index")
+    easydata.parse(body, "A.B", "monthly", unit="Index", name="Quantum Index - Overall")
+    with pytest.raises(FormatError):
+        easydata.parse(body, "A.B", "monthly", unit="Percent")
+    with pytest.raises(FormatError):
+        easydata.parse(body, "A.B", "monthly", name="Something else")
+
+
 def test_easydata_rejects_other_series():
     with pytest.raises(FormatError):
         easydata.parse(easydata_csv("OTHER", {"2026-09": 1.0}), "A.B", "monthly")

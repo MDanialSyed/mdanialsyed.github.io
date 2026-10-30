@@ -18,8 +18,9 @@ TODAY = date(2026, 10, 30)
 
 
 def cpi_values(bump: float = 0.0) -> dict[str, float]:
-    ps = months("2024-07", 27)  # to 2026-09
-    return {p: round(100 * 1.008 ** i, 4) + (bump if p == "2026-09" else 0.0) for i, p in enumerate(ps)}
+    """Synthetic year-on-year inflation rates, 4.0% in Jul 2024 rising 0.25 a month to 10.5% in Sep 2026."""
+    ps = months("2024-07", 27)
+    return {p: round(4.0 + 0.25 * i, 2) + (bump if p == "2026-09" else 0.0) for i, p in enumerate(ps)}
 
 
 def routes(cpi=None, ca_last=-356.0):
@@ -82,7 +83,7 @@ def test_display_specs_reproduce_the_page():
 
 def test_end_to_end(tmp_path, key):
     data, site = tmp_path / "data", tmp_path / "site"
-    reg = confirmed(load_registry(), "cpi_yoy", "cpi_fytd", "ca_m", "ca_fytd")
+    reg = confirmed(load_registry(), "cpi_yoy", "lsm_fytd", "ca_m", "ca_fytd")
     fetcher = FakeFetcher(routes())
     log, folder = run(reg, data, site, fetcher)
 
@@ -91,11 +92,16 @@ def test_end_to_end(tmp_path, key):
     assert TEST_KEY not in all_text(data) and TEST_KEY not in all_text(site)  # ...and never stored
 
     doc = json.loads((site / "pipeline.json").read_text())
-    assert set(doc["indicators"]) == {"cpi_yoy", "cpi_fytd", "ca_m", "ca_fytd"}
+    assert set(doc["indicators"]) == {"cpi_yoy", "lsm_fytd", "ca_m", "ca_fytd"}
     cpi = doc["indicators"]["cpi_yoy"]
     assert cpi["period"] == "2026-09" and cpi["period_label"] == "Sep 2026"
-    assert cpi["display"] == f"{(1.008 ** 12 - 1) * 100:.1f}%"
-    assert cpi["calc"] == "yoy_pct@1" and cpi["series_code"] == "TS_GP_PT_CPI_M.P00011516"
+    assert cpi["display"] == "10.5%"
+    assert cpi["calc"] == "as_published@1" and cpi["series_code"] == "TS_GP_PT_CPI_M.P00011516"
+    assert cpi["context"] == "10.3% in Aug; 7.5% a year earlier"
+    assert len(cpi["context_items"]) == 2 and cpi["context_items"][1]["period"] == "2025-09"
+    assert doc["indicators"]["ca_m"]["context"] == "\u2212$100m in Aug"
+    assert doc["indicators"]["ca_fytd"]["context"] == "\u2212$300m a year earlier"
+    assert doc["indicators"]["lsm_fytd"]["period_label"] == "Jul\u2013Sep FY27"
     for inp in cpi["inputs"]:
         assert (data / inp["file"]).exists()
     assert doc["indicators"]["ca_fytd"]["display"] == "−$556m"
@@ -105,6 +111,7 @@ def test_end_to_end(tmp_path, key):
     held = {f.indicator for f in log.findings if f.level == HOLD}
     assert {"lsm_m", "repo_on", "imf_gdp_proj"} <= held
     assert "lsm_m" in log.results and "lsm_m" not in doc["indicators"]
+    assert "cpi_mom" not in log.results  # unmapped: no series code yet
     reg_doc = json.loads((site / "registry.json").read_text())
     assert any(s["publisher"] == "State Bank of Pakistan" for s in reg_doc["sources"])
     md = (folder / "report.md").read_text()
@@ -119,7 +126,7 @@ def test_revisions_and_blocks(tmp_path, key):
 
     # The publisher revises September CPI, and a broken current-account file arrives.
     log, folder = run(reg, data, site, FakeFetcher(routes(cpi=cpi_values(bump=1.0), ca_last=99999.0)))
-    assert log.changes["sbp_cpi_national"].revised[0][0] == "2026-09"
+    assert log.changes["sbp_cpi_yoy_national"].revised[0][0] == "2026-09"
     assert any(f.level == BLOCK and f.indicator == "ca_m" and f.check == "range" for f in log.findings)
     doc = json.loads((site / "pipeline.json").read_text())["indicators"]
     assert doc["ca_m"]["value"] == first["ca_m"]["value"] and doc["ca_m"]["carried_forward"]
@@ -153,7 +160,7 @@ def test_jump_and_staleness_flags():
     reg = load_registry()
     ind = reg.indicators["cpi_yoy"]
     row = Row("2026-03", 20.0, "2026-04-01T00:00:00Z", "", "")
-    res = Result(20.0, "2026-03", [("sbp_cpi_national", row)])
+    res = Result(20.0, "2026-03", [("sbp_cpi_yoy_national", row)])
     found = check_indicator(ind, res, Path("/nonexistent"), {"period": "2026-02", "value": 10.0}, TODAY)
     checks = {(f.level, f.check) for f in found}
     assert (FLAG, "jump") in checks and (FLAG, "staleness") in checks and (BLOCK, "lineage") in checks
@@ -178,5 +185,5 @@ def test_download_then_build_split(tmp_path, key):
     later = build.RunLog("20261030T100000Z")
     assert build.load_fetch_log(later, data) == "20261030T060000Z"
     assert later.fetched.keys() == log.fetched.keys()
-    assert later.changes["sbp_cpi_national"].new == log.changes["sbp_cpi_national"].new
+    assert later.changes["sbp_cpi_yoy_national"].new == log.changes["sbp_cpi_yoy_national"].new
     assert TEST_KEY not in all_text(data)

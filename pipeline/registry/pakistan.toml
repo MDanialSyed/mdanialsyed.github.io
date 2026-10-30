@@ -84,11 +84,13 @@ status = "planned"
 # ---------------------------------------------------------------- series
 
 [[series]]
-key = "sbp_cpi_national"
+key = "sbp_cpi_yoy_national"
 source = "sbp_easydata"
 code = "TS_GP_PT_CPI_M.P00011516"
 frequency = "monthly"
-description = "Consumer price index, national, general (base 2015-16)"
+description = "National CPI inflation, year on year, percent (Inflation Snapshot, base 2015-16)"
+published_name = "National CPI; an Inflation Measure (Year-on-Year basis)"
+unit = "Percent"
 start = "2015-07-01"
 
 [[series]]
@@ -97,6 +99,8 @@ source = "sbp_easydata"
 code = "TS_GP_RL_LSM1516_M.LSM000160000"
 frequency = "monthly"
 description = "Large-scale manufacturing quantum index, overall (base 2015-16)"
+published_name = "Quantum Index - Overall"
+unit = "Index"
 start = "2015-07-01"
 
 [[series]]
@@ -105,6 +109,8 @@ source = "sbp_easydata"
 code = "TS_GP_BOP_BPM6SUM_M.P00010"
 frequency = "monthly"
 description = "Balance of payments summary (BPM6): current account balance, US$ million"
+published_name = "BOP-BPM6-Current account balance"
+unit = "Million USD"
 start = "2015-07-01"
 
 [[series]]
@@ -112,8 +118,26 @@ key = "sbp_repo_rate"
 source = "sbp_easydata"
 code = "TS_GP_IR_REPOMR_D.ORR"
 frequency = "daily"
-description = "Money market: overnight repo rate, weighted average, percent"
+description = "Money market: weighted-average overnight repo rate, percent"
+published_name = "Weighted-average Overnight Repo Rate"
+unit = "Percent"
 start = "2024-07-01"
+
+[[series]]
+key = "sbp_cpi_mom_national"
+source = "sbp_easydata"
+code = ""
+frequency = "monthly"
+description = "National CPI, month on month, percent"
+status = "unmapped"
+
+[[series]]
+key = "sbp_cpi_fytd_national"
+source = "sbp_easydata"
+code = ""
+frequency = "monthly"
+description = "National CPI, average of the fiscal year to date, year on year, percent"
+status = "unmapped"
 
 [[series]]
 key = "wb_gdp_usd"
@@ -300,8 +324,8 @@ key = "cpi_yoy"
 label = "CPI inflation, national (y/y)"
 section = "inflation"
 unit = "percent"
-series = ["sbp_cpi_national"]
-transform = "yoy_pct@1"
+series = ["sbp_cpi_yoy_national"]
+transform = "as_published@1"
 context = ["previous", "year_ago"]
 display = { decimals = 1, suffix = "%" }
 range = [-5.0, 60.0]
@@ -314,28 +338,16 @@ key = "cpi_mom"
 label = "CPI, month on month"
 section = "inflation"
 unit = "percent"
-series = ["sbp_cpi_national"]
-transform = "mom_pct@1"
-context = ["previous"]
-display = { decimals = 1, suffix = "%", plus = true }
-range = [-10.0, 15.0]
-jump_abs = 5.0
-max_age_days = 70
-confirm = "Must match the national m/m in the PBS CPI release, to one decimal."
+series = ["sbp_cpi_mom_national"]
+status = "unmapped"
 
 [[indicators]]
 key = "cpi_fytd"
 label = "CPI average, fiscal year to date (y/y)"
 section = "inflation"
 unit = "percent"
-series = ["sbp_cpi_national"]
-transform = "fytd_mean_yoy_pct@1"
-context = ["year_ago"]
-display = { decimals = 1, suffix = "%" }
-range = [-5.0, 60.0]
-jump_abs = 5.0
-max_age_days = 70
-confirm = "Must match the fiscal-year-to-date average in the PBS CPI release, to one decimal."
+series = ["sbp_cpi_fytd_national"]
+status = "unmapped"
 
 [[indicators]]
 key = "lsm_m"

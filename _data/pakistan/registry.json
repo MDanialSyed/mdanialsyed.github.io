@@ -90,10 +90,10 @@
       "unit": "percent",
       "status": "needs-confirmation",
       "section": "inflation",
-      "calc": "yoy_pct@1",
+      "calc": "as_published@1",
       "series": [
         {
-          "key": "sbp_cpi_national",
+          "key": "sbp_cpi_yoy_national",
           "code": "TS_GP_PT_CPI_M.P00011516",
           "source": "State Bank of Pakistan",
           "dataset": "EasyData",
@@ -105,13 +105,13 @@
       "key": "cpi_mom",
       "label": "CPI, month on month",
       "unit": "percent",
-      "status": "needs-confirmation",
+      "status": "unmapped",
       "section": "inflation",
-      "calc": "mom_pct@1",
+      "calc": "",
       "series": [
         {
-          "key": "sbp_cpi_national",
-          "code": "TS_GP_PT_CPI_M.P00011516",
+          "key": "sbp_cpi_mom_national",
+          "code": "",
           "source": "State Bank of Pakistan",
           "dataset": "EasyData",
           "frequency": "monthly"
@@ -122,13 +122,13 @@
       "key": "cpi_fytd",
       "label": "CPI average, fiscal year to date (y/y)",
       "unit": "percent",
-      "status": "needs-confirmation",
+      "status": "unmapped",
       "section": "inflation",
-      "calc": "fytd_mean_yoy_pct@1",
+      "calc": "",
       "series": [
         {
-          "key": "sbp_cpi_national",
-          "code": "TS_GP_PT_CPI_M.P00011516",
+          "key": "sbp_cpi_fytd_national",
+          "code": "",
           "source": "State Bank of Pakistan",
           "dataset": "EasyData",
           "frequency": "monthly"

@@ -99,6 +99,9 @@ def test_display():
     assert format_display(0.67, {"decimals": 2, "suffix": "%", "plus": True}) == "+0.67%"
     assert format_display(450.4e9, {"decimals": 1, "prefix": "$", "suffix": "bn", "scale": 1e-9}) == "$450.4bn"
     assert format_display(-0.04, {"decimals": 1, "suffix": "%"}) == "0.0%"
+    assert format_display(10.25, {"decimals": 1, "suffix": "%"}) == "10.3%"   # half up, as publishers round
+    assert format_display(-0.05, {"decimals": 1, "suffix": "%"}) == "\u22120.1%"
+    assert format_display(167193.4, {"decimals": 0}) == "167,193"
 
 
 def test_periods():

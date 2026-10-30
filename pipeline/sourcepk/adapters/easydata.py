@@ -29,9 +29,11 @@ def build_url(code: str, start: str, end: str, key: str) -> str:
             f"?api_key={key}&start_date={start}&end_date={end}&format=csv")
 
 
-def parse(body: bytes, code: str, frequency: str) -> tuple[list[Observation], dict]:
+def parse(body: bytes, code: str, frequency: str, unit: str = "", name: str = "") -> tuple[list[Observation], dict]:
+    """Rows of the CSV (EasyData ends lines with a carriage return only). If the registry states the
+    series' unit or published name, every row must carry exactly that unit and name."""
     text = body.decode("utf-8-sig", errors="strict")
-    reader = csv.reader(io.StringIO(text))
+    reader = csv.reader(io.StringIO(text, newline=""))
     rows = [r for r in reader if any(c.strip() for c in r)]
     if not rows:
         raise FormatError(f"{code}: empty response")
@@ -40,19 +42,32 @@ def parse(body: bytes, code: str, frequency: str) -> tuple[list[Observation], di
         raise FormatError(f"{code}: expected columns 'Observation Date' and 'Observation Value', got {rows[0]}")
     di, vi = header.index(DATE_COL), header.index(VALUE_COL)
     code_i = next((header.index(c) for c in CODE_COLS if c in header), None)
+    unit_i = header.index("unit") if "unit" in header else None
+    name_i = header.index("series name") if "series name" in header else None
+    if unit and unit_i is None:
+        raise FormatError(f"{code}: the file states no unit; expected '{unit}'")
+    if name and name_i is None:
+        raise FormatError(f"{code}: the file states no series name; expected '{name}'")
     obs, meta = [], {}
     for r in rows[1:]:
         if len(r) <= max(di, vi):
             raise FormatError(f"{code}: short row {r}")
         if code_i is not None and r[code_i].strip() and r[code_i].strip() != code:
             raise FormatError(f"{code}: response contains a different series ({r[code_i].strip()})")
+        if unit and r[unit_i].strip() != unit:
+            raise FormatError(f"{code}: unit is '{r[unit_i].strip()}', expected '{unit}'")
+        if name and r[name_i].strip() != name:
+            raise FormatError(f"{code}: series is '{r[name_i].strip()}', expected '{name}'")
         d = periods.parse_date(r[di])
         extra = {rows[0][i].strip(): r[i].strip() for i in range(len(r)) if i not in (di, vi) and i < len(rows[0])}
         if not meta:
             meta = extra
         obs.append(Observation(period=periods.to_period(d, frequency), value=parse_number(r[vi]),
                                meta={"date": d.isoformat()}))
-    return obs, meta
+    seen = [o.period for o in obs]
+    if len(seen) != len(set(seen)):
+        raise FormatError(f"{code}: the file has more than one value for the same period")
+    return sorted(obs, key=lambda o: o.period), meta
 
 
 def _snippet(body: bytes, n: int = 240) -> str:
@@ -106,5 +121,5 @@ def fetch(series, source, archive, fetcher, start: str | None = None, end: str |
     raw = archive.store(source.key, f"{series.code}.csv", resp.body, resp.url,
                         extra={"series": series.code, "start_date": start, "end_date": end,
                                "content_type": resp.content_type})
-    obs, meta = parse(resp.body, series.code, series.frequency)
+    obs, meta = parse(resp.body, series.code, series.frequency, series.unit, series.published_name)
     return FetchResult(raw=raw, observations=obs, meta=meta)

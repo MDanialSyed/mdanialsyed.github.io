@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date
+from decimal import ROUND_HALF_UP, Decimal
 
 from . import periods
 from .store import Row
@@ -117,10 +118,17 @@ def compute(transform: str, key: str, series: dict[str, Row], **kw) -> Result:
     return TRANSFORMS[transform](key, series, **kw)
 
 
+def round_half_up(value: float, decimals: int) -> Decimal:
+    """Round as publishers do (10.25 -> 10.3), working from the shortest decimal form of the value
+    rather than its binary approximation."""
+    return Decimal(repr(value)).quantize(Decimal(1).scaleb(-decimals), rounding=ROUND_HALF_UP)
+
+
 def format_display(value: float, spec: dict) -> str:
     """Format a value for the page: scale, decimals, prefix/suffix, true minus sign, optional plus sign."""
     v = value * spec.get("scale", 1)
     decimals = spec.get("decimals", 1)
-    body = f"{abs(v):,.{decimals}f}" if spec.get("thousands", True) else f"{abs(v):.{decimals}f}"
-    sign = MINUS if round(v, decimals) < 0 else ("+" if spec.get("plus") and round(v, decimals) > 0 else "")
+    r = round_half_up(v, decimals)
+    body = f"{abs(r):,.{decimals}f}" if spec.get("thousands", True) else f"{abs(r):.{decimals}f}"
+    sign = MINUS if r < 0 else ("+" if spec.get("plus") and r > 0 else "")
     return f"{sign}{spec.get('prefix', '')}{body}{spec.get('suffix', '')}"

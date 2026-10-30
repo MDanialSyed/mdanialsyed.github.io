@@ -26,12 +26,22 @@ def months(start: str, n: int) -> list[str]:
     return out
 
 
-def easydata_csv(code: str, values: dict[str, float], name: str = "Synthetic series") -> bytes:
-    lines = ["Dataset Name,Series Key,Series Name,Observation Date,Observation Value,Unit,Observation Status"]
-    for period, v in values.items():
+EASYDATA_META = {  # the published name and unit each registry series expects
+    "TS_GP_PT_CPI_M.P00011516": ("National CPI; an Inflation Measure (Year-on-Year basis)", "Percent"),
+    "TS_GP_RL_LSM1516_M.LSM000160000": ("Quantum Index - Overall", "Index"),
+    "TS_GP_BOP_BPM6SUM_M.P00010": ("BOP-BPM6-Current account balance", "Million USD"),
+    "TS_GP_IR_REPOMR_D.ORR": ("Weighted-average Overnight Repo Rate", "Percent"),
+}
+
+
+def easydata_csv(code: str, values: dict[str, float], name: str | None = None, unit: str | None = None) -> bytes:
+    """Shaped like EasyData's CSV: newest first, lines ended by a carriage return only."""
+    n, u = EASYDATA_META.get(code, ("Synthetic series", "Index"))
+    lines = ["Dataset Name,Series Key,Series Name,Observation Date,Observation Value,Unit,Observation Status,Status Comments"]
+    for period, v in sorted(values.items(), reverse=True):
         date = f"{period}-28" if len(period) == 7 else period
-        lines.append(f"Synthetic,{code},{name},{date},{v},Index,Normal")
-    return ("\n".join(lines) + "\n").encode()
+        lines.append(f"Synthetic,{code},{name or n},{date},{v},{unit or u},Normal,")
+    return ("\r".join(lines) + "\r").encode()
 
 
 def worldbank_json(code: str, values: dict[str, float | None], pages: int = 1) -> bytes:

@@ -1,22 +1,22 @@
 ---
 layout: post
 title: "Constrained Optimization with Application to Synthetic Control Methods"
-subtitle: "Building the Synthetic Control Method from the ground up using Python's vast scientific computing library"
+subtitle: "Building the Synthetic Control Method from the ground up with Python's scientific libraries"
 background: '/img/posts/synthetic-control/device-energy.jpeg'
 math: true
 ---
 
-Many of us who have worked in empirical economics research are familiar with quasi-experimental estimators for estimating causal effects, such as Difference-in-Differences, Regression Discontinuity Design, Instrumental Variables, and Propensity Score Matching. However, one innovative estimator that recently caught my eye during my master’s coursework was the Synthetic Control Method (SCM). 
+Empirical economists commonly use quasi-experimental estimators of causal effects, such as difference-in-differences, regression discontinuity design, instrumental variables and propensity score matching. This post looks at another, the Synthetic Control Method (SCM), which I studied during my master's coursework.
 
-In this post, I will explore the computational aspects of SCM and provide some intuition (and math!) behind it in the backdrop of Pinotti’s (2015) study on the economic costs of organized crime. Using this empirical context, I will introduce and motivate the implementation of SCM, highlighting its application using Python’s rich scientific libraries. Specifically, I will draw on state-of-the-art quadratic programming solvers, including CVXOPT, OSQP, CPLEX, and scipy.optimize, to enhance the accuracy and reliability of SCM implementations.
+The post covers the computational side of SCM and the intuition and mathematics behind it, using Pinotti's (2015) study of the economic costs of organized crime as the empirical setting. I implement SCM in Python with CVXPY (using the ECOS solver) and SciPy's optimization routines.
 
 ### Understanding the Synthetic Control Method
 
-The Synthetic Control Method (SCM) was pioneered by Abadie and Gardeazabal (2003) in their estimation of the economic costs of terrorism in the Basque Country. It has since gained popularity for evaluating policy implications or interventions in empirical research, especially when dealing with observational data where randomized experiments are not feasible. The way it works is by constructing a 'synthetic' version of the treated unit by creating a weighted combination of control units that closely resemble the treated unit in the pre-treatment period. This 'synthetic' control then serves as a counterfactual to estimate what would have happened in the absence of the treatment.
+The Synthetic Control Method (SCM) was pioneered by Abadie and Gardeazabal (2003) in their estimation of the economic costs of terrorism in the Basque Country. It has since become a common tool for evaluating policies and interventions in empirical research, especially when dealing with observational data where randomized experiments are not feasible. The way it works is by constructing a 'synthetic' version of the treated unit by creating a weighted combination of control units that closely resemble the treated unit in the pre-treatment period. This 'synthetic' control then serves as a counterfactual to estimate what would have happened in the absence of the treatment.
 
 ### Pinotti's (2015) Study on the Economic Costs of Organized Crime
 
-Pinotti's 2015 study uses SCM to evaluate the economic impact of mafia activity on regional GDP in Italy. By exploiting the heterogeneous presence of mafia across Italian regions and the unique shocks in the 1970s that led to a rise in mafia activity in certain regions, Pinotti constructs a synthetic control to compare against the treated regions of Apulia and Basilicata. The study attributes a significant reduction in GDP per capita to the presence of organized crime.
+Pinotti's 2015 study uses SCM to evaluate the economic impact of mafia activity on regional GDP in Italy. By exploiting the heterogeneous presence of mafia across Italian regions and the unique shocks in the 1970s that led to a rise in mafia activity in certain regions, Pinotti constructs a synthetic control to compare against the treated regions of Apulia and Basilicata. The study attributes a substantial reduction in GDP per capita to the presence of organized crime.
 
 The two idiosyncratic shocks, namely the closure of the Tangier port and the earthquake in Basilicata, not only ushered in a sharp rise in mafia activity in Apulia and Basilicata, but these events can also be considered to be plausibly independent of these regions' social and economic conditions at the time. This allows for a subdivision of the Italian regions into treated, control, and excluded categories as follows:
 
@@ -30,7 +30,7 @@ The 'Control' units are the unaffected regions and therefore comprise the 'donor
 
 ### Technical Breakdown
 
-Now for some math. To formally define the SCM used as part of the methodology, let $ y_t $ be an outcome of interest at time $t$ which depends on the presence of organized crime. Each region will have outcome $y^1$ if exposed to organized crime, and $y^0$ otherwise:
+To define the SCM formally, let $ y_t $ be an outcome of interest at time $t$ which depends on the presence of organized crime. Each region will have outcome $y^1$ if exposed to organized crime, and $y^0$ otherwise:
 
 $$y_t = c_t y^1_t + (1-c_t) y^0_t$$
 
@@ -94,9 +94,7 @@ def w_optimize(v_diag, solver=cp.ECOS):
     objective_problem = cp.Problem(objective_function, objective_constraints)
     objective_solution = objective_problem.solve(solver, verbose=False)
     
-    return W.value, objective_problem.constraints[0
-
-].violation(), objective_solution
+    return W.value, objective_problem.constraints[0].violation(), objective_solution
 
 w_basic = cvxpy_basic_solution(control_units, X0, X1)
 ```
@@ -120,11 +118,11 @@ $$V \in\left\{\operatorname{diag}(V): V \in \mathbb{R}^{K \times K}, \sum_{k=1}^
 
 #### Nested Optimization
 
-To improve the optimization function, I draw on insights from recent popular implementations of SCM, such as Hainmueller's Synth package in R and its adaptations to MATLAB and STATA, as well as the more recent R/MSCMT package of Becker and Klößner (2018). Although these packages do not have adaptations for Python, I draw on some of their main insights and adapt them.
+To improve the optimization, I draw on established implementations of SCM, such as Hainmueller's Synth package in R and its adaptations to MATLAB and Stata, as well as the more recent R/MSCMT package of Becker and Klößner (2018). Although these packages do not have adaptations for Python, I draw on some of their main insights and adapt them.
 
-My particular focus is the R/MSCMT package since it offers a generalization of the SCM that addresses the instabilities and shortfalls of existing implementations. This package has several optimization algorithms, including one that uses a combination of outer optimization via Differential Evolution and inner optimization via DWNNLS (Weighted Non-Negative Least Squares). This corresponds to the default option 'DEoptC' in the call to R/MSCMT's solver. The Fortran implementation of the WNNLS algorithm was presented by Hanson and Haskell (1982) and was later adapted to R in the package limSolve (Becker and Klößner, 2018). WNNLS is a reliable and fast inner optimizer for the nested optimization problem of SCM, which the authors of R/MSCMT enhance with a further speed boost by using Fortran calls to WNNLS in a C-implementation.
+I focus on the R/MSCMT package, which offers a generalization of the SCM that addresses the instabilities and shortfalls of existing implementations. This package has several optimization algorithms, including one that uses a combination of outer optimization via Differential Evolution and inner optimization via DWNNLS (Weighted Non-Negative Least Squares). This corresponds to the default option 'DEoptC' in the call to R/MSCMT's solver. The Fortran implementation of the WNNLS algorithm was presented by Hanson and Haskell (1982) and was later adapted to R in the package limSolve (Becker and Klößner, 2018). WNNLS is a reliable and fast inner optimizer for the nested optimization problem of SCM, which R/MSCMT speeds up further by calling the Fortran WNNLS routine from C.
 
-I adapt some of these ideas using Python's existing libraries. Differential Evolution for the outer optimization is available via the scipy.optimize library. However, Python currently does not have a wrapper for WNNLS. Therefore, I instead use ECOS via CVXPY as the default solver. To add some flexibility to this approach, I insert the optimization method into a configurable function with a built-in data-preparation tool.
+I adapt some of these ideas using Python's existing libraries. Differential Evolution for the outer optimization is available via the scipy.optimize library. Python did not have a wrapper for WNNLS at the time of writing, so I use ECOS via CVXPY as the default solver. For flexibility, the optimization sits inside a configurable function with built-in data preparation.
 
 Here is the code for the final nested optimization function:
 
@@ -218,12 +216,12 @@ v_nested = output_object[2]
 SCM_print(data, output_object, w_pinotti, Z1, Z0)
 ```
 
-The SCM implementation has replicated the weights obtained by Pinotti's STATA implementation in a faster and more reliable manner than the previous approach. As a result, the outer objective function values are approximately equal.
+The implementation reproduces the weights from Pinotti's Stata implementation (0.624 and 0.376) and the same pre-treatment RMSPE (130.14).
 
 ![Output comparing the optimiser's weights and RMSPE with Pinotti's Stata results; the weights (0.624 and 0.376) and the RMSPE (130.14) match](/img/posts/synthetic-control/result_nested.png)
 
-I also observe that the corresponding $\( V \)$ allocates higher weights to investment rate, industry share of value added, and non-market services share of value added. The relatively large weight on the investment rate is especially unsurprising since, from an economic standpoint, one would expect investment in an economy to be highly correlated with output as seen in standard growth models in macroeconomics.
+I also observe that the corresponding $\( V \)$ allocates higher weights to investment rate, industry share of value added, and non-market services share of value added. The relatively large weight on the investment rate is consistent with standard macroeconomic growth models, in which investment is closely linked to output.
 
 ### Conclusions
 
-The Synthetic Control Method is a valuable tool for causal inference in empirical research, offering a rigorous way to construct counterfactuals in observational studies. By leveraging Python's rich scientific libraries and advanced optimization techniques, we can enhance the accuracy and reliability of SCM implementations. This project not only replicates Pinotti's findings on the economic impact of organized crime but also provides a robust framework for applying SCM to various empirical contexts.
+The Synthetic Control Method is a useful tool for causal inference in observational studies, providing a transparent way to construct counterfactuals. This project replicates Pinotti's (2015) results on the economic impact of organized crime in Python, and the configurable function can be reused in other empirical settings.

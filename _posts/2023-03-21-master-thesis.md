@@ -1,47 +1,51 @@
 ---
 layout: post
 title: "Causal Inference Using Random Forests and LASSO"
-subtitle: "Leveraging ML methods for estimation of treatment effects."
+subtitle: "Machine learning methods for estimating treatment effects"
 background: '/img/posts/master-thesis/normality.png'
 ---
 
+My interest in machine learning for causal inference began in a computational statistics course at the University of Bonn in 2021. The course compared machine learning models such as LASSO, random forests, XGBoost and support vector machines, and covered training and test splits, cross-validation and the bias-variance trade-off, where machine learning methods typically accept a little bias in exchange for lower variance.
 
-It is no secret that I'm a big supporter of using machine learning for causal inference. My interest in this field can be traced back to a ***Computational Statistics*** course I took with Marina Khismatullina at Uni Bonn in 2021. I was intrigued by how well machine learning methods performed in predictive scenarios with a large number of covariates and enjoyed learning comparing different ML models such as LASSO, Random Forest, XGBoost, and Support Vector Machines. We also learned about model training/test, cross-validation, and the bias-variance trade-off, where ML methods tend to sacrifice a little bit of bias for lower variance in their point estimates.
+In economics, however, the main concern is usually causality, where bias, variance and valid confidence intervals are the key properties of an estimator. This raises a practical question: how can the flexibility of machine learning in large covariate spaces be used for high-dimensional problems in statistical inference? The question matters more as data become more abundant and more granular.
 
-But in economics, we generally care about issues of causality, where bias, variance, and valid confidence intervals are the key considerations for any estimator. So my question was, how can we re-purpose the strength and flexibility of ML in large covariate spaces for high-dimensional problems in statistical inference? This issue is becoming even more important nowadays since there has been a drastic increase in the availability and granularity of data. 
-
-Over the course of my studies, I concentrated heavily on this topic and took several classes in econometrics and statistics to better understand the potential merger between machine learning's superior predictive capabilities on one hand and the causal framework of traditional econometrics on the other. The result of this two-year effort was my master thesis "Causal Inference Using Random Forests and LASSO,", where I explored innovative methods leveraging machine learning algorithms to evaluate causal effects, specifically through simulations and empirical applications. In this post, I would like to show the promise of these methods in specific econometric and highlight use-cases how this could help your research.
+I focused on this topic through further courses in econometrics and statistics, and it became the subject of my master's thesis, "Causal Inference Using Random Forests and LASSO". The thesis evaluates machine learning methods for estimating causal effects through simulations and empirical applications. This post summarizes the methods, the simulations and two empirical applications.
 
 ## Introduction and Theoretical Background
+
 ### Research Motivation
 
-The study was motivated by the growing need for robust statistical methods capable of handling large, complex datasets often encountered in economics. Traditional econometric approaches sometimes fall short when addressing high-dimensional data and highly complex nuisance parameters. This research focused on integrating machine learning techniques, particularly Random Forests and LASSO, to enhance causal inference in econometric models.
+Economic datasets are increasingly large and complex, and traditional econometric approaches can struggle with high-dimensional data and complex nuisance parameters. The thesis examines how machine learning techniques, in particular random forests and LASSO, can improve causal inference in econometric models.
 
 ### Prior Work
-My research was heavily inspired by the extensive works of Susan Athey (Stanford) and Victor Chernozhukov (MIT) in the space of ML for estimation of treatment effects. To that end, I first provided a comprehensive review of existing methods and their limitations, setting the stage for the introduction of Generalized Random Forests (GRF), Double Machine Learning (DML), and Post-Double-Selection approaches. These methods were hand=picked for their potential to improve the accuracy and reliability of treatment effect estimations in complex econometric models.
 
-### Methodological Approach
-As a very cursory glance at these methods:
-- Generalized Random Forests (GRF): This non-parametric method adapts the random forest algorithm to estimate treatment effects, utilizing a local linear approach that accommodates various covariates and complex interactions.
-- Double Machine Learning (DML): This technique separates the estimation of nuisance parameters from the target parameter, reducing bias that I mentioned earlier and enhancing the robustness of causal inferences.
-- Post-Double Selection: Leveraging LASSO for variable selection, this method aims to improve model accuracy by focusing only on the most relevant variables affecting the outcome. This is especially useful for guiding variable selection. 
+The thesis builds on work by Susan Athey (Stanford) and Victor Chernozhukov (MIT) on machine learning for the estimation of treatment effects. It first reviews existing methods and their limitations, and then introduces three approaches: Generalized Random Forests (GRF), Double Machine Learning (DML) and post-double-selection. These methods were chosen for their potential to improve the accuracy and reliability of treatment effect estimates in complex econometric models.
+
+### Methods
+
+In brief:
+
+- **Generalized Random Forests (GRF)** adapt the random forest algorithm to estimate treatment effects, using a local linear approach that accommodates many covariates and complex interactions.
+- **Double Machine Learning (DML)** separates the estimation of nuisance parameters from the target parameter, which reduces bias and makes the causal estimates more robust.
+- **Post-double-selection** uses LASSO to select the variables most relevant to the outcome and the treatment, which guides variable selection in high-dimensional settings.
 
 ### Simulation Studies
-I used a series of Monte Carlo simulations to test the performance of these estimators under different scenarios—ranging from randomized controlled trials to settings with strong confounding. These simulations were crucial for demonstrating the practical applicability and robustness of the ML methods in mimicking real-world data complexities.
+
+A series of Monte Carlo simulations tests the performance of these estimators in settings ranging from randomized controlled trials to strong confounding, designed to mimic the complexity of real-world data.
 
 ### Empirical Applications
-The theoretical insights and simulation results were applied to two empirical cases:
 
-#### Microcredit's Impact in Bosnia and Herzegovina: Analysis focused on the economic effects of microcredit availability using data from a prior study.
-401(k) Participation and Financial Assets: This study evaluated how eligibility and participation in 401(k) plans affect net financial assets, showcasing the practical implications of these ML techniques in policy evaluation.
-#### Key Insights
-Robustness of ML Estimators: The ML-based methods, particularly GRF and DML, showed strong performance in handling complex, high-dimensional datasets and produced more reliable causal inferences compared to traditional methods.
-#### Practical Implications: 
-The empirical applications illustrated how these advanced statistical techniques could be used to inform policy decisions and improve economic outcomes.
-#### Theoretical Contributions
-The thesis extended existing theories in econometrics by integrating and enhancing machine learning algorithms for better causal inference, providing a new framework that can be adopted in various economic and policy research areas.
+The methods are then applied to two empirical cases:
+
+- **Microcredit in Bosnia and Herzegovina:** the economic effects of microcredit availability, using data from a prior study.
+- **401(k) participation and financial assets:** how eligibility for and participation in 401(k) plans affect net financial assets.
+
+### Findings
+
+In the simulations, GRF and DML performed well in complex, high-dimensional settings compared with traditional estimators. The empirical applications show how these methods can be used in policy evaluation.
 
 ### Conclusion
-This research bridged the gap between traditional econometric approaches and modern machine learning techniques, offering substantial improvements in the estimation of causal effects. The findings not only support the use of these advanced methods in academic and policy-making contexts but also open avenues for future research in econometrics and statistics.
 
-This thesis, supervised by Prof. Dr. Christoph Breunig at Rheinische Friedrich-Wilhelms-Universität Bonn, represents a significant step forward in the use of machine learning to enhance causal inference, demonstrating the potential of integrating cutting-edge statistical techniques in economic research.
+The thesis compares machine learning and traditional econometric approaches to estimating causal effects and supports the use of these methods in academic and policy research, while pointing to open questions for future work in econometrics and statistics.
+
+This was my master's thesis in economics at the University of Bonn.

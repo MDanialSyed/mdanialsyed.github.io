@@ -1,0 +1,43 @@
+---
+layout: pakistan
+title: "Corrections"
+description: "Every correction to a figure published on Source: Pakistan"
+permalink: /pakistan/corrections/
+noindex: true
+sitemap: false
+extra_css: ["/assets/pakistan/pakistan.css"]
+---
+{%- assign fixes = site.data.pakistan.corrections | sort: "date" | reverse -%}
+
+<p class="pv-take">If a figure on this site turns out to be wrong, it is corrected and listed here with the date, the old and new value, and what went wrong.</p>
+
+<nav class="pv-nav" aria-label="Source: Pakistan">
+  <a href="{{ '/pakistan/' | relative_url }}">Dashboard</a>
+  <a href="{{ '/pakistan/sources/' | relative_url }}">Sources</a>
+  <a href="{{ '/pakistan/methodology/' | relative_url }}">How the figures are made</a>
+</nav>
+
+<section class="pv-sec">
+  <h2 class="pv-h2">Corrections log</h2>
+  {%- if fixes.size == 0 %}
+  <p>No corrections so far.</p>
+  {%- else %}
+  <div class="pv-tablewrap">
+    <table class="pv-table">
+      <thead><tr><th>Date</th><th>Figure</th><th class="pv-num">Was</th><th class="pv-num">Now</th><th>What went wrong</th></tr></thead>
+      <tbody>
+        {%- for c in fixes %}
+        <tr>
+          <td class="pv-nowrap pv-muted">{{ c.date | date: "%-d %b %Y" }}</td>
+          <td>{{ c.figure }}</td>
+          <td class="pv-num">{{ c.was }}</td>
+          <td class="pv-num pv-strong">{{ c.now }}</td>
+          <td>{{ c.reason }}{% if c.url %}<span class="pv-sub pv-src"><a href="{{ c.url }}" target="_blank" rel="noopener">Source</a></span>{% endif %}</td>
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
+  {%- endif %}
+  <p class="pv-note">Revisions by a publisher are not corrections: when the State Bank or the Bureau of Statistics revises a past figure, the dashboard shows the latest value and every earlier version is kept in the archive.</p>
+</section>

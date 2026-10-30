@@ -1,0 +1,9 @@
+{%- comment -%}
+  Marks a figure as official (from the publisher's data service, via the pipeline) or interim
+  (collected by hand). Links to the figure's row on the Sources page.
+{%- endcomment -%}
+{%- if site.data.pakistan.pipeline.indicators[include.key] -%}
+<a class="pv-st pv-st-off" href="{{ '/pakistan/sources/' | relative_url }}#ind-{{ include.key }}" title="Official data feed: downloaded from the publisher and checked automatically"><span class="pv-vh">Official data feed</span></a>
+{%- else -%}
+<a class="pv-st pv-st-int" href="{{ '/pakistan/sources/' | relative_url }}#ind-{{ include.key }}" title="Interim: collected by hand from the release or a report of it"><span class="pv-vh">Interim figure</span></a>
+{%- endif -%}

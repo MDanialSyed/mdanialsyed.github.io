@@ -1,12 +1,22 @@
 {%- comment -%}
   Prints one figure from the Source: Pakistan data.
-  key: the row's key. field: the column (default "display").
-  derived: true to read derived.json instead of indicators.json.
+  key: the row's key. field: display (default), period, context, or another column.
+  derived: true to read derived.json.
+  An official figure from the data pipeline (pipeline.json) takes the place of the
+  hand-collected one in indicators.json.
 {%- endcomment -%}
+{%- assign _pv_field = include.field | default: "display" -%}
+{%- assign _pv_out = nil -%}
 {%- if include.derived -%}
   {%- assign _pv_row = site.data.pakistan.derived.figures | where: "key", include.key | first -%}
+  {%- if _pv_row -%}{%- assign _pv_out = _pv_row[_pv_field] -%}{%- endif -%}
 {%- else -%}
-  {%- assign _pv_row = site.data.pakistan.indicators | where: "key", include.key | first -%}
+  {%- assign _pv_off = site.data.pakistan.pipeline.indicators[include.key] -%}
+  {%- if _pv_off -%}
+    {%- if _pv_field == "period" -%}{%- assign _pv_out = _pv_off.period_label -%}{%- else -%}{%- assign _pv_out = _pv_off[_pv_field] -%}{%- endif -%}
+  {%- else -%}
+    {%- assign _pv_row = site.data.pakistan.indicators | where: "key", include.key | first -%}
+    {%- if _pv_row -%}{%- assign _pv_out = _pv_row[_pv_field] -%}{%- endif -%}
+  {%- endif -%}
 {%- endif -%}
-{%- assign _pv_field = include.field | default: "display" -%}
-{%- if _pv_row and _pv_row[_pv_field] != nil and _pv_row[_pv_field] != "" -%}{{ _pv_row[_pv_field] }}{%- else -%}—{%- endif -%}
+{%- if _pv_out != nil and _pv_out != "" -%}{{ _pv_out }}{%- else -%}—{%- endif -%}

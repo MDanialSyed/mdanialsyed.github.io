@@ -109,6 +109,43 @@ a.pv-notecard h3 { font-family: var(--pv-serif); font-size: 22px; margin: 6px 0 
 .pv-tip b { font-weight: 600; }
 .pv-nojs { color: var(--pv-muted); font-size: 13px; }
 
+/* Status of each figure: official data feed (filled) or interim, hand-collected (hollow) */
+.pv-st { position: relative; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin: 0 6px; vertical-align: 1px; box-sizing: border-box; }
+a.pv-st::after { content: ""; position: absolute; inset: -8px; }
+.pv-st-off { background: var(--pv-accent); }
+.pv-st-int { border: 1.5px solid var(--pv-chart-muted); }
+.pv-tile-label .pv-st { margin-right: 0; vertical-align: 2px; }
+.pv-table .pv-num .pv-st { margin-left: 0; }
+.pv-legend-st { font-size: 12.5px; color: var(--pv-muted); margin: 8px 0 0 !important; }
+.pv-legend-st .pv-st:first-child { margin-left: 0; }
+.pv-legend-st a { color: var(--pv-muted); margin-left: 10px; text-decoration: underline; text-decoration-color: var(--pv-line); }
+.pv-legend-st a:hover { color: var(--pv-accent); }
+.pv-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Lineage of an official figure */
+.pv-lin summary { cursor: pointer; color: var(--pv-muted); font-size: 13px; }
+.pv-lin summary:hover { color: var(--pv-accent); }
+.pv-lin dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 6px 0 4px; font-size: 12.5px; }
+.pv-lin dt { font-weight: 600; }
+.pv-lin dd { margin: 0; overflow-wrap: anywhere; }
+.pv-lin p { font-size: 12.5px; margin: 4px 0 0 !important; }
+.pv code { font-size: 12px; color: var(--pv-fg); background: var(--pv-soft); border-radius: 3px; padding: 0 3px; overflow-wrap: anywhere; }
+
+/* Sources and methodology pages */
+.pv-h3 { font-size: 15px !important; text-transform: uppercase; letter-spacing: .05em; color: var(--pv-muted); margin: 28px 0 8px !important; }
+.pv-srct td:first-child { width: 36%; }
+.pv-srct td:nth-child(2) { width: 14%; }
+.pv-srct tr:target td { background: #fff8e1; }
+.pv-doc { max-width: 60rem; }
+.pv-doc .pv-st:first-child { margin-left: 0; }
+.pv-steps { max-width: 60rem; padding-left: 22px; }
+.pv-steps li { margin-bottom: 10px; line-height: 1.55; }
+.pv-calcs { max-width: 60rem; margin: 0; }
+.pv-calcs > div { padding: 10px 0; border-bottom: 1px solid var(--pv-line); scroll-margin-top: 90px; }
+.pv-calcs > div:target { background: #fff8e1; }
+.pv-calcs dt { font-weight: 600; }
+.pv-calcs dd { margin: 4px 0 0; color: var(--pv-muted); }
+
 .pv-about { color: var(--pv-muted); max-width: 60rem; }
 .pv-about a { color: var(--pv-accent); }
 
@@ -139,4 +176,7 @@ a.pv-notecard h3 { font-family: var(--pv-serif); font-size: 22px; margin: 6px 0 
   .pv-ind td:nth-child(3) { grid-column: 1 / -1; margin-top: 4px; font-size: 12.5px; }
   .pv-ind td:nth-child(3) .pv-src { display: inline; margin-left: 4px; }
   .pv-ind td:nth-child(3) .pv-src::before { content: "· "; color: var(--pv-muted); }
+  .pv-ind td:nth-child(3) div.pv-src { display: block; margin-left: 0; }
+  .pv-ind td:nth-child(3) div.pv-src::before { content: none; }
+  .pv-srct td:first-child, .pv-srct td:nth-child(2) { width: auto; }
 }

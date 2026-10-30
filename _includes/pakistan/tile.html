@@ -1,5 +1,5 @@
 <div class="pv-tile">
-  <div class="pv-tile-label">{{ include.label }}</div>
+  <div class="pv-tile-label">{{ include.label }}{% include pakistan/status.html key=include.key %}</div>
   <div class="pv-tile-value">{% include pakistan/value.html key=include.key %}</div>
   <div class="pv-tile-foot">
     <span>{% include pakistan/value.html key=include.key field="period" %}</span>

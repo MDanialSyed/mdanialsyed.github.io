@@ -216,7 +216,7 @@ def lineage_record(reg: Registry, key: str, res: Result, context: list | None = 
 
 
 def load_interim(site_data: Path = SITE_DATA) -> dict:
-    """The hand-collected figures currently on the dashboard, for side-by-side comparison."""
+    """The interim figures currently on the dashboard, for side-by-side comparison."""
     path = site_data / "indicators.json"
     if not path.exists():
         return {}

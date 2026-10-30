@@ -44,7 +44,7 @@ feed_title: "Source: Pakistan notes"
     {% include pakistan/tile.html label="KSE-100" key="kse100" change="kse_ytd" %}
     {% include pakistan/tile.html label="Brent crude" key="brent" %}
   </div>
-  <p class="pv-legend-st"><span class="pv-st pv-st-off"></span>Official data feed, downloaded from the publisher and checked automatically <span class="pv-st pv-st-int"></span>Interim, collected by hand from the release <a href="{{ '/pakistan/sources/' | relative_url }}">Where each figure comes from</a></p>
+  <p class="pv-legend-st"><span class="pv-st pv-st-off"></span>Official data feed, downloaded from the publisher and checked automatically <span class="pv-st pv-st-int"></span>Interim, read from the release or a news report of it <a href="{{ '/pakistan/sources/' | relative_url }}">Where each figure comes from</a></p>
 
   <div class="pv-grid pv-grid-tight">
     {%- if latest_note %}
@@ -304,7 +304,7 @@ feed_title: "Source: Pakistan notes"
   <h2 class="pv-h2">About these numbers</h2>
   <div class="pv-about">
     <p>Source: Pakistan brings together the latest figures from the State Bank of Pakistan, the Pakistan Bureau of Statistics, the Finance Ministry and the Federal Board of Revenue, with market closes for stocks, the rupee and oil, and outlooks from the IMF and World Bank.</p>
-    <p>Figures are moving to official data feeds one at a time. A figure marked <span class="pv-st pv-st-off"></span> is downloaded from the publisher's own data service, archived exactly as received and calculated by code, and shows its series code, calculation, download time and file fingerprint. A figure marked <span class="pv-st pv-st-int"></span> is interim: collected by hand from the release, or a news report of it, and linked to that source. Every figure is checked before it goes live.</p>
+    <p>Figures are moving to official data feeds one at a time. A figure marked <span class="pv-st pv-st-off"></span> is downloaded from the publisher's own data service, archived exactly as received and calculated by code, and shows its series code, calculation, download time and file fingerprint. A figure marked <span class="pv-st pv-st-int"></span> is interim: read from the release, or a news report of it, and linked to that source. Every figure is checked before it goes live.</p>
     <p>Pakistan's fiscal year runs from July to June, so FY27 is the year that began in July 2026. Year-to-date changes, real interest rates and gaps to targets are worked out from the figures shown. The scorecard's statuses and the summaries of forecasters' views are this site's own reading. Nothing here is investment advice.</p>
     <p><a href="{{ '/pakistan/methodology/' | relative_url }}">How the figures are made</a> &middot; <a href="{{ '/pakistan/sources/' | relative_url }}">Sources</a> &middot; <a href="{{ '/pakistan/corrections/' | relative_url }}">Corrections</a> &middot; <a href="{{ '/pakistan/data.json' | relative_url }}">All the data (JSON)</a> &middot; <a href="{{ '/pakistan/feed.xml' | relative_url }}">Notes by RSS</a></p>
   </div>

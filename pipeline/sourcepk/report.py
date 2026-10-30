@@ -57,8 +57,8 @@ def render_markdown(reg: Registry, log: RunLog, interim: dict, published: bool) 
         out += ["", "## Revisions by the publisher", "", "| Series | Period | Was | Now |", "|---|---|---:|---:|"]
         out += [f"| {k} | {p} | {a:g} | {b:g} |" for k, (p, a, b) in revisions]
     out += ["", "## Values", "",
-            "Compared with the hand-collected figure currently on the page.", "",
-            "| Indicator | Value | Period | Calculation | Hand-collected | State |",
+            "Compared with the interim figure currently on the page.", "",
+            "| Indicator | Value | Period | Calculation | Interim on the page | State |",
             "|---|---:|---|---|---|---|"]
     out += ["| " + " | ".join(r) + " |" for r in _value_rows(reg, log, interim)]
     if log.not_computed:

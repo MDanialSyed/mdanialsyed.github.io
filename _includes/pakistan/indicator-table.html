@@ -1,7 +1,7 @@
 {%- comment -%}
   Table of indicators for one section of the dashboard.
   section: the rows' "section" value. label_col: heading for the first column.
-  Official figures from the data pipeline take the place of hand-collected ones.
+  Official figures from the data pipeline take the place of interim ones.
 {%- endcomment -%}
 {%- assign _pv_rows = site.data.pakistan.indicators | where: "section", include.section -%}
 <div class="pv-tablewrap">

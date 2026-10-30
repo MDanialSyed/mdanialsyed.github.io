@@ -23,7 +23,7 @@ extra_css: ["/assets/pakistan/pakistan.css"]
   <h2 class="pv-h2">Two kinds of figure</h2>
   <div class="pv-doc">
     <p><span class="pv-st pv-st-off"></span><strong>Official data feed.</strong> Downloaded directly from the publisher's own data service, such as the State Bank of Pakistan's EasyData, the World Bank or the IMF, and turned into the figure on the page by code. Each one shows the publisher, the series code, the calculation used, when the data was downloaded, and the fingerprint of the file it came from.</p>
-    <p><span class="pv-st pv-st-int"></span><strong>Interim.</strong> Collected by hand from the publisher's release or a news report of it, with a link to that source. Figures move from interim to an official feed one at a time, once the feed's values have been checked against the publisher's own release.</p>
+    <p><span class="pv-st pv-st-int"></span><strong>Interim.</strong> Read from the publisher's release, or a news report of it, with a link to that source. Figures move from interim to an official feed one at a time, once the feed's values have been checked against the publisher's own release.</p>
     <p>News reports are used to describe what happened in a week, never as the source of a figure that an official feed provides.</p>
   </div>
 </section>
@@ -50,10 +50,10 @@ extra_css: ["/assets/pakistan/pakistan.css"]
         <tr><td class="pv-strong">Format</td><td>The file has exactly the shape expected, and contains the series that was asked for.</td><td>Nothing from the file is used</td></tr>
         <tr><td class="pv-strong">Lineage</td><td>Every value used points to an archived file whose fingerprint still matches.</td><td>Not published</td></tr>
         <tr><td class="pv-strong">Range</td><td>The figure lies within plausible bounds for that indicator.</td><td>Not published</td></tr>
-        <tr><td class="pv-strong">Totals</td><td>Figures that must add up do, such as a balance equal to its parts.</td><td>Not published</td></tr>
-        <tr><td class="pv-strong">Size of move</td><td>The change since the last update is within normal limits.</td><td>Checked by hand against the release</td></tr>
-        <tr><td class="pv-strong">Cross-source</td><td>Two publishers' figures for the same thing and period agree.</td><td>Checked by hand</td></tr>
-        <tr><td class="pv-strong">Freshness</td><td>The latest period is as recent as the release calendar implies.</td><td>Checked by hand</td></tr>
+        <tr><td class="pv-strong">Totals</td><td>Figures that must add up do, such as a balance equal to its parts. Applies once the parts of a total come from official feeds.</td><td>Not published</td></tr>
+        <tr><td class="pv-strong">Size of move</td><td>The change since the last update is within normal limits.</td><td>Reviewed against the release before publishing</td></tr>
+        <tr><td class="pv-strong">Cross-source</td><td>Two publishers' figures for the same thing and period agree. Applies once two official feeds cover the same figure.</td><td>Reviewed against the releases before publishing</td></tr>
+        <tr><td class="pv-strong">Freshness</td><td>The latest period is as recent as the release calendar implies.</td><td>Reviewed before publishing</td></tr>
         <tr><td class="pv-strong">Confirmation</td><td>A new feed's values have been compared with the publisher's own release.</td><td>Stays interim</td></tr>
         <tr><td class="pv-strong">Weekly note</td><td>The note quotes no number that is not in the dashboard's data.</td><td>The update does not go live</td></tr>
       </tbody>

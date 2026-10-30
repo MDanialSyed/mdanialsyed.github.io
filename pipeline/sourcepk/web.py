@@ -37,7 +37,8 @@ def redact(url: str) -> str:
 class Fetcher:
     def __init__(self, session: requests.Session | None = None, pause: float = PAUSE_SECONDS):
         self.session = session or requests.Session()
-        self.session.headers.setdefault("User-Agent", USER_AGENT)
+        # Always identify as this pipeline: some publishers' firewalls refuse generic library clients.
+        self.session.headers["User-Agent"] = USER_AGENT
         self.pause = pause
         self._last = 0.0
 

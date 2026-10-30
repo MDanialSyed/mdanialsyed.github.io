@@ -112,3 +112,8 @@ def test_periods():
     assert periods.label("2026-09", "fytd", 7) == "Jul–Sep FY27"
     assert periods.label("2026-07", "fytd", 7) == "Jul FY27"
     assert periods.label("2027", "fy_end_year") == "FY27"
+
+
+def test_fetcher_identifies_itself():
+    from sourcepk.web import USER_AGENT, Fetcher
+    assert Fetcher().session.headers["User-Agent"] == USER_AGENT

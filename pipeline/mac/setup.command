@@ -4,7 +4,8 @@
 #  1. Copies the pipeline to ~/SourcePakistan and makes a private Python environment for it.
 #  2. Asks once for your EasyData key and saves it in your macOS Keychain (never in a file).
 #  3. Adds a weekly job that downloads the official data every Friday at 07:30
-#     (or when the Mac next wakes, if it was asleep).
+#     (or when the Mac next wakes, if it was asleep). Touching ~/SourcePakistan/run-now
+#     also starts a download, so a check can be re-run without opening anything.
 #  4. Runs the first download now.
 #
 # To undo: launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/pk.sourcepakistan.fetch.plist
@@ -21,6 +22,7 @@ echo "Source: Pakistan setup"
 echo "======================"
 
 mkdir -p "$ROOT/data" "$ROOT/logs" "$ROOT/code"
+touch "$ROOT/run-now"
 rsync -a --delete --exclude "__pycache__" "$HERE/code/" "$ROOT/code/"
 echo "1/4  Pipeline copied to $ROOT/code"
 
@@ -69,11 +71,15 @@ cat > "$PLIST" <<PL
   <array><string>/bin/bash</string><string>$ROOT/code/pipeline/mac/fetch.sh</string></array>
   <key>StartCalendarInterval</key>
   <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>7</integer><key>Minute</key><integer>30</integer></dict>
+  <key>WatchPaths</key>
+  <array><string>$ROOT/run-now</string></array>
   <key>StandardOutPath</key><string>$ROOT/logs/fetch.log</string>
   <key>StandardErrorPath</key><string>$ROOT/logs/fetch.log</string>
 </dict>
 </plist>
 PL
+mkdir -p "$ROOT/data/runs"
+date -u +%Y-%m-%dT%H:%M:%SZ > "$ROOT/data/runs/LAST_ATTEMPT"   # the run below goes first
 launchctl bootout "gui/$(id -u)" "$PLIST" >/dev/null 2>&1 || true
 launchctl bootstrap "gui/$(id -u)" "$PLIST"
 TZNAME="$(readlink /etc/localtime | sed 's#.*/zoneinfo/##')"
@@ -82,6 +88,6 @@ echo "4/4  Weekly download scheduled: Fridays 07:30 ($TZNAME)"
 
 echo
 echo "Running the first download now..."
-/bin/bash "$ROOT/code/pipeline/mac/fetch.sh" | tee -a "$ROOT/logs/fetch.log"
+/bin/bash "$ROOT/code/pipeline/mac/fetch.sh" --force | tee -a "$ROOT/logs/fetch.log"
 echo
 echo "All set. You can close this window."

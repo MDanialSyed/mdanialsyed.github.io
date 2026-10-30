@@ -43,3 +43,17 @@ def test_imf_parse_marks_projections():
     assert [(o.period, o.meta["projection"]) for o in obs] == [("2025", False), ("2027", True)]
     with pytest.raises(FormatError):
         imf_datamapper.parse(imf_json("NGDP_RPCH", {}), "PCPIPCH", "PAK")
+
+
+def test_easydata_probe_never_reveals_the_key(monkeypatch, key):
+    import json as _json
+    import requests
+
+    class R:
+        status_code, headers = 403, {"Content-Type": "text/html", "Server": "x"}
+        content = f"<html>Forbidden for {key}</html>".encode()
+
+    monkeypatch.setattr(requests, "get", lambda *a, **k: R())
+    out = easydata.probe()
+    assert out["key_length"] == len(key) and len(out["attempts"]) == 4
+    assert key not in _json.dumps(out) and "Forbidden for REDACTED" in out["attempts"][1]["body"]

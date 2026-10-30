@@ -102,7 +102,13 @@ def cmd_fetch(args, reg) -> int:
     root = data_dir(args.data)
     log = build.RunLog(build.new_run_id())
     build.fetch(reg, root, log, only=args.series)
-    build.save_fetch_log(log, root)
+    folder = build.save_fetch_log(log, root)
+    if any("easydata.sbp.org.pk" in e and ("HTTP 401" in e or "HTTP 403" in e) for e in log.errors):
+        import json
+        from .adapters import easydata
+        (folder / "easydata_probe.json").write_text(
+            scrub(json.dumps(easydata.probe(), indent=2, ensure_ascii=False)) + "\n", encoding="utf-8")
+        _say(f"EasyData refused the requests; diagnosis saved in {folder / 'easydata_probe.json'}")
     for key, ch in log.changes.items():
         _say(f"{key}: {len(ch.new)} new periods, {len(ch.revised)} revised")
     for e in log.errors:

@@ -3,6 +3,7 @@ layout: post
 title: "Constrained Optimization with Application to Synthetic Control Methods"
 subtitle: "Building the Synthetic Control Method from the ground up using Python's vast scientific computing library"
 background: '/img/posts/synthetic-control/device-energy.jpeg'
+math: true
 ---
 
 Many of us who have worked in empirical economics research are familiar with quasi-experimental estimators for estimating causal effects, such as Difference-in-Differences, Regression Discontinuity Design, Instrumental Variables, and Propensity Score Matching. However, one innovative estimator that recently caught my eye during my master’s coursework was the Synthetic Control Method (SCM). 
@@ -41,7 +42,7 @@ $$\hat{\beta}_t = y_t - \sum_{i\in I}{w_t y_{it}}$$
 
 where $w_t$ are the weights associated with each region in the control group $I$. 
 
-The question is then how to choose the weights. The approach in Abadie et al. (2021) is to optimize the weights with the aim of minimizing the distance between the treatment and control group in the pre-treatment period, that is, before the occurence of the two pivotal events that induced the mafia presence. So the optimal vector of weights $W^*(V)$ that minimizes the square distance between the two groups is:
+The question is then how to choose the weights. The approach in Abadie et al. (2021) is to optimize the weights with the aim of minimizing the distance between the treatment and control group in the pre-treatment period, that is, before the occurrence of the two pivotal events that induced the mafia presence. So the optimal vector of weights $W^*(V)$ that minimizes the square distance between the two groups is:
 
 $$\left(
 x-\sum_{i\in I}{w_i x_i^0}
@@ -105,13 +106,13 @@ w_basic = cvxpy_basic_solution(control_units, X0, X1)
 To account for the heterogeneity in the effect of the 8 predictor variables on the outcomes $Y$ (GDP per capita in Pinotti's case), Abadie and Gardeazabal (2003) proposed augmenting the optimization objective with a $(k × k)$ diagonal matrix $V$, such that the diagonal elements are weights indicating the relative importance of each of the predictors. The problem becomes,
 
 
-(3) $$W^*(V)={\operatorname{arg}}\min _{W \in \mathcal{W}}\left(X_{1}-X_{0} W\right)' V\left(X_{1}-X_{0} W\right)$$ 
+$$W^*(V)={\operatorname{arg}}\min _{W \in \mathcal{W}}\left(X_{1}-X_{0} W\right)' V\left(X_{1}-X_{0} W\right) \tag{3}$$
 
 Equation (3) is the 'inner' optimization objective with the goal of minimizing the distance between the predictor values of the $J$ donor units, the $(k × J)$ matrix $X_{0}$, and those of the treated unit, the $(k × 1)$ vector $X_{1}$ given predictor importance weights $V$.
 
-(4) $$V={\operatorname{arg}}\min _{V \in \mathcal{V}}\left(Z_{1}-Z_{0} W^*(V)\right)' \left(Z_{1}-Z_{0} W^*(V)\right)$$
+$$V={\operatorname{arg}}\min _{V \in \mathcal{V}}\left(Z_{1}-Z_{0} W^*(V)\right)' \left(Z_{1}-Z_{0} W^*(V)\right) \tag{4}$$
 
-Equation (4) is the 'outer' optimization objective to find the optimal diagonal matrix of predictor weights $V$ that minimize the RMSPE of the outcome variable $Y$ in the pre-intervetion period (Becker and Klößner, 2018:4). So the diagonal elements themselves become part of the optimization steps in the calculation of the synthetic controls. 
+Equation (4) is the 'outer' optimization objective to find the optimal diagonal matrix of predictor weights $V$ that minimize the RMSPE of the outcome variable $Y$ in the pre-intervention period (Becker and Klößner, 2018:4). So the diagonal elements themselves become part of the optimization steps in the calculation of the synthetic controls. 
 
 Moreover, they are subject to their own constraints, namely that $V$ is a subset of all positive semi-definite diagonal matrices, such that the diagonal elements sum to one (Malo et al.,2020:4):
 
@@ -219,7 +220,7 @@ SCM_print(data, output_object, w_pinotti, Z1, Z0)
 
 The SCM implementation has replicated the weights obtained by Pinotti's STATA implementation in a faster and more reliable manner than the previous approach. As a result, the outer objective function values are approximately equal.
 
-<img src="/img/posts/synthetic-control/result_nested.png" alt="Book logo" style="width:800px; height:300px;">
+![Output comparing the optimiser's weights and RMSPE with Pinotti's Stata results; the weights (0.624 and 0.376) and the RMSPE (130.14) match](/img/posts/synthetic-control/result_nested.png)
 
 I also observe that the corresponding $\( V \)$ allocates higher weights to investment rate, industry share of value added, and non-market services share of value added. The relatively large weight on the investment rate is especially unsurprising since, from an economic standpoint, one would expect investment in an economy to be highly correlated with output as seen in standard growth models in macroeconomics.
 

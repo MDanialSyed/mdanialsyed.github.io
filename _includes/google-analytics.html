@@ -1,10 +1,10 @@
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '{{ site.google_analytics }}');
-</script>
-
+{%- comment -%}
+  Google Analytics 4. Off unless _config.yml has a GA4 measurement ID
+  (google_analytics: "G-XXXXXXX"). If you turn it on, add a short privacy
+  note to the site, since it sets cookies on visitors' browsers.
+{%- endcomment -%}
+{%- assign ga = site.google_analytics | default: "" | strip -%}
+{%- if ga != "" and ga contains "G-" %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ ga }}"></script>
+<script src="{{ "/assets/js/analytics.js" | relative_url }}" data-ga-id="{{ ga }}"></script>
+{%- endif %}

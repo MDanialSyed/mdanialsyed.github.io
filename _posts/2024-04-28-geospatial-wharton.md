@@ -17,7 +17,7 @@ Just for a bit of context - the issue of land protection in the face of rapid de
 To quantitatively assess the effectiveness of Europe's circa 26% protected land in bolstering the region's nature reserves, we needed highly granular datasets for analysis that would:
 
 1. Tell us the land protection status of a given chunk of land.
-2. Measure the greenning of that land overtime.
+2. Measure the greening of that land over time.
 3. Provide other geo-physical land characteristics about the land.
 
 ## Data Collection
@@ -32,7 +32,7 @@ As a simple example, at the very basic level I started with a block of Eurostat 
 
 One effective way to pre-emptively mitigate against this is to establish an organized workflow from the beginning. Along with this, establishing a file naming convention such as _raw, _clean, _final denoting the various stages of processing of geospatial data. And finally, maintaining thorough documentation at each step, detailing what was done. As an example, I established the following folder structure for this project (feel free to re-purpose for your own needs):
 
-![Book logo](/img/posts/geospatial-wharton/workspace_structure.png)
+![Diagram of the project folder structure: final datasets, scripts, country datasets and shapefiles, and raster and vector data](/img/posts/geospatial-wharton/workspace_structure.png)
 
 # Data Challenges
 
@@ -54,25 +54,28 @@ This seemed problematic for a couple of reasons: first, obviously due to human e
 
 The trick I learned here is to automate series of spatial processes with the convenient toolbox in ArcGIS or alternatively to write the commands in ArcPy. The Modelbuilder tool in ArcGIS allows you to create DAGs (Directed Acyclic Graphs) to represent geoprocessing workflows and tools. I found these to be a visually appealing and logical way to show the processing steps applied to a country's shapefile, ensuring the ordering of the steps made sense, for example, by repairing the original protected sites shapefile, repairing it to fix topology errors, and then spatially joining it to the country shapefile join. These DAGs also conveniently double as documentation, which is an added benefit.
 
-![Book logo](/img/posts/geospatial-wharton/DAG.png)
+![ArcGIS ModelBuilder diagram of the geoprocessing steps applied to each country's shapefile](/img/posts/geospatial-wharton/DAG.png)
 
 2) Functions for Raster Processing in R
 
 During my database construction, I ran into several multi-band rasters which captured some geo-physical process overtime. For example. we wanted to include rainfall history for every grid cell from 1985 through 2019, and so this involved extracting the corresponding band from the rainfall raster. This is a tiny snippet of what I came across in an initial build of the raster extraction script:
 
-rainfall1985 <- raster("C:/Users/Tristan/Desktop/ForestTransition/rain/rain_1985.tif")
-rainfall1986 <- raster("C:/Users/Tristan/Desktop/ForestTransition/rain/rain_1985.tif")
-rainfall1987 <- raster("C:/Users/Tristan/Desktop/ForestTransition/rain/rain_1987.tif")
+```r
+rainfall1985 <- raster("C:/Users/me/Desktop/ForestTransition/rain/rain_1985.tif")
+rainfall1986 <- raster("C:/Users/me/Desktop/ForestTransition/rain/rain_1985.tif")
+rainfall1987 <- raster("C:/Users/me/Desktop/ForestTransition/rain/rain_1987.tif")
+```
 
 It is easy to spot the mistake now (spoiler - the rain_1985 raster is accidentally being mapped onto the variable for 1986). But, at the time, I spent a lot of hours debugging an issue in the analysis which was traced down to this line buried within some 1600 other lines of code. The best practice to avoid this kind of situation and possibility of human error would be to apply a loop or function that does away with repeated lines of code. Here's what I changed this to:
 
-
+```r
 for (year in rainfall_years) {
   raster_path <- paste0("../data_Raster/GIS/eu_rain_ERA_5/rain_", year, ".tif")
   raster_name <- paste0("rainfall", year)
   assign(raster_name, raster(raster_path))
   country_grids[,paste0("rain",year)] <- exact_extract(eval(as.symbol(paste0("rainfall",year))),country_grids,'mean')
 }
+```
 
 This alternative condensed 25 lines of code into a simple loop and avoided any hard-coding that might be prone to human error. I highly recommend adopting such practices in your own workflow when dealing with multi-band rasters or generally with rasters that require repetitive processing steps (which in this case is just a raster being extracted to a country's grid)
   

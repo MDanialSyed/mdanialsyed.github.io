@@ -3,20 +3,47 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>
-    {% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}
-    {% else %}{{ site.title | escape }}{% endif %}
-  </title>
+  {%- assign ga = site.google_analytics | default: "" | strip -%}
+  {%- assign ga_on = false -%}
+  {%- if ga != "" and ga contains "G-" -%}{%- assign ga_on = true -%}{%- endif %}
 
-  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  <!-- Security: only this site's own scripts, styles, fonts and images may load.
+       Forms and requests may only go to this site and Formspree (the contact form). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'{% if ga_on %} https://www.googletagmanager.com{% endif %}; style-src 'self' 'unsafe-inline'; img-src 'self' data:{% if ga_on %} https://*.google-analytics.com https://*.googletagmanager.com{% endif %}; font-src 'self'; connect-src 'self' https://formspree.io{% if ga_on %} https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com{% endif %}; form-action 'self' https://formspree.io; object-src 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  {%- if page.title %}
+  {%- assign full_title = page.title | append: " | " | append: site.title -%}
+  {%- else -%}
+  {%- assign full_title = site.title -%}
+  {%- endif %}
+  {%- assign description = page.subtitle | default: page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 -%}
+  {%- assign canonical = page.url | replace: 'index.html', '' | absolute_url -%}
+  {%- assign share_image = page.background | default: site.share_image | absolute_url %}
 
-  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+  <title>{{ full_title | escape }}</title>
+  <meta name="description" content="{{ description | escape }}">
+  <meta name="author" content="{{ site.author | escape }}">
+  <link rel="canonical" href="{{ canonical }}">
 
-  <link rel="stylesheet" href="{{"/assets/main.css" | relative_url }}">
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+  <!-- How links to this site look when shared on LinkedIn, X, WhatsApp, Slack and the like -->
+  <meta property="og:site_name" content="{{ site.title | escape }}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+  <meta property="og:description" content="{{ description | escape }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ share_image }}">
+  <meta property="og:locale" content="en_US">
+  {%- if page.layout == 'post' %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  <meta property="article:author" content="{{ site.author | escape }}">
+  {%- endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title | default: site.title | escape }}">
+  <meta name="twitter:description" content="{{ description | escape }}">
+  <meta name="twitter:image" content="{{ share_image }}">
+
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -28,5 +55,22 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
+
+  {%- if page.url == "/" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": {{ site.author | jsonify }},
+    "url": {{ "/" | absolute_url | jsonify }}
+    {%- assign same_as = "" | split: "" -%}
+    {%- if site.linkedin_username and site.linkedin_username != "" %}{% assign li = "https://www.linkedin.com/in/" | append: site.linkedin_username %}{% assign same_as = same_as | push: li %}{% endif -%}
+    {%- if site.github_username and site.github_username != "" %}{% assign gh = "https://github.com/" | append: site.github_username %}{% assign same_as = same_as | push: gh %}{% endif -%}
+    {%- if same_as.size > 0 %},
+    "sameAs": {{ same_as | jsonify }}
+    {%- endif %}
+  }
+  </script>
+  {%- endif %}
 
 </head>

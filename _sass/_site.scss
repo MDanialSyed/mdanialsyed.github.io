@@ -1,0 +1,86 @@
+// Site-specific additions on top of the Clean Blog theme.
+
+// Inline SVG icons (replace the Font Awesome script).
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
+
+// Footer social links: white icon on a dark circle, as before.
+footer .social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #212529;
+  color: #fff;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+  &:hover,
+  &:focus {
+    background: #0085a1;
+    color: #fff;
+  }
+}
+
+.navbar-toggler .icon {
+  margin-left: 0.25rem;
+}
+
+// Contact form
+.contact-status {
+  margin-top: 1rem;
+}
+.visually-hidden-field {
+  position: absolute !important;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+// Nothing in a post may push the page wider than a phone screen.
+.post-body img,
+article img {
+  max-width: 100%;
+  height: auto;
+}
+.post-body {
+  overflow-wrap: break-word; // long links and file paths wrap instead of overflowing
+}
+.post-body pre {
+  overflow-x: auto;
+}
+.post-body mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  min-width: 0 !important; // MathJax sets a min-width on numbered equations
+  padding: 2px 0;
+}
+
+// 404 page
+.not-found {
+  text-align: center;
+  padding: 2rem 0 3rem;
+}
+
+// Phones and tablets: the menu bar is white there, so show the dark logo
+// (the theme showed the white one, which was invisible).
+@media (max-width: 991.98px) {
+  #mainNav .navbar-brand .logo-dark {
+    display: inline;
+  }
+  #mainNav .navbar-brand .logo-light {
+    display: none;
+  }
+  // Keep the logo and the Menu button on one line.
+  #mainNav .navbar-brand img {
+    width: auto;
+    height: 26px;
+  }
+}

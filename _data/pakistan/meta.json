@@ -2,7 +2,7 @@
   "name": "Source: Pakistan",
   "asof": "30 Oct 2026",
   "asof_iso": "2026-10-30",
-  "notes": "Figures read from SBP, PBS, Finance Ministry and FBR releases, market closes, and news reports of them. Every row carries its own source link.",
+  "notes": "Official figures are downloaded from the publishers' own data services and calculated by code; interim figures are read from SBP, PBS, Finance Ministry and FBR releases, market closes, and news reports of them. Every figure shows its source.",
   "takeaway": "Inflation of 10.3% is well above the State Bank's 5–7% target, so the policy rate is back up at 12.00%. Buffers are thicker, with SBP reserves at $21.52bn, but the current account has slipped back into deficit: −$874m in July–September.",
   "curve": {
     "latest": "Latest auctions",

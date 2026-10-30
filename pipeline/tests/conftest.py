@@ -102,8 +102,11 @@ FOREX_LINES = ["LIQUID FOREIGN EXCHANGE RESERVES (MILLION US$)",
                "WEEK-END LEVELS",
                "16-Oct-26 21,488.6 5,344.4 26,833.0",
                "23-Oct-26 P 21,521.6 5,230.1 26,751.7"]
-MTB_LINES = ["Market Treasury Bills (MTBs) Auction Result", "Cut-off Yields as on Oct 28, 2026",
-             "1-M 12.1055%", "3-M 12.4261%", "6-M 12.6500%", "12-M 12.8900%"]
+SBP_HOME = ("<!DOCTYPE html><html lang='en'><head><title>State Bank of Pakistan</title></head><body>"
+            "<h4>Cut-off Rates in the Latest Auctions</h4><h5>MTBs</h5><table><tr><th>Tenor</th><th>Cut-off Yield</th></tr>"
+            "<tr><td>1-M</td><td>12.1055%</td></tr><tr><td>3-M</td><td>12.4261%</td></tr>"
+            "<tr><td>6-M</td><td>12.6500%</td></tr><tr><td>12-M</td><td>12.8900%</td></tr></table>"
+            "<p>(as on Oct 28, 2026)</p><h5>Fixed - Rate PIB</h5></body></html>").encode()
 
 
 class FakeFetcher:
@@ -120,8 +123,8 @@ class FakeFetcher:
                 return Response(url=redact(url), status=200, content_type="text/plain", body=body)
         if url.endswith("/forex.pdf"):
             return Response(url=redact(url), status=200, content_type="application/pdf", body=make_pdf(FOREX_LINES))
-        if url.endswith("/auction-tbills.pdf"):
-            return Response(url=redact(url), status=200, content_type="application/pdf", body=make_pdf(MTB_LINES))
+        if url == "https://www.sbp.org.pk/":
+            return Response(url=redact(url), status=200, content_type="text/html", body=SBP_HOME)
         if "easydata.sbp.org.pk/api/v1/series/" in url:  # any other State Bank series: a flat synthetic history
             code = url.split("/series/")[1].split("/")[0]
             body = easydata_csv(code, synthetic_history(code))

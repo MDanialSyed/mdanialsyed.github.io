@@ -363,33 +363,33 @@ start = "2023-07-01"
 [[series]]
 key = "sbp_tbill_1m_results"
 source = "sbp_web"
-code = "mtb#1M"
+code = "rates#1M"
 frequency = "as-needed"
-description = "1-month market treasury bill, cut-off yield at the latest auction, percent (auction results file)"
+description = "1-month market treasury bill, cut-off yield at the latest auction, percent (State Bank website)"
 unit = "Percent"
 
 [[series]]
 key = "sbp_tbill_3m_results"
 source = "sbp_web"
-code = "mtb#3M"
+code = "rates#3M"
 frequency = "as-needed"
-description = "3-month market treasury bill, cut-off yield at the latest auction, percent (auction results file)"
+description = "3-month market treasury bill, cut-off yield at the latest auction, percent (State Bank website)"
 unit = "Percent"
 
 [[series]]
 key = "sbp_tbill_6m_results"
 source = "sbp_web"
-code = "mtb#6M"
+code = "rates#6M"
 frequency = "as-needed"
-description = "6-month market treasury bill, cut-off yield at the latest auction, percent (auction results file)"
+description = "6-month market treasury bill, cut-off yield at the latest auction, percent (State Bank website)"
 unit = "Percent"
 
 [[series]]
 key = "sbp_tbill_12m_results"
 source = "sbp_web"
-code = "mtb#12M"
+code = "rates#12M"
 frequency = "as-needed"
-description = "12-month market treasury bill, cut-off yield at the latest auction, percent (auction results file)"
+description = "12-month market treasury bill, cut-off yield at the latest auction, percent (State Bank website)"
 unit = "Percent"
 
 # Not yet mapped: the official code is identified from the publisher's catalogue first.
@@ -759,7 +759,7 @@ key = "tbill_12m"
 label = "12-month T-bill, auction cut-off"
 section = "markets"
 unit = "percent"
-series = ["sbp_tbill_12m"]
+series = ["sbp_tbill_12m_results", "sbp_tbill_12m"]
 transform = "as_published@1"
 context = ["previous"]
 display = { decimals = 2, suffix = "%" }
@@ -768,6 +768,7 @@ jump_abs = 3.0
 max_age_days = 35
 confirm = "Must match the 12-month cut-off in SBP's T-bill auction results."
 
+status = "needs-confirmation"
 [[indicators]]
 key = "pib_10y"
 label = "10-year PIB, auction cut-off"
@@ -1009,26 +1010,35 @@ key = "tbill_3m"
 label = "3-month T-bill, auction cut-off"
 section = "reference"
 unit = "percent"
-series = ["sbp_tbill_3m"]
+series = ["sbp_tbill_3m_results", "sbp_tbill_3m"]
 transform = "as_published@1"
 context = ["previous"]
 display = { decimals = 2, suffix = "%" }
 range = [0.0, 40.0]
-status = "confirmed"
-confirmed = "30 Oct 2026: series name confirms the tenor; used to check the yield curve"
+status = "needs-confirmation"
 
 [[indicators]]
 key = "tbill_6m"
 label = "6-month T-bill, auction cut-off"
 section = "reference"
 unit = "percent"
-series = ["sbp_tbill_6m"]
+series = ["sbp_tbill_6m_results", "sbp_tbill_6m"]
 transform = "as_published@1"
 context = ["previous"]
 display = { decimals = 2, suffix = "%" }
 range = [0.0, 40.0]
-status = "confirmed"
-confirmed = "30 Oct 2026: series name confirms the tenor; used to check the yield curve"
+status = "needs-confirmation"
+
+[[indicators]]
+key = "tbill_1m"
+label = "1-month T-bill, auction cut-off"
+section = "reference"
+unit = "percent"
+series = ["sbp_tbill_1m_results"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 2, suffix = "%" }
+range = [0.0, 40.0]
 
 # ---------------------------------------------------------------- charts
 # Histories drawn on the page, exactly as published.

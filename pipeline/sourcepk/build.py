@@ -107,14 +107,40 @@ def compute_all(reg: Registry, data_root: Path, log: RunLog, today: date | None 
         if ind.status in ("unmapped", "retired") or not ind.transform:
             continue
         series_key = ind.series[0]
-        series = store.latest(series_key)
         try:
+            series, origin = merged_series(store, ind.series)
             res = compute(ind.transform, series_key, series, fy_start_month=reg.fy_start_month, today=today)
         except NotComputable as e:
             log.not_computed[ind.key] = str(e)
             continue
-        log.results[ind.key] = _scaled(ind, res)
-        log.context[ind.key] = _context(reg, ind, series_key, series, res, today)
+        context = _context(reg, ind, series_key, series, res, today)
+        log.results[ind.key] = _scaled(ind, _relabel(res, origin))
+        log.context[ind.key] = [(kind, _relabel(r, origin)) for kind, r in context]
+
+
+TOLERANCE_MERGE = 0.005
+
+
+def merged_series(store: Store, keys) -> tuple[dict, dict]:
+    """One history from several official series of the same quantity (for example the State
+    Bank's website for the latest auction and EasyData for the history). Where two series cover
+    the same period they must agree; if they do not, nothing is computed."""
+    merged, origin = {}, {}
+    for key in keys:
+        for period, row in store.latest(key).items():
+            if period in merged:
+                if abs(merged[period].value - row.value) > TOLERANCE_MERGE:
+                    raise NotComputable(f"sources disagree for {period}: {origin[id(merged[period])]} "
+                                        f"{merged[period].value:g} vs {key} {row.value:g}")
+                continue
+            merged[period] = row
+            origin[id(row)] = key
+    return dict(sorted(merged.items())), origin
+
+
+def _relabel(res: Result, origin: dict) -> Result:
+    """Point every input back at the series it actually came from."""
+    return dataclasses.replace(res, inputs=[(origin.get(id(row), k), row) for k, row in res.inputs])
 
 
 def _scaled(ind, res: Result) -> Result:

@@ -218,3 +218,19 @@ def test_charts_published_with_lineage(tmp_path, key):
     assert {p["fy"] for p in lsm["points"]} == {"FY26", "FY27"}
     assert len(charts["cpi_yoy_recent"]["points"]) == 24
     assert "chart imf_growth_path" in log.not_computed
+
+
+def test_merged_sources_must_agree(tmp_path):
+    from sourcepk.adapters import Observation
+    from sourcepk.archive import RawRef
+    from sourcepk.store import Store
+    s = Store(tmp_path)
+    ref = lambda n: RawRef(path=f"raw/{n}", sha256="0" * 64, retrieved_at="2026-10-30T00:00:00Z", url="u", bytes=1)
+    s.ingest("web", [Observation("2026-10-28", 12.89)], ref("web"))
+    s.ingest("easy", [Observation("2026-10-14", 12.5), Observation("2026-10-28", 12.89)], ref("easy"))
+    merged, origin = build.merged_series(s, ["web", "easy"])
+    assert list(merged) == ["2026-10-14", "2026-10-28"]
+    assert origin[id(merged["2026-10-28"])] == "web" and origin[id(merged["2026-10-14"])] == "easy"
+    s.ingest("bad", [Observation("2026-10-28", 13.5)], ref("bad"))
+    with pytest.raises(Exception, match="disagree"):
+        build.merged_series(s, ["web", "bad"])

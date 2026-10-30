@@ -1,0 +1,66 @@
+[
+  {
+    "label": "Jun 2025",
+    "sbp_bn": 14.51,
+    "kind": "Actual",
+    "note": "Month-end",
+    "source": "Pakistan Era: SBP weekly reserves sheet",
+    "url": "https://pakera.pk/sbp-forex-reserves-16-october-2026/"
+  },
+  {
+    "label": "Jun 2026",
+    "sbp_bn": 18.38,
+    "kind": "Actual",
+    "note": "Month-end",
+    "source": "Pakistan Era: SBP weekly reserves sheet",
+    "url": "https://pakera.pk/sbp-forex-reserves-16-october-2026/"
+  },
+  {
+    "label": "17 Jul 2026",
+    "sbp_bn": 17.3,
+    "kind": "Actual",
+    "note": "After debt repayments",
+    "source": "The News: SBP statement, Jul 2026",
+    "url": "https://www.thenews.pk/print/1428820-rupee-stays-flat-in-interbank"
+  },
+  {
+    "label": "Aug 2026",
+    "sbp_bn": 17.15,
+    "kind": "Actual",
+    "note": "Month-end",
+    "source": "Pakistan Era: SBP weekly reserves sheet",
+    "url": "https://pakera.pk/sbp-forex-reserves-16-october-2026/"
+  },
+  {
+    "label": "Sep 2026",
+    "sbp_bn": 21.51,
+    "kind": "Actual",
+    "note": "Month-end, provisional",
+    "source": "Pakistan Era: SBP weekly reserves sheet",
+    "url": "https://pakera.pk/sbp-forex-reserves-16-october-2026/"
+  },
+  {
+    "label": "23 Oct 2026",
+    "sbp_bn": 21.52,
+    "kind": "Actual",
+    "note": "Latest week",
+    "source": "Business Recorder: SBP reserves, 29 Oct",
+    "url": "https://www.brecorder.com/news/40446522/sbp-held-foreign-exchange-reserves-rise-33mn-to-2152bn"
+  },
+  {
+    "label": "Dec 2026",
+    "sbp_bn": 23.0,
+    "kind": "Goal",
+    "note": "SBP Governor's goal",
+    "source": "ProPakistani: SBP reserves goals",
+    "url": "https://propakistani.pk/2026/10/29/sbp-reserves-rise-above-21-5-billion/"
+  },
+  {
+    "label": "Jun 2027",
+    "sbp_bn": 25.0,
+    "kind": "Goal",
+    "note": "SBP Governor's goal",
+    "source": "ProPakistani: SBP reserves goals",
+    "url": "https://propakistani.pk/2026/10/29/sbp-reserves-rise-above-21-5-billion/"
+  }
+]

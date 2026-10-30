@@ -24,3 +24,38 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
 highlighter: rouge
+
+# Pakistan Vitals: weekly notes live in their own collection so they
+# don't mix with the main blog; pakistan/feed.xml gives them their own RSS feed.
+collections:
+  pakistan_notes:
+    output: true
+    permalink: /pakistan/notes/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: pakistan_notes
+    values:
+      layout: pakistan_note
+      extra_css: ["/assets/pakistan/pakistan.css"]
+      feed_url: "/pakistan/feed.xml"
+      feed_title: "Pakistan Vitals weekly notes"
+
+# Jekyll's own defaults, plus the Pakistan Vitals pipeline files that
+# shouldn't be published.
+exclude:
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - scripts
+  - CLAUDE.md
+  - PAKISTAN_VITALS.md
+  - pv-run-summary.md

@@ -1,0 +1,38 @@
+[
+  {
+    "item": "Current account balance",
+    "total": "−$874m",
+    "m1": "−$356m",
+    "m2": "−$73m",
+    "change": "−$755m a year earlier",
+    "source": "AHL Research via Trade Chronicle",
+    "url": "https://tradechronicle.com/pakistan-posts-874m-current-account-deficit-in-1qfy27-as-imports-outpace-exports/"
+  },
+  {
+    "item": "Workers' remittances",
+    "total": "$10.88bn",
+    "m1": "$3.59bn",
+    "m2": "$3.66bn",
+    "change": "+14%",
+    "source": "News Alert: remittances, Sep 2026",
+    "url": "https://newsalert.com.pk/pakistans-remittances-ease-to-3-59-billion-in-september/"
+  },
+  {
+    "item": "Goods exports",
+    "total": "$8.42bn",
+    "m1": "$2.94bn",
+    "m2": "$2.53bn",
+    "change": "+10.8%",
+    "source": "PBS via Ratopati/Xinhua",
+    "url": "https://english.ratopati.com/story/82110/pakistans-exports-increase-sharply-reaching-294-billion-in-september"
+  },
+  {
+    "item": "Goods imports",
+    "total": "$19.22bn",
+    "m1": "$6.49bn",
+    "m2": "$5.82bn",
+    "change": "+13.2%",
+    "source": "PBS via Ratopati/Xinhua",
+    "url": "https://english.ratopati.com/story/82110/pakistans-exports-increase-sharply-reaching-294-billion-in-september"
+  }
+]

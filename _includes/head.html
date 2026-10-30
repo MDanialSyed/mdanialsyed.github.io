@@ -16,6 +16,12 @@
   <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="{{"/assets/main.css" | relative_url }}">
+  {%- for css in page.extra_css %}
+  <link rel="stylesheet" href="{{ css | relative_url }}">
+  {%- endfor %}
+  {%- if page.feed_url %}
+  <link rel="alternate" type="application/rss+xml" title="{{ page.feed_title | default: page.title | escape }}" href="{{ page.feed_url | relative_url }}">
+  {%- endif %}
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
 

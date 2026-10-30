@@ -1,0 +1,24 @@
+---
+layout: page
+title: Pakistan Vitals weekly notes
+description: What changed in Pakistan's economy this week, and what to watch next
+extra_css: ["/assets/pakistan/pakistan.css"]
+feed_url: "/pakistan/feed.xml"
+feed_title: "Pakistan Vitals weekly notes"
+---
+{%- assign notes = site.pakistan_notes | sort: "date" | reverse -%}
+
+<p class="pv-notes-intro">A short note every Friday on Pakistan's economy, written from the figures on the <a href="{{ '/pakistan/' | relative_url }}">Pakistan Vitals dashboard</a>. <a href="{{ '/pakistan/feed.xml' | relative_url }}">Follow by RSS</a>.</p>
+
+{% for note in notes %}
+<article class="post-preview">
+  <a href="{{ note.url | relative_url }}">
+    <h2 class="post-title">{{ note.title }}</h2>
+    {%- if note.subtitle %}
+    <h3 class="post-subtitle">{{ note.subtitle }}</h3>
+    {%- endif %}
+  </a>
+  <p class="post-meta">{{ note.date | date: '%B %d, %Y' }}</p>
+</article>
+<hr>
+{% endfor %}

@@ -1,0 +1,72 @@
+[
+  {
+    "item": "Headline inflation",
+    "latest": "10.3% (Sep)",
+    "target": "5–7% over the medium term",
+    "status": "Above target",
+    "tone": "bad",
+    "note": "SBP no longer gives a date for getting back into range",
+    "source": "SBP Monetary Policy Statement, 26 Oct 2026",
+    "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-26-Oct-2026.pdf"
+  },
+  {
+    "item": "SBP reserves",
+    "latest": "$21.52bn (23 Oct)",
+    "target": "$23bn by end-Dec 2026",
+    "status": "Short of goal",
+    "tone": "warn",
+    "note": "Up $33m in the latest week",
+    "source": "ProPakistani: SBP reserves goals",
+    "url": "https://propakistani.pk/2026/10/29/sbp-reserves-rise-above-21-5-billion/"
+  },
+  {
+    "item": "Current account, FY27",
+    "latest": "−$874m (Jul–Sep)",
+    "target": "Deficit of 0–1% of GDP",
+    "status": "Inside range",
+    "tone": "warn",
+    "note": "SBP now sees it slightly above the middle of the range",
+    "source": "The Nation: SBP raises rate to 12%",
+    "url": "https://www.nation.com.pk/27-Oct-2026/sbp-raises-policy-rate-50-bps-12pc"
+  },
+  {
+    "item": "FBR tax collection",
+    "latest": "Rs3,083bn (Jul–Sep)",
+    "target": "Rs3,053bn for the quarter",
+    "status": "Met",
+    "tone": "ok",
+    "note": "Sales tax carried it; income tax and customs fell short",
+    "source": "Dawn: FBR Q1 FY27",
+    "url": "https://epaper.dawn.com/DetailImage.php?StoryImage=01_10_2026_009_004"
+  },
+  {
+    "item": "Primary balance, FY26",
+    "latest": "2.9% of GDP surplus",
+    "target": "2.5% of GDP (IMF)",
+    "status": "Beat",
+    "tone": "ok",
+    "note": "Third primary surplus in a row",
+    "source": "BOL News: fiscal FY26",
+    "url": "https://www.bolnews.com/business/pakistan-posts-strongest-fiscal-performance-in-22-years/"
+  },
+  {
+    "item": "Real GDP growth",
+    "latest": "2.0% (Q4 FY26)",
+    "target": "3.5–4.5% in FY27 (SBP)",
+    "status": "Below range",
+    "tone": "warn",
+    "note": "Full FY26 grew 3.65%",
+    "source": "PBS National Accounts Committee, 19 Oct",
+    "url": "https://www.pbs.gov.pk/national-accounts-committee-nac-meeting/"
+  },
+  {
+    "item": "IMF programme",
+    "latest": "Staff-level agreement (7 Oct)",
+    "target": "Board approval of 4th review",
+    "status": "Pending",
+    "tone": "warn",
+    "note": "About $1.2bn to follow approval",
+    "source": "Business Recorder: IMF staff-level agreement",
+    "url": "https://www.brecorder.com/news/40443228/imf-pakistan-reach-staff-level-agreement-on-eff-rsf-reviews"
+  }
+]

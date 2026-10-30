@@ -1,0 +1,58 @@
+[
+  {
+    "tenor": "1M",
+    "latest": 11.5003,
+    "previous": null,
+    "latest_display": "11.50%",
+    "previous_display": "n/a"
+  },
+  {
+    "tenor": "3M",
+    "latest": 11.9999,
+    "previous": 11.38,
+    "latest_display": "12.00%",
+    "previous_display": "11.38%"
+  },
+  {
+    "tenor": "6M",
+    "latest": 12.3989,
+    "previous": 11.7,
+    "latest_display": "12.40%",
+    "previous_display": "11.70%"
+  },
+  {
+    "tenor": "12M",
+    "latest": 12.4999,
+    "previous": 12.0,
+    "latest_display": "12.50%",
+    "previous_display": "12.00%"
+  },
+  {
+    "tenor": "2Y",
+    "latest": 12.795,
+    "previous": 12.399,
+    "latest_display": "12.79%",
+    "previous_display": "12.40%"
+  },
+  {
+    "tenor": "3Y",
+    "latest": 12.746,
+    "previous": 12.49,
+    "latest_display": "12.75%",
+    "previous_display": "12.49%"
+  },
+  {
+    "tenor": "5Y",
+    "latest": 12.8998,
+    "previous": 12.49,
+    "latest_display": "12.90%",
+    "previous_display": "12.49%"
+  },
+  {
+    "tenor": "10Y",
+    "latest": 12.85,
+    "previous": 12.5,
+    "latest_display": "12.85%",
+    "previous_display": "12.50%"
+  }
+]

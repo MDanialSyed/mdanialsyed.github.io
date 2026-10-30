@@ -1,0 +1,25 @@
+{%- comment -%}
+  Table of indicators for one section of the dashboard.
+  section: the rows' "section" value. label_col: heading for the first column.
+{%- endcomment -%}
+{%- assign _pv_rows = site.data.pakistan.indicators | where: "section", include.section -%}
+<div class="pv-tablewrap">
+  <table class="pv-table pv-ind">
+    <thead>
+      <tr>
+        <th>{{ include.label_col | default: "Indicator" }}</th>
+        <th class="pv-num">Latest</th>
+        <th>Period &amp; source</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for r in _pv_rows %}
+      <tr>
+        <td>{{ r.label }}{% if r.context != "" %}<span class="pv-sub">{{ r.context }}</span>{% endif %}</td>
+        <td class="pv-num pv-strong">{{ r.display }}</td>
+        <td class="pv-muted">{{ r.period }}{% if r.url != "" %}<span class="pv-sub pv-src"><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.source }}</a></span>{% endif %}</td>
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>

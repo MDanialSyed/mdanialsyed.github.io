@@ -1,0 +1,92 @@
+[
+  {
+    "month": "2025-05",
+    "cpi_yoy": 3.5,
+    "policy_rate": 11.0
+  },
+  {
+    "month": "2025-06",
+    "cpi_yoy": 3.2,
+    "policy_rate": 11.0
+  },
+  {
+    "month": "2025-07",
+    "cpi_yoy": 4.1,
+    "policy_rate": 11.0
+  },
+  {
+    "month": "2025-08",
+    "cpi_yoy": 3.1,
+    "policy_rate": 11.0
+  },
+  {
+    "month": "2025-09",
+    "cpi_yoy": 5.8,
+    "policy_rate": 11.0
+  },
+  {
+    "month": "2025-10",
+    "cpi_yoy": 6.2,
+    "policy_rate": 11.0
+  },
+  {
+    "month": "2025-11",
+    "cpi_yoy": 6.1,
+    "policy_rate": 11.0
+  },
+  {
+    "month": "2025-12",
+    "cpi_yoy": 5.6,
+    "policy_rate": 10.5
+  },
+  {
+    "month": "2026-01",
+    "cpi_yoy": 5.8,
+    "policy_rate": 10.5
+  },
+  {
+    "month": "2026-02",
+    "cpi_yoy": 7.0,
+    "policy_rate": 10.5
+  },
+  {
+    "month": "2026-03",
+    "cpi_yoy": 7.3,
+    "policy_rate": 10.5
+  },
+  {
+    "month": "2026-04",
+    "cpi_yoy": 10.9,
+    "policy_rate": 11.5
+  },
+  {
+    "month": "2026-05",
+    "cpi_yoy": 11.7,
+    "policy_rate": 11.5
+  },
+  {
+    "month": "2026-06",
+    "cpi_yoy": 11.1,
+    "policy_rate": 11.5
+  },
+  {
+    "month": "2026-07",
+    "cpi_yoy": 9.2,
+    "policy_rate": 11.5
+  },
+  {
+    "month": "2026-08",
+    "cpi_yoy": 11.1,
+    "policy_rate": 11.5
+  },
+  {
+    "month": "2026-09",
+    "cpi_yoy": 10.3,
+    "policy_rate": 11.5
+  },
+  {
+    "month": "2026-10",
+    "cpi_yoy": null,
+    "policy_rate": 12.0
+  }
+]

@@ -1,0 +1,99 @@
+# Pakistan Vitals: weekly refresh.
+#
+# Every Friday, Claude finds the week's new Pakistani economic releases,
+# updates _data/pakistan, writes the weekly note and runs the checks. The
+# result arrives as a pull request; nothing goes live until you merge it.
+#
+# One-time setup is in PAKISTAN_VITALS.md.
+
+name: Pakistan Vitals weekly update
+
+on:
+  schedule:
+    - cron: "0 13 * * 5" # Fridays 13:00 UTC = 6pm in Pakistan, after the PSX close
+  workflow_dispatch: # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: pakistan-weekly
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Note today's date and keep a copy of last week's data
+        id: prep
+        run: |
+          echo "today=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+          mkdir -p "$RUNNER_TEMP/baseline"
+          cp _data/pakistan/*.json "$RUNNER_TEMP/baseline/"
+
+      - name: Update the data and write the weekly note
+        id: claude
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # To use a Claude subscription instead of an API key, delete the line
+          # above and uncomment this one (see PAKISTAN_VITALS.md):
+          # claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            Today is ${{ steps.prep.outputs.today }}.
+            Run this week's Pakistan Vitals update. Follow
+            .claude/skills/pakistan-weekly-update/SKILL.md from start to finish:
+            update the data files, run derive.py, write the weekly note dated
+            today, run check_data.py until it passes, and write pv-run-summary.md.
+            Do not commit, push or open a pull request; the workflow does that.
+          claude_args: >-
+            --max-turns 150
+            --allowedTools "WebSearch,WebFetch,Read,Write,Edit,Glob,Grep,Bash(python3 scripts/pakistan/derive.py:*),Bash(python3 scripts/pakistan/check_data.py:*)"
+
+      - name: Recompute derived figures
+        id: derive
+        continue-on-error: true
+        run: python3 scripts/pakistan/derive.py
+
+      - name: Check the data and the note
+        id: check
+        continue-on-error: true
+        run: |
+          if [ ! -s pv-run-summary.md ]; then
+            echo "## Pakistan Vitals weekly update, ${{ steps.prep.outputs.today }}" > pv-run-summary.md
+            echo "" >> pv-run-summary.md
+            echo "Claude did not write a run summary this time. Check the workflow log." >> pv-run-summary.md
+          fi
+          python3 scripts/pakistan/check_data.py \
+            --baseline "$RUNNER_TEMP/baseline" \
+            --report pv-run-summary.md
+
+      - name: Open a pull request for review
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: pakistan-vitals/weekly-${{ steps.prep.outputs.today }}
+          delete-branch: true
+          add-paths: |
+            _data/pakistan/**
+            _pakistan_notes/**
+          commit-message: "Pakistan Vitals: weekly update for ${{ steps.prep.outputs.today }}"
+          title: "${{ (steps.claude.outcome != 'success' || steps.check.outcome != 'success') && '[Needs fixes] ' || '' }}Pakistan Vitals weekly update, ${{ steps.prep.outputs.today }}"
+          body-path: pv-run-summary.md
+          draft: ${{ steps.claude.outcome != 'success' || steps.check.outcome != 'success' }}
+
+      - name: Flag the run if anything went wrong
+        if: steps.claude.outcome != 'success' || steps.check.outcome != 'success'
+        run: |
+          echo "::error::The update or its checks did not pass. The pull request (if any) is a draft; see its description."
+          exit 1

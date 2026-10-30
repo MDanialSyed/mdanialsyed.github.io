@@ -34,6 +34,15 @@ EASYDATA_META = {  # the published name and unit each registry series expects
 }
 
 
+def _registry_meta() -> dict[str, tuple[str, str]]:
+    """Published name and unit for every registry series that states them, so synthetic files pass the checks."""
+    from sourcepk.config import load_registry
+    return {s.code: (s.published_name, s.unit) for s in load_registry().series.values() if s.published_name and s.unit}
+
+
+EASYDATA_META.update({k: v for k, v in _registry_meta().items() if k not in EASYDATA_META})
+
+
 def easydata_csv(code: str, values: dict[str, float], name: str | None = None, unit: str | None = None) -> bytes:
     """Shaped like EasyData's CSV: newest first, lines ended by a carriage return only."""
     n, u = EASYDATA_META.get(code, ("Synthetic series", "Index"))

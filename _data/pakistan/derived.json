@@ -38,7 +38,7 @@
     {
       "key": "res_gap",
       "label": "SBP reserves, gap to end-December goal",
-      "value": 1.48,
+      "value": 1.4783,
       "display": "$1.48bn to go",
       "tone": "neutral"
     },
@@ -117,7 +117,7 @@
     },
     {
       "key": "sbp_res",
-      "change": 0.033,
+      "change": 0.0331,
       "direction": "up",
       "tone": "good",
       "display": "$33m w/w",

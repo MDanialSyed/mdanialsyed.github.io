@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-30T18:56:49Z",
-  "run_id": "20261030T185649Z",
+  "generated_at": "2026-10-30T19:36:52Z",
+  "run_id": "20261030T193652Z",
   "pipeline_version": "0.1.0",
-  "code_version": "42219b5",
+  "code_version": "4dd72c6",
   "indicators": {
     "cpi_yoy": {
       "key": "cpi_yoy",
@@ -809,6 +809,59 @@
         }
       ]
     },
+    "tbill_12m": {
+      "key": "tbill_12m",
+      "label": "12-month T-bill, auction cut-off",
+      "unit": "percent",
+      "value": 12.89,
+      "display": "12.89%",
+      "period": "2026-10-28",
+      "period_label": "28 Oct 2026",
+      "status": "official",
+      "frequency": "as-needed",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+      "series_code": "rates#12M",
+      "source_url": "https://www.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T19:36:04Z",
+      "context": "12.50% on 14 Oct",
+      "inputs": [
+        {
+          "series": "sbp_tbill_12m_results",
+          "code": "rates#12M",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+          "period": "2026-10-28",
+          "value": 12.89,
+          "retrieved_at": "2026-10-30T19:36:04Z",
+          "file": "raw/sbp_web/2026-10-30/sbp-home.html",
+          "sha256": "06abb17a005f3328b6c6942dd6919943a1f75e33b78f4a504140a65429da5029"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 12.5,
+          "display": "12.50%",
+          "period": "2026-10-14",
+          "inputs": [
+            {
+              "series": "sbp_tbill_12m",
+              "code": "TS_GP_BAM_SIRTBIL_AH.TB0030",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2026-10-14",
+              "value": 12.5,
+              "retrieved_at": "2026-10-30T18:49:07Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRTBIL_AH.TB0030.csv",
+              "sha256": "2ccef3a26392b8463541f57233ee76ca75ba2eaccec02cec1f0eadb1257cbc73"
+            }
+          ]
+        }
+      ]
+    },
     "pib_10y": {
       "key": "pib_10y",
       "label": "10-year PIB, auction cut-off",
@@ -1224,6 +1277,112 @@
         }
       ]
     },
+    "sbp_res": {
+      "key": "sbp_res",
+      "label": "SBP foreign-exchange reserves",
+      "unit": "US$ billion",
+      "value": 21.5217,
+      "display": "$21.52bn",
+      "period": "2026-10-23",
+      "period_label": "23 Oct 2026",
+      "status": "official",
+      "frequency": "weekly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+      "series_code": "forex#sbp",
+      "source_url": "https://www.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "x 0.001 for the page's unit",
+      "retrieved_at": "2026-10-30T19:33:20Z",
+      "context": "$21.49bn on 16 Oct",
+      "inputs": [
+        {
+          "series": "sbp_reserves_sbp",
+          "code": "forex#sbp",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+          "period": "2026-10-23",
+          "value": 21521.7,
+          "retrieved_at": "2026-10-30T19:33:20Z",
+          "file": "raw/sbp_web/2026-10-30/forex.pdf",
+          "sha256": "c30abe0891d70ea9c77975f7f4bd50fc20e47f7abb51579db98fde5892cf66e9"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 21.4886,
+          "display": "$21.49bn",
+          "period": "2026-10-16",
+          "inputs": [
+            {
+              "series": "sbp_reserves_sbp",
+              "code": "forex#sbp",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+              "period": "2026-10-16",
+              "value": 21488.6,
+              "retrieved_at": "2026-10-30T19:33:20Z",
+              "file": "raw/sbp_web/2026-10-30/forex.pdf",
+              "sha256": "c30abe0891d70ea9c77975f7f4bd50fc20e47f7abb51579db98fde5892cf66e9"
+            }
+          ]
+        }
+      ]
+    },
+    "total_res": {
+      "key": "total_res",
+      "label": "Total liquid reserves (SBP + banks)",
+      "unit": "US$ billion",
+      "value": 26.7542,
+      "display": "$26.75bn",
+      "period": "2026-10-23",
+      "period_label": "23 Oct 2026",
+      "status": "official",
+      "frequency": "weekly",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+      "series_code": "forex#total",
+      "source_url": "https://www.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "x 0.001 for the page's unit",
+      "retrieved_at": "2026-10-30T19:33:20Z",
+      "context": "$26.83bn on 16 Oct",
+      "inputs": [
+        {
+          "series": "sbp_reserves_total",
+          "code": "forex#total",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+          "period": "2026-10-23",
+          "value": 26754.2,
+          "retrieved_at": "2026-10-30T19:33:20Z",
+          "file": "raw/sbp_web/2026-10-30/forex.pdf",
+          "sha256": "c30abe0891d70ea9c77975f7f4bd50fc20e47f7abb51579db98fde5892cf66e9"
+        }
+      ],
+      "context_items": [
+        {
+          "kind": "previous",
+          "value": 26.833,
+          "display": "$26.83bn",
+          "period": "2026-10-16",
+          "inputs": [
+            {
+              "series": "sbp_reserves_total",
+              "code": "forex#total",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+              "period": "2026-10-16",
+              "value": 26833.0,
+              "retrieved_at": "2026-10-30T19:33:20Z",
+              "file": "raw/sbp_web/2026-10-30/forex.pdf",
+              "sha256": "c30abe0891d70ea9c77975f7f4bd50fc20e47f7abb51579db98fde5892cf66e9"
+            }
+          ]
+        }
+      ]
+    },
     "pib_3y": {
       "key": "pib_3y",
       "label": "3-year PIB, auction cut-off",
@@ -1334,47 +1493,47 @@
       "key": "tbill_3m",
       "label": "3-month T-bill, auction cut-off",
       "unit": "percent",
-      "value": 12.0,
-      "display": "12.00%",
-      "period": "2026-10-14",
-      "period_label": "14 Oct 2026",
+      "value": 12.4261,
+      "display": "12.43%",
+      "period": "2026-10-28",
+      "period_label": "28 Oct 2026",
       "status": "official",
       "frequency": "as-needed",
       "publisher": "State Bank of Pakistan",
-      "dataset": "EasyData",
-      "series_code": "TS_GP_BAM_SIRTBIL_AH.TB0010",
-      "source_url": "https://easydata.sbp.org.pk/",
+      "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+      "series_code": "rates#3M",
+      "source_url": "https://www.sbp.org.pk/",
       "calc": "as_published@1",
       "calc_note": "",
-      "retrieved_at": "2026-10-30T18:56:45Z",
-      "context": "11.99% on 30 Sep",
+      "retrieved_at": "2026-10-30T19:36:04Z",
+      "context": "12.00% on 14 Oct",
       "inputs": [
         {
-          "series": "sbp_tbill_3m",
-          "code": "TS_GP_BAM_SIRTBIL_AH.TB0010",
+          "series": "sbp_tbill_3m_results",
+          "code": "rates#3M",
           "publisher": "State Bank of Pakistan",
-          "dataset": "EasyData",
-          "period": "2026-10-14",
-          "value": 12.0,
-          "retrieved_at": "2026-10-30T18:56:45Z",
-          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRTBIL_AH.TB0010.0bd6f18ef539.csv",
-          "sha256": "0bd6f18ef5399968d4b3f1567f91b2db9ba5d1b0001c0afd38c942a94924e652"
+          "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+          "period": "2026-10-28",
+          "value": 12.4261,
+          "retrieved_at": "2026-10-30T19:36:04Z",
+          "file": "raw/sbp_web/2026-10-30/sbp-home.html",
+          "sha256": "06abb17a005f3328b6c6942dd6919943a1f75e33b78f4a504140a65429da5029"
         }
       ],
       "context_items": [
         {
           "kind": "previous",
-          "value": 11.99,
-          "display": "11.99%",
-          "period": "2026-09-30",
+          "value": 12.0,
+          "display": "12.00%",
+          "period": "2026-10-14",
           "inputs": [
             {
               "series": "sbp_tbill_3m",
               "code": "TS_GP_BAM_SIRTBIL_AH.TB0010",
               "publisher": "State Bank of Pakistan",
               "dataset": "EasyData",
-              "period": "2026-09-30",
-              "value": 11.99,
+              "period": "2026-10-14",
+              "value": 12.0,
               "retrieved_at": "2026-10-30T18:56:45Z",
               "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRTBIL_AH.TB0010.0bd6f18ef539.csv",
               "sha256": "0bd6f18ef5399968d4b3f1567f91b2db9ba5d1b0001c0afd38c942a94924e652"
@@ -1387,47 +1546,47 @@
       "key": "tbill_6m",
       "label": "6-month T-bill, auction cut-off",
       "unit": "percent",
-      "value": 12.4,
-      "display": "12.40%",
-      "period": "2026-10-14",
-      "period_label": "14 Oct 2026",
+      "value": 12.65,
+      "display": "12.65%",
+      "period": "2026-10-28",
+      "period_label": "28 Oct 2026",
       "status": "official",
       "frequency": "as-needed",
       "publisher": "State Bank of Pakistan",
-      "dataset": "EasyData",
-      "series_code": "TS_GP_BAM_SIRTBIL_AH.TB0020",
-      "source_url": "https://easydata.sbp.org.pk/",
+      "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+      "series_code": "rates#6M",
+      "source_url": "https://www.sbp.org.pk/",
       "calc": "as_published@1",
       "calc_note": "",
-      "retrieved_at": "2026-10-30T18:56:46Z",
-      "context": "12.45% on 30 Sep",
+      "retrieved_at": "2026-10-30T19:36:04Z",
+      "context": "12.40% on 14 Oct",
       "inputs": [
         {
-          "series": "sbp_tbill_6m",
-          "code": "TS_GP_BAM_SIRTBIL_AH.TB0020",
+          "series": "sbp_tbill_6m_results",
+          "code": "rates#6M",
           "publisher": "State Bank of Pakistan",
-          "dataset": "EasyData",
-          "period": "2026-10-14",
-          "value": 12.4,
-          "retrieved_at": "2026-10-30T18:56:46Z",
-          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRTBIL_AH.TB0020.e63badd66ac3.csv",
-          "sha256": "e63badd66ac3ec6aefbac03d441c849925ab664a5d80600721f5fe193a7fe4f8"
+          "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+          "period": "2026-10-28",
+          "value": 12.65,
+          "retrieved_at": "2026-10-30T19:36:04Z",
+          "file": "raw/sbp_web/2026-10-30/sbp-home.html",
+          "sha256": "06abb17a005f3328b6c6942dd6919943a1f75e33b78f4a504140a65429da5029"
         }
       ],
       "context_items": [
         {
           "kind": "previous",
-          "value": 12.45,
-          "display": "12.45%",
-          "period": "2026-09-30",
+          "value": 12.4,
+          "display": "12.40%",
+          "period": "2026-10-14",
           "inputs": [
             {
               "series": "sbp_tbill_6m",
               "code": "TS_GP_BAM_SIRTBIL_AH.TB0020",
               "publisher": "State Bank of Pakistan",
               "dataset": "EasyData",
-              "period": "2026-09-30",
-              "value": 12.45,
+              "period": "2026-10-14",
+              "value": 12.4,
               "retrieved_at": "2026-10-30T18:56:46Z",
               "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_SIRTBIL_AH.TB0020.e63badd66ac3.csv",
               "sha256": "e63badd66ac3ec6aefbac03d441c849925ab664a5d80600721f5fe193a7fe4f8"
@@ -1435,6 +1594,39 @@
           ]
         }
       ]
+    },
+    "tbill_1m": {
+      "key": "tbill_1m",
+      "label": "1-month T-bill, auction cut-off",
+      "unit": "percent",
+      "value": 12.1055,
+      "display": "12.11%",
+      "period": "2026-10-28",
+      "period_label": "28 Oct 2026",
+      "status": "official",
+      "frequency": "as-needed",
+      "publisher": "State Bank of Pakistan",
+      "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+      "series_code": "rates#1M",
+      "source_url": "https://www.sbp.org.pk/",
+      "calc": "as_published@1",
+      "calc_note": "",
+      "retrieved_at": "2026-10-30T19:36:04Z",
+      "context": "",
+      "inputs": [
+        {
+          "series": "sbp_tbill_1m_results",
+          "code": "rates#1M",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+          "period": "2026-10-28",
+          "value": 12.1055,
+          "retrieved_at": "2026-10-30T19:36:04Z",
+          "file": "raw/sbp_web/2026-10-30/sbp-home.html",
+          "sha256": "06abb17a005f3328b6c6942dd6919943a1f75e33b78f4a504140a65429da5029"
+        }
+      ],
+      "context_items": []
     }
   },
   "charts": {

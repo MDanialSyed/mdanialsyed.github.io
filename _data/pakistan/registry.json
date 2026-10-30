@@ -58,11 +58,11 @@
     {
       "key": "sbp_web",
       "publisher": "State Bank of Pakistan",
-      "dataset": "Auction results and policy announcements",
-      "access": "Published files",
+      "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+      "access": "Data service (API)",
       "homepage": "https://www.sbp.org.pk/",
       "licence": "",
-      "status": "Planned"
+      "status": "Live"
     },
     {
       "key": "psx",
@@ -411,10 +411,17 @@
       "key": "tbill_12m",
       "label": "12-month T-bill, auction cut-off",
       "unit": "percent",
-      "status": "needs-confirmation",
+      "status": "confirmed",
       "section": "markets",
       "calc": "as_published@1",
       "series": [
+        {
+          "key": "sbp_tbill_12m_results",
+          "code": "rates#12M",
+          "source": "State Bank of Pakistan",
+          "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+          "frequency": "as-needed"
+        },
         {
           "key": "sbp_tbill_12m",
           "code": "TS_GP_BAM_SIRTBIL_AH.TB0030",
@@ -631,16 +638,16 @@
     {
       "key": "sbp_res",
       "label": "SBP foreign-exchange reserves",
-      "unit": "US$ million",
-      "status": "unmapped",
+      "unit": "US$ billion",
+      "status": "confirmed",
       "section": "external",
-      "calc": "",
+      "calc": "as_published@1",
       "series": [
         {
           "key": "sbp_reserves_sbp",
-          "code": "",
+          "code": "forex#sbp",
           "source": "State Bank of Pakistan",
-          "dataset": "EasyData",
+          "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
           "frequency": "weekly"
         }
       ]
@@ -648,16 +655,16 @@
     {
       "key": "total_res",
       "label": "Total liquid reserves (SBP + banks)",
-      "unit": "US$ million",
-      "status": "unmapped",
+      "unit": "US$ billion",
+      "status": "confirmed",
       "section": "external",
-      "calc": "",
+      "calc": "as_published@1",
       "series": [
         {
           "key": "sbp_reserves_total",
-          "code": "",
+          "code": "forex#total",
           "source": "State Bank of Pakistan",
-          "dataset": "EasyData",
+          "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
           "frequency": "weekly"
         }
       ]
@@ -773,6 +780,13 @@
       "calc": "as_published@1",
       "series": [
         {
+          "key": "sbp_tbill_3m_results",
+          "code": "rates#3M",
+          "source": "State Bank of Pakistan",
+          "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+          "frequency": "as-needed"
+        },
+        {
           "key": "sbp_tbill_3m",
           "code": "TS_GP_BAM_SIRTBIL_AH.TB0010",
           "source": "State Bank of Pakistan",
@@ -790,10 +804,34 @@
       "calc": "as_published@1",
       "series": [
         {
+          "key": "sbp_tbill_6m_results",
+          "code": "rates#6M",
+          "source": "State Bank of Pakistan",
+          "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
+          "frequency": "as-needed"
+        },
+        {
           "key": "sbp_tbill_6m",
           "code": "TS_GP_BAM_SIRTBIL_AH.TB0020",
           "source": "State Bank of Pakistan",
           "dataset": "EasyData",
+          "frequency": "as-needed"
+        }
+      ]
+    },
+    {
+      "key": "tbill_1m",
+      "label": "1-month T-bill, auction cut-off",
+      "unit": "percent",
+      "status": "confirmed",
+      "section": "reference",
+      "calc": "as_published@1",
+      "series": [
+        {
+          "key": "sbp_tbill_1m_results",
+          "code": "rates#1M",
+          "source": "State Bank of Pakistan",
+          "dataset": "Weekly reserves release (PDF) and latest auction rates (website)",
           "frequency": "as-needed"
         }
       ]

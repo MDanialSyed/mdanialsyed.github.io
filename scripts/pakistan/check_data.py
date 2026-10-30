@@ -219,7 +219,8 @@ def main():
         notes.append("### Cross-source\n- The inflation chart's monthly CPI matches the State Bank's series.")
 
     # 2c-ii. Cross-source: the yield curve must match the official auction series for the same date
-    curve_keys = {"3M": "tbill_3m", "6M": "tbill_6m", "12M": "tbill_12m", "3Y": "pib_3y", "5Y": "pib_5y", "10Y": "pib_10y"}
+    curve_keys = {"1M": "tbill_1m", "3M": "tbill_3m", "6M": "tbill_6m", "12M": "tbill_12m",
+                  "3Y": "pib_3y", "5Y": "pib_5y", "10Y": "pib_10y"}
     checked = 0
     for r in data.get("yield_curve", []):
         rec = pipeline.get(curve_keys.get(r.get("tenor"), ""))

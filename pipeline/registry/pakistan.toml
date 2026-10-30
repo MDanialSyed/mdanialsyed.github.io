@@ -61,7 +61,7 @@ status = "planned"
 
 [sources.sbp_web]
 publisher = "State Bank of Pakistan"
-dataset = "Statistical releases and auction results (PDF)"
+dataset = "Weekly reserves release (PDF) and latest auction rates (website)"
 adapter = "sbp_files"
 homepage = "https://www.sbp.org.pk/"
 
@@ -367,6 +367,7 @@ code = "rates#1M"
 frequency = "as-needed"
 description = "1-month market treasury bill, cut-off yield at the latest auction, percent (State Bank website)"
 unit = "Percent"
+status = "confirmed"
 
 [[series]]
 key = "sbp_tbill_3m_results"
@@ -375,6 +376,7 @@ code = "rates#3M"
 frequency = "as-needed"
 description = "3-month market treasury bill, cut-off yield at the latest auction, percent (State Bank website)"
 unit = "Percent"
+status = "confirmed"
 
 [[series]]
 key = "sbp_tbill_6m_results"
@@ -383,6 +385,7 @@ code = "rates#6M"
 frequency = "as-needed"
 description = "6-month market treasury bill, cut-off yield at the latest auction, percent (State Bank website)"
 unit = "Percent"
+status = "confirmed"
 
 [[series]]
 key = "sbp_tbill_12m_results"
@@ -391,6 +394,7 @@ code = "rates#12M"
 frequency = "as-needed"
 description = "12-month market treasury bill, cut-off yield at the latest auction, percent (State Bank website)"
 unit = "Percent"
+status = "confirmed"
 
 # Not yet mapped: the official code is identified from the publisher's catalogue first.
 [[series]]
@@ -416,6 +420,8 @@ code = "forex#sbp"
 frequency = "weekly"
 description = "Liquid foreign exchange reserves held by SBP (net), week-end, US$ million"
 unit = "Million US$"
+status = "confirmed"
+
 [[series]]
 key = "sbp_reserves_total"
 source = "sbp_web"
@@ -423,6 +429,8 @@ code = "forex#total"
 frequency = "weekly"
 description = "Total liquid foreign exchange reserves (SBP and banks), week-end, US$ million"
 unit = "Million US$"
+status = "confirmed"
+
 [[series]]
 key = "pbs_trade_balance"
 source = "pbs"
@@ -767,8 +775,9 @@ range = [0.0, 40.0]
 jump_abs = 3.0
 max_age_days = 35
 confirm = "Must match the 12-month cut-off in SBP's T-bill auction results."
+status = "confirmed"
+confirmed = "31 Oct 2026: 28 Oct = 12.89% on the State Bank website; earlier auctions from EasyData, and both sources agree where they overlap"
 
-status = "needs-confirmation"
 [[indicators]]
 key = "pib_10y"
 label = "10-year PIB, auction cut-off"
@@ -931,6 +940,8 @@ range = [1.0, 100.0]
 jump_rel = 0.15
 max_age_days = 14
 confirm = "Must match the week-end figure in the State Bank's weekly reserves announcement."
+status = "confirmed"
+confirmed = "31 Oct 2026: 23 Oct = 21,521.7 million (+33.1 w/w), as in the State Bank's weekly reserves release; rows checked to add up"
 
 [[indicators]]
 key = "total_res"
@@ -946,6 +957,8 @@ range = [1.0, 100.0]
 jump_rel = 0.15
 max_age_days = 14
 confirm = "Must match the week-end figure in the State Bank's weekly reserves announcement."
+status = "confirmed"
+confirmed = "31 Oct 2026: 23 Oct = 26,754.2 million, as in the State Bank's weekly reserves release"
 
 [[indicators]]
 key = "trade_fytd"
@@ -1015,7 +1028,8 @@ transform = "as_published@1"
 context = ["previous"]
 display = { decimals = 2, suffix = "%" }
 range = [0.0, 40.0]
-status = "needs-confirmation"
+status = "confirmed"
+confirmed = "31 Oct 2026: 28 Oct = 12.4261% on the State Bank website; used to check the yield curve"
 
 [[indicators]]
 key = "tbill_6m"
@@ -1027,7 +1041,8 @@ transform = "as_published@1"
 context = ["previous"]
 display = { decimals = 2, suffix = "%" }
 range = [0.0, 40.0]
-status = "needs-confirmation"
+status = "confirmed"
+confirmed = "31 Oct 2026: 28 Oct = 12.65% on the State Bank website; used to check the yield curve"
 
 [[indicators]]
 key = "tbill_1m"
@@ -1039,6 +1054,8 @@ transform = "as_published@1"
 context = ["previous"]
 display = { decimals = 2, suffix = "%" }
 range = [0.0, 40.0]
+status = "confirmed"
+confirmed = "31 Oct 2026: 28 Oct = 12.1055% on the State Bank website; used to check the yield curve"
 
 # ---------------------------------------------------------------- charts
 # Histories drawn on the page, exactly as published.

@@ -355,9 +355,7 @@
     var vals = c.points.map(function (p) { return p.value; });
     var y = d3.scaleLinear([Math.floor(d3.min(vals) / 10) * 10, Math.ceil(d3.max(vals) / 10) * 10], [H - bottom, top]);
     var ticks = y.ticks(4), ml = d3.max(ticks, function (v) { return textWidth(svg, String(v)); }) + 10;
-    var lastCur = series[series.length - 1].pts.slice(-1)[0];
-    var labC = cur + ' ' + fmt(lastCur.value), mr = textWidth(svg, labC) + 14;
-    var x = d3.scalePoint(months, [ml, W - mr]).padding(0.2);
+    var x = d3.scalePoint(months, [ml, W - 8]).padding(0.2), mr = 8;
     gridY(svg, y, ticks, ml, W - mr);
     axisY(svg, y, ticks, ml, String);
     var step = W < 520 ? 2 : 1;
@@ -369,7 +367,6 @@
       svg.append('g').selectAll('circle').data(sr.pts).join('circle').attr('r', sr.fy === cur ? 3.5 : 2.5)
         .attr('cx', function (p) { return x(p.month); }).attr('cy', function (p) { return y(p.value); }).style('fill', sr.color);
     });
-    svg.append('text').attr('class', 'pv-lab').attr('x', x(lastCur.month) + 8).attr('y', y(lastCur.value) + 4).text(labC);
     var t = tipFor(el);
     svg.append('g').selectAll('rect').data(months).join('rect')
       .attr('x', function (d) { return x(d) - x.step() / 2; }).attr('width', x.step()).attr('y', top).attr('height', H - bottom - top)
@@ -391,7 +388,7 @@
     var d = c.points.map(function (p) { return { label: p.label, v: num(p.value), proj: !!p.projection }; });
     var m = makeSvg(el, 220, c.label), svg = m.svg, W = m.W, H = m.H, top = 18, bottom = 24, fmt = d3.format('.1f');
     var mn = Math.min(0, d3.min(d, function (r) { return r.v; })), mx = d3.max(d, function (r) { return r.v; });
-    var y = d3.scaleLinear([Math.floor(mn), Math.ceil(mx + 0.5)], [H - bottom, top]);
+    var y = d3.scaleLinear([mn < 0 ? Math.floor(mn) - 1 : 0, Math.ceil(mx + 0.5)], [H - bottom, top]);
     var ticks = y.ticks(4), ml = d3.max(ticks, function (v) { return textWidth(svg, v + '%'); }) + 10;
     var x = d3.scaleBand(d.map(function (r) { return r.label; }), [ml, W - 6]).padding(0.28);
     gridY(svg, y, ticks, ml, W - 6);

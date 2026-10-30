@@ -30,9 +30,9 @@ class FormatError(ValueError):
 
 
 def get_adapter(name: str):
-    from . import easydata, files, imf_datamapper, worldbank
+    from . import easydata, files, imf_datamapper, sbp_files, worldbank
     adapters = {"easydata": easydata, "worldbank": worldbank, "imf_datamapper": imf_datamapper,
-                "files": files}
+                "files": files, "sbp_files": sbp_files}
     if name not in adapters:
         raise KeyError(f"No adapter called {name}")
     return adapters[name]

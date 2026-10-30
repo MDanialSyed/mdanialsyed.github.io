@@ -9,6 +9,12 @@ if [ -f "$STAMP" ] && [ $(( $(date +%s) - $(stat -f %m "$STAMP") )) -lt 600 ] &&
   exit 0
 fi
 echo "== $(date '+%Y-%m-%d %H:%M %Z') =="
+# Install any new requirement (for example the PDF reader) the first time the list changes.
+REQ="$ROOT/code/pipeline/requirements.txt"; REQ_STAMP="$ROOT/.venv/requirements.sha256"
+REQ_SUM="$(shasum -a 256 "$REQ" | cut -d' ' -f1)"
+if [ "$REQ_SUM" != "$(cat "$REQ_STAMP" 2>/dev/null)" ]; then
+  "$ROOT/.venv/bin/python" -m pip install -q -r "$REQ" && echo "$REQ_SUM" > "$REQ_STAMP" && echo "requirements updated"
+fi
 "$ROOT/.venv/bin/python" -m sourcepk --data "$ROOT/data" fetch
 status=$?
 date -u +%Y-%m-%dT%H:%M:%SZ > "$STAMP" 2>/dev/null || true

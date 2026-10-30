@@ -80,6 +80,8 @@ def new_run_id() -> str:
 def fetch(reg: Registry, data_root: Path, log: RunLog, only: list[str] | None = None,
           fetcher: Fetcher | None = None) -> None:
     archive, store, fetcher = Archive(data_root), Store(data_root), fetcher or Fetcher()
+    from .adapters import sbp_files
+    sbp_files._CACHE.clear()  # each run downloads each file afresh
     for s in reg.series.values():
         if only and s.key not in only:
             continue

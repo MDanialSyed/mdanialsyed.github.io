@@ -77,6 +77,35 @@ def synthetic_history(code: str) -> dict[str, float]:
     return {p: 10.0 for p in months("2024-07", 27)}
 
 
+def make_pdf(lines: list[str]) -> bytes:
+    """A minimal one-page PDF whose text is the given lines (for testing the PDF readers)."""
+    esc = lambda t: t.replace("\\", "\\\\").replace("(", "\\(").replace(")", "\\)")
+    content = "BT /F1 9 Tf 40 800 Td 11 TL " + " ".join(f"({esc(l)}) Tj T*" for l in lines) + " ET"
+    objs = ["<< /Type /Catalog /Pages 2 0 R >>",
+            "<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+            "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>",
+            "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
+            f"<< /Length {len(content)} >>\nstream\n{content}\nendstream"]
+    out, offsets = b"%PDF-1.4\n", []
+    for i, o in enumerate(objs, 1):
+        offsets.append(len(out))
+        out += f"{i} 0 obj\n{o}\nendobj\n".encode("latin-1")
+    xref = len(out)
+    out += f"xref\n0 {len(objs) + 1}\n0000000000 65535 f \n".encode()
+    out += "".join(f"{o:010d} 00000 n \n" for o in offsets).encode()
+    out += f"trailer\n<< /Size {len(objs) + 1} /Root 1 0 R >>\nstartxref\n{xref}\n%%EOF\n".encode()
+    return out
+
+
+FOREX_LINES = ["LIQUID FOREIGN EXCHANGE RESERVES (MILLION US$)",
+               "END PERIOD NET RESERVES WITH SBP NET RESERVES WITH BANKS TOTAL LIQUID FX RESERVES",
+               "WEEK-END LEVELS",
+               "16-Oct-26 21,488.6 5,344.4 26,833.0",
+               "23-Oct-26 P 21,521.6 5,230.1 26,751.7"]
+MTB_LINES = ["Market Treasury Bills (MTBs) Auction Result", "Cut-off Yields as on Oct 28, 2026",
+             "1-M 12.1055%", "3-M 12.4261%", "6-M 12.6500%", "12-M 12.8900%"]
+
+
 class FakeFetcher:
     """Serves prepared bodies by matching part of the address; records every address asked for."""
 
@@ -89,6 +118,10 @@ class FakeFetcher:
         for part, body in self.routes.items():
             if part in url:
                 return Response(url=redact(url), status=200, content_type="text/plain", body=body)
+        if url.endswith("/forex.pdf"):
+            return Response(url=redact(url), status=200, content_type="application/pdf", body=make_pdf(FOREX_LINES))
+        if url.endswith("/auction-tbills.pdf"):
+            return Response(url=redact(url), status=200, content_type="application/pdf", body=make_pdf(MTB_LINES))
         if "easydata.sbp.org.pk/api/v1/series/" in url:  # any other State Bank series: a flat synthetic history
             code = url.split("/series/")[1].split("/")[0]
             body = easydata_csv(code, synthetic_history(code))

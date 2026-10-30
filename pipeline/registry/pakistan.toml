@@ -61,10 +61,9 @@ status = "planned"
 
 [sources.sbp_web]
 publisher = "State Bank of Pakistan"
-dataset = "Auction results and policy announcements"
-adapter = "files"
+dataset = "Statistical releases and auction results (PDF)"
+adapter = "sbp_files"
 homepage = "https://www.sbp.org.pk/"
-status = "planned"
 
 [sources.psx]
 publisher = "Pakistan Stock Exchange"
@@ -361,6 +360,38 @@ unit = "Percent"
 status = "confirmed"
 start = "2023-07-01"
 
+[[series]]
+key = "sbp_tbill_1m_results"
+source = "sbp_web"
+code = "mtb#1M"
+frequency = "as-needed"
+description = "1-month market treasury bill, cut-off yield at the latest auction, percent (auction results file)"
+unit = "Percent"
+
+[[series]]
+key = "sbp_tbill_3m_results"
+source = "sbp_web"
+code = "mtb#3M"
+frequency = "as-needed"
+description = "3-month market treasury bill, cut-off yield at the latest auction, percent (auction results file)"
+unit = "Percent"
+
+[[series]]
+key = "sbp_tbill_6m_results"
+source = "sbp_web"
+code = "mtb#6M"
+frequency = "as-needed"
+description = "6-month market treasury bill, cut-off yield at the latest auction, percent (auction results file)"
+unit = "Percent"
+
+[[series]]
+key = "sbp_tbill_12m_results"
+source = "sbp_web"
+code = "mtb#12M"
+frequency = "as-needed"
+description = "12-month market treasury bill, cut-off yield at the latest auction, percent (auction results file)"
+unit = "Percent"
+
 # Not yet mapped: the official code is identified from the publisher's catalogue first.
 [[series]]
 key = "pbs_gdp_quarterly"
@@ -380,20 +411,18 @@ status = "unmapped"
 
 [[series]]
 key = "sbp_reserves_sbp"
-source = "sbp_easydata"
-code = ""
+source = "sbp_web"
+code = "forex#sbp"
 frequency = "weekly"
-description = "Liquid foreign exchange reserves held by SBP, US$ million"
-status = "unmapped"
-
+description = "Liquid foreign exchange reserves held by SBP (net), week-end, US$ million"
+unit = "Million US$"
 [[series]]
 key = "sbp_reserves_total"
-source = "sbp_easydata"
-code = ""
+source = "sbp_web"
+code = "forex#total"
 frequency = "weekly"
-description = "Total liquid foreign exchange reserves, US$ million"
-status = "unmapped"
-
+description = "Total liquid foreign exchange reserves (SBP and banks), week-end, US$ million"
+unit = "Million US$"
 [[series]]
 key = "pbs_trade_balance"
 source = "pbs"
@@ -891,17 +920,31 @@ status = "unmapped"
 key = "sbp_res"
 label = "SBP foreign-exchange reserves"
 section = "external"
-unit = "US$ million"
+unit = "US$ billion"
 series = ["sbp_reserves_sbp"]
-status = "unmapped"
+transform = "as_published@1"
+context = ["previous"]
+value_scale = 0.001
+display = { decimals = 2, prefix = "$", suffix = "bn" }
+range = [1.0, 100.0]
+jump_rel = 0.15
+max_age_days = 14
+confirm = "Must match the week-end figure in the State Bank's weekly reserves announcement."
 
 [[indicators]]
 key = "total_res"
 label = "Total liquid reserves (SBP + banks)"
 section = "external"
-unit = "US$ million"
+unit = "US$ billion"
 series = ["sbp_reserves_total"]
-status = "unmapped"
+transform = "as_published@1"
+context = ["previous"]
+value_scale = 0.001
+display = { decimals = 2, prefix = "$", suffix = "bn" }
+range = [1.0, 100.0]
+jump_rel = 0.15
+max_age_days = 14
+confirm = "Must match the week-end figure in the State Bank's weekly reserves announcement."
 
 [[indicators]]
 key = "trade_fytd"

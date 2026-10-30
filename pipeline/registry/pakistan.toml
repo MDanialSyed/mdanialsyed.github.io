@@ -285,6 +285,40 @@ frequency = "annual"
 description = "Real GDP growth rate (constant 2015-16 prices), percent, by fiscal year"
 start = "2010-01-01"
 
+# Candidate codes for the other bond tenors; the State Bank's series name in each file decides what they are.
+[[series]]
+key = "sbp_pib_pib0010"
+source = "sbp_easydata"
+code = "TS_GP_BAM_SIRPIBS_AH.PIB0010"
+frequency = "as-needed"
+description = "Pakistan Investment Bond cut-off yield, tenor to be confirmed from the series name"
+start = "2023-07-01"
+
+[[series]]
+key = "sbp_pib_pib0020"
+source = "sbp_easydata"
+code = "TS_GP_BAM_SIRPIBS_AH.PIB0020"
+frequency = "as-needed"
+description = "Pakistan Investment Bond cut-off yield, tenor to be confirmed from the series name"
+start = "2023-07-01"
+
+[[series]]
+key = "sbp_pib_pib0030"
+source = "sbp_easydata"
+code = "TS_GP_BAM_SIRPIBS_AH.PIB0030"
+frequency = "as-needed"
+description = "Pakistan Investment Bond cut-off yield, tenor to be confirmed from the series name"
+start = "2023-07-01"
+
+[[series]]
+key = "sbp_pib_pib0050"
+source = "sbp_easydata"
+code = "TS_GP_BAM_SIRPIBS_AH.PIB0050"
+frequency = "as-needed"
+description = "Pakistan Investment Bond cut-off yield, tenor to be confirmed from the series name"
+start = "2023-07-01"
+
+# Not yet mapped: the official code is identified from the publisher's catalogue first.
 [[series]]
 key = "pbs_gdp_quarterly"
 source = "pbs"

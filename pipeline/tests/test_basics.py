@@ -120,3 +120,17 @@ def test_periods():
 def test_fetcher_identifies_itself():
     from sourcepk.web import USER_AGENT, Fetcher
     assert Fetcher().session.headers["User-Agent"] == USER_AGENT
+
+
+def test_chart_calculations():
+    from sourcepk.transforms import fy_months, fy_years, recent
+    s = _series({f"2025-{m:02d}": float(m) for m in range(7, 13)} | {f"2026-{m:02d}": 100.0 + m for m in range(1, 10)})
+    r = recent("k", s, n=3)
+    assert [p["period"] for p in r.points] == ["2026-07", "2026-08", "2026-09"]
+    f = fy_months("k", s, fy_start_month=7)
+    fy26 = [p for p in f.points if p["fy"] == "FY26"]; fy27 = [p for p in f.points if p["fy"] == "FY27"]
+    assert len(fy26) == 12 and [p["month"] for p in fy27] == ["Jul", "Aug", "Sep"] and fy27[0]["index"] == 0
+    a = _series({str(y): float(y - 2000) for y in range(2015, 2030)})
+    g = fy_years("k", a, years_back=9, today=date(2026, 10, 30), fy_start_month=7)
+    assert g.points[0]["label"] == "FY18" and g.points[-1]["label"] == "FY27"
+    assert g.points[-1]["projection"] and not g.points[-2]["projection"]

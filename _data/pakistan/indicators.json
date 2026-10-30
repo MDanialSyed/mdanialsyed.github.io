@@ -173,7 +173,10 @@
     "period": "Sep 2026",
     "context": "8.8% in Aug",
     "source": "SBP Inflation Monitor, Sep 2026",
-    "url": "https://www.sbp.org.pk/assets/document/publications/Inflation_Monitor_-_September_2026.pdf"
+    "url": "https://www.sbp.org.pk/assets/document/publications/Inflation_Monitor_-_September_2026.pdf",
+    "change": -0.2,
+    "change_basis": "vs Aug",
+    "tile_note": "Rural: 8.1%"
   },
   {
     "key": "core_rural",
@@ -272,7 +275,10 @@
     "period": "From 27 Oct 2026",
     "context": "+50 bp; 9 of 10 MPC members",
     "source": "SBP Monetary Policy Statement, 26 Oct 2026",
-    "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-26-Oct-2026.pdf"
+    "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-26-Oct-2026.pdf",
+    "change": 0.5,
+    "change_basis": "on 26 Oct",
+    "tile_note": "9 of 10 MPC members in favour"
   },
   {
     "key": "policy_prev",
@@ -316,7 +322,9 @@
     "period": "28 Oct auction",
     "context": "After the October rate hike",
     "source": "SBP: T-bill auction results, 28 Oct",
-    "url": "https://www.sbp.org.pk/ecodata/Auction-Investment.pdf"
+    "url": "https://www.sbp.org.pk/ecodata/Auction-Investment.pdf",
+    "change": 0.89,
+    "change_basis": "vs 16 Sep"
   },
   {
     "key": "tbill_auction",
@@ -426,7 +434,10 @@
     "period": "23 Oct 2026",
     "context": "+$33m on the week",
     "source": "Business Recorder: SBP reserves, 29 Oct",
-    "url": "https://www.brecorder.com/news/40446522/sbp-held-foreign-exchange-reserves-rise-33mn-to-2152bn"
+    "url": "https://www.brecorder.com/news/40446522/sbp-held-foreign-exchange-reserves-rise-33mn-to-2152bn",
+    "change": 0.033,
+    "change_basis": "w/w",
+    "tile_note": "Goal: $23bn by end-Dec"
   },
   {
     "key": "total_res",
@@ -492,7 +503,10 @@
     "period": "Sep 2026",
     "context": "+12.7% y/y",
     "source": "Express Tribune: remittances, Sep 2026",
-    "url": "https://tribune.com.pk/story/2633983/remittances-cool-to-36b-in-sept"
+    "url": "https://tribune.com.pk/story/2633983/remittances-cool-to-36b-in-sept",
+    "change": 12.7,
+    "change_basis": "y/y",
+    "tile_note": "$10.88bn in Jul–Sep"
   },
   {
     "key": "rem_fytd",

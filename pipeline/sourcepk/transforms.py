@@ -112,6 +112,66 @@ TRANSFORMS = {
 }
 
 
+@dataclass
+class ChartResult:
+    points: list[dict]
+    inputs: list[tuple[str, Row]]
+    note: str = ""
+
+
+def recent(key: str, series: dict[str, Row], n: int = 24, **_) -> ChartResult:
+    """The latest n periods exactly as published."""
+    if not series:
+        raise NotComputable("series is empty")
+    ps = list(series)[-n:]
+    return ChartResult([{"period": p, "value": series[p].value} for p in ps], [(key, series[p]) for p in ps])
+
+
+def fy_months(key: str, series: dict[str, Row], fy_start_month: int = 7, **_) -> ChartResult:
+    """Monthly values as published for the current fiscal year so far and the whole of the previous
+    one, aligned by month of the fiscal year, so a seasonal series can be compared like for like."""
+    if not series:
+        raise NotComputable("series is empty")
+    latest = next(reversed(series))
+    start = periods.fiscal_year_start(latest, fy_start_month)
+    prev_start = periods.shift(start, -12)
+    points, inputs = [], []
+    for fy_start in (prev_start, start):
+        fy = periods.fiscal_year_label(fy_start, fy_start_month)
+        for i in range(12):
+            p = periods.shift(fy_start, i)
+            if p > latest:
+                break
+            if p not in series:
+                raise NotComputable(f"missing month {p}")
+            points.append({"fy": fy, "month": periods.MONTHS[int(p[5:]) - 1], "index": i, "period": p,
+                           "value": series[p].value})
+            inputs.append((key, series[p]))
+    return ChartResult(points, inputs, note=f"{periods.fiscal_year_label(prev_start, fy_start_month)} and "
+                                            f"{periods.fiscal_year_label(start, fy_start_month)} to {latest}")
+
+
+def fy_years(key: str, series: dict[str, Row], years_back: int = 9, today: date | None = None,
+             fy_start_month: int = 7, **_) -> ChartResult:
+    """Annual values labelled by the year the fiscal year ends (as the IMF does for Pakistan), from
+    years_back fiscal years ago to the current one. The current fiscal year and later are projections."""
+    today = today or date.today()
+    current = today.year + (1 if today.month >= fy_start_month and fy_start_month > 1 else 0)
+    points, inputs = [], []
+    for y in range(current - years_back, current + 1):
+        p = str(y)
+        if p not in series:
+            raise NotComputable(f"no value for {p}")
+        points.append({"period": p, "label": f"FY{y % 100:02d}", "value": series[p].value,
+                       "projection": y >= current})
+        inputs.append((key, series[p]))
+    return ChartResult(points, inputs, note=f"FY{(current - years_back) % 100:02d} to FY{current % 100:02d}; "
+                                            f"FY{current % 100:02d} is a projection")
+
+
+CHART_TRANSFORMS = {"recent@1": recent, "fy_months@1": fy_months, "fy_years@1": fy_years}
+
+
 def compute(transform: str, key: str, series: dict[str, Row], **kw) -> Result:
     if transform not in TRANSFORMS:
         raise NotComputable(f"unknown calculation {transform}")

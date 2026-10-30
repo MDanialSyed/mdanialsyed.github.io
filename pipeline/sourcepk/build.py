@@ -17,12 +17,13 @@ from pathlib import Path
 from . import __version__
 from .adapters import FormatError, get_adapter
 from .archive import Archive
-from .checks import BLOCK, Finding, check_cross, check_identities, check_indicator
+from .archive import sha256
+from .checks import BLOCK, HOLD, Finding, check_cross, check_identities, check_indicator
 from . import periods
 from .periods import label as period_label
 from .config import REPO_DIR, Registry
 from .store import Changes, Store
-from .transforms import NotComputable, Result, compute, format_display
+from .transforms import CHART_TRANSFORMS, ChartResult, NotComputable, Result, compute, format_display
 from .web import DownloadError, Fetcher
 
 SITE_DATA = REPO_DIR / "_data" / "pakistan"
@@ -42,6 +43,7 @@ class RunLog:
     carried: list[str] = field(default_factory=list)
     archive_problems: list[str] = field(default_factory=list)
     fetch_run: str = ""
+    charts: dict[str, ChartResult] = field(default_factory=dict)
 
 
 def save_fetch_log(log: RunLog, data_root: Path) -> Path:
@@ -160,7 +162,38 @@ def context_text(reg, key: str, items: list[tuple[str, Result]], latest_period: 
     return "; ".join(parts)
 
 
+def compute_charts(reg: Registry, data_root: Path, log: RunLog, today: date | None = None) -> None:
+    store = Store(data_root)
+    for ch in reg.charts.values():
+        if ch.status == "retired":
+            continue
+        try:
+            log.charts[ch.key] = CHART_TRANSFORMS[ch.transform](
+                ch.series, store.latest(ch.series), n=ch.n, years_back=ch.years_back,
+                fy_start_month=reg.fy_start_month, today=today)
+        except NotComputable as e:
+            log.not_computed[f"chart {ch.key}"] = str(e)
+
+
+def check_chart_lineage(key: str, res: ChartResult, data_root: Path) -> list[Finding]:
+    out, seen = [], set()
+    for series_key, row in res.inputs:
+        if (row.raw_path, row.raw_sha256) in seen:
+            continue
+        seen.add((row.raw_path, row.raw_sha256))
+        path = data_root / row.raw_path
+        if not (row.raw_path and row.raw_sha256) or not path.exists():
+            out.append(Finding(BLOCK, f"chart {key}", "lineage", f"{series_key}: archived file missing ({row.raw_path})"))
+        elif sha256(path.read_bytes()) != row.raw_sha256:
+            out.append(Finding(BLOCK, f"chart {key}", "lineage", f"{series_key}: archived file changed ({row.raw_path})"))
+    return out
+
+
 def run_checks(reg: Registry, data_root: Path, log: RunLog, previous: dict, today: date) -> None:
+    for key, res in log.charts.items():
+        log.findings += check_chart_lineage(key, res, Path(data_root))
+        if reg.charts[key].status != "confirmed":
+            log.findings.append(Finding(HOLD, f"chart {key}", "status", f"not published: chart is '{reg.charts[key].status}'"))
     for key, res in log.results.items():
         log.findings += check_indicator(reg.indicators[key], res, data_root, previous.get(key), today)
     log.findings += check_identities(reg, log.results)
@@ -223,6 +256,27 @@ def load_interim(site_data: Path = SITE_DATA) -> dict:
     return {r["key"]: r for r in json.loads(path.read_text(encoding="utf-8"))}
 
 
+def chart_record(reg: Registry, key: str, res: ChartResult) -> dict:
+    ch = reg.charts[key]
+    s = reg.series[ch.series]
+    src = reg.sources[s.source]
+    files = {}
+    for _, row in res.inputs:
+        files.setdefault((row.raw_path, row.raw_sha256), row.retrieved_at)
+    return {"key": key, "label": ch.label, "status": "official", "publisher": src.publisher,
+            "dataset": src.dataset, "series_code": s.code, "series_name": s.published_name or s.description,
+            "unit": s.unit, "source_url": src.homepage, "calc": ch.transform, "calc_note": res.note,
+            "retrieved_at": max(r.retrieved_at for _, r in res.inputs), "points": res.points,
+            "files": [{"file": f, "sha256": h, "retrieved_at": t} for (f, h), t in sorted(files.items())]}
+
+
+def previous_charts(site_data: Path = SITE_DATA) -> dict:
+    path = site_data / "pipeline.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8")).get("charts", {})
+
+
 def load_previous(site_data: Path = SITE_DATA) -> dict:
     path = site_data / "pipeline.json"
     if not path.exists():
@@ -246,9 +300,19 @@ def publish(reg: Registry, log: RunLog, site_data: Path = SITE_DATA) -> dict:
         elif key in previous:
             indicators[key] = {**previous[key], "carried_forward": True}
             log.carried.append(key)
+    charts = {}
+    for key, ch in reg.charts.items():
+        if ch.status != "confirmed":
+            continue
+        if key in log.charts and f"chart {key}" not in blocked:
+            charts[key] = chart_record(reg, key, log.charts[key])
+            log.published.append(f"chart {key}")
+        elif key in previous_charts(site_data):
+            charts[key] = {**previous_charts(site_data)[key], "carried_forward": True}
+            log.carried.append(f"chart {key}")
     doc = {"generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
            "run_id": log.run_id, "pipeline_version": __version__, "code_version": code_version(),
-           "indicators": indicators}
+           "indicators": indicators, "charts": charts}
     site_data.mkdir(parents=True, exist_ok=True)
     (site_data / "pipeline.json").write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     export_registry(reg, site_data)

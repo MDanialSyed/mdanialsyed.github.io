@@ -75,6 +75,7 @@ def _build(args, reg, log, root) -> int:
     today = date.today()
     site = _site(args)
     build.compute_all(reg, root, log, today=today)
+    build.compute_charts(reg, root, log, today=today)
     build.run_checks(reg, root, log, build.load_previous(site), today)
     log.archive_problems = Archive(root).verify()
     if args.publish:

@@ -73,6 +73,20 @@ class Indicator:
     context: tuple[str, ...] = ()  # comparisons shown beside the figure: "previous", "year_ago"
 
 
+@dataclass(frozen=True)
+class Chart:
+    """A published history drawn as a chart: one series, as published, over a stated window."""
+    key: str
+    label: str
+    series: str
+    transform: str            # recent@1, fy_months@1 or fy_years@1
+    status: str = "needs-confirmation"
+    confirmed: str = ""
+    n: int = 24               # recent@1: number of periods
+    years_back: int = 9       # fy_years@1: fiscal years before the current one
+    note: str = ""
+
+
 @dataclass
 class Registry:
     country_code: str
@@ -83,6 +97,7 @@ class Registry:
     indicators: dict[str, Indicator] = field(default_factory=dict)
     identities: list[dict] = field(default_factory=list)
     cross_checks: list[dict] = field(default_factory=list)
+    charts: dict[str, Chart] = field(default_factory=dict)
 
     def validate(self) -> list[str]:
         """Return a list of problems; an empty list means the registry is consistent."""
@@ -112,6 +127,14 @@ class Registry:
                 for sk in i.series:
                     if sk in self.series and self.series[sk].status != "confirmed":
                         problems.append(f"indicator {i.key} is confirmed but series {sk} is not")
+        for ch in self.charts.values():
+            if ch.series not in self.series:
+                problems.append(f"chart {ch.key}: unknown series {ch.series}")
+            elif ch.status == "confirmed" and self.series[ch.series].status != "confirmed":
+                problems.append(f"chart {ch.key} is confirmed but series {ch.series} is not")
+            from .transforms import CHART_TRANSFORMS
+            if ch.transform not in CHART_TRANSFORMS:
+                problems.append(f"chart {ch.key}: unknown calculation '{ch.transform}'")
         for c in self.cross_checks:
             for k in (c.get("a"), c.get("b")):
                 if k not in self.indicators:
@@ -145,6 +168,10 @@ def load_registry(country: str = "pakistan", path: Path | None = None) -> Regist
         if "context" in i:
             i["context"] = tuple(i["context"])
         reg.indicators[i["key"]] = Indicator(**i)
+    for ch in raw.get("charts", []):
+        if ch["key"] in reg.charts:
+            raise ValueError(f"duplicate chart {ch['key']}")
+        reg.charts[ch["key"]] = Chart(**ch)
     reg.identities = raw.get("identities", [])
     reg.cross_checks = raw.get("cross_checks", [])
     return reg

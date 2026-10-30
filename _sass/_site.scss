@@ -84,3 +84,43 @@ article img {
     height: 26px;
   }
 }
+
+// Menu: "Country Macroeconomic Dashboards" drop-down, styled like the other menu links.
+#mainNav .dropdown-menu {
+  min-width: 12rem;
+  margin-top: 0;
+  padding: 0.4rem 0;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+#mainNav .dropdown-item {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #212529;
+  padding: 0.55rem 1.25rem;
+  &:hover,
+  &:focus {
+    color: #0085a1;
+    background: #f8f9fa;
+  }
+}
+#mainNav .dropdown-toggle::after {
+  vertical-align: 0.2em;
+  border-top-width: 0.28em;
+  border-right-width: 0.28em;
+  border-left-width: 0.28em;
+}
+// In the collapsed phone/tablet menu the list opens in place, indented under its heading.
+@media (max-width: 991.98px) {
+  #mainNav .dropdown-menu {
+    border: 0;
+    box-shadow: none;
+    padding: 0 0 0.5rem;
+  }
+  #mainNav .dropdown-item {
+    padding-left: 1rem;
+  }
+}

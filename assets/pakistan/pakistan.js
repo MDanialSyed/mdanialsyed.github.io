@@ -1,5 +1,6 @@
 /* Source: Pakistan charts. Reads the page's embedded data (#pv-data) and draws
-   five small d3 charts. Every number drawn comes from that data. */
+   small d3 charts. Every number drawn comes from that data; the manufacturing and
+   IMF growth charts come from the official data pipeline (pipeline.charts). */
 (function () {
   'use strict';
   var holder = document.getElementById('pv-data');
@@ -334,7 +335,87 @@
       .on('pointerleave', function () { t.hidden = true; });
   }
 
-  var charts = { 'chart-cpi': drawCpi, 'chart-gdp': drawGdp, 'chart-curve': drawCurve, 'chart-res': drawReserves, 'chart-fiscal': drawFiscal };
+  function officialChart(key) {
+    return ((PV.pipeline || {}).charts || {})[key] || null;
+  }
+
+  /* 6. Large-scale manufacturing: this fiscal year and last, by month, as published */
+  function drawLsm(el) {
+    var c = officialChart('lsm_fy_months');
+    if (!c || !c.points || !c.points.length) return;
+    var fys = [];
+    c.points.forEach(function (p) { if (fys.indexOf(p.fy) < 0) fys.push(p.fy); });
+    var prev = fys[0], cur = fys[fys.length - 1];
+    var months = c.points.filter(function (p) { return p.fy === prev; }).map(function (p) { return p.month; });
+    var series = fys.map(function (fy, i) {
+      return { fy: fy, color: i === fys.length - 1 ? C1 : CM, pts: c.points.filter(function (p) { return p.fy === fy; }) };
+    });
+    legend(el, series.slice().reverse().map(function (sr) { return { name: sr.fy, color: sr.color }; }));
+    var m = makeSvg(el, 220, c.label), svg = m.svg, W = m.W, H = m.H, top = 12, bottom = 24, fmt = d3.format('.1f');
+    var vals = c.points.map(function (p) { return p.value; });
+    var y = d3.scaleLinear([Math.floor(d3.min(vals) / 10) * 10, Math.ceil(d3.max(vals) / 10) * 10], [H - bottom, top]);
+    var ticks = y.ticks(4), ml = d3.max(ticks, function (v) { return textWidth(svg, String(v)); }) + 10;
+    var x = d3.scalePoint(months, [ml, W - 8]).padding(0.2), mr = 8;
+    gridY(svg, y, ticks, ml, W - mr);
+    axisY(svg, y, ticks, ml, String);
+    var step = W < 520 ? 2 : 1;
+    svg.append('g').selectAll('text').data(months.filter(function (_, i) { return i % step === 0; })).join('text')
+      .attr('x', function (d) { return x(d); }).attr('y', H - 6).attr('text-anchor', 'middle').text(function (d) { return d; });
+    series.forEach(function (sr) {
+      svg.append('path').datum(sr.pts).attr('fill', 'none').style('stroke', sr.color).attr('stroke-width', sr.fy === cur ? 2.5 : 2)
+        .attr('stroke-linejoin', 'round').attr('d', d3.line().x(function (p) { return x(p.month); }).y(function (p) { return y(p.value); }));
+      svg.append('g').selectAll('circle').data(sr.pts).join('circle').attr('r', sr.fy === cur ? 3.5 : 2.5)
+        .attr('cx', function (p) { return x(p.month); }).attr('cy', function (p) { return y(p.value); }).style('fill', sr.color);
+    });
+    var t = tipFor(el);
+    svg.append('g').selectAll('rect').data(months).join('rect')
+      .attr('x', function (d) { return x(d) - x.step() / 2; }).attr('width', x.step()).attr('y', top).attr('height', H - bottom - top)
+      .attr('fill', 'transparent')
+      .on('pointermove', function (ev, mo) {
+        var p = d3.pointer(ev, svg.node());
+        showTip(el, svg.node(), W, t, p[0], p[1], mo, series.slice().reverse().map(function (sr) {
+          var q = sr.pts.find(function (r) { return r.month === mo; });
+          return { color: sr.color, name: sr.fy, value: q ? fmt(q.value) : 'not out yet' };
+        }));
+      })
+      .on('pointerleave', function () { t.hidden = true; });
+  }
+
+  /* 7. Real GDP growth by fiscal year, IMF, with this year's projection */
+  function drawImf(el) {
+    var c = officialChart('imf_growth_path');
+    if (!c || !c.points || !c.points.length) return;
+    var d = c.points.map(function (p) { return { label: p.label, v: num(p.value), proj: !!p.projection }; });
+    var m = makeSvg(el, 220, c.label), svg = m.svg, W = m.W, H = m.H, top = 18, bottom = 24, fmt = d3.format('.1f');
+    var mn = Math.min(0, d3.min(d, function (r) { return r.v; })), mx = d3.max(d, function (r) { return r.v; });
+    var y = d3.scaleLinear([mn < 0 ? Math.floor(mn) - 1 : 0, Math.ceil(mx + 0.5)], [H - bottom, top]);
+    var ticks = y.ticks(4), ml = d3.max(ticks, function (v) { return textWidth(svg, v + '%'); }) + 10;
+    var x = d3.scaleBand(d.map(function (r) { return r.label; }), [ml, W - 6]).padding(0.28);
+    gridY(svg, y, ticks, ml, W - 6);
+    axisY(svg, y, ticks, ml, function (v) { return v + '%'; });
+    var bars = svg.append('g').selectAll('rect').data(d).join('rect')
+      .attr('x', function (r) { return x(r.label); }).attr('width', x.bandwidth())
+      .attr('y', function (r) { return y(Math.max(0, r.v)); }).attr('height', function (r) { return Math.abs(y(r.v) - y(0)); })
+      .attr('rx', 2).style('fill', C1).attr('fill-opacity', function (r) { return r.proj ? 0.35 : 1; })
+      .style('stroke', function (r) { return r.proj ? C1 : 'none'; }).attr('stroke-dasharray', '3 2');
+    svg.append('line').attr('x1', ml).attr('x2', W - 6).attr('y1', y(0)).attr('y2', y(0)).style('stroke', AXIS);
+    var labelled = x.bandwidth() >= 26 ? d : d.slice(-2);
+    svg.append('g').selectAll('text').data(labelled).join('text').attr('class', 'pv-lab').attr('text-anchor', 'middle')
+      .attr('x', function (r) { return x(r.label) + x.bandwidth() / 2; })
+      .attr('y', function (r) { return r.v >= 0 ? y(r.v) - 5 : y(r.v) + 13; }).text(function (r) { return fmt(r.v); });
+    var every = x.bandwidth() >= 22 ? 1 : 2;
+    svg.append('g').selectAll('text').data(d.filter(function (_, i) { return (d.length - 1 - i) % every === 0; })).join('text')
+      .attr('x', function (r) { return x(r.label) + x.bandwidth() / 2; }).attr('y', H - 6).attr('text-anchor', 'middle')
+      .text(function (r) { return r.label; });
+    var t = tipFor(el);
+    bars.on('pointermove', function (ev, r) {
+      var p = d3.pointer(ev, svg.node());
+      showTip(el, svg.node(), W, t, p[0], p[1], r.label + (r.proj ? ' · IMF projection' : ''), [{ name: 'Real GDP growth', value: fmt(r.v) + '%' }]);
+    }).on('pointerleave', function () { t.hidden = true; });
+  }
+
+  var charts = { 'chart-cpi': drawCpi, 'chart-gdp': drawGdp, 'chart-lsm': drawLsm, 'chart-imf': drawImf,
+                 'chart-curve': drawCurve, 'chart-res': drawReserves, 'chart-fiscal': drawFiscal };
   function drawAll() {
     Object.keys(charts).forEach(function (id) {
       var el = document.getElementById(id);

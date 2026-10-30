@@ -11,7 +11,10 @@ feed_title: "Source: Pakistan notes"
 {%- assign pv = site.data.pakistan -%}
 {%- assign latest_note = site.pakistan_notes | sort: "date" | last -%}
 
-<p class="pv-take">{{ pv.meta.takeaway }}</p>
+<p class="pv-take"><strong class="pv-take-date">{{ pv.meta.asof_iso | date: "%-d %B %Y" }}:</strong> {{ pv.meta.takeaway }}</p>
+{%- if pv.meta.so_what %}
+<p class="pv-sowhat"><span class="pv-sowhat-k">What it means</span> {{ pv.meta.so_what }}</p>
+{%- endif %}
 
 <nav class="pv-nav" aria-label="Sections">
   <a href="#key">Key indicators</a>
@@ -45,6 +48,7 @@ feed_title: "Source: Pakistan notes"
     {% include pakistan/tile.html label="Brent crude" key="brent" %}
   </div>
   <p class="pv-legend-st"><span class="pv-st pv-st-off"></span>Official data feed, downloaded from the publisher and checked automatically <span class="pv-st pv-st-int"></span>Interim, read from the release or a news report of it <a href="{{ '/pakistan/sources/' | relative_url }}">Where each figure comes from</a></p>
+  <p class="pv-legend-st"><span class="pv-mv pv-mv-good pv-mv-up">Green</span> better for the economy <span class="pv-mv pv-mv-bad pv-mv-down">Red</span> worse <span class="pv-mv pv-mv-neutral pv-mv-up">Grey</span> direction only, where a move is neither good nor bad in itself</p>
 
   <div class="pv-grid pv-grid-tight">
     {%- if latest_note %}
@@ -154,10 +158,31 @@ feed_title: "Source: Pakistan notes"
 <section class="pv-sec" id="growth">
   <h2 class="pv-h2">Growth &amp; activity</h2>
   <div class="pv-grid">
-    <div class="pv-card">
-      <h3>Real GDP growth by quarter</h3>
-      <p class="pv-note">Year on year, from the National Accounts Committee's October revision. The dashed line is the full year.</p>
-      <div class="pv-chart" id="chart-gdp" role="img" aria-label="Bar chart of real GDP growth by quarter of FY26"></div>
+    <div class="pv-stack">
+      <div class="pv-card">
+        <h3>Real GDP growth by quarter</h3>
+        <p class="pv-note">Year on year, from the National Accounts Committee's October revision. The dashed line is the full year.</p>
+        <div class="pv-chart" id="chart-gdp" role="img" aria-label="Bar chart of real GDP growth by quarter of FY26"></div>
+      </div>
+      {%- assign lsm_chart = pv.pipeline.charts.lsm_fy_months %}
+      {%- if lsm_chart %}
+      <div class="pv-card">
+        <h3>Large-scale manufacturing, this year and last <a class="pv-st pv-st-off" href="{{ '/pakistan/sources/' | relative_url }}#charts" title="Official data feed: {{ lsm_chart.publisher }}, {{ lsm_chart.dataset }}"><span class="pv-vh">Official data feed</span></a></h3>
+        <p class="pv-note">The State Bank's quantum index of big-factory output (2015-16 = 100), by month of the fiscal year, as published. Output is seasonal, so each month is best compared with the same month a year earlier.</p>
+        <div class="pv-chart pv-chart-sm" id="chart-lsm" role="img" aria-label="Line chart of the large-scale manufacturing index by month, this fiscal year and last"></div>
+      </div>
+      {%- endif %}
+      {%- assign imf_chart = pv.pipeline.charts.imf_growth_path %}
+      {%- if imf_chart %}
+      <div class="pv-card">
+        <h3>Growth over a decade, and the IMF's view <a class="pv-st pv-st-off" href="{{ '/pakistan/sources/' | relative_url }}#charts" title="Official data feed: {{ imf_chart.publisher }}, {{ imf_chart.dataset }}"><span class="pv-vh">Official data feed</span></a></h3>
+        <p class="pv-note">Real GDP growth by fiscal year from the IMF's World Economic Outlook. The lighter bar is the IMF's projection for this year.</p>
+        <div class="pv-chart pv-chart-sm" id="chart-imf" role="img" aria-label="Bar chart of real GDP growth by fiscal year with the IMF projection for this year"></div>
+      </div>
+      {%- endif %}
+      {%- if pv.meta.commentary.growth %}
+      <p class="pv-comment"><span class="pv-sowhat-k">What it shows</span> {{ pv.meta.commentary.growth }}</p>
+      {%- endif %}
     </div>
     <div class="pv-card">
       <h3>Activity indicators</h3>
@@ -173,6 +198,12 @@ feed_title: "Source: Pakistan notes"
     <h3>Inflation and the policy rate</h3>
     <p class="pv-note">CPI inflation, year on year, and the SBP policy rate at each month-end. The shaded band is the SBP's medium-term target.</p>
     <div class="pv-chart pv-chart-wide" id="chart-cpi" role="img" aria-label="Line chart of CPI inflation and the SBP policy rate by month"></div>
+    {%- if pv.meta.commentary.inflation %}
+    <p class="pv-comment"><span class="pv-sowhat-k">What it shows</span> {{ pv.meta.commentary.inflation }}</p>
+    {%- endif %}
+    {%- if pv.pipeline.charts.cpi_yoy_recent %}
+    <p class="pv-note pv-mt-s">Monthly CPI figures checked against the State Bank's EasyData series <code>{{ pv.pipeline.charts.cpi_yoy_recent.series_code }}</code>; the policy rate is from the State Bank's policy statements.</p>
+    {%- endif %}
   </div>
   <div class="pv-card pv-mt">
     <h3>Inflation measures</h3>

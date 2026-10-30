@@ -1,59 +1,61 @@
 ---
 layout: post
 title: "Convolutional Neural Networks for Predicting Poverty in Sparse Data Settings"
-subtitle: "The use of satellite imagery has opened up new avenues for using advanced technology to tackle some of the most pressing global issues."
+subtitle: "Predicting household consumption in Malawi from satellite images with convolutional neural networks"
 background: '/img/posts/cnn-poverty/sidebyside.png'
 ---
 
-My last flagship project at University of Bonn began in the Winter of 2022/23. That semester, I selected the course, ***Effective Programming for Economists*** (taught by Dr. Janos Gabler), which delved into the various aspects of learning to think and write about code efficiently in Python. That this was likely my last course as a Master student, I was highly motivated to see just how far I could push myself from my comfort zone with Python using the technical skills we were fast learning in the course. I deliberated during the initial weeks on a topic that would be 1) an application of machine learning to a real-world problem and 2) be one that I could feasibly code and polish within the four-month timeline. During this time, I was a student assistant in the Institute of Environment and Human Security at United Nations in Bonn, and so I was also inspired to tackle problems related to advancing human welfare.
+This project was my final coursework project at the University of Bonn in the winter semester of 2022/23, for the course ***Effective Programming for Economists***, which focused on writing efficient, reproducible code in Python. The goal was an application of machine learning to a real-world problem that could be built and documented within the four-month semester. At the time I was also a research assistant at the United Nations University Institute for Environment and Human Security in Bonn, which drew me towards a topic in human welfare.
 
-My surveying led me to some groundbreaking research from Stanford University that leverages deep learning along with high resolution daytime satellite imagery and nightlight data to quantify poverty in African countries. This paper aimed to address that a key challenge in tracking progress on poverty eradication goals is the unusual difficulty of obtaining administrative survey data in many regions most affected by poverty. This un-availability is due to the time-consuming and cost-prohibitive nature of conducting large-scale surveys. At the same time, any serious progress on poverty eradication goals necessitates that we are able track it in a timely and reliable manner. This paper used Convolutional Neural Networks (CNNs) to bridge this data gap by processing cheap and abundant sources of data as an alternative to household survey.
+The project builds on Jean et al. (2016), who combine deep learning with high-resolution daytime satellite imagery and nightlight data to estimate poverty in African countries. A key obstacle to tracking progress on poverty reduction is the lack of survey data in many of the regions most affected by poverty, because large-scale household surveys are slow and expensive to run. Progress on poverty reduction nevertheless depends on measuring it in a timely and reliable way. Jean et al. use Convolutional Neural Networks (CNNs) to fill this gap with cheap, abundant data as an alternative to household surveys.
 
-## Setup 
+## Setup
 
-However, of course satellite imagery does not explicitly capture the vast differences in wealth between regions of a country. Therefore, transfer learning is deployed to help the model extract economically relevant features from thousands of unstructured satellite images. More specifically, higher nightlights intensity typically indicates a given region is more developed than a region with lower nightlights. This nightlight data can be used to extract landscape features in daytime imagery that are correlated with economic outcomes, such as roads, farmlands, waterways, roof, and urban areas. In the final step, the trained model can be used to predict village level wealth as measured by traditional surveys. 
+Satellite imagery does not directly capture differences in wealth between regions, so the approach uses transfer learning to extract economically relevant features from thousands of unstructured satellite images. Brighter nightlights typically indicate that a region is more developed. Nightlight data can therefore be used to train a model to recognize features in daytime imagery that are correlated with economic outcomes, such as roads, farmland, waterways, roofs and urban areas. In the final step, the trained model predicts village-level wealth as measured by traditional surveys.
 
 ![Two satellite images side by side: (a) an area with low nightlight intensity and (b) an area with high nightlight intensity](/img/posts/cnn-poverty/hl_ll.png)
 
-The contribution of my project was to create a seamless, reproducible workflow for the original study, to exemplify how unconventional forms of data can be easily integrated into economists’ research and programming pipelines. The layout of the original replication kit and related repositories on GitHub involved considerable work to obtain and manage the data and run several scripts in a particular order to produce the desired results. I felt this complexity may disincentivize the ability of new users to alter model parameters and build on the authors’ work. I ameliorated this issue by integrating all scripts and tasks in a coordinated ‘pytask‘ framework. In doing so, I utilized the CNN method to estimate consumption expenditure in Malawi and attempt to match the R2 from the authors’ model, with an emphasis on highlighting the several programming steps involved in such an analysis, from data collection to prediction. 
+My contribution was a reproducible workflow for the original study, showing how unconventional data can be integrated into economists' research and programming pipelines. The original replication kit and related GitHub repositories required considerable work to obtain and manage the data and to run several scripts in a particular order. That complexity makes it harder for new users to change model parameters and build on the authors' work. I addressed this by integrating all scripts and tasks into a single `pytask` workflow. Within it, I used the CNN method to estimate consumption expenditure in Malawi and compared the R² with the authors' model, documenting each programming step from data collection to prediction.
 
-## Overview 
-My project’s CNN model training had the following structure which used nightlight data for predicting consumption: 
- 
-1. Use Gaussian Mixture Model to separate satellite images into 3 nightlight classes (no, low, high).
-2. Train CNN to predict nightlight classes in the training set (80%) and compute model accuracy in validation set (20%) 
-3. Use trained model to extract feature vector for each image in validation set by hooking model output just before the final classification step. 
-4. Train ridge regression on the principal components of the feature matrix and generate predicted consumption in the validation set. 
+## Overview
 
-Although the technicalities of CNN are beyond the scope of such a blog post (for this I refer to the project’s full technical report if you're interested!), I will briefly provide some intuition on transfer learning: nightlights were used as a proxy for economic activity and then the CNN model took as input thousands of satellite imagery and used that to predict variation in nightlight intensities.
+The model training followed these steps, using nightlight data to predict consumption:
 
- This is a transfer learning strategy in which the model receives no human input that these images are in any way useful for predicting economic activity or estimating consumption expenditures; it only learns to identify those features in satellite images that are relevant for predicting nightlights. The output of this step is a trained model capable of reducing high-dimensional imagery inputs to low-dimensional features relevant for predicting the variation in nightlights. 
+1. Use a Gaussian mixture model to separate satellite images into three nightlight classes (no, low and high).
+2. Train a CNN to predict the nightlight classes in the training set (80%) and compute model accuracy in the validation set (20%).
+3. Use the trained model to extract a feature vector for each image in the validation set, by taking the model output just before the final classification step.
+4. Train a ridge regression on the principal components of the feature matrix and generate predicted consumption in the validation set.
+
+In brief, transfer learning works as follows here: nightlights serve as a proxy for economic activity, and the CNN takes thousands of satellite images as input and learns to predict variation in nightlight intensity.
+
+The model receives no human input indicating that these images are useful for predicting economic activity or consumption; it only learns to identify the features in satellite images that are relevant for predicting nightlights. The output of this step is a trained model that reduces high-dimensional image inputs to low-dimensional features relevant for predicting nightlights.
 
 ## Model Training
 
-The training phase involved using a Gaussian Mixture Model to categorize the satellite images based on nightlight intensity. This categorization facilitated more focused training of the CNN, allowing it to predict poverty levels with higher accuracy. After training, the CNN was able to transform high-dimensional image data into feature vectors that effectively represented different poverty levels.
+The training phase used a Gaussian mixture model to group the satellite images by nightlight intensity, and the CNN was trained to predict these classes. After training, the CNN transforms high-dimensional image data into feature vectors.
+
 ![Density of nightlight intensity for the low, medium and high classes found by the Gaussian mixture model](/img/posts/cnn-poverty/gmm.png)
 
-Here I drew on the Pytorch library which consists of a range of CNN model choices and used the finetuning functions written by Inkawhich (2022) for implementation. The code was modified so that the first 2 epochs perform fine-tuning - that is, updating all model parameters, and after that perform feature extraction where only the output layer weights are updated taking the pre-trained model parameters are given.
+The implementation uses PyTorch, which offers a range of CNN architectures, and the fine-tuning functions written by Inkawhich (2022). I modified the code so that the first two epochs perform fine-tuning, updating all model parameters, and later epochs perform feature extraction, updating only the output layer weights while keeping the pre-trained parameters fixed.
 
-## Machine Prediction and Results
+## Prediction and Results
 
-The trained CNN model then extracted feature vectors for each image in the validation set. These vectors are just a nonlinear mapping of the input images to their vector representations and are ’hooked’ just before the classification step. The result is an n x p dimensional matrix, where n = 2296 (validation satellite images) and p = 4096, the feature vectors for each image. The images were grouped according to their household-clusters coordinates and aggregated at this level using the mean. This process reduces the original matrix to X, a 780 by 4096 feature matrix, and outcome Y a vector for consumption per capita. The goal is to use these features extracted from satellite images, instead of directly using nightlights, to predict consumption expenditure.
+The trained CNN then extracted a feature vector for each image in the validation set. These vectors are a nonlinear mapping of the input images, taken just before the classification step. The result is an n × p matrix, where n = 2,296 validation images and p = 4,096 features per image. The images were grouped by household-cluster coordinates and averaged within each cluster, which reduces the data to a 780 × 4,096 feature matrix X and an outcome vector Y of consumption per capita. The goal is to predict consumption expenditure from these image features rather than directly from nightlights.
 
-However, using such a high dimensional dataset for prediction can be time consuming and caused convergence issues when training certain ML models. Therefore, instead of using the entire feature matrix for training these models, I first performed dimensionality reduction guided by principal component (PC) analysis.
+Training models on such a high-dimensional dataset is slow and caused convergence problems for some models, so I first reduced the dimensionality with principal component analysis.
 
 ![Scatter plot of actual against predicted consumption from the CNN-ridge model, with an r-squared of 0.28](/img/posts/cnn-poverty/prediction.png)
 
-In general, ML models trained with CNN features data have a lower R2 compared to models trained with nightlight data using either 5-fold or 10-fold cross validation. Some models such as XGBoost perform poorly when trained on the nightlight data or CNN features data whereas Random Forest is improved using latter. Ridge Regression appears to be among the best performing models. Therefore, as a final illustration I plot the actual consumption values against values predicted by a cross-validated ridge regression using the first thirty PCs from CNN features data.
+Under both 5-fold and 10-fold cross-validation, models trained on CNN features generally have a lower R² than models trained on nightlight data. Some models, such as XGBoost, perform poorly on both nightlight data and CNN features, while random forests improve with CNN features. Ridge regression is among the best-performing models. The chart above plots actual consumption against values predicted by a cross-validated ridge regression using the first 30 principal components of the CNN features.
 
-## Conclusion and Reflection
+## Conclusion
 
-The project not only demonstrated the potential of CNNs and satellite imagery to predict poverty but also highlighted the broader applicability of AI in socioeconomic research. By successfully mapping poverty in Malawi, I provided a reproducible template that can be replicated or adapted for other regions facing similar challenges.
+The project shows how CNNs and satellite imagery can be used to predict poverty and how the workflow can be made reproducible. The final model explains about 28% of the variation in consumption in Malawi (R² = 0.28). The `pytask` workflow can be reused or adapted for other regions.
 
-The use of satellite imagery has opened up new avenues for using advanced technology to tackle some of the most pressing global issues. The integration of AI and satellite imagery in this context not only offers a more efficient alternative to traditional methods relying on household survey data but also enriches our understanding and approach to global development challenges.
+Satellite imagery offers a lower-cost complement to household surveys for measuring poverty, particularly where survey data are scarce.
 
 ## References
 
-Inkawhich, Nathan (2022). Finetuning Torchvision Models Kernel Description. url: https:// pytorch.org/tutorials/beginner/finetuning_torchvision_models_tutorial.html.
+Inkawhich, Nathan (2022). "Finetuning Torchvision Models". PyTorch Tutorials. [https://pytorch.org/tutorials/beginner/finetuning_torchvision_models_tutorial.html](https://pytorch.org/tutorials/beginner/finetuning_torchvision_models_tutorial.html)
 
-Jean, Neal, Marshall Burke, Michael Xie, W Matthew Davis, David B Lobell, and Stefano Ermon (2016). “Combining satellite imagery and machine learning to predict poverty”. In: Science 353.6301, pp. 790–794.
+Jean, Neal, Marshall Burke, Michael Xie, W. Matthew Davis, David B. Lobell, and Stefano Ermon (2016). "Combining satellite imagery and machine learning to predict poverty". *Science* 353(6301), pp. 790–794.

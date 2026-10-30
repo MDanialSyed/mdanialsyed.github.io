@@ -127,7 +127,7 @@ def test_end_to_end(tmp_path, key):
     held = {f.indicator for f in log.findings if f.level == HOLD}
     assert {"lsm_m", "repo_on", "imf_gdp_proj"} <= held
     assert "lsm_m" in log.results and "lsm_m" not in doc["indicators"]
-    assert "cpi_mom" not in log.results  # unmapped: no series code yet
+    assert "sbp_res" not in log.results  # unmapped: no series code yet
     assert doc["charts"] == {}  # charts unconfirmed in this test
 
     reg_doc = json.loads((site / "registry.json").read_text())

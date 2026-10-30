@@ -24,7 +24,7 @@ def parse_date(text: str) -> date:
 
 
 def to_period(d: date, frequency: str) -> str:
-    if frequency in ("daily", "weekly"):
+    if frequency in ("daily", "weekly", "as-needed"):
         return d.isoformat()
     if frequency == "monthly":
         return f"{d.year:04d}-{d.month:02d}"

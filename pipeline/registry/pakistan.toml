@@ -128,22 +128,6 @@ start = "2024-07-01"
 status = "confirmed"
 
 [[series]]
-key = "sbp_cpi_mom_national"
-source = "sbp_easydata"
-code = ""
-frequency = "monthly"
-description = "National CPI, month on month, percent"
-status = "unmapped"
-
-[[series]]
-key = "sbp_cpi_fytd_national"
-source = "sbp_easydata"
-code = ""
-frequency = "monthly"
-description = "National CPI, average of the fiscal year to date, year on year, percent"
-status = "unmapped"
-
-[[series]]
 key = "wb_gdp_usd"
 source = "world_bank_wdi"
 code = "NY.GDP.MKTP.CD"
@@ -165,14 +149,141 @@ code = "PCPIPCH"
 frequency = "annual"
 description = "Inflation, average consumer prices, percent; later years are IMF projections"
 
-# Not yet mapped: the official code is identified from the publisher's catalogue first.
 [[series]]
-key = "pbs_gdp"
-source = "pbs"
-code = ""
+key = "sbp_cpi_mom_national"
+source = "sbp_easydata"
+code = "TS_GP_PT_CPI_M.P00461516"
+frequency = "monthly"
+description = "National CPI, month on month, percent"
+start = "2015-07-01"
+
+[[series]]
+key = "sbp_cpi_pa_national"
+source = "sbp_easydata"
+code = "TS_GP_PT_CPI_M.P00311516"
+frequency = "monthly"
+description = "National CPI, average of the fiscal year to date, year on year, percent"
+start = "2015-07-01"
+
+[[series]]
+key = "sbp_cpi_yoy_urban"
+source = "sbp_easydata"
+code = "TS_GP_PT_CPI_M.P00021516"
+frequency = "monthly"
+description = "Urban CPI, year on year, percent"
+start = "2015-07-01"
+
+[[series]]
+key = "sbp_cpi_yoy_rural"
+source = "sbp_easydata"
+code = "TS_GP_PT_CPI_M.P00031516"
+frequency = "monthly"
+description = "Rural CPI, year on year, percent"
+start = "2015-07-01"
+
+[[series]]
+key = "sbp_food_yoy_urban"
+source = "sbp_easydata"
+code = "TS_GP_PT_CPI_M.P00041516"
+frequency = "monthly"
+description = "Urban food inflation, year on year, percent"
+start = "2015-07-01"
+
+[[series]]
+key = "sbp_wpi_yoy"
+source = "sbp_easydata"
+code = "TS_GP_PT_CPI_M.P00081516"
+frequency = "monthly"
+description = "Wholesale price index, general, year on year, percent"
+start = "2015-07-01"
+
+[[series]]
+key = "sbp_core_urban"
+source = "sbp_easydata"
+code = "TS_GP_PT_CPI_M.P00121516"
+frequency = "monthly"
+description = "Core inflation, urban, non-food non-energy, year on year, percent"
+start = "2015-07-01"
+
+[[series]]
+key = "sbp_core_rural"
+source = "sbp_easydata"
+code = "TS_GP_PT_CPI_M.P00131516"
+frequency = "monthly"
+description = "Core inflation, rural, non-food non-energy, year on year, percent"
+start = "2015-07-01"
+
+[[series]]
+key = "sbp_trim_urban"
+source = "sbp_easydata"
+code = "TS_GP_PT_CPI_M.P00141516"
+frequency = "monthly"
+description = "Core inflation, urban, 20% trimmed mean, year on year, percent"
+start = "2015-07-01"
+
+[[series]]
+key = "sbp_policy_rate"
+source = "sbp_easydata"
+code = "TS_GP_IR_SIRPR_AH.SBPOL0030"
+frequency = "daily"
+description = "SBP policy (target) rate, percent, dated by decision"
+start = "2015-01-01"
+
+[[series]]
+key = "sbp_tbill_12m"
+source = "sbp_easydata"
+code = "TS_GP_BAM_SIRTBIL_AH.TB0030"
+frequency = "daily"
+description = "12-month market treasury bill, auction cut-off yield, percent, dated by auction"
+start = "2023-07-01"
+
+[[series]]
+key = "sbp_pib_10y"
+source = "sbp_easydata"
+code = "TS_GP_BAM_SIRPIBS_AH.PIB0040"
+frequency = "daily"
+description = "10-year Pakistan Investment Bond, auction cut-off yield, percent, dated by auction"
+start = "2023-07-01"
+
+[[series]]
+key = "sbp_usdpkr"
+source = "sbp_easydata"
+code = "TS_GP_ES_M2M_D.M2MUSD00DY"
+frequency = "daily"
+description = "SBP mark-to-market exchange rate, rupees per US dollar, ready"
+start = "2024-07-01"
+
+[[series]]
+key = "sbp_remittances"
+source = "sbp_easydata"
+code = "TS_GP_BOP_WR_M.WR0340"
+frequency = "monthly"
+description = "Workers' remittances, total, US$ million"
+start = "2015-07-01"
+
+[[series]]
+key = "sbp_pvt_credit_yoy"
+source = "sbp_easydata"
+code = "TS_GP_BAM_M2_W.M000480"
+frequency = "weekly"
+description = "Credit to the private sector, year-on-year growth, percent"
+start = "2023-07-01"
+
+[[series]]
+key = "sbp_m2_yoy"
+source = "sbp_easydata"
+code = "TS_GP_BAM_M2_W.M000500"
+frequency = "weekly"
+description = "Broad money (M2), year-on-year growth, percent"
+start = "2023-07-01"
+
+[[series]]
+key = "sbp_gdp_growth"
+source = "sbp_easydata"
+code = "TS_GP_RLS_PAKGDP15_Y.GDP00160000"
 frequency = "annual"
-description = "Real GDP growth, provisional and revised estimates (National Accounts Committee)"
-status = "unmapped"
+description = "Real GDP growth rate (constant 2015-16 prices), percent, by fiscal year"
+start = "2010-01-01"
 
 [[series]]
 key = "pbs_gdp_quarterly"
@@ -183,51 +294,11 @@ description = "Quarterly real GDP growth"
 status = "unmapped"
 
 [[series]]
-key = "sbp_core_urban"
-source = "sbp_easydata"
-code = ""
-frequency = "monthly"
-description = "Core inflation, urban, non-food non-energy"
-status = "unmapped"
-
-[[series]]
 key = "pbs_spi"
 source = "pbs"
 code = ""
 frequency = "weekly"
 description = "Sensitive price indicator, combined, year on year"
-status = "unmapped"
-
-[[series]]
-key = "sbp_policy_rate"
-source = "sbp_easydata"
-code = ""
-frequency = "daily"
-description = "SBP policy rate"
-status = "unmapped"
-
-[[series]]
-key = "sbp_tbill_12m"
-source = "sbp_web"
-code = ""
-frequency = "daily"
-description = "12-month market treasury bill, auction cut-off yield"
-status = "unmapped"
-
-[[series]]
-key = "sbp_pib_10y"
-source = "sbp_web"
-code = ""
-frequency = "daily"
-description = "10-year Pakistan Investment Bond, auction cut-off yield"
-status = "unmapped"
-
-[[series]]
-key = "sbp_usdpkr"
-source = "sbp_easydata"
-code = ""
-frequency = "daily"
-description = "Interbank exchange rate, rupees per US dollar"
 status = "unmapped"
 
 [[series]]
@@ -247,35 +318,11 @@ description = "Total liquid foreign exchange reserves, US$ million"
 status = "unmapped"
 
 [[series]]
-key = "sbp_remittances"
-source = "sbp_easydata"
-code = ""
-frequency = "monthly"
-description = "Workers' remittances, US$ million"
-status = "unmapped"
-
-[[series]]
 key = "pbs_trade_balance"
 source = "pbs"
 code = ""
 frequency = "monthly"
 description = "Goods trade balance, US$ million"
-status = "unmapped"
-
-[[series]]
-key = "sbp_private_credit"
-source = "sbp_easydata"
-code = ""
-frequency = "monthly"
-description = "Credit to the private sector, stock"
-status = "unmapped"
-
-[[series]]
-key = "sbp_m2"
-source = "sbp_easydata"
-code = ""
-frequency = "weekly"
-description = "Broad money (M2), stock"
 status = "unmapped"
 
 [[series]]
@@ -339,22 +386,6 @@ max_age_days = 70
 confirm = "Must match the national y/y in the PBS CPI release for the same month, to one decimal."
 status = "confirmed"
 confirmed = "30 Oct 2026: Sep 2026 = 10.3%, as in the PBS CPI release"
-
-[[indicators]]
-key = "cpi_mom"
-label = "CPI, month on month"
-section = "inflation"
-unit = "percent"
-series = ["sbp_cpi_mom_national"]
-status = "unmapped"
-
-[[indicators]]
-key = "cpi_fytd"
-label = "CPI average, fiscal year to date (y/y)"
-section = "inflation"
-unit = "percent"
-series = ["sbp_cpi_fytd_national"]
-status = "unmapped"
 
 [[indicators]]
 key = "lsm_m"
@@ -467,38 +498,62 @@ display = { decimals = 1, suffix = "%" }
 range = [-5.0, 60.0]
 confirm = "Check that the IMF labels Pakistan's fiscal years by the year they end (2027 = FY27)."
 
-# Core indicators still to be mapped to an official series.
 [[indicators]]
-key = "gdp_fy"
-label = "Real GDP growth"
-section = "growth"
+key = "cpi_mom"
+label = "CPI, month on month"
+section = "inflation"
 unit = "percent"
-series = ["pbs_gdp"]
-status = "unmapped"
+series = ["sbp_cpi_mom_national"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 1, suffix = "%", plus = true }
+range = [-10.0, 15.0]
+jump_abs = 5.0
+max_age_days = 70
+confirm = "Must match the national m/m in the PBS CPI release, to one decimal."
 
 [[indicators]]
-key = "gdp_q"
-label = "Real GDP growth, latest quarter (y/y)"
-section = "growth"
+key = "cpi_fytd"
+label = "CPI average, fiscal year to date (y/y)"
+section = "inflation"
 unit = "percent"
-series = ["pbs_gdp_quarterly"]
-status = "unmapped"
+series = ["sbp_cpi_pa_national"]
+transform = "as_published@1"
+context = ["year_ago"]
+period_format = "fytd"
+display = { decimals = 1, suffix = "%" }
+range = [-5.0, 60.0]
+jump_abs = 5.0
+max_age_days = 70
+confirm = "Must match the fiscal-year-to-date average in the PBS CPI release, to one decimal."
 
 [[indicators]]
-key = "pvt_credit"
-label = "Private-sector credit (y/y)"
-section = "growth"
+key = "cpi_urban"
+label = "Urban CPI (y/y)"
+section = "inflation"
 unit = "percent"
-series = ["sbp_private_credit"]
-status = "unmapped"
+series = ["sbp_cpi_yoy_urban"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 1, suffix = "%" }
+range = [-5.0, 60.0]
+jump_abs = 5.0
+max_age_days = 70
+confirm = "Must match the urban y/y in the PBS CPI release."
 
 [[indicators]]
-key = "m2"
-label = "Broad money, M2 (y/y)"
-section = "growth"
+key = "cpi_rural"
+label = "Rural CPI (y/y)"
+section = "inflation"
 unit = "percent"
-series = ["sbp_m2"]
-status = "unmapped"
+series = ["sbp_cpi_yoy_rural"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 1, suffix = "%" }
+range = [-5.0, 60.0]
+jump_abs = 5.0
+max_age_days = 70
+confirm = "Must match the rural y/y in the PBS CPI release."
 
 [[indicators]]
 key = "core_urban"
@@ -506,6 +561,212 @@ label = "Core, urban non-food non-energy (y/y)"
 section = "inflation"
 unit = "percent"
 series = ["sbp_core_urban"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 1, suffix = "%" }
+range = [-5.0, 60.0]
+jump_abs = 4.0
+max_age_days = 70
+confirm = "Must match urban NFNE core in the PBS CPI release or the SBP Inflation Monitor."
+
+[[indicators]]
+key = "core_rural"
+label = "Core, rural non-food non-energy (y/y)"
+section = "inflation"
+unit = "percent"
+series = ["sbp_core_rural"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 1, suffix = "%" }
+range = [-5.0, 60.0]
+jump_abs = 4.0
+max_age_days = 70
+confirm = "Must match rural NFNE core in the PBS CPI release or the SBP Inflation Monitor."
+
+[[indicators]]
+key = "trim_urban"
+label = "Core, urban 20% trimmed mean (y/y)"
+section = "inflation"
+unit = "percent"
+series = ["sbp_trim_urban"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 1, suffix = "%" }
+range = [-5.0, 60.0]
+jump_abs = 4.0
+max_age_days = 70
+confirm = "Must match the urban trimmed mean in the SBP Inflation Monitor."
+
+[[indicators]]
+key = "food_urban"
+label = "Food inflation, urban (y/y)"
+section = "inflation"
+unit = "percent"
+series = ["sbp_food_yoy_urban"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 1, suffix = "%" }
+range = [-20.0, 80.0]
+jump_abs = 10.0
+max_age_days = 70
+confirm = "Must match urban food inflation in the PBS CPI release."
+
+[[indicators]]
+key = "wpi"
+label = "Wholesale prices, WPI (y/y)"
+section = "inflation"
+unit = "percent"
+series = ["sbp_wpi_yoy"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 1, suffix = "%" }
+range = [-30.0, 80.0]
+jump_abs = 10.0
+max_age_days = 70
+confirm = "Must match the WPI y/y in the PBS CPI release."
+
+[[indicators]]
+key = "policy_rate"
+label = "SBP policy rate"
+section = "markets"
+unit = "percent"
+series = ["sbp_policy_rate"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 2, suffix = "%" }
+range = [0.0, 40.0]
+jump_abs = 3.0
+confirm = "Must match the rate in the latest SBP Monetary Policy Statement."
+
+[[indicators]]
+key = "tbill_12m"
+label = "12-month T-bill, auction cut-off"
+section = "markets"
+unit = "percent"
+series = ["sbp_tbill_12m"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 2, suffix = "%" }
+range = [0.0, 40.0]
+jump_abs = 3.0
+max_age_days = 35
+confirm = "Must match the 12-month cut-off in SBP's T-bill auction results."
+
+[[indicators]]
+key = "pib_10y"
+label = "10-year PIB, auction cut-off"
+section = "markets"
+unit = "percent"
+series = ["sbp_pib_10y"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 2, suffix = "%" }
+range = [0.0, 40.0]
+jump_abs = 3.0
+max_age_days = 60
+confirm = "Must match the 10-year cut-off in SBP's PIB auction results."
+
+[[indicators]]
+key = "usdpkr"
+label = "Rupees per US dollar (SBP reference rate)"
+section = "markets"
+unit = "rupees"
+series = ["sbp_usdpkr"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 2 }
+range = [100.0, 600.0]
+max_age_days = 7
+confirm = "Check against SBP's daily M2M revaluation rate; the page used the interbank close before."
+
+[[indicators]]
+key = "usdpkr_base"
+label = "Rupees per US dollar at the end of last year"
+section = "ref"
+unit = "rupees"
+series = ["sbp_usdpkr"]
+transform = "prev_year_end@1"
+display = { decimals = 2 }
+range = [100.0, 600.0]
+confirm = "Same series as usdpkr, last value of the previous calendar year."
+
+[[indicators]]
+key = "rem_m"
+label = "Workers' remittances"
+section = "external"
+unit = "US$ billion"
+series = ["sbp_remittances"]
+transform = "as_published@1"
+context = ["year_ago"]
+value_scale = 0.001
+display = { decimals = 2, prefix = "$", suffix = "bn" }
+range = [0.3, 15.0]
+max_age_days = 60
+confirm = "Must match total remittances in SBP's monthly release."
+
+[[indicators]]
+key = "rem_fytd"
+label = "Workers' remittances, fiscal year to date"
+section = "external"
+unit = "US$ billion"
+series = ["sbp_remittances"]
+transform = "fytd_sum@1"
+context = ["year_ago"]
+value_scale = 0.001
+display = { decimals = 2, prefix = "$", suffix = "bn" }
+range = [0.0, 60.0]
+max_age_days = 60
+confirm = "Must match the fiscal-year-to-date total in SBP's monthly release."
+
+[[indicators]]
+key = "pvt_credit"
+label = "Private-sector credit (y/y)"
+section = "growth"
+unit = "percent"
+series = ["sbp_pvt_credit_yoy"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 1, suffix = "%", plus = true }
+range = [-30.0, 80.0]
+jump_abs = 5.0
+max_age_days = 30
+confirm = "Must match SBP's weekly monetary aggregates."
+
+[[indicators]]
+key = "m2"
+label = "Broad money, M2 (y/y)"
+section = "growth"
+unit = "percent"
+series = ["sbp_m2_yoy"]
+transform = "as_published@1"
+context = ["previous"]
+display = { decimals = 1, suffix = "%" }
+range = [-20.0, 60.0]
+jump_abs = 5.0
+max_age_days = 30
+confirm = "Must match SBP's weekly monetary aggregates."
+
+[[indicators]]
+key = "gdp_fy"
+label = "Real GDP growth"
+section = "growth"
+unit = "percent"
+series = ["sbp_gdp_growth"]
+transform = "as_published@1"
+context = ["previous"]
+period_format = "fy_end_year"
+display = { decimals = 2, suffix = "%" }
+range = [-10.0, 15.0]
+max_age_days = 500
+confirm = "Must match the PBS National Accounts Committee's latest estimate for the fiscal year."
+
+# Core indicators still to be mapped to an official series.
+[[indicators]]
+key = "gdp_q"
+label = "Real GDP growth, latest quarter (y/y)"
+section = "growth"
+unit = "percent"
+series = ["pbs_gdp_quarterly"]
 status = "unmapped"
 
 [[indicators]]
@@ -517,43 +778,11 @@ series = ["pbs_spi"]
 status = "unmapped"
 
 [[indicators]]
-key = "policy_rate"
-label = "SBP policy rate"
-section = "markets"
-unit = "percent"
-series = ["sbp_policy_rate"]
-status = "unmapped"
-
-[[indicators]]
-key = "tbill_12m"
-label = "12-month T-bill, auction cut-off"
-section = "markets"
-unit = "percent"
-series = ["sbp_tbill_12m"]
-status = "unmapped"
-
-[[indicators]]
-key = "pib_10y"
-label = "10-year PIB, auction cut-off"
-section = "markets"
-unit = "percent"
-series = ["sbp_pib_10y"]
-status = "unmapped"
-
-[[indicators]]
 key = "kse100"
 label = "KSE-100 index"
 section = "markets"
 unit = "index"
 series = ["psx_kse100"]
-status = "unmapped"
-
-[[indicators]]
-key = "usdpkr"
-label = "Rupees per US dollar (interbank)"
-section = "markets"
-unit = "rupees"
-series = ["sbp_usdpkr"]
 status = "unmapped"
 
 [[indicators]]
@@ -578,22 +807,6 @@ label = "Total liquid reserves (SBP + banks)"
 section = "external"
 unit = "US$ million"
 series = ["sbp_reserves_total"]
-status = "unmapped"
-
-[[indicators]]
-key = "rem_m"
-label = "Workers' remittances"
-section = "external"
-unit = "US$ million"
-series = ["sbp_remittances"]
-status = "unmapped"
-
-[[indicators]]
-key = "rem_fytd"
-label = "Workers' remittances, fiscal year to date"
-section = "external"
-unit = "US$ million"
-series = ["sbp_remittances"]
 status = "unmapped"
 
 [[indicators]]

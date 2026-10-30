@@ -1,0 +1,37 @@
+[
+  {
+    "when": "Early Nov",
+    "event": "October CPI (PBS)",
+    "note": "September's figure came out on 1 Oct",
+    "source": "PBS: price statistics",
+    "url": "https://www.pbs.gov.pk/price-statistics/"
+  },
+  {
+    "when": "4 Nov",
+    "event": "PIB auction",
+    "note": "Rs350bn target",
+    "source": "Pakistan Era: PIB auction, 7 Oct",
+    "url": "https://pakera.pk/pib-auction-7-october-2026-yields-pakistan/"
+  },
+  {
+    "when": "Nov (date TBC)",
+    "event": "IMF Executive Board: fourth EFF review",
+    "note": "Releases about $1.2bn if approved",
+    "source": "APP: IMF staff-level agreement",
+    "url": "https://www.app.com.pk/business/imf-pakistan-reach-staff-level-agreement-on-1-2bn-disbursement/"
+  },
+  {
+    "when": "Thursdays",
+    "event": "SBP weekly reserves",
+    "note": "Week to the previous Friday",
+    "source": "Business Recorder: SBP reserves, 29 Oct",
+    "url": "https://www.brecorder.com/news/40446522/sbp-held-foreign-exchange-reserves-rise-33mn-to-2152bn"
+  },
+  {
+    "when": "14 Dec",
+    "event": "Next SBP Monetary Policy Committee",
+    "note": "Rate decision",
+    "source": "Trading Economics: SBP calendar",
+    "url": "https://tradingeconomics.com/pakistan/interest-rate"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "name": "Source: Pakistan",
+  "asof": "30 Oct 2026",
+  "asof_iso": "2026-10-30",
+  "notes": "Figures read from SBP, PBS, Finance Ministry and FBR releases, market closes, and news reports of them. Every row carries its own source link.",
+  "takeaway": "Inflation of 10.3% is well above the State Bank's 5–7% target, so the policy rate is back up at 12.00%. Buffers are thicker, with SBP reserves at $21.52bn, but the current account has slipped back into deficit: −$874m in July–September.",
+  "curve": {
+    "latest": "Latest auctions",
+    "previous": "Mid-September",
+    "latest_short": "Latest",
+    "previous_short": "Sep",
+    "note": "Cut-off yields from the 28 Oct T-bill auction, after the October rate hike, and the 7 Oct PIB auction, compared with the 16 Sep T-bill and 18 Sep PIB auctions."
+  },
+  "external": {
+    "title": "This fiscal year so far",
+    "note": "Balance of payments and goods trade, July–September 2026.",
+    "total": "Jul–Sep",
+    "m1": "Sep",
+    "m2": "Aug",
+    "change": "vs a year earlier"
+  }
+}

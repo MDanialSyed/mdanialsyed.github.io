@@ -1,0 +1,12 @@
+{%- comment -%}
+  Prints one figure from the Source: Pakistan data.
+  key: the row's key. field: the column (default "display").
+  derived: true to read derived.json instead of indicators.json.
+{%- endcomment -%}
+{%- if include.derived -%}
+  {%- assign _pv_row = site.data.pakistan.derived.figures | where: "key", include.key | first -%}
+{%- else -%}
+  {%- assign _pv_row = site.data.pakistan.indicators | where: "key", include.key | first -%}
+{%- endif -%}
+{%- assign _pv_field = include.field | default: "display" -%}
+{%- if _pv_row and _pv_row[_pv_field] != nil and _pv_row[_pv_field] != "" -%}{{ _pv_row[_pv_field] }}{%- else -%}—{%- endif -%}

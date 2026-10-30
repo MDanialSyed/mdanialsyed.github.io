@@ -1,0 +1,38 @@
+[
+  {
+    "item": "Current account balance",
+    "total": "−$874m",
+    "m1": "−$356m",
+    "m2": "−$73m",
+    "change": "−$755m a year earlier",
+    "source": "Business Recorder: current account, Sep 2026",
+    "url": "https://www.brecorder.com/news/40444553/pakistan-posts-356mn-ca-deficit-in-september-2026"
+  },
+  {
+    "item": "Workers' remittances",
+    "total": "$10.88bn",
+    "m1": "$3.59bn",
+    "m2": "$3.66bn",
+    "change": "+14%",
+    "source": "Express Tribune: remittances, Sep 2026",
+    "url": "https://tribune.com.pk/story/2633983/remittances-cool-to-36b-in-sept"
+  },
+  {
+    "item": "Goods exports",
+    "total": "$8.42bn",
+    "m1": "$2.94bn",
+    "m2": "$2.53bn",
+    "change": "+11%",
+    "source": "The Nation: trade, Jul–Sep 2026",
+    "url": "https://www.nation.com.pk/03-Oct-2026/pakistan-s-trade-deficit-widens-15pc-dollar-10-79b-q1-fy27"
+  },
+  {
+    "item": "Goods imports",
+    "total": "$19.22bn",
+    "m1": "$6.49bn",
+    "m2": "$5.82bn",
+    "change": "+13%",
+    "source": "The Nation: trade, Jul–Sep 2026",
+    "url": "https://www.nation.com.pk/03-Oct-2026/pakistan-s-trade-deficit-widens-15pc-dollar-10-79b-q1-fy27"
+  }
+]

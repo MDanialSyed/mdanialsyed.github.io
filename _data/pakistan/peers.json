@@ -1,0 +1,67 @@
+[
+  {
+    "country": "Pakistan",
+    "cpi": 10.26,
+    "cpi_display": "10.3%",
+    "measure": "National CPI, Sep",
+    "policy_rate": 12.0,
+    "policy_display": "12.00%",
+    "last_move": "+50 bp, 26 Oct",
+    "source": "Profit (PBS data)",
+    "url": "https://profit.pakistantoday.com.pk/2026/10/01/pakistans-inflation-stays-above-10percent-in-september-2026-as-fuel-transport-costs-surge",
+    "rate_source": "SBP",
+    "rate_url": "https://www.sbp.org.pk/assets/documents/press-release/PR-26-Oct-2026.pdf"
+  },
+  {
+    "country": "India",
+    "cpi": 5.54,
+    "cpi_display": "5.54%",
+    "measure": "CPI, Sep",
+    "policy_rate": 5.5,
+    "policy_display": "5.50%",
+    "last_move": "+25 bp, 7 Oct",
+    "source": "Business Today: CPI, Sep 2026",
+    "url": "https://www.businesstoday.in/latest/economy/story/indias-retail-inflation-rises-to-5-54-in-september-food-inflation-hits-7-74-561057-2026-10-12",
+    "rate_source": "Times of Oman: RBI decision, 7 Oct",
+    "rate_url": "https://timesofoman.com/article/177734-rbi-raises-repo-rate-by-25-bps-to-550-as-per-market-expectations"
+  },
+  {
+    "country": "Bangladesh",
+    "cpi": 8.34,
+    "cpi_display": "8.34%",
+    "measure": "CPI, Sep",
+    "policy_rate": 9.5,
+    "policy_display": "9.50%",
+    "last_move": "Held, 30 Sep",
+    "source": "Dhaka Tribune",
+    "url": "https://www.dhakatribune.com/business/421534/inflation-rises-in-september",
+    "rate_source": "Dhaka Tribune",
+    "rate_url": "https://www.dhakatribune.com/business/banks/421028/bb-retains-policy-rate-at-9.50%25-in-latest-mps"
+  },
+  {
+    "country": "Sri Lanka",
+    "cpi": 8.0,
+    "cpi_display": "8.0%",
+    "measure": "Colombo CPI, Sep",
+    "policy_rate": 8.75,
+    "policy_display": "8.75%",
+    "last_move": "Held, 30 Sep",
+    "source": "Trading Economics",
+    "url": "https://tradingeconomics.com/sri-lanka/inflation-cpi/news/588206",
+    "rate_source": "Trading Economics",
+    "rate_url": "https://tradingeconomics.com/sri-lanka/interest-rate/news/587938"
+  },
+  {
+    "country": "Egypt",
+    "cpi": 13.9,
+    "cpi_display": "13.9%",
+    "measure": "Urban CPI, Sep",
+    "policy_rate": 19.0,
+    "policy_display": "19.00%",
+    "last_move": "Held, 24 Sep",
+    "source": "Zawya",
+    "url": "https://zawya.com/en/economy/egypts-annual-urban-inflation-eases-to-13.9-in-september-1587961",
+    "rate_source": "Trading Economics",
+    "rate_url": "https://tradingeconomics.com/egypt/interest-rate/news/586652"
+  }
+]

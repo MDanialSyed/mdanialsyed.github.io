@@ -1,0 +1,2 @@
+{%- assign _pv_t = site.data.pakistan.derived.figures | where: "key", include.key | first -%}
+{%- if _pv_t.tone == "good" -%}pv-good{%- elsif _pv_t.tone == "bad" -%}pv-bad{%- endif -%}

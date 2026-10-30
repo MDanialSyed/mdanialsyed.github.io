@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{%- assign pvmeta = site.data.pakistan.meta -%}
+<header class="masthead pv-masthead">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="page-heading pv-heading">
+          <h1>{{ page.title }}</h1>
+          {%- if page.description %}
+          <span class="subheading">{{ page.description }}</span>
+          {%- endif %}
+          <span class="pv-asof">Data as of {{ pvmeta.asof }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container pv">
+  <div class="row">
+    <div class="col-xl-11 mx-auto">
+      {{ content }}
+    </div>
+  </div>
+</div>

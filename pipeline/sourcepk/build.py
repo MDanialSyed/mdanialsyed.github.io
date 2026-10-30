@@ -41,6 +41,34 @@ class RunLog:
     published: list[str] = field(default_factory=list)
     carried: list[str] = field(default_factory=list)
     archive_problems: list[str] = field(default_factory=list)
+    fetch_run: str = ""
+
+
+def save_fetch_log(log: RunLog, data_root: Path) -> Path:
+    """What a download-only run found, so a later build can include it in its report."""
+    folder = Path(data_root) / "runs" / log.run_id
+    folder.mkdir(parents=True, exist_ok=True)
+    doc = {"run_id": log.run_id, "fetched": log.fetched, "errors": log.errors,
+           "changes": {k: {"new": v.new, "revised": [list(r) for r in v.revised]} for k, v in log.changes.items()}}
+    from .secrets import scrub
+    (folder / "fetch.json").write_text(scrub(json.dumps(doc, indent=2, ensure_ascii=False)) + "\n", encoding="utf-8")
+    (Path(data_root) / "runs" / "LATEST_FETCH").write_text(log.run_id + "\n", encoding="utf-8")
+    return folder
+
+
+def load_fetch_log(log: RunLog, data_root: Path) -> str | None:
+    pointer = Path(data_root) / "runs" / "LATEST_FETCH"
+    if not pointer.exists():
+        return None
+    run_id = pointer.read_text(encoding="utf-8").strip()
+    path = Path(data_root) / "runs" / run_id / "fetch.json"
+    if not path.exists():
+        return None
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    log.fetched, log.errors = doc["fetched"], doc["errors"]
+    log.changes = {k: Changes(v["new"], [tuple(r) for r in v["revised"]]) for k, v in doc["changes"].items()}
+    log.fetch_run = run_id
+    return run_id
 
 
 def new_run_id() -> str:
@@ -140,6 +168,10 @@ def run_checks(reg: Registry, data_root: Path, log: RunLog, previous: dict, toda
 
 
 def code_version() -> str:
+    """The git commit of the pipeline code; copies made for the Mac carry it in CODE_VERSION."""
+    stamp = REPO_DIR / "pipeline" / "CODE_VERSION"
+    if not (REPO_DIR / ".git").exists():
+        return stamp.read_text(encoding="utf-8").strip() if stamp.exists() else "unknown"
     try:
         sha = subprocess.run(["git", "-C", str(REPO_DIR), "rev-parse", "--short", "HEAD"],
                              capture_output=True, text=True, check=True).stdout.strip()

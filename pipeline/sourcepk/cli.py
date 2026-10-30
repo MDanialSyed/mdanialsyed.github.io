@@ -19,7 +19,7 @@ from pathlib import Path
 
 from . import __version__, build, report
 from .archive import Archive
-from .config import REPO_DIR, data_dir, load_registry
+from .config import data_dir, load_registry
 from .secrets import has_secret, scrub
 from .store import Store
 
@@ -67,14 +67,19 @@ def cmd_doctor(args, reg) -> int:
     return 0 if ok else 1
 
 
+def _site(args) -> Path:
+    return Path(args.site).expanduser().resolve() if args.site else build.SITE_DATA
+
+
 def _build(args, reg, log, root) -> int:
     today = date.today()
+    site = _site(args)
     build.compute_all(reg, root, log, today=today)
-    build.run_checks(reg, root, log, build.load_previous(), today)
+    build.run_checks(reg, root, log, build.load_previous(site), today)
     log.archive_problems = Archive(root).verify()
     if args.publish:
-        build.publish(reg, log)
-    folder = report.write(reg, log, root, build.load_interim(), args.publish)
+        build.publish(reg, log, site_data=site)
+    folder = report.write(reg, log, root, build.load_interim(site), args.publish)
     blocks = sum(f.level == "block" for f in log.findings)
     flags = sum(f.level == "flag" for f in log.findings)
     _say(f"Computed {len(log.results)} indicators; {blocks} blocked, {flags} flagged, "
@@ -97,6 +102,7 @@ def cmd_fetch(args, reg) -> int:
     root = data_dir(args.data)
     log = build.RunLog(build.new_run_id())
     build.fetch(reg, root, log, only=args.series)
+    build.save_fetch_log(log, root)
     for key, ch in log.changes.items():
         _say(f"{key}: {len(ch.new)} new periods, {len(ch.revised)} revised")
     for e in log.errors:
@@ -105,8 +111,13 @@ def cmd_fetch(args, reg) -> int:
 
 
 def cmd_build(args, reg) -> int:
+    """Compute, check and report from the stored series, including the latest download run."""
     root = data_dir(args.data)
-    return _build(args, reg, build.RunLog(build.new_run_id()), root)
+    log = build.RunLog(build.new_run_id())
+    fetch_run = build.load_fetch_log(log, root)
+    if fetch_run:
+        _say(f"Using downloads from run {fetch_run}.")
+    return _build(args, reg, log, root)
 
 
 def cmd_status(args, reg) -> int:
@@ -140,8 +151,8 @@ def cmd_verify(args, reg) -> int:
 
 
 def cmd_export(args, reg) -> int:
-    build.export_registry(reg)
-    _say(f"Wrote {build.SITE_DATA.relative_to(REPO_DIR) / 'registry.json'}")
+    build.export_registry(reg, _site(args))
+    _say(f"Wrote {_site(args) / 'registry.json'}")
     return 0
 
 
@@ -149,6 +160,7 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="sourcepk", description="Source: Pakistan data pipeline")
     p.add_argument("--data", help="data folder (default: $SP_DATA_DIR or ~/SourcePakistan/data)")
     p.add_argument("--country", default="pakistan")
+    p.add_argument("--site", help="site data folder to read and write (default: the repo's _data/pakistan)")
     sub = p.add_subparsers(dest="cmd", required=True)
     d = sub.add_parser("doctor")
     d.add_argument("--online", action="store_true", help="also check that the official sites respond")

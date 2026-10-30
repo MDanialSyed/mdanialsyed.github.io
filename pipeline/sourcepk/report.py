@@ -40,7 +40,8 @@ def _value_rows(reg: Registry, log: RunLog, interim: dict) -> list[list[str]]:
 
 def render_markdown(reg: Registry, log: RunLog, interim: dict, published: bool) -> str:
     out = [f"# Pipeline run {log.run_id}", "",
-           f"Code version {code_version()}. {'Published to the site data.' if published else 'Dry run: nothing written to the site.'}",
+           f"Code version {code_version()}. {'Published to the site data.' if published else 'Dry run: nothing written to the site.'}"
+           + (f" Downloads from run {log.fetch_run}." if log.fetch_run else ""),
            ""]
     out += ["## Downloads", "", "| Series | Observations | New periods | Revised | Archived file |",
             "|---|---:|---:|---:|---|"]
@@ -80,7 +81,7 @@ def write(reg: Registry, log: RunLog, data_root: Path, interim: dict, published:
     folder.mkdir(parents=True, exist_ok=True)
     (folder / "report.md").write_text(render_markdown(reg, log, interim, published), encoding="utf-8")
     doc = {
-        "run_id": log.run_id, "code_version": code_version(), "published": published,
+        "run_id": log.run_id, "fetch_run": log.fetch_run, "code_version": code_version(), "published": published,
         "fetched": log.fetched, "errors": log.errors,
         "changes": {k: asdict(v) for k, v in log.changes.items()},
         "results": {k: {"value": r.value, "period": r.period, "note": r.note,
@@ -90,5 +91,6 @@ def write(reg: Registry, log: RunLog, data_root: Path, interim: dict, published:
         "published_keys": log.published, "carried_forward": log.carried,
         "archive_problems": log.archive_problems,
     }
+    (Path(data_root) / "runs" / "LATEST").write_text(log.run_id + "\n", encoding="utf-8")
     (folder / "report.json").write_text(scrub(json.dumps(doc, indent=2, ensure_ascii=False)) + "\n", encoding="utf-8")
     return folder

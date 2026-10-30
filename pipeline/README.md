@@ -25,38 +25,24 @@ archived file it came from.
    been checked against the publisher's own release.
 7. **Report.** Every run writes `runs/<run id>/report.md` and `report.json` in the data folder.
 
-## Setup (macOS)
+## Where it runs
 
-```sh
-# 1. Python environment
-conda create -n sourcepk python=3.12 -y
-conda activate sourcepk
-pip install -r pipeline/requirements.txt
+The official sites are reached from the owner's Mac, which downloads and archives the files;
+everything after that (calculations, checks, the report and the site update) runs from the
+archive and needs no network.
 
-# 2. Data folder, outside the repo
-mkdir -p ~/SourcePakistan/data
-
-# 3. EasyData key, stored in the Keychain (you are prompted for it; it is never echoed)
-security add-generic-password -s source-pakistan-easydata -a "$USER" -w
-
-# 4. Check the setup
-cd pipeline
-python -m sourcepk doctor --online
-```
+- **One-time setup:** double-click `mac/setup.command` (placed next to a copy of this folder in
+  `Documents/SourcePakistan`). It copies the pipeline to `~/SourcePakistan`, makes a private
+  Python environment, asks once for the EasyData key and keeps it in the macOS Keychain, adds a
+  weekly download job (Fridays 07:30, or on next wake) and runs the first download.
+- **Weekly download:** `mac/fetch.sh`, run by that job, logs to `~/SourcePakistan/logs/fetch.log`.
+- **Build and publish:** `python -m sourcepk --data ~/SourcePakistan/data --site <site data> build --publish`.
 
 The key can instead be given for one session with `export SP_EASYDATA_KEY=...`. It is never
 written to a file, a report or the site.
 
-## Weekly run
-
-```sh
-cd pipeline
-python -m sourcepk run              # dry run: download, check, report
-python -m sourcepk run --publish    # also update the site data
-python -m pytest -q tests           # the test suite
-```
-
-Other commands: `status`, `inspect <series>`, `verify-archive`, `export-registry`, `build`.
+Commands: `doctor [--online]`, `fetch`, `build [--publish]`, `run [--publish]`, `status`,
+`inspect <series>`, `verify-archive`, `export-registry`. Tests: `python -m pytest -q tests`.
 
 ## Adding or confirming an indicator
 

@@ -166,3 +166,17 @@ def test_identities():
     assert check_identities(reg, {"a": r(5.0), "b": r(8.0), "c": r(3.0)}) == []
     bad = check_identities(reg, {"a": r(9.0), "b": r(8.0), "c": r(3.0)})
     assert bad and bad[0].level == BLOCK
+
+
+def test_download_then_build_split(tmp_path, key):
+    """The Mac downloads; the build runs later elsewhere and still reports what was downloaded."""
+    data = tmp_path / "data"
+    reg = load_registry()
+    log = build.RunLog("20261030T060000Z")
+    build.fetch(reg, data, log, fetcher=FakeFetcher(routes()))
+    build.save_fetch_log(log, data)
+    later = build.RunLog("20261030T100000Z")
+    assert build.load_fetch_log(later, data) == "20261030T060000Z"
+    assert later.fetched.keys() == log.fetched.keys()
+    assert later.changes["sbp_cpi_national"].new == log.changes["sbp_cpi_national"].new
+    assert TEST_KEY not in all_text(data)

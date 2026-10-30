@@ -34,8 +34,9 @@ plugins:
   - jekyll-sitemap
 
 # Source: Pakistan notes live in their own collection, separate from the blog.
-# The section is unlisted for now: noindex and sitemap: false keep it out of
-# search engines. Remove both (here and in pakistan/*.html) to launch it.
+# The section is linked from the menu (Country Macroeconomic Dashboards), but
+# noindex and sitemap: false keep it out of search engines. Remove both (here
+# and in pakistan/*.html) for a full public launch.
 collections:
   pakistan_notes:
     output: true

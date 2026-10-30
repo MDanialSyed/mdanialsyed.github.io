@@ -20,6 +20,12 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ "/posts" | relative_url }}">Posts</a>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{{ "/pakistan/" | relative_url }}" id="navDashboards" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Country Macroeconomic Dashboards</a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navDashboards">
+            <a class="dropdown-item" href="{{ "/pakistan/" | relative_url }}">Pakistan</a>
+          </div>
+        </li>
         {%- if site.github_username and site.github_username != "" %}
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/{{ site.github_username }}" rel="me noopener">GitHub</a>

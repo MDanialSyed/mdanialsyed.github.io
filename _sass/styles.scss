@@ -1,3 +1,9 @@
+// Self-hosted fonts first, so the theme's font stacks pick them up
+@import "fonts";
+
 // Import Core Clean Blog SCSS
 @import "../assets/vendor/startbootstrap-clean-blog/scss/styles.scss";
 @import "../assets/vendor/syntax-highlighting/github.scss";
+
+// Site additions
+@import "site";

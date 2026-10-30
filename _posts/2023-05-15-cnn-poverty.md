@@ -13,7 +13,7 @@ My surveying led me to some groundbreaking research from Stanford University tha
 
 However, of course satellite imagery does not explicitly capture the vast differences in wealth between regions of a country. Therefore, transfer learning is deployed to help the model extract economically relevant features from thousands of unstructured satellite images. More specifically, higher nightlights intensity typically indicates a given region is more developed than a region with lower nightlights. This nightlight data can be used to extract landscape features in daytime imagery that are correlated with economic outcomes, such as roads, farmlands, waterways, roof, and urban areas. In the final step, the trained model can be used to predict village level wealth as measured by traditional surveys. 
 
-![Book logo](/img/posts/cnn-poverty/hl_ll.png)
+![Two satellite images side by side: (a) an area with low nightlight intensity and (b) an area with high nightlight intensity](/img/posts/cnn-poverty/hl_ll.png)
 
 The contribution of my project was to create a seamless, reproducible workflow for the original study, to exemplify how unconventional forms of data can be easily integrated into economists’ research and programming pipelines. The layout of the original replication kit and related repositories on GitHub involved considerable work to obtain and manage the data and run several scripts in a particular order to produce the desired results. I felt this complexity may disincentivize the ability of new users to alter model parameters and build on the authors’ work. I ameliorated this issue by integrating all scripts and tasks in a coordinated ‘pytask‘ framework. In doing so, I utilized the CNN method to estimate consumption expenditure in Malawi and attempt to match the R2 from the authors’ model, with an emphasis on highlighting the several programming steps involved in such an analysis, from data collection to prediction. 
 
@@ -32,7 +32,7 @@ Although the technicalities of CNN are beyond the scope of such a blog post (for
 ## Model Training
 
 The training phase involved using a Gaussian Mixture Model to categorize the satellite images based on nightlight intensity. This categorization facilitated more focused training of the CNN, allowing it to predict poverty levels with higher accuracy. After training, the CNN was able to transform high-dimensional image data into feature vectors that effectively represented different poverty levels.
-![Book logo](/img/posts/cnn-poverty/gmm.png)
+![Density of nightlight intensity for the low, medium and high classes found by the Gaussian mixture model](/img/posts/cnn-poverty/gmm.png)
 
 Here I drew on the Pytorch library which consists of a range of CNN model choices and used the finetuning functions written by Inkawhich (2022) for implementation. The code was modified so that the first 2 epochs perform fine-tuning - that is, updating all model parameters, and after that perform feature extraction where only the output layer weights are updated taking the pre-trained model parameters are given.
 
@@ -42,7 +42,7 @@ The trained CNN model then extracted feature vectors for each image in the valid
 
 However, using such a high dimensional dataset for prediction can be time consuming and caused convergence issues when training certain ML models. Therefore, instead of using the entire feature matrix for training these models, I first performed dimensionality reduction guided by principal component (PC) analysis.
 
-![Book logo](/img/posts/cnn-poverty/prediction.png)
+![Scatter plot of actual against predicted consumption from the CNN-ridge model, with an r-squared of 0.28](/img/posts/cnn-poverty/prediction.png)
 
 In general, ML models trained with CNN features data have a lower R2 compared to models trained with nightlight data using either 5-fold or 10-fold cross validation. Some models such as XGBoost perform poorly when trained on the nightlight data or CNN features data whereas Random Forest is improved using latter. Ridge Regression appears to be among the best performing models. Therefore, as a final illustration I plot the actual consumption values against values predicted by a cross-validated ridge regression using the first thirty PCs from CNN features data.
 

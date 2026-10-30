@@ -1,26 +1,49 @@
 title:              Data Science and AI for Economics
-email:              danial.syed1@outlook.com
+author:             M. Danial Syed
 description:        Here I dive into my research and experiences leveraging frontier data science methods for economic, energy & environment challenges.
-author:             M.Danial Syed
+email:              danial.syed1@outlook.com
+url:                "https://www.danialsyed.com"
 baseurl:            ""
-url:                "https://mdanialsyed.github.io"
 
-# Social Profiles
-twitter_username:   
-github_username:   https://github.com/MDanialSyed
-facebook_username:  
-instagram_username:  
-linkedin_username: https://www.linkedin.com/in/danialsyedm/
+# Image used when a page without its own header image is shared on social media
+share_image:        /img/bg-index.jpg
 
-# Add your google-analytics ID here to activate google analytics
-google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
+# Social profiles: usernames only, not full links. Leave blank to hide.
+github_username:    MDanialSyed
+linkedin_username:  danialsyedm
+twitter_username:
+facebook_username:
+instagram_username:
+
+# Contact form. Create a free form at https://formspree.io (send it to the
+# email above), then paste the form's ID here, e.g. "xyzabcde". While this is
+# blank, the contact page shows your email address instead of a form.
+formspree_form_id:
+
+# Google Analytics 4 measurement ID, e.g. "G-ABC123XYZ". Blank = no analytics.
+google_analytics:
 
 # Build settings
 markdown:           kramdown
+highlighter:        rouge
 paginate:           5
 paginate_path:      "/posts/page:num/"
 plugins:
   - jekyll-feed
   - jekyll-paginate
-  - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
-highlighter: rouge
+  - jekyll-sitemap
+
+# Files in the repository that should not be published on the website
+exclude:
+  - README.md
+  - LICENSE
+  - THEME-LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .sass-cache
+  - .jekyll-cache

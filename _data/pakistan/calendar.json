@@ -1,8 +1,8 @@
 [
   {
-    "when": "Early Nov",
-    "event": "October CPI (PBS)",
-    "note": "September's figure came out on 1 Oct",
+    "when": "Early Dec",
+    "event": "November CPI (PBS)",
+    "note": "October's figure came out on 2 Nov",
     "source": "PBS: price statistics",
     "url": "https://www.pbs.gov.pk/price-statistics/"
   },
@@ -24,8 +24,8 @@
     "when": "Thursdays",
     "event": "SBP weekly reserves",
     "note": "Week to the previous Friday",
-    "source": "Business Recorder: SBP reserves, 29 Oct",
-    "url": "https://www.brecorder.com/news/40446522/sbp-held-foreign-exchange-reserves-rise-33mn-to-2152bn"
+    "source": "SBP: liquid foreign exchange reserves",
+    "url": "https://www.sbp.org.pk/assets/document/forex.pdf"
   },
   {
     "when": "14 Dec",

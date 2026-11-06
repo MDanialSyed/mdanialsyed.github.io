@@ -3,58 +3,58 @@
     {
       "key": "kse_ytd",
       "label": "KSE-100, change since the end of last year",
-      "value": -0.039418,
-      "display": "−3.9% YTD",
-      "tone": "bad"
+      "value": 0.007616,
+      "display": "+0.8% YTD",
+      "tone": "good"
     },
     {
       "key": "pkr_ytd",
       "label": "Rupee against the dollar since the end of last year",
-      "value": 0.012169,
+      "value": 0.012469,
       "display": "Rupee +1.2% YTD",
       "tone": "good"
     },
     {
       "key": "real_headline",
       "label": "Real policy rate vs headline CPI",
-      "value": 1.7,
-      "display": "+1.7 pp",
+      "value": 2.4,
+      "display": "+2.4 pp",
       "tone": "good"
     },
     {
       "key": "real_core",
       "label": "Real policy rate vs urban core CPI",
-      "value": 3.4,
-      "display": "+3.4 pp",
+      "value": 4.2,
+      "display": "+4.2 pp",
       "tone": "good"
     },
     {
       "key": "fbr_gap",
       "label": "FBR collection vs target, fiscal year to date",
-      "value": 30.5,
-      "display": "+Rs30.5bn",
-      "tone": "good"
+      "value": -124.0,
+      "display": "−Rs124.0bn",
+      "tone": "bad"
     },
     {
       "key": "res_gap",
       "label": "SBP reserves, gap to end-December goal",
-      "value": 1.48,
-      "display": "$1.48bn to go",
+      "value": 1.44,
+      "display": "$1.44bn to go",
       "tone": "neutral"
     },
     {
       "key": "fbr_share",
       "label": "Share of this fiscal year's FBR target collected",
-      "value": 0.202011,
-      "display": "20.2%",
+      "value": 0.265985,
+      "display": "26.6%",
       "tone": "neutral"
     }
   ],
   "peer_real_rates": [
     {
       "country": "Pakistan",
-      "value": 1.74,
-      "display": "+1.7 pp",
+      "value": 2.39,
+      "display": "+2.4 pp",
       "tone": "good"
     },
     {
@@ -85,19 +85,19 @@
   "moves": [
     {
       "key": "cpi_yoy",
-      "change": -0.8,
+      "change": -0.7,
       "direction": "down",
       "tone": "good",
-      "display": "0.8 pp vs Aug",
-      "title": "Down 0.8 pp vs Aug: better for the economy"
+      "display": "0.7 pp vs Sep",
+      "title": "Down 0.7 pp vs Sep: better for the economy"
     },
     {
       "key": "core_urban",
-      "change": -0.2,
+      "change": -0.8,
       "direction": "down",
       "tone": "good",
-      "display": "0.2 pp vs Aug",
-      "title": "Down 0.2 pp vs Aug: better for the economy"
+      "display": "0.8 pp vs Sep",
+      "title": "Down 0.8 pp vs Sep: better for the economy"
     },
     {
       "key": "policy_rate",
@@ -117,11 +117,11 @@
     },
     {
       "key": "sbp_res",
-      "change": 0.033,
+      "change": 0.0395,
       "direction": "up",
       "tone": "good",
-      "display": "$33m w/w",
-      "title": "Up $33m w/w: better for the economy"
+      "display": "$40m w/w",
+      "title": "Up $40m w/w: better for the economy"
     },
     {
       "key": "ca_fytd",

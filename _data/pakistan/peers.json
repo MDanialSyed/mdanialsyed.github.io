@@ -1,14 +1,14 @@
 [
   {
     "country": "Pakistan",
-    "cpi": 10.26,
-    "cpi_display": "10.3%",
-    "measure": "National CPI, Sep",
+    "cpi": 9.61,
+    "cpi_display": "9.6%",
+    "measure": "National CPI, Oct",
     "policy_rate": 12.0,
     "policy_display": "12.00%",
     "last_move": "+50 bp, 26 Oct",
-    "source": "Profit (PBS data)",
-    "url": "https://profit.pakistantoday.com.pk/2026/10/01/pakistans-inflation-stays-above-10percent-in-september-2026-as-fuel-transport-costs-surge",
+    "source": "PBS",
+    "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Monthly-Review-October2026.pdf",
     "rate_source": "SBP",
     "rate_url": "https://www.sbp.org.pk/assets/documents/press-release/PR-26-Oct-2026.pdf"
   },

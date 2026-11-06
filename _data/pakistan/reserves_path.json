@@ -43,9 +43,17 @@
     "label": "23 Oct 2026",
     "sbp_bn": 21.52,
     "kind": "Actual",
-    "note": "Latest week",
+    "note": "Weekly reading",
     "source": "Business Recorder: SBP reserves, 29 Oct",
     "url": "https://www.brecorder.com/news/40446522/sbp-held-foreign-exchange-reserves-rise-33mn-to-2152bn"
+  },
+  {
+    "label": "30 Oct 2026",
+    "sbp_bn": 21.56,
+    "kind": "Actual",
+    "note": "Latest week",
+    "source": "SBP: liquid foreign exchange reserves, 30 Oct",
+    "url": "https://www.sbp.org.pk/assets/document/forex.pdf"
   },
   {
     "label": "Dec 2026",

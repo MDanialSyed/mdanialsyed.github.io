@@ -1,5 +1,12 @@
 [
   {
+    "when": "Mid-Nov",
+    "event": "October current account (SBP)",
+    "note": "September's figure came out on 16 Oct",
+    "source": "Business Recorder: current account, Sep 2026",
+    "url": "https://www.brecorder.com/news/40444553/pakistan-posts-356mn-ca-deficit-in-september-2026"
+  },
+  {
     "when": "Early Dec",
     "event": "November CPI (PBS)",
     "note": "October's figure came out on 2 Nov",
@@ -7,18 +14,11 @@
     "url": "https://www.pbs.gov.pk/price-statistics/"
   },
   {
-    "when": "11 Nov",
-    "event": "T-bill auction",
-    "note": "Next scheduled auction of market treasury bills",
-    "source": "SBP: auction calendar",
-    "url": "https://www.sbp.org.pk/ecodata/auction-bond.pdf"
-  },
-  {
-    "when": "Nov (date TBC)",
+    "when": "Dec (date TBC)",
     "event": "IMF Executive Board: fourth EFF review",
-    "note": "Releases about $1.2bn if approved",
-    "source": "APP: IMF staff-level agreement",
-    "url": "https://www.app.com.pk/business/imf-pakistan-reach-staff-level-agreement-on-1-2bn-disbursement/"
+    "note": "Expected in the second week; releases about $1.2bn if approved",
+    "source": "The Nation: IMF Board in December",
+    "url": "https://www.nation.com.pk/08-Nov-2026/imf-consider-approving-dollar-1-2b-disbursement-pakistan-next-month"
   },
   {
     "when": "Thursdays",

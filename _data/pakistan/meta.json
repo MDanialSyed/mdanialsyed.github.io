@@ -1,13 +1,13 @@
 {
   "name": "Source: Pakistan",
-  "asof": "6 Nov 2026",
-  "asof_iso": "2026-11-06",
+  "asof": "13 Nov 2026",
+  "asof_iso": "2026-11-13",
   "notes": "Official figures are downloaded from the publishers' own data services and calculated by code; interim figures are read from SBP, PBS, Finance Ministry and FBR releases, market closes, and news reports of them. Every figure shows its source.",
-  "takeaway": "Inflation eased to 9.6% in October from 10.3%, and urban core inflation fell to 7.8%, leaving the 12.00% policy rate 2.4 points above headline inflation. SBP reserves edged up to $21.56bn, but the FBR missed its July–October target by Rs124bn.",
-  "so_what": "Inflation easing for a second month, with Brent at $98.29 a barrel, takes some of the pressure off the State Bank after its October hike, and weakens the case for another. The weak spots have moved to revenue, with tax collection behind target, and to reserves, still $1.44bn short of the end-December goal.",
+  "takeaway": "Remittances rose 13.8% from a year earlier to $3.89bn in October, and the 12-month T-bill yield fell 48 bp to 12.41% at the 11 Nov auction. SBP reserves edged up $11m to $21.57bn, still $1.43bn short of the end-December goal.",
+  "so_what": "Money sent home by workers abroad is carrying the external accounts: $14.77bn in July–October, about the size of the $14.63bn goods trade deficit. Lower bill yields suggest markets see less need for another rate rise, but with Brent back at $95.82 a barrel and the weekly price basket 12.31% dearer than a year ago, the inflation fight is not over.",
   "commentary": {
-    "inflation": "Inflation was below the 5–7% target band in mid-2025 and inside it from September to February, then rose to 7.3% in March and jumped to 10.9% in April 2026; it has stayed between 9.2% and 11.7% since and eased to 9.6% in October. The State Bank cut its rate to 10.5% in December, raised it to 11.5% in April and to 12.00% in October, leaving it 2.4 points above inflation: a wider cushion than a month ago, though prices are still rising well above target.",
-    "growth": "Factory output in July and August ran slightly above last year's level, and domestic cement despatches, a guide to construction, rose just 1.2% in October, so activity is growing, but slowly. The IMF expects growth of 3.5% this fiscal year, about the same as last year and well below the 6.2% of FY22: a recovery, but a modest one, and higher interest rates make a faster one less likely."
+    "inflation": "Inflation was below the 5–7% target band in mid-2025 and inside it from September to February, then rose to 7.3% in March and jumped to 10.9% in April 2026; it has stayed between 9.2% and 11.7% since and eased to 9.6% in October. The State Bank cut its rate to 10.5% in December, raised it to 11.5% in April and to 12.00% in October, leaving it 2.4 points above inflation. Weekly prices of essentials were still 12.31% higher than a year earlier in the week to 5 Nov, so the pressure on households has not gone.",
+    "growth": "Factory output in July and August ran slightly above last year's level, domestic cement despatches rose just 1.2% in October, and private-sector credit grew 16.8% in the year to 30 Oct, so activity is growing, but slowly. The IMF expects growth of 3.5% this fiscal year, about the same as last year and well below the 6.2% of FY22: a recovery, but a modest one, and higher interest rates make a faster one less likely."
   },
   "curve": {
     "latest": "Latest auctions",

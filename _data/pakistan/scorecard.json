@@ -11,11 +11,11 @@
   },
   {
     "item": "SBP reserves",
-    "latest": "$21.56bn (30 Oct)",
+    "latest": "$21.57bn (6 Nov)",
     "target": "$23bn by end-Dec 2026",
     "status": "Short of goal",
     "tone": "warn",
-    "note": "Up $39m in the latest week",
+    "note": "Up $11m in the latest week",
     "source": "Mettis Global: SBP Governor's press conference, 26 Oct",
     "url": "https://mettisglobal.news/SBP-sees-forex-reserves-at-25bn-by-June-2027-64519"
   },
@@ -65,8 +65,8 @@
     "target": "Board approval of 4th review",
     "status": "Pending",
     "tone": "warn",
-    "note": "About $1.2bn to follow approval",
-    "source": "Business Recorder: IMF staff-level agreement",
-    "url": "https://www.brecorder.com/news/40443228/imf-pakistan-reach-staff-level-agreement-on-eff-rsf-reviews"
+    "note": "About $1.2bn to follow approval; Board expected in December",
+    "source": "The Nation: IMF Board in December",
+    "url": "https://www.nation.com.pk/08-Nov-2026/imf-consider-approving-dollar-1-2b-disbursement-pakistan-next-month"
   }
 ]

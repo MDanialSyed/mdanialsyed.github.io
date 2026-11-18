@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-06T04:34:55Z",
-  "run_id": "20261106T043455Z",
+  "generated_at": "2026-11-18T15:59:46Z",
+  "run_id": "20261118T155946Z",
   "pipeline_version": "0.1.0",
-  "code_version": "32cb857",
+  "code_version": "d5ede78",
   "indicators": {
     "cpi_yoy": {
       "key": "cpi_yoy",
@@ -80,10 +80,10 @@
       "key": "ca_m",
       "label": "Current account balance",
       "unit": "US$ million",
-      "value": -356.0,
-      "display": "−$356m",
-      "period": "2026-09",
-      "period_label": "Sep 2026",
+      "value": 39.0,
+      "display": "$39m",
+      "period": "2026-10",
+      "period_label": "Oct 2026",
       "status": "official",
       "frequency": "monthly",
       "publisher": "State Bank of Pakistan",
@@ -92,38 +92,38 @@
       "source_url": "https://easydata.sbp.org.pk/",
       "calc": "as_published@1",
       "calc_note": "",
-      "retrieved_at": "2026-10-30T14:44:08Z",
-      "context": "−$73m in Aug",
+      "retrieved_at": "2026-11-18T15:48:20Z",
+      "context": "−$371m in Sep",
       "inputs": [
         {
           "series": "sbp_bop_current_account",
           "code": "TS_GP_BOP_BPM6SUM_M.P00010",
           "publisher": "State Bank of Pakistan",
           "dataset": "EasyData",
-          "period": "2026-09",
-          "value": -356.0,
-          "retrieved_at": "2026-10-30T14:44:08Z",
-          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_BPM6SUM_M.P00010.csv",
-          "sha256": "8db661f4a2b166721222b3848071d307eec0a1b1fbcce0548cae99ac2ff51ca1"
+          "period": "2026-10",
+          "value": 39.0,
+          "retrieved_at": "2026-11-18T15:48:20Z",
+          "file": "raw/sbp_easydata/2026-11-18/TS_GP_BOP_BPM6SUM_M.P00010.csv",
+          "sha256": "d98caa9577597648ea4af30b03d1c90a4d5f7755760978230306678eeeca1c5b"
         }
       ],
       "context_items": [
         {
           "kind": "previous",
-          "value": -73.0,
-          "display": "−$73m",
-          "period": "2026-08",
+          "value": -371.0,
+          "display": "−$371m",
+          "period": "2026-09",
           "inputs": [
             {
               "series": "sbp_bop_current_account",
               "code": "TS_GP_BOP_BPM6SUM_M.P00010",
               "publisher": "State Bank of Pakistan",
               "dataset": "EasyData",
-              "period": "2026-08",
-              "value": -73.0,
-              "retrieved_at": "2026-10-30T14:44:08Z",
-              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_BPM6SUM_M.P00010.csv",
-              "sha256": "8db661f4a2b166721222b3848071d307eec0a1b1fbcce0548cae99ac2ff51ca1"
+              "period": "2026-09",
+              "value": -371.0,
+              "retrieved_at": "2026-11-18T15:48:20Z",
+              "file": "raw/sbp_easydata/2026-11-18/TS_GP_BOP_BPM6SUM_M.P00010.csv",
+              "sha256": "d98caa9577597648ea4af30b03d1c90a4d5f7755760978230306678eeeca1c5b"
             }
           ]
         }
@@ -133,10 +133,10 @@
       "key": "ca_fytd",
       "label": "Current account balance, fiscal year to date",
       "unit": "US$ million",
-      "value": -874.0,
-      "display": "−$874m",
-      "period": "2026-09",
-      "period_label": "Jul–Sep FY27",
+      "value": -850.0,
+      "display": "−$850m",
+      "period": "2026-10",
+      "period_label": "Jul–Oct FY27",
       "status": "official",
       "frequency": "monthly",
       "publisher": "State Bank of Pakistan",
@@ -144,9 +144,9 @@
       "series_code": "TS_GP_BOP_BPM6SUM_M.P00010",
       "source_url": "https://easydata.sbp.org.pk/",
       "calc": "fytd_sum@1",
-      "calc_note": "2026-07 to 2026-09",
-      "retrieved_at": "2026-10-30T14:44:08Z",
-      "context": "−$755m a year earlier",
+      "calc_note": "2026-07 to 2026-10",
+      "retrieved_at": "2026-11-18T15:48:20Z",
+      "context": "−$1,062m a year earlier",
       "inputs": [
         {
           "series": "sbp_bop_current_account",
@@ -176,18 +176,29 @@
           "publisher": "State Bank of Pakistan",
           "dataset": "EasyData",
           "period": "2026-09",
-          "value": -356.0,
-          "retrieved_at": "2026-10-30T14:44:08Z",
-          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_BPM6SUM_M.P00010.csv",
-          "sha256": "8db661f4a2b166721222b3848071d307eec0a1b1fbcce0548cae99ac2ff51ca1"
+          "value": -371.0,
+          "retrieved_at": "2026-11-18T15:48:20Z",
+          "file": "raw/sbp_easydata/2026-11-18/TS_GP_BOP_BPM6SUM_M.P00010.csv",
+          "sha256": "d98caa9577597648ea4af30b03d1c90a4d5f7755760978230306678eeeca1c5b"
+        },
+        {
+          "series": "sbp_bop_current_account",
+          "code": "TS_GP_BOP_BPM6SUM_M.P00010",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-10",
+          "value": 39.0,
+          "retrieved_at": "2026-11-18T15:48:20Z",
+          "file": "raw/sbp_easydata/2026-11-18/TS_GP_BOP_BPM6SUM_M.P00010.csv",
+          "sha256": "d98caa9577597648ea4af30b03d1c90a4d5f7755760978230306678eeeca1c5b"
         }
       ],
       "context_items": [
         {
           "kind": "year_ago",
-          "value": -755.0,
-          "display": "−$755m",
-          "period": "2025-09",
+          "value": -1062.0,
+          "display": "−$1,062m",
+          "period": "2025-10",
           "inputs": [
             {
               "series": "sbp_bop_current_account",
@@ -221,6 +232,17 @@
               "retrieved_at": "2026-10-30T14:44:08Z",
               "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_BPM6SUM_M.P00010.csv",
               "sha256": "8db661f4a2b166721222b3848071d307eec0a1b1fbcce0548cae99ac2ff51ca1"
+            },
+            {
+              "series": "sbp_bop_current_account",
+              "code": "TS_GP_BOP_BPM6SUM_M.P00010",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2025-10",
+              "value": -307.0,
+              "retrieved_at": "2026-10-30T14:44:08Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_BPM6SUM_M.P00010.csv",
+              "sha256": "8db661f4a2b166721222b3848071d307eec0a1b1fbcce0548cae99ac2ff51ca1"
             }
           ]
         }
@@ -230,10 +252,10 @@
       "key": "repo_on",
       "label": "Overnight repo, weighted average",
       "unit": "percent",
-      "value": 11.7,
-      "display": "11.70%",
-      "period": "2026-11-04",
-      "period_label": "4 Nov 2026",
+      "value": 12.48,
+      "display": "12.48%",
+      "period": "2026-11-17",
+      "period_label": "17 Nov 2026",
       "status": "official",
       "frequency": "daily",
       "publisher": "State Bank of Pakistan",
@@ -242,38 +264,38 @@
       "source_url": "https://easydata.sbp.org.pk/",
       "calc": "as_published@1",
       "calc_note": "",
-      "retrieved_at": "2026-11-06T02:30:11Z",
-      "context": "12.02% on 3 Nov",
+      "retrieved_at": "2026-11-18T15:48:22Z",
+      "context": "12.26% on 16 Nov",
       "inputs": [
         {
           "series": "sbp_repo_rate",
           "code": "TS_GP_IR_REPOMR_D.ORR",
           "publisher": "State Bank of Pakistan",
           "dataset": "EasyData",
-          "period": "2026-11-04",
-          "value": 11.7,
-          "retrieved_at": "2026-11-06T02:30:11Z",
-          "file": "raw/sbp_easydata/2026-11-06/TS_GP_IR_REPOMR_D.ORR.csv",
-          "sha256": "7438d60f98478431cb5568c728e5010f2234c26dcc42eae3105d929c23598bed"
+          "period": "2026-11-17",
+          "value": 12.48,
+          "retrieved_at": "2026-11-18T15:48:22Z",
+          "file": "raw/sbp_easydata/2026-11-18/TS_GP_IR_REPOMR_D.ORR.csv",
+          "sha256": "b4a50fc99c65984ccd7f2650ef3311485e00f3bd1c0849183f42139f0e8f31a1"
         }
       ],
       "context_items": [
         {
           "kind": "previous",
-          "value": 12.02,
-          "display": "12.02%",
-          "period": "2026-11-03",
+          "value": 12.26,
+          "display": "12.26%",
+          "period": "2026-11-16",
           "inputs": [
             {
               "series": "sbp_repo_rate",
               "code": "TS_GP_IR_REPOMR_D.ORR",
               "publisher": "State Bank of Pakistan",
               "dataset": "EasyData",
-              "period": "2026-11-03",
-              "value": 12.02,
-              "retrieved_at": "2026-11-06T02:30:11Z",
-              "file": "raw/sbp_easydata/2026-11-06/TS_GP_IR_REPOMR_D.ORR.csv",
-              "sha256": "7438d60f98478431cb5568c728e5010f2234c26dcc42eae3105d929c23598bed"
+              "period": "2026-11-16",
+              "value": 12.26,
+              "retrieved_at": "2026-11-18T15:48:22Z",
+              "file": "raw/sbp_easydata/2026-11-18/TS_GP_IR_REPOMR_D.ORR.csv",
+              "sha256": "b4a50fc99c65984ccd7f2650ef3311485e00f3bd1c0849183f42139f0e8f31a1"
             }
           ]
         }
@@ -866,10 +888,10 @@
       "key": "usdpkr",
       "label": "Rupees per US dollar (SBP reference rate)",
       "unit": "rupees",
-      "value": 276.6701,
-      "display": "276.67",
-      "period": "2026-11-05",
-      "period_label": "5 Nov 2026",
+      "value": 276.5514,
+      "display": "276.55",
+      "period": "2026-11-18",
+      "period_label": "18 Nov 2026",
       "status": "official",
       "frequency": "daily",
       "publisher": "State Bank of Pakistan",
@@ -878,38 +900,38 @@
       "source_url": "https://easydata.sbp.org.pk/",
       "calc": "as_published@1",
       "calc_note": "",
-      "retrieved_at": "2026-11-06T02:30:32Z",
-      "context": "276.70 on 4 Nov",
+      "retrieved_at": "2026-11-18T15:49:22Z",
+      "context": "276.56 on 17 Nov",
       "inputs": [
         {
           "series": "sbp_usdpkr",
           "code": "TS_GP_ES_M2M_D.M2MUSD00DY",
           "publisher": "State Bank of Pakistan",
           "dataset": "EasyData",
-          "period": "2026-11-05",
-          "value": 276.6701,
-          "retrieved_at": "2026-11-06T02:30:32Z",
-          "file": "raw/sbp_easydata/2026-11-06/TS_GP_ES_M2M_D.M2MUSD00DY.csv",
-          "sha256": "fb5de5d8d666cce6578c9a08356e995e9f03ed759445f71771dc94d142301fcc"
+          "period": "2026-11-18",
+          "value": 276.5514,
+          "retrieved_at": "2026-11-18T15:49:22Z",
+          "file": "raw/sbp_easydata/2026-11-18/TS_GP_ES_M2M_D.M2MUSD00DY.csv",
+          "sha256": "f2bacd2c0b7f614ecc95c0b1ad0ada10ecc6893f616f0a7c799fcd63ace79e50"
         }
       ],
       "context_items": [
         {
           "kind": "previous",
-          "value": 276.704,
-          "display": "276.70",
-          "period": "2026-11-04",
+          "value": 276.5632,
+          "display": "276.56",
+          "period": "2026-11-17",
           "inputs": [
             {
               "series": "sbp_usdpkr",
               "code": "TS_GP_ES_M2M_D.M2MUSD00DY",
               "publisher": "State Bank of Pakistan",
               "dataset": "EasyData",
-              "period": "2026-11-04",
-              "value": 276.704,
-              "retrieved_at": "2026-11-06T02:30:32Z",
-              "file": "raw/sbp_easydata/2026-11-06/TS_GP_ES_M2M_D.M2MUSD00DY.csv",
-              "sha256": "fb5de5d8d666cce6578c9a08356e995e9f03ed759445f71771dc94d142301fcc"
+              "period": "2026-11-17",
+              "value": 276.5632,
+              "retrieved_at": "2026-11-18T15:49:22Z",
+              "file": "raw/sbp_easydata/2026-11-18/TS_GP_ES_M2M_D.M2MUSD00DY.csv",
+              "sha256": "f2bacd2c0b7f614ecc95c0b1ad0ada10ecc6893f616f0a7c799fcd63ace79e50"
             }
           ]
         }
@@ -919,10 +941,10 @@
       "key": "rem_m",
       "label": "Workers' remittances",
       "unit": "US$ billion",
-      "value": 3.587765,
-      "display": "$3.59bn",
-      "period": "2026-09",
-      "period_label": "Sep 2026",
+      "value": 3.891935,
+      "display": "$3.89bn",
+      "period": "2026-10",
+      "period_label": "Oct 2026",
       "status": "official",
       "frequency": "monthly",
       "publisher": "State Bank of Pakistan",
@@ -931,35 +953,35 @@
       "source_url": "https://easydata.sbp.org.pk/",
       "calc": "as_published@1",
       "calc_note": "x 0.001 for the page's unit",
-      "retrieved_at": "2026-10-30T18:49:11Z",
-      "context": "$3.18bn a year earlier",
+      "retrieved_at": "2026-11-13T02:30:33Z",
+      "context": "$3.42bn a year earlier",
       "inputs": [
         {
           "series": "sbp_remittances",
           "code": "TS_GP_BOP_WR_M.WR0340",
           "publisher": "State Bank of Pakistan",
           "dataset": "EasyData",
-          "period": "2026-09",
-          "value": 3587.764715,
-          "retrieved_at": "2026-10-30T18:49:11Z",
-          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
-          "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
+          "period": "2026-10",
+          "value": 3891.934814,
+          "retrieved_at": "2026-11-13T02:30:33Z",
+          "file": "raw/sbp_easydata/2026-11-13/TS_GP_BOP_WR_M.WR0340.csv",
+          "sha256": "11ef5318af155da98ca9435d5af070ba91f98430b1be625388c4c49257551194"
         }
       ],
       "context_items": [
         {
           "kind": "year_ago",
-          "value": 3.184124,
-          "display": "$3.18bn",
-          "period": "2025-09",
+          "value": 3.419614,
+          "display": "$3.42bn",
+          "period": "2025-10",
           "inputs": [
             {
               "series": "sbp_remittances",
               "code": "TS_GP_BOP_WR_M.WR0340",
               "publisher": "State Bank of Pakistan",
               "dataset": "EasyData",
-              "period": "2025-09",
-              "value": 3184.123961,
+              "period": "2025-10",
+              "value": 3419.61361,
               "retrieved_at": "2026-10-30T18:49:11Z",
               "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
               "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
@@ -972,10 +994,10 @@
       "key": "rem_fytd",
       "label": "Workers' remittances, fiscal year to date",
       "unit": "US$ billion",
-      "value": 10.875059,
-      "display": "$10.88bn",
-      "period": "2026-09",
-      "period_label": "Jul–Sep FY27",
+      "value": 14.767034,
+      "display": "$14.77bn",
+      "period": "2026-10",
+      "period_label": "Jul–Oct FY27",
       "status": "official",
       "frequency": "monthly",
       "publisher": "State Bank of Pakistan",
@@ -983,9 +1005,9 @@
       "series_code": "TS_GP_BOP_WR_M.WR0340",
       "source_url": "https://easydata.sbp.org.pk/",
       "calc": "fytd_sum@1",
-      "calc_note": "2026-07 to 2026-09; x 0.001 for the page's unit",
-      "retrieved_at": "2026-10-30T18:49:11Z",
-      "context": "$9.54bn a year earlier",
+      "calc_note": "2026-07 to 2026-10; x 0.001 for the page's unit",
+      "retrieved_at": "2026-11-13T02:30:33Z",
+      "context": "$12.96bn a year earlier",
       "inputs": [
         {
           "series": "sbp_remittances",
@@ -1015,18 +1037,29 @@
           "publisher": "State Bank of Pakistan",
           "dataset": "EasyData",
           "period": "2026-09",
-          "value": 3587.764715,
-          "retrieved_at": "2026-10-30T18:49:11Z",
-          "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
-          "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
+          "value": 3587.805638,
+          "retrieved_at": "2026-11-13T02:30:33Z",
+          "file": "raw/sbp_easydata/2026-11-13/TS_GP_BOP_WR_M.WR0340.csv",
+          "sha256": "11ef5318af155da98ca9435d5af070ba91f98430b1be625388c4c49257551194"
+        },
+        {
+          "series": "sbp_remittances",
+          "code": "TS_GP_BOP_WR_M.WR0340",
+          "publisher": "State Bank of Pakistan",
+          "dataset": "EasyData",
+          "period": "2026-10",
+          "value": 3891.934814,
+          "retrieved_at": "2026-11-13T02:30:33Z",
+          "file": "raw/sbp_easydata/2026-11-13/TS_GP_BOP_WR_M.WR0340.csv",
+          "sha256": "11ef5318af155da98ca9435d5af070ba91f98430b1be625388c4c49257551194"
         }
       ],
       "context_items": [
         {
           "kind": "year_ago",
-          "value": 9.536813,
-          "display": "$9.54bn",
-          "period": "2025-09",
+          "value": 12.956427,
+          "display": "$12.96bn",
+          "period": "2025-10",
           "inputs": [
             {
               "series": "sbp_remittances",
@@ -1060,6 +1093,17 @@
               "retrieved_at": "2026-10-30T18:49:11Z",
               "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
               "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
+            },
+            {
+              "series": "sbp_remittances",
+              "code": "TS_GP_BOP_WR_M.WR0340",
+              "publisher": "State Bank of Pakistan",
+              "dataset": "EasyData",
+              "period": "2025-10",
+              "value": 3419.61361,
+              "retrieved_at": "2026-10-30T18:49:11Z",
+              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BOP_WR_M.WR0340.csv",
+              "sha256": "fc91cd4ed5e4397aa1eeb4bbf33be0d152f7972aff148a733ece81ff259cae93"
             }
           ]
         }
@@ -1069,10 +1113,10 @@
       "key": "pvt_credit",
       "label": "Private-sector credit (y/y)",
       "unit": "percent",
-      "value": 15.922468,
-      "display": "+15.9%",
-      "period": "2026-10-23",
-      "period_label": "23 Oct 2026",
+      "value": 17.390529,
+      "display": "+17.4%",
+      "period": "2026-11-06",
+      "period_label": "6 Nov 2026",
       "status": "official",
       "frequency": "weekly",
       "publisher": "State Bank of Pakistan",
@@ -1081,38 +1125,38 @@
       "source_url": "https://easydata.sbp.org.pk/",
       "calc": "as_published@1",
       "calc_note": "",
-      "retrieved_at": "2026-11-06T02:30:35Z",
-      "context": "+15.0% on 16 Oct",
+      "retrieved_at": "2026-11-18T15:49:26Z",
+      "context": "+16.8% on 30 Oct",
       "inputs": [
         {
           "series": "sbp_pvt_credit_yoy",
           "code": "TS_GP_BAM_M2_W.M000480",
           "publisher": "State Bank of Pakistan",
           "dataset": "EasyData",
-          "period": "2026-10-23",
-          "value": 15.92246834,
-          "retrieved_at": "2026-11-06T02:30:35Z",
-          "file": "raw/sbp_easydata/2026-11-06/TS_GP_BAM_M2_W.M000480.csv",
-          "sha256": "393e2e232fe824f635a2be338f558c99f2e610c8ae29318e8ae97ef442288bc9"
+          "period": "2026-11-06",
+          "value": 17.39052936,
+          "retrieved_at": "2026-11-18T15:49:26Z",
+          "file": "raw/sbp_easydata/2026-11-18/TS_GP_BAM_M2_W.M000480.csv",
+          "sha256": "70c069f534f56c2a9b66115d276fa7913a22ded22f61605b65d7782df2371438"
         }
       ],
       "context_items": [
         {
           "kind": "previous",
-          "value": 15.009713,
-          "display": "+15.0%",
-          "period": "2026-10-16",
+          "value": 16.785952,
+          "display": "+16.8%",
+          "period": "2026-10-30",
           "inputs": [
             {
               "series": "sbp_pvt_credit_yoy",
               "code": "TS_GP_BAM_M2_W.M000480",
               "publisher": "State Bank of Pakistan",
               "dataset": "EasyData",
-              "period": "2026-10-16",
-              "value": 15.00971289,
-              "retrieved_at": "2026-10-30T18:49:13Z",
-              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_M2_W.M000480.csv",
-              "sha256": "4e5699fec3784432d5153ef81cc1b4019d440bdb7c3a4cb5a776cdd0b5856814"
+              "period": "2026-10-30",
+              "value": 16.78595205,
+              "retrieved_at": "2026-11-18T15:49:26Z",
+              "file": "raw/sbp_easydata/2026-11-18/TS_GP_BAM_M2_W.M000480.csv",
+              "sha256": "70c069f534f56c2a9b66115d276fa7913a22ded22f61605b65d7782df2371438"
             }
           ]
         }
@@ -1122,10 +1166,10 @@
       "key": "m2",
       "label": "Broad money, M2 (y/y)",
       "unit": "percent",
-      "value": 12.86682,
-      "display": "12.9%",
-      "period": "2026-10-23",
-      "period_label": "23 Oct 2026",
+      "value": 11.382896,
+      "display": "11.4%",
+      "period": "2026-11-06",
+      "period_label": "6 Nov 2026",
       "status": "official",
       "frequency": "weekly",
       "publisher": "State Bank of Pakistan",
@@ -1134,38 +1178,38 @@
       "source_url": "https://easydata.sbp.org.pk/",
       "calc": "as_published@1",
       "calc_note": "",
-      "retrieved_at": "2026-11-06T02:30:36Z",
-      "context": "13.1% on 16 Oct",
+      "retrieved_at": "2026-11-18T15:49:28Z",
+      "context": "12.4% on 30 Oct",
       "inputs": [
         {
           "series": "sbp_m2_yoy",
           "code": "TS_GP_BAM_M2_W.M000500",
           "publisher": "State Bank of Pakistan",
           "dataset": "EasyData",
-          "period": "2026-10-23",
-          "value": 12.86681983,
-          "retrieved_at": "2026-11-06T02:30:36Z",
-          "file": "raw/sbp_easydata/2026-11-06/TS_GP_BAM_M2_W.M000500.csv",
-          "sha256": "c4451fb09e5d38114cb52aa1459dfaf13377986b46a9e1b8f86820d4f91ccb3d"
+          "period": "2026-11-06",
+          "value": 11.38289587,
+          "retrieved_at": "2026-11-18T15:49:28Z",
+          "file": "raw/sbp_easydata/2026-11-18/TS_GP_BAM_M2_W.M000500.csv",
+          "sha256": "afb044dba1ba11d679547562c8e51104f2b272e859711467873b79ffdc5afd81"
         }
       ],
       "context_items": [
         {
           "kind": "previous",
-          "value": 13.063372,
-          "display": "13.1%",
-          "period": "2026-10-16",
+          "value": 12.387483,
+          "display": "12.4%",
+          "period": "2026-10-30",
           "inputs": [
             {
               "series": "sbp_m2_yoy",
               "code": "TS_GP_BAM_M2_W.M000500",
               "publisher": "State Bank of Pakistan",
               "dataset": "EasyData",
-              "period": "2026-10-16",
-              "value": 13.06337156,
-              "retrieved_at": "2026-10-30T18:49:14Z",
-              "file": "raw/sbp_easydata/2026-10-30/TS_GP_BAM_M2_W.M000500.csv",
-              "sha256": "43ab176d37496c316678e4a0bdd780549450c912add1693216375bebfa98083e"
+              "period": "2026-10-30",
+              "value": 12.38748293,
+              "retrieved_at": "2026-11-18T15:49:28Z",
+              "file": "raw/sbp_easydata/2026-11-18/TS_GP_BAM_M2_W.M000500.csv",
+              "sha256": "afb044dba1ba11d679547562c8e51104f2b272e859711467873b79ffdc5afd81"
             }
           ]
         }

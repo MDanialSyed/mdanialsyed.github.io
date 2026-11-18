@@ -1,38 +1,38 @@
 [
   {
     "item": "Current account balance",
-    "total": "−$874m",
-    "m1": "−$356m",
-    "m2": "−$73m",
-    "change": "−$755m a year earlier",
-    "source": "Business Recorder: current account, Sep 2026",
-    "url": "https://www.brecorder.com/news/40444553/pakistan-posts-356mn-ca-deficit-in-september-2026"
+    "total": "−$850m",
+    "m1": "$39m",
+    "m2": "−$371m",
+    "change": "−$1,062m a year earlier",
+    "source": "Business Recorder: current account, Oct 2026",
+    "url": "https://www.brecorder.com/news/40449346/pakistan-posts-39mn-current-account-surplus-in-oct-2026"
   },
   {
     "item": "Workers' remittances",
-    "total": "$10.88bn",
-    "m1": "$3.59bn",
-    "m2": "$3.66bn",
+    "total": "$14.77bn",
+    "m1": "$3.89bn",
+    "m2": "$3.59bn",
     "change": "+14%",
-    "source": "Express Tribune: remittances, Sep 2026",
-    "url": "https://tribune.com.pk/story/2633983/remittances-cool-to-36b-in-sept"
+    "source": "APP: SBP balance of payments, Oct 2026",
+    "url": "https://www.app.com.pk/business/current-account-balance-records-39-million-surplus-in-october-fy27-sbp/"
   },
   {
     "item": "Goods exports",
-    "total": "$8.45bn",
-    "m1": "$2.96bn",
-    "m2": "$2.53bn",
-    "change": "+11.1%",
-    "source": "PBS: external trade release, Sep 2026",
-    "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Release_Statement_September-2026.pdf"
+    "total": "$11.34bn",
+    "m1": "$2.93bn",
+    "m2": "$2.96bn",
+    "change": "+8.5%",
+    "source": "PkRevenue: PBS trade data, Oct 2026",
+    "url": "https://pkrevenue.com/pakistan-trade-deficit-rises-16-percent-14-63-billion/"
   },
   {
     "item": "Goods imports",
-    "total": "$19.21bn",
-    "m1": "$6.49bn",
-    "m2": "$5.82bn",
-    "change": "+13.2%",
-    "source": "PBS: external trade release, Sep 2026",
-    "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Release_Statement_September-2026.pdf"
+    "total": "$25.96bn",
+    "m1": "$6.81bn",
+    "m2": "$6.49bn",
+    "change": "+12.6%",
+    "source": "PkRevenue: PBS trade data, Oct 2026",
+    "url": "https://pkrevenue.com/pakistan-trade-deficit-rises-16-percent-14-63-billion/"
   }
 ]

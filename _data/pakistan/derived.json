@@ -3,15 +3,15 @@
     {
       "key": "kse_ytd",
       "label": "KSE-100, change since the end of last year",
-      "value": 0.007616,
-      "display": "+0.8% YTD",
+      "value": 0.01287,
+      "display": "+1.3% YTD",
       "tone": "good"
     },
     {
       "key": "pkr_ytd",
       "label": "Rupee against the dollar since the end of last year",
-      "value": 0.012469,
-      "display": "Rupee +1.2% YTD",
+      "value": 0.012904,
+      "display": "Rupee +1.3% YTD",
       "tone": "good"
     },
     {
@@ -38,8 +38,8 @@
     {
       "key": "res_gap",
       "label": "SBP reserves, gap to end-December goal",
-      "value": 1.44,
-      "display": "$1.44bn to go",
+      "value": 1.43,
+      "display": "$1.43bn to go",
       "tone": "neutral"
     },
     {
@@ -59,26 +59,26 @@
     },
     {
       "country": "India",
-      "value": -0.04,
-      "display": "0.0 pp",
-      "tone": "neutral"
+      "value": -0.59,
+      "display": "−0.6 pp",
+      "tone": "bad"
     },
     {
       "country": "Bangladesh",
-      "value": 1.16,
+      "value": 1.23,
       "display": "+1.2 pp",
       "tone": "good"
     },
     {
       "country": "Sri Lanka",
-      "value": 0.75,
-      "display": "+0.8 pp",
+      "value": 0.45,
+      "display": "+0.4 pp",
       "tone": "good"
     },
     {
       "country": "Egypt",
-      "value": 5.1,
-      "display": "+5.1 pp",
+      "value": 7.3,
+      "display": "+7.3 pp",
       "tone": "good"
     }
   ],
@@ -109,35 +109,35 @@
     },
     {
       "key": "tbill_12m",
-      "change": 0.39,
-      "direction": "up",
+      "change": -0.48,
+      "direction": "down",
       "tone": "neutral",
-      "display": "39 bp vs 14 Oct",
-      "title": "Up 39 bp vs 14 Oct: direction only"
+      "display": "48 bp vs 28 Oct",
+      "title": "Down 48 bp vs 28 Oct: direction only"
     },
     {
       "key": "sbp_res",
-      "change": 0.0395,
+      "change": 0.011,
       "direction": "up",
       "tone": "good",
-      "display": "$40m w/w",
-      "title": "Up $40m w/w: better for the economy"
+      "display": "$11m w/w",
+      "title": "Up $11m w/w: better for the economy"
     },
     {
       "key": "ca_fytd",
-      "change": -119.0,
-      "direction": "down",
-      "tone": "bad",
-      "display": "$119m y/y",
-      "title": "Down $119m y/y: worse for the economy"
+      "change": 212.0,
+      "direction": "up",
+      "tone": "good",
+      "display": "$212m y/y",
+      "title": "Up $212m y/y: better for the economy"
     },
     {
       "key": "rem_m",
-      "change": 12.676673,
+      "change": 13.812114,
       "direction": "up",
       "tone": "good",
-      "display": "12.7% y/y",
-      "title": "Up 12.7% y/y: better for the economy"
+      "display": "13.8% y/y",
+      "title": "Up 13.8% y/y: better for the economy"
     }
   ]
 }

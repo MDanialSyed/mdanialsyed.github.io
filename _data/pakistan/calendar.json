@@ -1,12 +1,5 @@
 [
   {
-    "when": "Mid-Nov",
-    "event": "October current account (SBP)",
-    "note": "September's figure came out on 16 Oct",
-    "source": "Business Recorder: current account, Sep 2026",
-    "url": "https://www.brecorder.com/news/40444553/pakistan-posts-356mn-ca-deficit-in-september-2026"
-  },
-  {
     "when": "Early Dec",
     "event": "November CPI (PBS)",
     "note": "October's figure came out on 2 Nov",
@@ -21,17 +14,24 @@
     "url": "https://www.nation.com.pk/08-Nov-2026/imf-consider-approving-dollar-1-2b-disbursement-pakistan-next-month"
   },
   {
-    "when": "Thursdays",
-    "event": "SBP weekly reserves",
-    "note": "Week to the previous Friday",
-    "source": "SBP: liquid foreign exchange reserves",
-    "url": "https://www.sbp.org.pk/assets/document/forex.pdf"
-  },
-  {
     "when": "14 Dec",
     "event": "Next SBP Monetary Policy Committee",
     "note": "Rate decision",
     "source": "Mettis Global: SBP FY27 MPC calendar",
     "url": "https://mettisglobal.news/SBP-releases-FY27-MPC-meeting-calendar-expands-monetary-policy-communication-61352"
+  },
+  {
+    "when": "Mid-Dec",
+    "event": "November current account (SBP)",
+    "note": "October's figure came out on 17 Nov",
+    "source": "Business Recorder: current account, Oct 2026",
+    "url": "https://www.brecorder.com/news/40449346/pakistan-posts-39mn-current-account-surplus-in-oct-2026"
+  },
+  {
+    "when": "Thursdays",
+    "event": "SBP weekly reserves",
+    "note": "Week to the previous Friday",
+    "source": "SBP: liquid foreign exchange reserves",
+    "url": "https://www.sbp.org.pk/assets/document/forex.pdf"
   }
 ]

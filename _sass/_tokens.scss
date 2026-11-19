@@ -1,0 +1,26 @@
+// Design tokens: the site's colours, fonts and spacing in one place.
+
+// Palette: a dark navy anchor, an off-white page and soft, earthy accents.
+$c-midnight: #071e2b;  // footer, navigation bar, darkest text
+$c-dam:      #253a49;  // header bands, buttons, body text
+$c-slate:    #5b6f7d;  // secondary text (passes contrast on white and salt)
+$c-tidal:    #91abba;  // text on dark bands
+$c-salt:     #f7f7f7;  // page background
+$c-white:    #ffffff;  // cards
+$c-sage:     #a3bdb4;  // accent: pill buttons, highlights
+$c-sage-soft:#dce7e3;  // tinted section bands
+$c-stone:    #ddd3cb;  // accent: quotes, borders
+$c-stone-soft:#efeae5; // tinted section bands
+$c-sand:     #beaa91;  // accent: rules and markers
+$c-line:     #e2ddd7;  // hairlines and card borders
+
+$font-display: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
+$font-body: "Cairo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+  Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$radius-card: 1rem;
+$radius-media: .75rem;
+$radius-pill: 999px;
+
+// Fluid side gutter for full-width bands
+$gutter: clamp(1rem, 5vw, 4rem);

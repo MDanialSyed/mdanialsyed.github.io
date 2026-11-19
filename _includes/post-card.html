@@ -1,0 +1,16 @@
+{%- assign p = include.post -%}
+<a class="post-card" href="{{ p.url | relative_url }}">
+  {%- if p.background %}
+  <div class="post-card-media"><img src="{{ p.background | relative_url }}" alt="" loading="lazy"></div>
+  {%- endif %}
+  <div class="post-card-body">
+    <p class="post-card-meta">{{ p.date | date: '%B %Y' }} &middot; {% include read_time.html content=p.content %}</p>
+    <h3 class="post-card-title">{{ p.title }}</h3>
+    {%- if p.subtitle %}
+    <p class="post-card-sub">{{ p.subtitle }}</p>
+    {%- else %}
+    <p class="post-card-sub">{{ p.excerpt | strip_html | truncatewords: 18 }}</p>
+    {%- endif %}
+    <span class="post-card-more">Read more <span class="arrow" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a>

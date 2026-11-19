@@ -1,9 +1,25 @@
-// Self-hosted fonts first, so the theme's font stacks pick them up
+// Self-hosted fonts and the site's design tokens first
 @import "fonts";
+@import "tokens";
 
-// Import Core Clean Blog SCSS
-@import "../assets/vendor/startbootstrap-clean-blog/scss/styles.scss";
+// Bootstrap settings, in place of the Clean Blog theme's own variables
+$primary: $c-dam;
+$body-bg: $c-salt;
+$body-color: $c-dam;
+$font-family-base: $font-body;
+$headings-font-family: $font-body;
+
+// Bootstrap, then the Clean Blog theme's parts (its stock variables file is skipped)
+@import "../assets/vendor/bootstrap/scss/bootstrap";
+@import "../assets/vendor/startbootstrap-clean-blog/scss/global";
+@import "../assets/vendor/startbootstrap-clean-blog/scss/components/buttons";
+@import "../assets/vendor/startbootstrap-clean-blog/scss/components/navbar";
+@import "../assets/vendor/startbootstrap-clean-blog/scss/sections/contact";
+@import "../assets/vendor/startbootstrap-clean-blog/scss/sections/footer";
+@import "../assets/vendor/startbootstrap-clean-blog/scss/sections/masthead";
+@import "../assets/vendor/startbootstrap-clean-blog/scss/sections/post";
 @import "../assets/vendor/syntax-highlighting/github.scss";
 
-// Site additions
+// Site additions, then the site's look on top of the theme
 @import "site";
+@import "theme";

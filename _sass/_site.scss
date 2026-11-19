@@ -8,25 +8,6 @@
   vertical-align: -0.125em;
 }
 
-// Footer social links: white icon on a dark circle, as before.
-footer .social-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  background: #212529;
-  color: #fff;
-  font-size: 1.1rem;
-  transition: background 0.2s;
-  &:hover,
-  &:focus {
-    background: #0085a1;
-    color: #fff;
-  }
-}
-
 .navbar-toggler .icon {
   margin-left: 0.25rem;
 }
@@ -69,15 +50,8 @@ article img {
   padding: 2rem 0 3rem;
 }
 
-// Phones and tablets: the menu bar is white there, so show the dark logo
-// (the theme showed the white one, which was invisible).
+// Phones and tablets
 @media (max-width: 991.98px) {
-  #mainNav .navbar-brand .logo-dark {
-    display: inline;
-  }
-  #mainNav .navbar-brand .logo-light {
-    display: none;
-  }
   // Keep the logo and the Menu button on one line.
   #mainNav .navbar-brand img {
     width: auto;
@@ -90,8 +64,8 @@ article img {
   min-width: 12rem;
   margin-top: 0;
   padding: 0.4rem 0;
-  border: 1px solid #e9ecef;
-  border-radius: 4px;
+  border: 1px solid $c-line;
+  border-radius: .75rem;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 #mainNav .dropdown-item {
@@ -99,12 +73,12 @@ article img {
   font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #212529;
+  color: $c-dam;
   padding: 0.55rem 1.25rem;
   &:hover,
   &:focus {
-    color: #0085a1;
-    background: #f8f9fa;
+    color: $c-midnight;
+    background: $c-stone-soft;
   }
 }
 #mainNav .dropdown-toggle::after {

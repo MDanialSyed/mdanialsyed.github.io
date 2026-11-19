@@ -2,59 +2,49 @@
 layout: default
 ---
 
-<!-- Page Header -->
-{% if page.background %}
-<header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
-  {% else %}
-  <header class="masthead">
-    {% endif %}
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
-            <h1>{{ site.title }}</h1>
-            {% if site.description %}
-            <span class="subheading">{{ site.description }}</span>
-            {% endif %}
+<header class="masthead">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="site-heading">
+          <h1>{{ site.title }}</h1>
+          {%- if site.description %}
+          <span class="subheading">{{ site.description }}</span>
+          {%- endif %}
+          <div class="hero-actions">
+            <a class="btn btn-sage btn-lg" href="{{ "/posts/" | relative_url }}">Read the research</a>
+            <a class="btn btn-ghost btn-lg" href="{{ "/about/" | relative_url }}">About me</a>
           </div>
         </div>
       </div>
     </div>
-  </header>
+  </div>
+  {% include masthead-line.svg %}
+</header>
 
+{{ content }}
+
+<section class="band" aria-labelledby="latest-heading">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-
-        {{ content }}
-
-        <!-- Home Post List -->
-        {% for post in site.posts limit : 5 %}
-
-        <article class="post-preview">
-          <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
-            <h2 class="post-title">{{ post.title }}</h2>
-            {% if post.subtitle %}
-            <h3 class="post-subtitle">{{ post.subtitle }}</h3>
-            {% else %}
-            <h3 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h3>
-            {% endif %}
-          </a>
-          <p class="post-meta">
-            {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}            
-          </p>
-        </article>
-
-        <hr>
-
-        {% endfor %}
-
-        <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="{{"/posts" | relative_url }}">View All Posts &rarr;</a>
-        </div>
-
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Latest</span>
+        <h2 id="latest-heading">Research and projects</h2>
       </div>
+      <a class="btn btn-primary" href="{{ "/posts/" | relative_url }}">All posts &rarr;</a>
+    </div>
+    <div class="card-grid">
+      {%- for post in site.posts limit: 6 %}
+      {% include post-card.html post=post %}
+      {%- endfor %}
     </div>
   </div>
+</section>
+
+<section class="band band-sage cta" aria-labelledby="contact-heading">
+  <div class="container">
+    <h2 id="contact-heading">Get in touch</h2>
+    <p>Questions about a project or a post? I'd be glad to hear from you.</p>
+    <a class="btn btn-primary btn-lg" href="{{ "/contact/" | relative_url }}">Contact me</a>
+  </div>
+</section>

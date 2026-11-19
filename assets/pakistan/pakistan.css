@@ -1,11 +1,11 @@
 /* Source: Pakistan: dashboard and weekly-note styles, layered on the Clean Blog theme. */
 :root {
-  --pv-fg: #212529;
-  --pv-muted: #6c757d;
-  --pv-line: #dee2e6;
+  --pv-fg: #253a49;         /* site navy text */
+  --pv-muted: #5b6f7d;
+  --pv-line: #e2ddd7;
   --pv-panel: #ffffff;
-  --pv-soft: #f7f8f9;
-  --pv-accent: #0085A1;     /* site teal: first chart series */
+  --pv-soft: #efeae5;       /* site stone tint */
+  --pv-accent: #253a49;     /* site navy: first chart series */
   --pv-accent-2: #D9822B;   /* orange: second chart series */
   --pv-chart-muted: #a3aab1;
   --pv-grid: #edf0f2;
@@ -13,8 +13,9 @@
   --pv-warn: #a15c00;
   --pv-bad: #b3261e;
   --pv-green: #0b3a2b;
-  --pv-sans: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --pv-serif: "Lora", Georgia, "Times New Roman", serif;
+  --pv-sans: "Cairo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --pv-serif: var(--pv-sans); /* the site no longer uses a serif; kept so older rules still resolve */
+  --pv-display: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
 }
 
 /* Masthead: shorter than the blog's, in a dark Pakistan green */
@@ -22,8 +23,8 @@ header.masthead.pv-masthead { background-color: var(--pv-green); margin-bottom: 
 header.masthead.pv-masthead .overlay { opacity: .35; }
 header.masthead.pv-masthead .page-heading { padding: 140px 0 56px; }
 header.masthead.pv-masthead .post-heading { padding: 140px 0 64px; }
-header.masthead.pv-masthead .page-heading h1 { font-size: 44px; }
-@media (min-width: 768px) { header.masthead.pv-masthead .page-heading h1 { font-size: 60px; } }
+header.masthead.pv-masthead .page-heading h1 { font-size: 56px; }
+@media (min-width: 768px) { header.masthead.pv-masthead .page-heading h1 { font-size: 80px; } }
 header.masthead.pv-masthead .page-heading .subheading { font-size: 20px; }
 .pv-asof { display: block; margin-top: 14px; font-family: var(--pv-sans); font-size: 14px; letter-spacing: .04em; opacity: .85; }
 .pv-kicker, .pv-kicker a { display: block; margin-bottom: 12px; font-family: var(--pv-sans); font-size: 14px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.85); text-decoration: none; }
@@ -207,3 +208,9 @@ a.pv-st::after { content: ""; position: absolute; inset: -8px; }
   .pv-ind td:nth-child(3) div.pv-src::before { content: none; }
   .pv-srct td:first-child, .pv-srct td:nth-child(2) { width: auto; }
 }
+
+/* Site look: condensed capital section headings, rounded panels */
+.pv-h2 { font-family: var(--pv-display); font-weight: 400; font-size: 38px; line-height: 1; letter-spacing: .01em; text-transform: uppercase; border-bottom-color: var(--pv-fg); }
+.pv-take { font-size: 20px !important; }
+.pv-tile-value { font-weight: 700; }
+.pv-tiles, .pv-card { border-radius: 12px; }

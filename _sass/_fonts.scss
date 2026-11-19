@@ -1,6 +1,9 @@
 // Self-hosted web fonts (from Fontsource; SIL Open Font License 1.1, see
 // assets/vendor/fonts/). Serving them from this site instead of Google Fonts
 // means visitors' browsers don't contact a third party on every page view.
+//
+// Bebas Neue: tall, condensed capitals for headings.
+// Cairo: a soft, rounded sans-serif for everything else.
 
 @mixin site-font($family, $file, $weight, $style) {
   @font-face {
@@ -15,14 +18,8 @@
   }
 }
 
-@each $weight in 400, 700 {
-  @each $style in normal, italic {
-    @include site-font("Lora", "lora-latin", $weight, $style);
-  }
-}
+@include site-font("Bebas Neue", "bebas-neue-latin", 400, normal);
 
-@each $weight in 300, 400, 600, 700, 800 {
-  @each $style in normal, italic {
-    @include site-font("Open Sans", "open-sans-latin", $weight, $style);
-  }
+@each $weight in 400, 600, 700 {
+  @include site-font("Cairo", "cairo-latin", $weight, normal);
 }

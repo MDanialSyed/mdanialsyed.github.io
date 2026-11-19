@@ -1,0 +1,788 @@
+// The site's look: calm navy header bands, an off-white page, condensed
+// capital headings, rounded cards and pill buttons. Layered on the Clean
+// Blog theme; colours and fonts come from _tokens.scss.
+
+:root {
+  --c-midnight: #{$c-midnight};
+  --c-dam: #{$c-dam};
+  --c-slate: #{$c-slate};
+  --c-tidal: #{$c-tidal};
+  --c-salt: #{$c-salt};
+  --c-sage: #{$c-sage};
+  --c-sage-soft: #{$c-sage-soft};
+  --c-stone: #{$c-stone};
+  --c-stone-soft: #{$c-stone-soft};
+  --c-sand: #{$c-sand};
+  --c-line: #{$c-line};
+  --font-display: #{$font-display};
+  --font-body: #{$font-body};
+}
+
+// ---------------------------------------------------------------- Base
+
+body {
+  font-family: $font-body;
+  font-size: 18px;
+  line-height: 1.75;
+  color: $c-dam;
+  background: $c-salt;
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  line-height: 1.75;
+  margin: 0 0 1.4rem;
+}
+
+a {
+  color: $c-dam;
+  &:hover,
+  &:focus {
+    color: $c-midnight;
+  }
+}
+
+p a:not(.btn),
+.post-body li a,
+.page-text li a,
+td a {
+  text-decoration: underline;
+  text-decoration-color: $c-sand;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  &:hover,
+  &:focus {
+    text-decoration-color: $c-dam;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $c-midnight;
+}
+
+// Display headings: tall condensed capitals
+h1,
+h2,
+.display {
+  font-family: $font-display;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  line-height: .98;
+}
+
+h3, h4, h5, h6 {
+  font-family: $font-body;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+::selection {
+  color: $c-midnight;
+  background: $c-sage;
+}
+
+hr {
+  border-top-color: $c-line;
+}
+
+:focus-visible {
+  outline: 3px solid $c-sage;
+  outline-offset: 2px;
+}
+
+// ---------------------------------------------------------------- Buttons
+
+.btn {
+  font-family: $font-body;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  text-transform: none;
+  padding: .7rem 1.5rem;
+  border-radius: $radius-pill;
+  transition: background-color .2s, color .2s, border-color .2s, transform .2s;
+}
+
+.btn-primary {
+  color: $c-white;
+  background-color: $c-dam;
+  border-color: $c-dam;
+  &:hover,
+  &:focus,
+  &:active {
+    color: $c-white;
+    background-color: $c-midnight !important;
+    border-color: $c-midnight !important;
+  }
+}
+
+.btn-sage {
+  color: $c-midnight;
+  background-color: $c-sage;
+  border-color: $c-sage;
+  &:hover,
+  &:focus {
+    color: $c-midnight;
+    background-color: lighten($c-sage, 8%);
+    border-color: lighten($c-sage, 8%);
+  }
+}
+
+.btn-ghost {
+  color: $c-white;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, .45);
+  &:hover,
+  &:focus {
+    color: $c-midnight;
+    background: $c-white;
+    border-color: $c-white;
+  }
+}
+
+.btn-lg {
+  font-size: 16px;
+  padding: .9rem 1.9rem;
+}
+
+// ---------------------------------------------------------------- Navigation
+
+#mainNav {
+  font-family: $font-body;
+  background: $c-midnight;
+  border-bottom: 0;
+
+  .navbar-brand .logo-dark { display: none; }
+  .navbar-brand .logo-light { display: inline; }
+
+  .navbar-toggler {
+    font-family: $font-body;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-transform: none;
+    color: $c-white;
+    border: 1px solid rgba(255, 255, 255, .35);
+    border-radius: $radius-pill;
+    padding: 8px 16px;
+  }
+
+  .navbar-nav > li.nav-item > a {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    color: rgba(255, 255, 255, .88);
+    &:hover,
+    &:focus {
+      color: $c-white;
+    }
+  }
+
+  // "Contact" as a pill button at the end of the menu
+  .navbar-nav > li.nav-cta > a.nav-link {
+    color: $c-midnight;
+    background: $c-sage;
+    border-radius: $radius-pill;
+    padding: 8px 20px;
+    &:hover,
+    &:focus {
+      color: $c-midnight;
+      background: lighten($c-sage, 8%);
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    .navbar-collapse {
+      padding: 8px 0 16px;
+    }
+    .navbar-nav > li.nav-item > a {
+      padding: 10px 0;
+    }
+    .navbar-nav > li.nav-cta {
+      margin-top: 8px;
+      > a.nav-link {
+        display: inline-block;
+        padding: 8px 20px;
+      }
+    }
+    .dropdown-menu {
+      background: transparent;
+    }
+    .dropdown-item {
+      color: rgba(255, 255, 255, .8);
+      &:hover,
+      &:focus {
+        color: $c-white;
+        background: transparent;
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+    background: transparent;
+
+    .navbar-brand {
+      padding: 10px 0;
+    }
+
+    .navbar-nav > li.nav-item > a {
+      padding: 10px 16px;
+      color: rgba(255, 255, 255, .88);
+      &:hover,
+      &:focus {
+        color: $c-white;
+      }
+    }
+    .navbar-nav > li.nav-cta {
+      margin-left: 10px;
+      > a.nav-link {
+        padding: 8px 20px;
+        color: $c-midnight;
+        &:hover,
+        &:focus {
+          color: $c-midnight;
+        }
+      }
+    }
+
+    // After scrolling, the bar comes back as a solid navy strip
+    &.is-fixed {
+      background-color: rgba($c-midnight, .97);
+      border-bottom: 0;
+
+      .navbar-brand .logo-dark { display: none; }
+      .navbar-brand .logo-light { display: inline; }
+
+      .navbar-nav > li.nav-item > a {
+        color: rgba(255, 255, 255, .88);
+        &:hover,
+        &:focus {
+          color: $c-white;
+        }
+      }
+      .navbar-nav > li.nav-cta > a.nav-link {
+        color: $c-midnight;
+      }
+    }
+  }
+
+  .dropdown-item {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+}
+
+// ---------------------------------------------------------------- Header band
+
+header.masthead {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+  color: $c-white;
+  background: $c-dam;
+
+  .overlay {
+    display: none;
+  }
+
+  .page-heading,
+  .post-heading,
+  .site-heading {
+    position: relative;
+    z-index: 1;
+    padding: 150px 0 88px;
+    color: $c-white;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      padding: 170px 0 104px;
+    }
+  }
+
+  h1 {
+    color: $c-white;
+    font-size: clamp(2.75rem, 6.4vw, 5.25rem);
+    margin: 0;
+  }
+
+  .page-heading .subheading,
+  .post-heading .subheading,
+  .site-heading .subheading {
+    display: block;
+    max-width: 40rem;
+    margin: 20px auto 0;
+    font-family: $font-body;
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: $c-tidal;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .post-heading {
+    h1 {
+      font-size: clamp(2.4rem, 5.2vw, 4.25rem);
+    }
+    .subheading {
+      font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+      font-weight: 400;
+      line-height: 1.6;
+      margin: 20px auto 0;
+    }
+    .meta {
+      display: block;
+      margin-top: 22px;
+      font-family: $font-body;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: $c-sage;
+    }
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  // Decorative data line along the bottom of the band
+  .masthead-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 110px;
+    pointer-events: none;
+    z-index: 0;
+    path {
+      fill: none;
+      stroke: $c-sage;
+      stroke-width: 1.5;
+      opacity: .28;
+      vector-effect: non-scaling-stroke;
+    }
+    .masthead-line-2 {
+      stroke: $c-tidal;
+      opacity: .18;
+    }
+  }
+}
+
+.site-home header.masthead .site-heading {
+  padding: 170px 0 120px;
+  @media (min-width: 768px) {
+    padding: 200px 0 150px;
+  }
+  h1 {
+    font-size: clamp(3.2rem, 8.4vw, 7rem);
+  }
+}
+
+// ---------------------------------------------------------------- Page sections
+
+.band {
+  padding: 72px 0;
+  @media (min-width: 768px) {
+    padding: 96px 0;
+  }
+}
+.band-tight {
+  padding: 56px 0;
+}
+.band-sage { background: $c-sage-soft; }
+.band-stone { background: $c-stone-soft; }
+.band-white { background: $c-white; }
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-bottom: 36px;
+
+  h2 {
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    margin: 0;
+  }
+  p {
+    margin: 8px 0 0;
+    color: $c-slate;
+    max-width: 34rem;
+  }
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: $c-slate;
+}
+
+// Content column for pages and posts
+.page-body {
+  padding: 64px 0 88px;
+  @media (min-width: 768px) {
+    padding: 80px 0 104px;
+  }
+}
+
+// ---------------------------------------------------------------- Post cards
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (min-width: 1100px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+a.post-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  color: $c-dam;
+  text-decoration: none;
+  background: $c-white;
+  border: 1px solid $c-line;
+  border-radius: $radius-card;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+
+  &:hover,
+  &:focus {
+    color: $c-dam;
+    text-decoration: none;
+    transform: translateY(-4px);
+    border-color: $c-stone;
+    box-shadow: 0 14px 34px rgba($c-midnight, .1);
+  }
+
+  .post-card-media {
+    position: relative;
+    height: 0;
+    padding-top: 58%;
+    overflow: hidden;
+    background: $c-stone-soft;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s;
+    }
+  }
+  &:hover .post-card-media img {
+    transform: scale(1.04);
+  }
+
+  .post-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 22px 24px 24px;
+  }
+
+  .post-card-meta {
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: $c-slate;
+  }
+
+  .post-card-title {
+    margin: 0 0 10px;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    color: $c-midnight;
+  }
+
+  .post-card-sub {
+    margin: 0 0 18px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: $c-slate;
+  }
+
+  .post-card-more {
+    margin-top: auto;
+    font-size: 15px;
+    font-weight: 700;
+    color: $c-dam;
+    .arrow {
+      display: inline-block;
+      transition: transform .2s;
+    }
+  }
+  &:hover .post-card-more .arrow {
+    transform: translateX(4px);
+  }
+}
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+// ---------------------------------------------------------------- Call to action band
+
+.cta {
+  text-align: center;
+  h2 {
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    margin: 0 0 14px;
+  }
+  p {
+    max-width: 34rem;
+    margin: 0 auto 26px;
+    color: $c-slate;
+  }
+}
+
+// ---------------------------------------------------------------- Long-form text
+
+.post-body,
+.page-text {
+  h2 {
+    font-size: clamp(2rem, 3.4vw, 2.75rem);
+    margin: 3rem 0 1rem;
+  }
+  h3 {
+    font-size: 1.35rem;
+    margin: 2.25rem 0 .75rem;
+  }
+  h4 {
+    font-size: 1.1rem;
+    margin: 1.75rem 0 .5rem;
+  }
+  ul,
+  ol {
+    margin-bottom: 1.4rem;
+    padding-left: 1.4rem;
+  }
+  li {
+    margin-bottom: .4rem;
+  }
+  li::marker {
+    color: $c-sand;
+  }
+  img {
+    border-radius: $radius-media;
+  }
+  table {
+    width: 100%;
+    margin: 0 0 1.6rem;
+    font-size: 16px;
+    border-collapse: collapse;
+    th,
+    td {
+      padding: 8px 10px;
+      border-bottom: 1px solid $c-line;
+    }
+    th {
+      font-weight: 700;
+      color: $c-midnight;
+      border-bottom: 2px solid $c-dam;
+    }
+  }
+  pre,
+  .highlight {
+    border-radius: $radius-media;
+  }
+  pre {
+    padding: 16px 18px;
+    font-size: 14px;
+    background: $c-white;
+    border: 1px solid $c-line;
+  }
+  code {
+    font-size: .88em;
+    color: $c-midnight;
+  }
+}
+
+blockquote {
+  margin: 2rem 0;
+  padding: 22px 26px;
+  font-style: normal;
+  color: $c-dam;
+  background: $c-stone-soft;
+  border-left: 4px solid $c-sand;
+  border-radius: 0 $radius-media $radius-media 0;
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.caption {
+  font-style: normal;
+  font-size: 14px;
+  color: $c-slate;
+}
+
+.post-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid $c-line;
+  .btn {
+    max-width: 48%;
+  }
+  .next {
+    margin-left: auto;
+  }
+}
+
+// ---------------------------------------------------------------- Contact form
+
+.floating-label-form-group {
+  border-bottom: 1px solid $c-line;
+  input,
+  textarea {
+    font-family: $font-body;
+    font-size: 18px;
+    background: transparent;
+  }
+  label {
+    font-family: $font-body;
+    font-weight: 700;
+    color: $c-slate;
+  }
+}
+.floating-label-form-group-with-focus label {
+  color: $c-dam;
+}
+
+// ---------------------------------------------------------------- Footer
+
+footer.site-footer {
+  padding: 72px 0 36px;
+  color: $c-tidal;
+  background: $c-midnight;
+
+  a {
+    color: $c-tidal;
+    &:hover,
+    &:focus {
+      color: $c-white;
+    }
+  }
+
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba($c-tidal, .25);
+  }
+
+  .footer-tagline {
+    margin: 0;
+    max-width: 38rem;
+    font-family: $font-display;
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    font-weight: 400;
+    line-height: .95;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    color: $c-salt;
+  }
+
+  .list-inline {
+    margin: 0;
+  }
+  .list-inline-item:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.1rem;
+    color: $c-salt;
+    border: 1px solid rgba($c-tidal, .45);
+    border-radius: 50%;
+    transition: background .2s, color .2s, border-color .2s;
+    &:hover,
+    &:focus {
+      color: $c-midnight;
+      background: $c-sage;
+      border-color: $c-sage;
+    }
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 24px;
+    padding-top: 24px;
+    font-size: 14px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .copyright {
+    margin: 0;
+    font-size: 14px;
+    text-align: left;
+    color: $c-tidal;
+  }
+}
+
+// ---------------------------------------------------------------- Small screens
+
+@media (max-width: 575.98px) {
+  body {
+    font-size: 17px;
+  }
+  .post-pager .btn {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}

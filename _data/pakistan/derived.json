@@ -3,8 +3,8 @@
     {
       "key": "kse_ytd",
       "label": "KSE-100, change since the end of last year",
-      "value": 0.01287,
-      "display": "+1.3% YTD",
+      "value": 0.015615,
+      "display": "+1.6% YTD",
       "tone": "good"
     },
     {
@@ -38,8 +38,8 @@
     {
       "key": "res_gap",
       "label": "SBP reserves, gap to end-December goal",
-      "value": 1.43,
-      "display": "$1.43bn to go",
+      "value": 1.41,
+      "display": "$1.41bn to go",
       "tone": "neutral"
     },
     {
@@ -117,11 +117,11 @@
     },
     {
       "key": "sbp_res",
-      "change": 0.011,
+      "change": 0.015,
       "direction": "up",
       "tone": "good",
-      "display": "$11m w/w",
-      "title": "Up $11m w/w: better for the economy"
+      "display": "$15m w/w",
+      "title": "Up $15m w/w: better for the economy"
     },
     {
       "key": "ca_fytd",

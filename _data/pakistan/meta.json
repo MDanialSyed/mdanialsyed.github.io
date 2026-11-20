@@ -1,13 +1,13 @@
 {
   "name": "Source: Pakistan",
-  "asof": "18 Nov 2026",
-  "asof_iso": "2026-11-18",
+  "asof": "20 Nov 2026",
+  "asof_iso": "2026-11-20",
   "notes": "Official figures are downloaded from the publishers' own data services and calculated by code; interim figures are read from SBP, PBS, Finance Ministry and FBR releases, market closes, and news reports of them. Every figure shows its source.",
-  "takeaway": "The current account showed a $39m surplus in October, the first of FY27, narrowing the July–October deficit to −$850m from −$1,062m a year earlier. Private-sector credit grew 17.4% in the year to 6 Nov, and car sales jumped to 23,432 in October.",
-  "so_what": "Remittances of $3.89bn a month are keeping the external accounts close to balance, and firms are borrowing faster despite a 12.00% policy rate. The cushion is thin, though: the weekly price basket was still 11.21% dearer than a year earlier, and SBP reserves, at $21.57bn, remain $1.43bn short of the end-December goal.",
+  "takeaway": "Factory output grew 2.45% in September from a year earlier, lifting July–September growth to 2.07%, and SBP reserves rose $15m to $21.59bn in the week to 13 Nov.",
+  "so_what": "Industry is picking up alongside private-sector credit growth of 17.4% and October car sales of 23,432, so demand is reviving even with the policy rate at 12.00%. Reserves, though, are adding only millions a week and remain $1.41bn short of the end-December goal, and with inflation at 9.6% the State Bank has little room to ease.",
   "commentary": {
     "inflation": "Inflation was below the 5–7% target band in mid-2025 and inside it from September to February, then rose to 7.3% in March and jumped to 10.9% in April 2026; it has stayed between 9.2% and 11.7% since and eased to 9.6% in October. The State Bank cut its rate to 10.5% in December, raised it to 11.5% in April and to 12.00% in October, leaving it 2.4 points above inflation. Weekly prices of essentials were still 11.21% higher than a year earlier in the week to 12 Nov, so the pressure on households has not gone.",
-    "growth": "Factory output in July and August ran slightly above last year's level and domestic cement despatches rose just 1.2% in October, but car sales jumped to 23,432 in October and private-sector credit grew 17.4% in the year to 6 Nov. The IMF expects growth of 3.5% this fiscal year, about the same as last year and well below the 6.2% of FY22: a recovery, but a modest one, and higher interest rates make a faster one less likely."
+    "growth": "Factory output grew 2.07% in July–September from a year earlier, with September up 2.45%, though domestic cement despatches rose just 1.2% in October. Car sales jumped to 23,432 in October and private-sector credit grew 17.4% in the year to 6 Nov. The IMF expects growth of 3.5% this fiscal year, about the same as last year and well below the 6.2% of FY22: a recovery, but a modest one, and higher interest rates make a faster one less likely."
   },
   "curve": {
     "latest": "Latest auctions",

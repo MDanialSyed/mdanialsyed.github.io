@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-18T15:59:46Z",
-  "run_id": "20261118T155946Z",
+  "generated_at": "2026-11-20T04:34:15Z",
+  "run_id": "20261120T043415Z",
   "pipeline_version": "0.1.0",
-  "code_version": "d5ede78",
+  "code_version": "8bd38c2",
   "indicators": {
     "cpi_yoy": {
       "key": "cpi_yoy",
@@ -252,10 +252,10 @@
       "key": "repo_on",
       "label": "Overnight repo, weighted average",
       "unit": "percent",
-      "value": 12.48,
-      "display": "12.48%",
-      "period": "2026-11-17",
-      "period_label": "17 Nov 2026",
+      "value": 12.55,
+      "display": "12.55%",
+      "period": "2026-11-18",
+      "period_label": "18 Nov 2026",
       "status": "official",
       "frequency": "daily",
       "publisher": "State Bank of Pakistan",
@@ -264,35 +264,35 @@
       "source_url": "https://easydata.sbp.org.pk/",
       "calc": "as_published@1",
       "calc_note": "",
-      "retrieved_at": "2026-11-18T15:48:22Z",
-      "context": "12.26% on 16 Nov",
+      "retrieved_at": "2026-11-20T03:39:27Z",
+      "context": "12.48% on 17 Nov",
       "inputs": [
         {
           "series": "sbp_repo_rate",
           "code": "TS_GP_IR_REPOMR_D.ORR",
           "publisher": "State Bank of Pakistan",
           "dataset": "EasyData",
-          "period": "2026-11-17",
-          "value": 12.48,
-          "retrieved_at": "2026-11-18T15:48:22Z",
-          "file": "raw/sbp_easydata/2026-11-18/TS_GP_IR_REPOMR_D.ORR.csv",
-          "sha256": "b4a50fc99c65984ccd7f2650ef3311485e00f3bd1c0849183f42139f0e8f31a1"
+          "period": "2026-11-18",
+          "value": 12.55,
+          "retrieved_at": "2026-11-20T03:39:27Z",
+          "file": "raw/sbp_easydata/2026-11-20/TS_GP_IR_REPOMR_D.ORR.csv",
+          "sha256": "4a0003905ec33ec546b961248f36759d63341641e0931d7bdb497b5c49f7c6ce"
         }
       ],
       "context_items": [
         {
           "kind": "previous",
-          "value": 12.26,
-          "display": "12.26%",
-          "period": "2026-11-16",
+          "value": 12.48,
+          "display": "12.48%",
+          "period": "2026-11-17",
           "inputs": [
             {
               "series": "sbp_repo_rate",
               "code": "TS_GP_IR_REPOMR_D.ORR",
               "publisher": "State Bank of Pakistan",
               "dataset": "EasyData",
-              "period": "2026-11-16",
-              "value": 12.26,
+              "period": "2026-11-17",
+              "value": 12.48,
               "retrieved_at": "2026-11-18T15:48:22Z",
               "file": "raw/sbp_easydata/2026-11-18/TS_GP_IR_REPOMR_D.ORR.csv",
               "sha256": "b4a50fc99c65984ccd7f2650ef3311485e00f3bd1c0849183f42139f0e8f31a1"
